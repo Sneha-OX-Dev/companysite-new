@@ -17,6 +17,11 @@ export const metadata: Metadata = {
   title: "Oxygean – You're alive in the network",
   description:
     "Evolved digital engagement using web3 technologies. OX puts you in control—shaping, training, and owning your personal intelligence.",
+  icons: {
+    icon: "/ox.svg",
+    shortcut: "/ox.svg",
+    apple: "/ox.svg",
+  },
 };
 
 export default function RootLayout({

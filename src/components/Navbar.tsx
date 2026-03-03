@@ -4,8 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 
-const LOGO_URL =
-  "https://cdn.prod.website-files.com/6601ebe1041cb651c3a023e8/6601f1ceaf0f5b2dda2239dd_ox.svg";
+const LOGO_URL = "/ox.svg";
 
 const navItems = [
   { label: "Home", href: "/" },
