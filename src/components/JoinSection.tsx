@@ -3,7 +3,7 @@ import { landing } from "@/content/landing";
 
 export default function JoinSection() {
   return (
-    <section className="border-t border-indigo-900/50 bg-indigo-950/30 px-6 py-20 md:py-28">
+    <section className="animate-fade-in-up border-t border-indigo-900/50 bg-indigo-950/30 px-6 py-20 md:py-28" style={{ animationDelay: "0.4s", opacity: 0 }}>
       <div className="mx-auto max-w-2xl text-center">
         <h2 className="text-3xl font-bold text-white sm:text-4xl">
           {landing.join.headline}

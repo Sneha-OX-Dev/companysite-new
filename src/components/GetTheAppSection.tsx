@@ -9,7 +9,7 @@ export default function GetTheAppSection() {
   return (
     <section className="px-6 py-16 md:py-24" id="get-the-app">
       <div className="mx-auto max-w-5xl">
-        <div className="overflow-hidden rounded-3xl border border-indigo-900/70 bg-gradient-to-br from-indigo-900/70 via-indigo-950/80 to-black/80 shadow-[0_0_40px_rgba(0,0,0,0.6)] px-6 py-10 md:px-10 md:py-12">
+        <div className="overflow-hidden rounded-3xl border border-indigo-900/70 bg-gradient-to-br from-indigo-900/70 via-indigo-950/80 to-black/80 px-6 py-10 shadow-[0_0_40px_rgba(0,0,0,0.6),0_0_60px_rgba(255,13,116,0.12)] md:px-10 md:py-12">
           <div className="grid items-center gap-10 md:grid-cols-[minmax(0,1.1fr)_minmax(0,1fr)]">
             <div className="relative">
               <Image
@@ -39,7 +39,7 @@ export default function GetTheAppSection() {
                     href={store.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="transition-opacity opacity-90 hover:opacity-100"
+                    className="transition-all duration-200 opacity-90 hover:opacity-100 hover:scale-105"
                     aria-label={store.label}
                   >
                     <Image

@@ -77,7 +77,7 @@ export const landing = {
       addressLine1: "13 Adelaide Road",
       addressLine2: "Dublin, Ireland",
     },
-    copyright: "@ All Rights Reserved 2024",
+    copyright: "@ All Rights Reserved 2026",
     appCta: "Get the app to earn OXME",
     appSub: "Click the download button to get started.",
   },

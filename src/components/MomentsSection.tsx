@@ -2,7 +2,7 @@ import { landing } from "@/content/landing";
 
 export default function MomentsSection() {
   return (
-    <section className="px-6 py-20 md:py-28 bg-gradient-to-b from-transparent via-indigo-950/20 to-transparent">
+    <section className="animate-fade-in-up px-6 py-20 md:py-28 bg-gradient-to-b from-transparent via-indigo-950/20 to-transparent" style={{ animationDelay: "0.3s", opacity: 0 }}>
       <div className="mx-auto max-w-3xl">
         <p className="text-sm font-medium uppercase tracking-wider text-[var(--accent)]">
           {landing.moments.eyebrow}

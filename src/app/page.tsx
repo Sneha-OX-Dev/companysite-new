@@ -1,5 +1,7 @@
 import Hero from "@/components/Hero";
+import MarqueeStrip from "@/components/MarqueeStrip";
 import ValueSection from "@/components/ValueSection";
+import StatsBar from "@/components/StatsBar";
 import MindTwinSection from "@/components/MindTwinSection";
 import MomentsSection from "@/components/MomentsSection";
 import JoinSection from "@/components/JoinSection";
@@ -10,7 +12,9 @@ export default function Home() {
   return (
     <>
       <Hero />
+      <MarqueeStrip />
       <ValueSection />
+      <StatsBar />
       <MindTwinSection />
       <MomentsSection />
       <JoinSection />

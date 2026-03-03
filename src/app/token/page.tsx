@@ -14,7 +14,7 @@ export default function TokenPage() {
     <>
       <InnerPageLayout title="OX Token &amp; Tokenomics">
         <div className="space-y-10">
-          <p className="max-w-2xl text-sm text-zinc-400">
+          <p className="max-w-2xl text-base text-zinc-300">
             The OX token is how we keep incentives honest. It ties together mining, referrals and
             participation in a way that rewards contribution instead of extraction.
           </p>
@@ -23,7 +23,7 @@ export default function TokenPage() {
               <h2 className="text-sm font-semibold uppercase tracking-wide text-[var(--accent)]">
                 Token Overview
               </h2>
-              <p className="text-sm text-zinc-300">
+              <p className="text-base text-zinc-200">
                 The OX token underpins incentives across the OX network. It connects everyday
                 actions in the app — mining, referrals, participation — with long term value and
                 shared ownership in the ecosystem.
@@ -31,7 +31,7 @@ export default function TokenPage() {
               <h3 className="text-xs font-semibold uppercase tracking-wide text-zinc-400">
                 Tokenomics
               </h3>
-              <p className="text-sm text-zinc-300">
+              <p className="text-base text-zinc-200">
                 OX tokenomics are designed to reward early participation without locking out future
                 citizens. Emissions, supply schedules and sinks are tuned to encourage healthy
                 network growth, not pure speculation.
@@ -41,7 +41,7 @@ export default function TokenPage() {
               <h2 className="text-sm font-semibold uppercase tracking-wide text-[var(--accent)]">
                 Value Proposition
               </h2>
-              <ul className="mt-2 space-y-2 text-sm text-zinc-300">
+              <ul className="mt-2 space-y-2 text-base text-zinc-200">
                 <li>Enterprises &amp; governments get transparent economics and aligned incentives.</li>
                 <li>Users see fair rewards and clear visibility into how value is created.</li>
                 <li>Developers get predictable primitives to build value-aware products.</li>
@@ -53,7 +53,7 @@ export default function TokenPage() {
               <h2 className="text-sm font-semibold uppercase tracking-wide text-[var(--accent)]">
                 Sovereignty
               </h2>
-              <p className="mt-3 text-sm text-zinc-300">
+              <p className="mt-3 text-base text-zinc-200">
                 The token is not a license to own people&apos;s data. It is a coordination tool for
                 sovereign agents. Data remains under the control of the user and their MindTwin. OX
                 only moves value when the human in the loop agrees.
@@ -63,7 +63,7 @@ export default function TokenPage() {
               <h2 className="text-sm font-semibold uppercase tracking-wide text-[var(--accent)]">
                 Whitepaper
               </h2>
-              <p className="mt-3 text-sm text-zinc-300">
+              <p className="mt-3 text-base text-zinc-200">
                 For a detailed breakdown of mechanics and parameters, read the{" "}
                 <a href="/whitepaper" className="text-[var(--accent)] underline-offset-2 hover:underline">
                   OX whitepaper

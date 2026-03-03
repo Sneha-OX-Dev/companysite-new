@@ -24,7 +24,7 @@ export default function Hero() {
           <h1 className="text-4xl font-bold tracking-tight text-white sm:text-5xl md:text-6xl">
             {landing.hero.headline}
           </h1>
-          <p className="text-xl text-zinc-300 sm:text-2xl md:text-3xl">
+          <p className="bg-gradient-to-r from-white via-zinc-200 to-[var(--accent)] bg-clip-text text-xl font-medium text-transparent sm:text-2xl md:text-3xl">
             {landing.hero.subline}
           </p>
         </div>
