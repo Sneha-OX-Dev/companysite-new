@@ -16,9 +16,10 @@ export default function JoinSection() {
         </p>
         <Link
           href="#get-the-app"
-          className="mt-8 inline-block rounded-full bg-[var(--accent)] px-8 py-4 text-lg font-semibold text-white transition hover:opacity-90"
+          className="mt-8 inline-flex items-center gap-2 rounded-full bg-[var(--accent)] px-8 py-3.5 text-sm font-semibold uppercase tracking-wide text-white shadow-[0_0_28px_rgba(255,13,116,0.6)] transition hover:translate-y-0.5 hover:shadow-[0_0_36px_rgba(255,13,116,0.9)]"
         >
-          {landing.join.cta}
+          <span className="inline-flex h-1.5 w-1.5 rounded-full bg-white" />
+          <span>{landing.join.cta}</span>
         </Link>
       </div>
     </section>
