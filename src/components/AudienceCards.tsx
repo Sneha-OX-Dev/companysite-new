@@ -3,7 +3,7 @@ import AudienceCard from "./cards/AudienceCard";
 
 export function AudienceCards() {
   return (
-    <section className="relative mx-auto flex w-full max-w-6xl flex-col items-center gap-16 px-6 pb-20 pt-20 text-white sm:pb-24 sm:pt-24">
+    <section className="relative mx-auto flex w-full max-w-5xl flex-col items-center gap-16 px-6 pb-20 pt-20 text-white sm:pb-24 sm:pt-24">
       <div
         aria-hidden
         className="pointer-events-none absolute inset-0 -z-10 opacity-80"
@@ -13,7 +13,7 @@ export function AudienceCards() {
       <div className="max-w-2xl text-center">
         <h2 className="font-heading text-[24px] font-semibold leading-tight tracking-[-0.03em] sm:text-[30px] md:text-[34px]">
           Who is OX{" "}
-          <span className="bg-gradient-to-r from-[#E8264A] via-[#FF2D6B] to-[#7B1FA2] bg-clip-text text-transparent">
+          <span className="bg-linear-to-r from-[#E8264A] via-[#FF2D6B] to-[#7B1FA2] bg-clip-text text-transparent">
             for?
           </span>
         </h2>

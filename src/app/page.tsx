@@ -1,23 +1,25 @@
+import ClarifySection from "@/components/ClarifySection";
+import Footer from "@/components/Footer";
+import GetTheAppSection from "@/components/GetTheAppSection";
 import Hero from "@/components/Hero";
-import WhatIsOxSection from "@/components/WhatIsOxSection";
+import JoinSection from "@/components/JoinSection";
+import MachineSelfSection from "@/components/MachineSelfSection";
 import MarqueeStrip from "@/components/MarqueeStrip";
-import ValueSection from "@/components/ValueSection";
+import MomentsSection from "@/components/MomentsSection";
+import { TwoStageEarningSection } from "@/components/sections/TwoStageEarningSection";
 import StatsBar from "@/components/StatsBar";
 import StatsTeaserSection from "@/components/StatsTeaserSection";
-import MachineSelfSection from "@/components/MachineSelfSection";
-import MomentsSection from "@/components/MomentsSection";
+import ValueSection from "@/components/ValueSection";
+import WhatIsOxSection from "@/components/WhatIsOxSection";
 import WhyOxSection from "@/components/WhyOxSection";
-import JoinSection from "@/components/JoinSection";
-import ClarifySection from "@/components/ClarifySection";
-import GetTheAppSection from "@/components/GetTheAppSection";
-import Footer from "@/components/Footer";
 
 export default function Home() {
   return (
     <>
       <Hero />
-      <WhatIsOxSection />
+      <TwoStageEarningSection />
       <MarqueeStrip />
+      <WhatIsOxSection />
       <ValueSection />
       <StatsBar />
       <StatsTeaserSection />
