@@ -3,9 +3,16 @@ import Footer from "@/components/Footer";
 import GetTheAppSection from "@/components/GetTheAppSection";
 import Hero from "@/components/Hero";
 import JoinSection from "@/components/JoinSection";
-import MachineSelfSection from "@/components/MachineSelfSection";
 import MarqueeStrip from "@/components/MarqueeStrip";
 import MomentsSection from "@/components/MomentsSection";
+import { CircularEconomySection } from "@/components/sections/CircularEconomySection";
+import DigitalHumanBridgeSection from "@/components/sections/DigitalHumanBridgeSection";
+import { EcosystemMapSection } from "@/components/sections/EcosystemMapSection";
+import { HumanMiningSection } from "@/components/sections/HumanMiningSection";
+import MachineSelfSection from "@/components/sections/MachineSelfSection";
+import { MatchingLoopSection } from "@/components/sections/MatchingLoopSection";
+import { NetworkScaleMilestonesSection } from "@/components/sections/NetworkScaleMilestonesSection";
+import { OldVsOxSection } from "@/components/sections/OldVsNewModelSection";
 import { OxitToOxmeConversionSection } from "@/components/sections/OxitToOxmeConversionSection";
 import { PhoneSovereignNodeSection } from "@/components/sections/PhoneSoverignNodeSection";
 import { SystemsWithoutWithOX } from "@/components/sections/SystemsWithoutWithOX";
@@ -26,6 +33,13 @@ export default function Home() {
       <SystemsWithoutWithOX />
       <PhoneSovereignNodeSection />
       <MachineSelfSection />
+      <MatchingLoopSection />
+      <DigitalHumanBridgeSection />
+      <OldVsOxSection />
+      <CircularEconomySection />
+      <HumanMiningSection />
+      <NetworkScaleMilestonesSection />
+      <EcosystemMapSection />
       <WhatIsOxSection />
       <ValueSection />
       <StatsBar />
