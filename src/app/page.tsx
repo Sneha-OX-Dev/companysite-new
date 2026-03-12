@@ -6,6 +6,9 @@ import JoinSection from "@/components/JoinSection";
 import MachineSelfSection from "@/components/MachineSelfSection";
 import MarqueeStrip from "@/components/MarqueeStrip";
 import MomentsSection from "@/components/MomentsSection";
+import { OxitToOxmeConversionSection } from "@/components/sections/OxitToOxmeConversionSection";
+import { PhoneSovereignNodeSection } from "@/components/sections/PhoneSoverignNodeSection";
+import { SystemsWithoutWithOX } from "@/components/sections/SystemsWithoutWithOX";
 import { TwoStageEarningSection } from "@/components/sections/TwoStageEarningSection";
 import StatsBar from "@/components/StatsBar";
 import StatsTeaserSection from "@/components/StatsTeaserSection";
@@ -19,11 +22,14 @@ export default function Home() {
       <Hero />
       <TwoStageEarningSection />
       <MarqueeStrip />
+      <OxitToOxmeConversionSection />
+      <SystemsWithoutWithOX />
+      <PhoneSovereignNodeSection />
+      <MachineSelfSection />
       <WhatIsOxSection />
       <ValueSection />
       <StatsBar />
       <StatsTeaserSection />
-      <MachineSelfSection />
       <MomentsSection />
       <WhyOxSection />
       <JoinSection />
