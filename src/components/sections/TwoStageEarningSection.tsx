@@ -9,7 +9,7 @@ const stage1Steps = [
     label: "Build Your Machine Self",
     sub: "16 hours · 2,000 data points · Stored on your phone",
     icon: (
-      <svg width="13" height="13" viewBox="0 0 16 16" fill="none">
+      <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
         <rect
           x="2"
           y="2"
@@ -44,7 +44,7 @@ const stage1Steps = [
     label: "Every Verified Contribution",
     sub: "Each step earns OXIT immediately",
     icon: (
-      <svg width="13" height="13" viewBox="0 0 16 16" fill="none">
+      <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
         <circle cx="8" cy="8" r="5.5" stroke={PINK} strokeWidth="1.5" />
         <path
           d="M6 8 L7.5 9.5 L10.5 6.5"
@@ -60,7 +60,7 @@ const stage1Steps = [
     label: "OXIT Accumulates",
     sub: "The building is the mining",
     icon: (
-      <svg width="13" height="13" viewBox="0 0 16 16" fill="none">
+      <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
         <ellipse cx="8" cy="11" rx="5" ry="2" stroke={PINK} strokeWidth="1.3" />
         <ellipse
           cx="8"
@@ -90,7 +90,7 @@ const stage2Steps = [
     label: "OX Matches You to Work",
     sub: "Machine Self evaluates privately on your device",
     icon: (
-      <svg width="13" height="13" viewBox="0 0 16 16" fill="none">
+      <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
         <path
           d="M8 2 L14 5 L14 11 L8 14 L2 11 L2 5 Z"
           stroke={PURPLE}
@@ -105,7 +105,7 @@ const stage2Steps = [
     label: "You Choose to Participate",
     sub: "Consent only. Zero data leaves your device",
     icon: (
-      <svg width="13" height="13" viewBox="0 0 16 16" fill="none">
+      <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
         <path
           d="M8 2 Q14 2 14 8 Q14 13 8 14 Q2 13 2 8 Q2 2 8 2"
           stroke={PURPLE}
@@ -126,7 +126,7 @@ const stage2Steps = [
     label: "Earn More OXIT",
     sub: "The earning never stops. The network keeps growing.",
     icon: (
-      <svg width="13" height="13" viewBox="0 0 16 16" fill="none">
+      <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
         <path
           d="M10 2 L6 8 L9 8 L6 14 L13 6 L9 6 Z"
           fill={PURPLE}
@@ -155,21 +155,20 @@ function StepCard({
 }) {
   return (
     <div
-      className="flex items-center gap-3 rounded-xl px-3 py-2.5"
-      style={{
-        background: `${color}0f`,
-        border: `1px solid ${color}40`,
-      }}
+      className="flex items-center gap-3 rounded-xl px-3 py-3 sm:px-4"
+      style={{ background: `${color}0f`, border: `1px solid ${color}40` }}
     >
       <div
-        className="flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-md"
+        className="flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-md sm:h-8 sm:w-8"
         style={{ background: `${color}33`, border: `1px solid ${color}66` }}
       >
         {step.icon}
       </div>
       <div>
-        <p className="text-[9.5px] font-bold text-white">{step.label}</p>
-        <p className="text-[7.5px] text-white/40">{step.sub}</p>
+        <p className="text-[11px] font-bold text-white sm:text-[12px]">
+          {step.label}
+        </p>
+        <p className="text-[9px] text-white/60 sm:text-[10px]">{step.sub}</p>
       </div>
     </div>
   );
@@ -177,7 +176,7 @@ function StepCard({
 
 function PhoneClockIcon() {
   return (
-    <svg width="64" height="64" viewBox="0 0 64 64" fill="none">
+    <svg width="72" height="72" viewBox="0 0 64 64" fill="none">
       <rect
         x="18"
         y="6"
@@ -239,7 +238,7 @@ function PhoneClockIcon() {
 
 function BriefcaseIcon() {
   return (
-    <svg width="64" height="64" viewBox="0 0 64 64" fill="none">
+    <svg width="72" height="72" viewBox="0 0 64 64" fill="none">
       <rect
         x="10"
         y="22"
@@ -352,15 +351,98 @@ function BriefcaseIcon() {
   );
 }
 
+function StageCard({
+  stage,
+  color,
+  label,
+  title,
+  icon,
+  description,
+  steps,
+  accentClass,
+}: {
+  stage: string;
+  color: string;
+  label: string;
+  title: string;
+  icon: React.ReactNode;
+  description: React.ReactNode;
+  steps: typeof stage1Steps;
+  accentClass: string;
+}) {
+  return (
+    <div className="flex flex-1 flex-col gap-3">
+      <div
+        className="relative overflow-hidden rounded-2xl p-5 sm:p-6"
+        style={{
+          background: `linear-gradient(135deg,${color}2e,${color === PINK ? PURPLE : PINK}1a)`,
+          border: `1.5px solid ${color}`,
+          boxShadow:
+            color === PINK ? `0 0 32px rgba(255,45,107,0.2)` : undefined,
+        }}
+      >
+        <div
+          className="absolute inset-x-0 top-0 h-[1.5px]"
+          style={{
+            background: `linear-gradient(90deg,transparent,${color},transparent)`,
+          }}
+        />
+        <div className="mb-4 flex items-center gap-3">
+          <div
+            className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg text-base font-black text-white sm:h-10 sm:w-10"
+            style={{
+              background:
+                color === PINK
+                  ? `linear-gradient(135deg,${PINK},${PURPLE})`
+                  : `linear-gradient(135deg,${PURPLE},${PINK})`,
+              boxShadow: `0 0 16px ${color}80`,
+            }}
+          >
+            {stage}
+          </div>
+          <div>
+            <p
+              className="text-[13px] font-black tracking-wide sm:text-[15px]"
+              style={{ color }}
+            >
+              {label}
+            </p>
+            <p className="text-[11px] font-bold text-white sm:text-[13px]">
+              {title}
+            </p>
+          </div>
+        </div>
+        <div className="my-4 flex justify-center">{icon}</div>
+        <p
+          className={`text-center text-[10px] leading-relaxed sm:text-[11px] ${accentClass}`}
+        >
+          {description}
+        </p>
+      </div>
+      <div className="flex flex-col gap-2">
+        {steps.map((s) => (
+          <StepCard key={s.label} step={s} color={color} />
+        ))}
+      </div>
+    </div>
+  );
+}
+
 export function TwoStageEarningSection() {
   const [visible, setVisible] = useState(false);
   useEffect(() => {
     setTimeout(() => setVisible(true), 50);
   }, []);
 
+  const fadeIn = (delay = 0) => ({
+    opacity: visible ? 1 : 0,
+    transform: visible ? "none" : "translateY(12px)",
+    transition: `opacity 0.5s ease ${delay}ms, transform 0.5s ease ${delay}ms`,
+  });
+
   return (
     <section
-      className="flex min-h-screen w-full flex-col items-center justify-center px-4 py-10"
+      className="flex min-h-screen w-full flex-col items-center justify-center px-4 py-12 sm:px-6 sm:py-16"
       style={{
         background:
           "radial-gradient(ellipse at 50% 20%, #1e0535 0%, #07071A 65%)",
@@ -368,14 +450,11 @@ export function TwoStageEarningSection() {
     >
       {/* Header */}
       <div
-        className="mb-8 flex flex-col items-center gap-2 text-center transition-all duration-500"
-        style={{
-          opacity: visible ? 1 : 0,
-          transform: visible ? "none" : "translateY(10px)",
-        }}
+        className="mb-8 flex flex-col items-center gap-2 text-center sm:mb-10"
+        style={fadeIn(0)}
       >
         <div
-          className="mb-1 flex items-center gap-2 rounded-full px-3 py-1"
+          className="mb-1 flex items-center gap-2 rounded-full px-4 py-1.5"
           style={{
             background: "rgba(255,45,107,.1)",
             border: "1px solid rgba(255,45,107,.3)",
@@ -390,71 +469,34 @@ export function TwoStageEarningSection() {
             }}
           />
           <span
-            className="text-[8px] font-bold uppercase tracking-[2.5px]"
+            className="text-[9px] font-bold uppercase tracking-[2.5px] sm:text-[10px]"
             style={{ color: PINK }}
           >
             Human Intelligence Protocol
           </span>
         </div>
-        <h1 className="text-2xl font-black tracking-tight text-white sm:text-3xl">
+        <h1 className="text-2xl font-black tracking-tight text-white sm:text-3xl lg:text-4xl">
           Two-Stage Earning Model
         </h1>
-        <p className="text-[9px] uppercase tracking-[2px] text-white/30">
+        <p className="text-[10px] uppercase tracking-[2px] text-white/30 sm:text-[11px]">
           The only crypto in the world you mine with your time
         </p>
       </div>
 
-      {/* Two columns */}
+      {/* Two columns — stacks on mobile */}
       <div
-        className="flex w-full max-w-4xl items-stretch gap-4 transition-all duration-500 delay-100"
-        style={{
-          opacity: visible ? 1 : 0,
-          transform: visible ? "none" : "translateY(10px)",
-        }}
+        className="flex w-full max-w-4xl flex-col gap-6 sm:flex-row sm:items-stretch sm:gap-4"
+        style={fadeIn(100)}
       >
-        {/* Stage 1 */}
-        <div className="flex flex-1 flex-col gap-3">
-          <div
-            className="relative overflow-hidden rounded-2xl p-4"
-            style={{
-              background:
-                "linear-gradient(135deg,rgba(255,45,107,0.18),rgba(123,31,162,0.1))",
-              border: `1.5px solid ${PINK}`,
-              boxShadow: `0 0 32px rgba(255,45,107,0.2)`,
-            }}
-          >
-            <div
-              className="absolute inset-x-0 top-0 h-[1.5px]"
-              style={{
-                background: `linear-gradient(90deg,transparent,${PINK},transparent)`,
-              }}
-            />
-            <div className="mb-3 flex items-center gap-3">
-              <div
-                className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-lg text-sm font-black text-white"
-                style={{
-                  background: `linear-gradient(135deg,${PINK},${PURPLE})`,
-                  boxShadow: `0 0 16px rgba(255,45,107,0.5)`,
-                }}
-              >
-                1
-              </div>
-              <div>
-                <p
-                  className="text-[13px] font-black tracking-wide"
-                  style={{ color: PINK }}
-                >
-                  STAGE 1
-                </p>
-                <p className="text-[10px] font-bold text-white">
-                  Mine While You Build
-                </p>
-              </div>
-            </div>
-            <div className="my-3 flex justify-center">
-              <PhoneClockIcon />
-            </div>
-            <p className="text-center text-[9px] leading-relaxed text-white/55">
+        <StageCard
+          stage="1"
+          color={PINK}
+          label="STAGE 1"
+          title="Mine While You Build"
+          icon={<PhoneClockIcon />}
+          accentClass="text-white/70"
+          description={
+            <>
               Spend{" "}
               <span className="font-bold" style={{ color: PINK }}>
                 4 minutes a day
@@ -462,17 +504,13 @@ export function TwoStageEarningSection() {
               completing your Machine Self.
               <br />
               16 hours of structured human capital. From day one — you mine.
-            </p>
-          </div>
-          <div className="flex flex-col gap-2">
-            {stage1Steps.map((s) => (
-              <StepCard key={s.label} step={s} color={PINK} />
-            ))}
-          </div>
-        </div>
+            </>
+          }
+          steps={stage1Steps}
+        />
 
-        {/* Centre divider */}
-        <div className="flex w-14 flex-shrink-0 flex-col items-center justify-center gap-3">
+        {/* Centre divider — hidden on mobile, shown on sm+ */}
+        <div className="hidden w-14 shrink-0 flex-col items-center justify-center gap-3 sm:flex">
           <div
             className="w-px flex-1"
             style={{
@@ -480,7 +518,7 @@ export function TwoStageEarningSection() {
             }}
           />
           <div
-            className="flex h-9 w-9 items-center justify-center rounded-xl flex-shrink-0"
+            className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl"
             style={{
               background: `linear-gradient(135deg,rgba(255,45,107,0.2),rgba(123,31,162,0.15))`,
               border: `1.5px solid rgba(255,45,107,0.5)`,
@@ -496,7 +534,7 @@ export function TwoStageEarningSection() {
               />
             </svg>
           </div>
-          <p className="text-center text-[6.5px] uppercase leading-relaxed tracking-widest text-white/30">
+          <p className="text-center text-[7px] uppercase leading-relaxed tracking-widest text-white/80">
             Complete
             <br />
             Machine
@@ -511,88 +549,70 @@ export function TwoStageEarningSection() {
           />
         </div>
 
-        {/* Stage 2 */}
-        <div className="flex flex-1 flex-col gap-3">
+        {/* Mobile divider */}
+        <div className="flex items-center gap-3 sm:hidden">
           <div
-            className="relative overflow-hidden rounded-2xl p-4"
+            className="h-px flex-1"
             style={{
-              background:
-                "linear-gradient(135deg,rgba(123,31,162,0.18),rgba(255,45,107,0.1))",
-              border: `1.5px solid ${PURPLE}`,
+              background: `linear-gradient(to right,transparent,${PINK}80,${PURPLE}80,transparent)`,
             }}
-          >
-            <div
-              className="absolute inset-x-0 top-0 h-[1.5px]"
-              style={{
-                background: `linear-gradient(90deg,transparent,${PURPLE},transparent)`,
-              }}
-            />
-            <div className="mb-3 flex items-center gap-3">
-              <div
-                className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-lg text-sm font-black text-white"
-                style={{
-                  background: `linear-gradient(135deg,${PURPLE},${PINK})`,
-                  boxShadow: `0 0 16px rgba(123,31,162,0.5)`,
-                }}
-              >
-                2
-              </div>
-              <div>
-                <p className="text-[13px] font-black tracking-wide text-purple-400">
-                  STAGE 2
-                </p>
-                <p className="text-[10px] font-bold text-white">
-                  Mine While You Work
-                </p>
-              </div>
-            </div>
-            <div className="my-3 flex justify-center">
-              <BriefcaseIcon />
-            </div>
-            <p className="text-center text-[9px] leading-relaxed text-white/55">
+          />
+          <p className="text-[8px] uppercase tracking-widest text-white/70">
+            Complete Machine Self
+          </p>
+          <div
+            className="h-px flex-1"
+            style={{
+              background: `linear-gradient(to right,transparent,${PURPLE}80,${PINK}80,transparent)`,
+            }}
+          />
+        </div>
+
+        <StageCard
+          stage="2"
+          color={PURPLE}
+          label="STAGE 2"
+          title="Mine While You Work"
+          icon={<BriefcaseIcon />}
+          accentClass="text-white/70"
+          description={
+            <>
               Your Machine Self gets matched to{" "}
               <span className="font-bold text-purple-400">real paid work</span>.
               <br />
               Complete work. Earn more OXIT. The matching never stops.
-            </p>
-          </div>
-          <div className="flex flex-col gap-2">
-            {stage2Steps.map((s) => (
-              <StepCard key={s.label} step={s} color={PURPLE} />
-            ))}
-          </div>
-        </div>
+            </>
+          }
+          steps={stage2Steps}
+        />
       </div>
 
       {/* Bottom bar */}
       <div
-        className="mt-6 flex w-full max-w-4xl overflow-hidden rounded-xl shadow-2xl transition-all duration-500 delay-200"
-        style={{
-          opacity: visible ? 1 : 0,
-          transform: visible ? "none" : "translateY(10px)",
-        }}
+        className="mt-6 flex w-full max-w-4xl overflow-hidden rounded-xl shadow-2xl sm:mt-8"
+        style={fadeIn(200)}
       >
         <div
-          className="w-1 flex-shrink-0"
+          className="w-1 shrink-0"
           style={{ background: `linear-gradient(to bottom,${PINK},${PURPLE})` }}
         />
         <div
-          className="flex flex-1 flex-wrap items-center justify-between gap-4 rounded-r-xl border border-white/[0.06] px-5 py-3"
+          className="flex flex-1 flex-wrap items-center justify-between gap-4 rounded-r-xl border border-white/[0.06] px-4 py-4 sm:px-6"
           style={{
             background:
               "linear-gradient(135deg,rgba(255,45,107,.08),rgba(123,31,162,.07))",
           }}
         >
-          <p className="max-w-xs text-[11px] font-bold leading-relaxed text-white">
+          <p className="text-[11px] font-bold leading-relaxed text-white sm:max-w-xs sm:text-[13px]">
             Every other crypto: invest money. Hope the price rises.
             <br />
             OX: invest your time. Get matched to paid work. Earn.
           </p>
-          <div className="flex gap-5 flex-shrink-0">
+          <div className="flex flex-wrap gap-5 shrink-0">
             {stats.map((s) => (
               <div key={s.label} className="text-center">
                 <p
-                  className="text-[13px] font-black"
+                  className="text-[14px] font-black sm:text-[16px]"
                   style={{
                     background: `linear-gradient(90deg,${PINK},${PURPLE})`,
                     WebkitBackgroundClip: "text",
@@ -601,7 +621,7 @@ export function TwoStageEarningSection() {
                 >
                   {s.value}
                 </p>
-                <p className="text-[6px] uppercase tracking-widest text-white/30">
+                <p className="text-[7px] uppercase tracking-widest text-white sm:text-[8px]">
                   {s.label}
                 </p>
               </div>
@@ -610,9 +630,7 @@ export function TwoStageEarningSection() {
         </div>
       </div>
 
-      <style>{`
-        @keyframes pulse { 0%,100%{opacity:.3} 50%{opacity:.9} }
-      `}</style>
+      <style>{`@keyframes pulse { 0%,100%{opacity:.3} 50%{opacity:.9} }`}</style>
     </section>
   );
 }

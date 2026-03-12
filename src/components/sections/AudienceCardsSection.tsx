@@ -1,5 +1,5 @@
 import { CARDS } from "@/lib/constants";
-import AudienceCard from "./cards/AudienceCard";
+import AudienceCard from "../cards/AudienceCard";
 
 export function AudienceCards() {
   return (

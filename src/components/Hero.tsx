@@ -1,4 +1,4 @@
-import { AudienceCards } from "@/components/AudienceCards";
+import { AudienceCards } from "@/components/sections/AudienceCardsSection";
 import { landing } from "@/content/landing";
 import Image from "next/image";
 import Link from "next/link";
