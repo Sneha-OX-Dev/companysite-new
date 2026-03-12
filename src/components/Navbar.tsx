@@ -15,16 +15,25 @@ import {
 
 const LOGO_URL = "/ox.svg";
 
+// Diagram/section-driven in-page navigation (grouped into 5–6 top-level items)
 const navItems = [
-  { label: "Home", href: "/" },
-  { label: "Learn", href: "/learn", newHere: true },
-  { label: "Product", href: "/product" },
-  { label: "Token", href: "/token" },
-  { label: "Network", href: "/network" },
-  { label: "Use Cases", href: "/use-cases" },
-  { label: "About", href: "/about" },
-  { label: "Developers", href: "/developers" },
-  { label: "Whitepaper", href: "/whitepaper" },
+  // Hero + high-level “what is this”
+  { label: "Overview", href: "#hero", newHere: true },
+
+  // Two-stage earning + “mine with your time”
+  { label: "Mine With Your Time", href: "#two-stage-earning" },
+
+  // Machine Self + phone as sovereign node
+  { label: "Machine Self", href: "#machine-self" },
+
+  // Core loop + bridge diagrams
+  { label: "How OX Works", href: "#how-ox-works" },
+
+  // Token primitives + circular economy + human vs machine mining
+  { label: "Token Economy", href: "#token-economy" },
+
+  // Network milestones + ecosystem map
+  { label: "Network & Ecosystem", href: "#network-scale" },
 ];
 
 export default function Navbar() {
