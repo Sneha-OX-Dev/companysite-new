@@ -1,6 +1,7 @@
+import { AudienceCards } from "@/components/AudienceCards";
+import { landing } from "@/content/landing";
 import Image from "next/image";
 import Link from "next/link";
-import { landing } from "@/content/landing";
 
 const HERO_IMAGE =
   "https://cdn.prod.website-files.com/6601ebe1041cb651c3a023e8/660e2f07f76ab1e3f4fc3d05_Image%20and%20lines.webp";
@@ -19,7 +20,13 @@ export default function Hero() {
           <span className="inline-flex h-2 w-2 rounded-full bg-[var(--accent)] shadow-[0_0_16px_rgba(255,13,116,0.9)]" />
           <span>OX • ALIVE IN THE NETWORK</span>
         </div>
-        <Image src={LOGO_URL} alt="OX" width={80} height={32} className="h-8 w-20 text-white" />
+        <Image
+          src={LOGO_URL}
+          alt="OX"
+          width={80}
+          height={32}
+          className="h-8 w-20 text-white"
+        />
         <div className="space-y-4">
           <h1 className="font-heading text-4xl font-bold tracking-tight text-white text-balance sm:text-5xl md:text-6xl">
             {landing.hero.headline}
@@ -46,6 +53,7 @@ export default function Hero() {
           sizes="(max-width: 1200px) 100vw, 1200px"
         />
       </div>
+      <AudienceCards />
     </section>
   );
 }
