@@ -180,12 +180,10 @@ function NameCell({
         className="absolute bottom-0 left-0 top-0 w-[3px] rounded-l-md"
         style={{ background: color }}
       />
-      <p className="text-[13px] font-extrabold leading-snug text-white sm:text-[14px]">
+      <p className="text-[16px] font-extrabold leading-snug text-white ">
         {layer.title}
       </p>
-      <p className="text-[11px] leading-snug text-white/35 sm:text-[12px]">
-        {layer.sub}
-      </p>
+      <p className="text-[14px] leading-snug text-white/35 ">{layer.sub}</p>
     </div>
   );
 }
@@ -206,15 +204,13 @@ function DoesCell({
         transition: "border-color 0.2s",
       }}
     >
-      <p className="mb-1 text-[8px] font-bold uppercase tracking-[0.18em] text-white/22 sm:text-[9px]">
+      <p className="mb-1 text-[10px] font-bold uppercase tracking-[0.18em] text-white/22 ">
         What it does
       </p>
       {layer.doesItems.map((item, i) => (
         <div key={i} className="flex items-start gap-2">
           <div className="mt-[5px] h-[4px] w-[4px] flex-shrink-0 rounded-full bg-white/22" />
-          <p className="text-[11px] leading-snug text-white/40 sm:text-[12px]">
-            {item}
-          </p>
+          <p className="text-[16px] leading-snug text-white/40">{item}</p>
         </div>
       ))}
     </div>
@@ -241,12 +237,12 @@ function FactCell({
       }}
     >
       <p
-        className="mb-1 text-[8px] font-bold uppercase tracking-[0.18em] sm:text-[9px]"
+        className="mb-1 text-[10px] font-bold uppercase tracking-[0.18em]"
         style={{ color }}
       >
         Key fact
       </p>
-      <p className="text-[11px] font-semibold leading-snug text-white/48 sm:text-[12px]">
+      <p className="text-[16px] font-semibold leading-snug text-white/48">
         {layer.factText}
       </p>
     </div>

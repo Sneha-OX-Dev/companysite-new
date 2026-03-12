@@ -151,7 +151,7 @@ function QuadItem({
           boxShadow: hovered ? `0 0 6px ${dotColor}` : "none",
         }}
       />
-      <p className="text-[13px] leading-snug">
+      <p className="text-[14px] leading-snug">
         <span className="font-semibold text-white/85">{name}</span>
         <span className="text-white/40"> — {desc}</span>
       </p>

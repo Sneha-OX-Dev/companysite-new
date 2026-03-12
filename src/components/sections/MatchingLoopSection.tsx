@@ -1,6 +1,6 @@
 "use client";
-import { useState } from "react";
 import Image from "next/image";
+import { useState } from "react";
 
 const PINK = "#FF2D6B";
 const PURPLE = "#7B1FA2";
@@ -422,7 +422,7 @@ export function MatchingLoopSection() {
                 i < 2 ? "1px solid rgba(255,255,255,0.07)" : undefined,
             }}
           >
-            <p className="text-[8px] uppercase tracking-[2px] text-white/28 sm:text-[9px]">
+            <p className="text-[12px] uppercase tracking-[2px] text-white/28">
               {t.label}
             </p>
             <p
@@ -437,7 +437,7 @@ export function MatchingLoopSection() {
             >
               {t.value}
             </p>
-            <p className="text-[10px] text-white/28 sm:text-[11px]">{t.sub}</p>
+            <p className="text-[12px] text-white/28 ">{t.sub}</p>
           </div>
         ))}
       </div>

@@ -59,10 +59,10 @@ function FactRow({
         style={{ background: color }}
       />
       <div>
-        <p className="text-[12px] font-bold leading-snug text-white sm:text-[13px]">
+        <p className="text-[16px] font-bold leading-snug text-white ">
           {fact.key}
         </p>
-        <p className="mt-0.5 text-[11px] leading-snug text-white/35 sm:text-[12px]">
+        <p className="mt-0.5 text-[14px] leading-snug text-white/35">
           {fact.val}
         </p>
       </div>
@@ -136,14 +136,12 @@ function TokenCard({
         {symbol}
       </p>
 
-      <p className="text-[13px] font-bold text-white/50 sm:text-[15px]">
-        {name}
-      </p>
+      <p className="text-[15px] font-bold text-white/50 ">{name}</p>
       <div
         className="h-0.5 w-9 rounded-sm"
         style={{ background: accentColor }}
       />
-      <p className="max-w-[300px] text-[12px] leading-relaxed text-white/50 sm:text-[13px]">
+      <p className="max-w-[300px] text-[14px] leading-relaxed text-white/50 ">
         {desc}
       </p>
 
@@ -323,7 +321,7 @@ export function OxitToOxmeConversionSection() {
               >
                 {s.num}
               </p>
-              <p className="mt-1 text-[11px] leading-snug text-white sm:text-[12px]">
+              <p className="mt-1 text-[14px] leading-snug text-white">
                 {s.label}
               </p>
             </div>
@@ -333,7 +331,7 @@ export function OxitToOxmeConversionSection() {
 
       {/* Closing */}
       <div
-        className="relative z-10 w-full max-w-[1060px] border-t border-white/[0.06] pt-3 text-center text-[11px] text-white/25 sm:text-[12px]"
+        className="relative z-10 w-full max-w-[1060px] border-t border-white/[0.06] pt-3 text-center text-[14px] text-white/25"
         style={fadeIn(220)}
       >
         <strong className="font-semibold text-white/50">

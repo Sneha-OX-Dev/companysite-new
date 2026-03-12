@@ -76,7 +76,7 @@ const detailCols = [
 
 function BulletItem({ text, color }: { text: string; color: string }) {
   return (
-    <div className="flex items-start gap-2 text-[12px] leading-snug text-white/60 sm:text-[13px]">
+    <div className="flex items-start gap-2 text-[14px] leading-snug text-white/60 ">
       <div
         className="mt-[6px] h-[5px] w-[5px] flex-shrink-0 rounded-full"
         style={{ background: color }}
@@ -115,7 +115,7 @@ export default function MachineSelfSection() {
             <div className={`absolute inset-x-0 top-0 h-[3px] ${c.topBar}`} />
 
             <p
-              className="text-[9px] font-bold uppercase tracking-[0.2em] sm:text-[10px]"
+              className="text-[14px] font-bold uppercase tracking-[0.2em]"
               style={{ color: c.accent }}
             >
               {c.label}
@@ -128,22 +128,18 @@ export default function MachineSelfSection() {
               {c.value}
             </p>
 
-            <p className="text-[13px] font-semibold text-white/60 sm:text-[14px]">
-              {c.sub}
-            </p>
+            <p className="text-[14px] font-semibold text-white/60 ">{c.sub}</p>
 
             <div
               className="mx-auto my-2.5 h-[2px] w-8 rounded-full"
               style={{ background: c.accent }}
             />
 
-            <p className="text-[12px] leading-relaxed text-white/60 sm:text-[13px]">
+            <p className="text-[14px] leading-relaxed text-white/60 ">
               {c.body}
             </p>
 
-            <p className="mt-1.5 text-[11px] italic text-white/30 sm:text-[12px]">
-              {c.note}
-            </p>
+            <p className="mt-1.5 text-[14px] italic text-white/30 ">{c.note}</p>
           </div>
         ))}
       </div>
@@ -153,7 +149,7 @@ export default function MachineSelfSection() {
         {detailCols.map((col) => (
           <div key={col.label} className="flex flex-col gap-2">
             <p
-              className="mb-1 text-[9px] font-bold uppercase tracking-[0.18em] sm:text-[10px]"
+              className="mb-1 text-[9px] font-bold uppercase tracking-[0.18em] sm:text-[14px]"
               style={{ color: col.color }}
             >
               {col.label}
@@ -168,7 +164,7 @@ export default function MachineSelfSection() {
       {/* STATEMENT */}
       <div className="relative z-10 w-full max-w-[1060px] overflow-hidden rounded border border-[#ff2d6b40] bg-[#ff2d6b12] p-4 text-center sm:p-5">
         <div className="absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-[#E8264A] via-[#FF2D6B] to-[#7B1FA2]" />
-        <p className="text-[13px] font-bold sm:text-[15px]">
+        <p className="text-[15px] font-bold ">
           Built once. Working continuously.{" "}
           <span className="text-[#FF2D6B]">
             On your terms. Under your consent. Earning on your behalf.

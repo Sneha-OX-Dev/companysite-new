@@ -89,12 +89,12 @@
 }
 
 html {
-  font-size: 18px;
+  font-size: 19px;
 }
 
 @media (min-width: 1024px) {
   html {
-    font-size: 19px;
+    font-size: 20px;
   }
 }
 

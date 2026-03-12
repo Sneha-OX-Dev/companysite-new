@@ -165,10 +165,8 @@ function StepCard({
         {step.icon}
       </div>
       <div>
-        <p className="text-[11px] font-bold text-white sm:text-[12px]">
-          {step.label}
-        </p>
-        <p className="text-[9px] text-white/60 sm:text-[10px]">{step.sub}</p>
+        <p className="text-[14px] font-bold text-white">{step.label}</p>
+        <p className="text-[12px] text-white/60">{step.sub}</p>
       </div>
     </div>
   );
@@ -402,20 +400,18 @@ function StageCard({
           </div>
           <div>
             <p
-              className="text-[13px] font-black tracking-wide sm:text-[15px]"
+              className="text-[14px] font-black tracking-wide sm:text-[15px]"
               style={{ color }}
             >
               {label}
             </p>
-            <p className="text-[11px] font-bold text-white sm:text-[13px]">
+            <p className="text-[14px] font-bold text-white sm:text-[13px]">
               {title}
             </p>
           </div>
         </div>
         <div className="my-4 flex justify-center">{icon}</div>
-        <p
-          className={`text-center text-[10px] leading-relaxed sm:text-[11px] ${accentClass}`}
-        >
+        <p className={`text-center text-[14px] leading-relaxed ${accentClass}`}>
           {description}
         </p>
       </div>

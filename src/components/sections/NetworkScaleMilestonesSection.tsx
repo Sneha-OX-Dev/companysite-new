@@ -177,7 +177,7 @@ function MilestoneCard({
                   boxShadow: hovered ? `0 0 6px ${m.color}` : "none",
                 }}
               />
-              <p className="text-[12px] leading-snug text-white/55 sm:text-[13px]">
+              <p className="text-[14px] leading-snug text-white/55">
                 {it.strong && (
                   <strong className="font-semibold text-white/88">
                     {it.strong}
@@ -217,9 +217,7 @@ function StatCard({ num, label }: { num: string; label: string }) {
       >
         {num}
       </p>
-      <p className="text-[11px] leading-snug text-white/32 sm:text-[12px]">
-        {label}
-      </p>
+      <p className="text-[14px] leading-snug text-white/32">{label}</p>
     </div>
   );
 }

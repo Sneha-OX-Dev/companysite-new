@@ -123,13 +123,13 @@ function Panel({
       }}
     >
       <p
-        className="text-[9px] font-bold uppercase tracking-[0.2em] mb-0.5 sm:text-[10px]"
+        className="text-[14px] font-bold uppercase tracking-[0.2em] mb-0.5"
         style={{ color: isRight ? PINK : "rgba(255,255,255,0.35)" }}
       >
         {tag}
       </p>
       <p
-        className="text-[12px] font-bold leading-snug mb-1 border-b border-white/[0.06] pb-3 sm:text-[14px]"
+        className="text-[14px] font-bold leading-snug mb-1 border-b border-white/[0.06] pb-3 "
         style={{ color: isRight ? "#fff" : "rgba(255,255,255,0.6)" }}
       >
         {heading}
@@ -173,7 +173,7 @@ function BridgeNode({ node }: { node: (typeof bridgeNodes)[0] }) {
       style={{ border: styles.border, background: styles.background }}
     >
       <p
-        className="text-[8px] font-bold uppercase tracking-[0.18em] mb-1 sm:text-[9px]"
+        className="text-[12px] font-bold uppercase tracking-[0.18em] mb-1 sm:text-[9px]"
         style={{ color: styles.capColor }}
       >
         {node.cap}
@@ -418,7 +418,7 @@ export default function DigitalHumanBridgeSection() {
               className="w-[3px] flex-shrink-0 self-stretch rounded-sm"
               style={{ background: p.color }}
             />
-            <p className="text-[12px] leading-relaxed text-white/60 sm:text-[13px]">
+            <p className="text-[14px] leading-relaxed text-white/60">
               <strong className="font-bold text-white">{p.strong}</strong>
               {p.text}
             </p>
@@ -427,7 +427,7 @@ export default function DigitalHumanBridgeSection() {
       </div>
       {/* Closing */}
       <div
-        className="relative z-10 w-full max-w-[1060px] border-t border-white/[0.07] pt-4 text-center text-[11px] leading-relaxed text-white/38 sm:text-[12px]"
+        className="relative z-10 w-full max-w-[1060px] border-t border-white/[0.07] pt-4 text-center text-[14px] leading-relaxed text-white/38"
         style={fadeIn(220)}
       >
         <strong className="font-semibold text-white/65">

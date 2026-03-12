@@ -89,7 +89,7 @@ function PanelRow({
       />
       <div>
         <p
-          className="text-[12px] font-bold leading-snug sm:text-[13px]"
+          className="text-[14px] font-bold leading-snug"
           style={{ color: isRight ? "#fff" : "rgba(255,255,255,0.45)" }}
         >
           {title}
@@ -124,13 +124,13 @@ function Panel({
       }}
     >
       <p
-        className="mb-0.5 text-[9px] font-bold uppercase tracking-[0.2em]"
+        className="mb-0.5 text-[14px] font-bold uppercase tracking-[0.2em]"
         style={{ color: isRight ? PINK : "rgba(255,255,255,0.28)" }}
       >
         {label}
       </p>
       <p
-        className="border-b border-white/[0.06] pb-3 text-[12px] font-bold leading-snug sm:text-[13px]"
+        className="border-b border-white/[0.06] pb-3 text-[14px] font-bold leading-snug sm:text-[13px]"
         style={{ color: isRight ? "#fff" : "rgba(255,255,255,0.45)" }}
       >
         {heading}
@@ -224,7 +224,7 @@ export function SystemsWithoutWithOX() {
               }}
             />
             <div
-              className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full text-[9px] font-black"
+              className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-[9px] font-black"
               style={{
                 background: "#07071A",
                 border: "1px solid rgba(255,45,107,0.3)",
@@ -293,7 +293,7 @@ export function SystemsWithoutWithOX() {
         style={fadeIn(160)}
       >
         <div
-          className="rounded-sm px-4 py-3 text-[11px] leading-relaxed text-white/45 sm:text-[12px]"
+          className="rounded-sm px-4 py-3 text-[14px] leading-relaxed text-white/45 sm:text-[12px]"
           style={{
             border: "1px solid rgba(255,255,255,0.06)",
             background: "#0D0D2B",

@@ -76,7 +76,7 @@ function FooterLink({
   return (
     <Link
       href={href}
-      className="flex items-center gap-2 text-[13px] transition-all duration-150"
+      className="flex items-center gap-2 text-[14px] transition-all duration-150"
       style={{ color: hovered ? "#fff" : "rgba(255,255,255,0.45)" }}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
@@ -102,7 +102,7 @@ function TelegramButton({ href, label }: { href: string; label: string }) {
       href={href}
       target="_blank"
       rel="noopener noreferrer"
-      className="inline-flex items-center gap-2 rounded-lg px-5 py-2.5 text-[13px] font-semibold text-white transition-all duration-200"
+      className="inline-flex items-center gap-2 rounded-lg px-5 py-2.5 text-[14px] font-semibold text-white transition-all duration-200"
       style={{
         background: hovered
           ? `linear-gradient(135deg,${RED},${PINK},${PURPLE})`
@@ -157,7 +157,7 @@ export default function Footer() {
         }}
       />
 
-      <div className="relative z-10 mx-auto max-w-6xl px-6 py-14 md:py-20">
+      <div className="relative z-10 mx-auto max-w-5xl px-6 py-14 md:py-20">
         {/* ── MAIN ROW ── */}
         <div className="flex flex-col gap-12 md:flex-row md:items-start md:justify-between">
           {/* LEFT — brand block */}
@@ -174,10 +174,10 @@ export default function Footer() {
 
             {/* taglines */}
             <div className="space-y-2">
-              <p className="text-[15px] font-semibold leading-snug text-white/80">
+              <p className="text-[16px] font-semibold leading-snug text-white/80">
                 {landing.footer.taglineBanner}
               </p>
-              <p className="text-[13px] leading-snug text-white/40">
+              <p className="text-[14px] leading-snug text-white/40">
                 {landing.footer.tagline}
               </p>
             </div>
@@ -185,7 +185,7 @@ export default function Footer() {
             {/* company address */}
             {landing.footer.company && (
               <div
-                className="rounded-lg px-4 py-3 text-[12px] leading-relaxed text-white/30"
+                className="rounded-lg px-4 py-3 text-[14px] leading-relaxed text-white/30"
                 style={{
                   background: "rgba(255,255,255,0.03)",
                   border: "1px solid rgba(255,255,255,0.07)",
@@ -201,7 +201,7 @@ export default function Footer() {
 
             {/* social */}
             <div>
-              <p className="mb-3 text-[11px] font-bold uppercase tracking-[0.18em] text-white/30">
+              <p className="mb-3 text-[14px] font-bold uppercase tracking-[0.18em] text-white/30">
                 {landing.footer.interact}
               </p>
               <div className="flex flex-wrap gap-2.5">
@@ -231,7 +231,7 @@ export default function Footer() {
                 {i === 0 && (
                   <Link
                     href={landing.entryPoint.href}
-                    className="mb-1 text-[13px] font-bold transition-colors duration-150 hover:text-white"
+                    className="mb-1 text-[14px] font-bold transition-colors duration-150 hover:text-white"
                     style={{ color: PINK }}
                   >
                     {landing.entryPoint.label}
@@ -242,7 +242,7 @@ export default function Footer() {
                   j === 0 ? (
                     <p
                       key={link.label}
-                      className="mb-1 text-[11px] font-bold uppercase tracking-[0.18em] text-white/25"
+                      className="mb-1 text-[14px] font-bold uppercase tracking-[0.18em] text-white/25"
                     >
                       {link.label}
                     </p>
@@ -277,7 +277,7 @@ export default function Footer() {
               className="flex flex-col items-center gap-1 text-center"
             >
               <p
-                className="text-[16px] font-black tracking-[-0.02em] sm:text-[18px]"
+                className="text-[18px] font-black tracking-[-0.02em]"
                 style={{
                   background: `linear-gradient(90deg,${PINK},${PURPLE})`,
                   WebkitBackgroundClip: "text",
@@ -286,7 +286,7 @@ export default function Footer() {
               >
                 {s.val}
               </p>
-              <p className="text-[10px] uppercase tracking-[1px] text-white/30 sm:text-[11px]">
+              <p className="text-[14px] uppercase tracking-[1px] text-white/30">
                 {s.label}
               </p>
             </div>
@@ -298,7 +298,7 @@ export default function Footer() {
           className="mt-8 flex flex-col items-center justify-between gap-3 border-t pt-6 sm:flex-row"
           style={{ borderColor: "rgba(255,255,255,0.07)" }}
         >
-          <p className="text-[12px] text-white/28">
+          <p className="text-[14px] text-white/28">
             {landing.footer.copyright}
           </p>
           <div className="flex items-center gap-1.5">
@@ -306,7 +306,7 @@ export default function Footer() {
               className="h-[6px] w-[6px] rounded-full"
               style={{ background: PINK, boxShadow: `0 0 8px ${PINK}` }}
             />
-            <p className="text-[11px] font-semibold uppercase tracking-[0.15em] text-white/25">
+            <p className="text-[14px] font-semibold uppercase tracking-[0.15em] text-white/25">
               Human Intelligence Protocol
             </p>
           </div>

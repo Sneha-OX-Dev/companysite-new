@@ -108,7 +108,7 @@ function PanelRow({
       />
       <div>
         <p
-          className="text-[13px] font-bold leading-snug mb-1 transition-colors duration-200 sm:text-[14px]"
+          className="text-[16px] font-bold leading-snug mb-1 transition-colors duration-200 "
           style={{
             color: isRight
               ? hovered
@@ -121,9 +121,7 @@ function PanelRow({
         >
           {title}
         </p>
-        <p className="text-[11px] leading-snug text-white/35 sm:text-[12px]">
-          {desc}
-        </p>
+        <p className="text-[13px] leading-snug text-white/35">{desc}</p>
       </div>
     </div>
   );
@@ -151,13 +149,13 @@ function Panel({
       }}
     >
       <p
-        className="mb-0.5 flex-shrink-0 text-[9px] font-bold uppercase tracking-[0.2em] sm:text-[10px]"
+        className="mb-0.5 flex-shrink-0 text-[14px] font-bold uppercase tracking-[0.2em] "
         style={{ color: isRight ? PINK : "rgba(255,255,255,0.28)" }}
       >
         {label}
       </p>
       <p
-        className="flex-shrink-0 border-b border-white/[0.06] pb-3 text-[12px] font-bold leading-snug sm:text-[14px]"
+        className="flex-shrink-0 border-b border-white/[0.06] pb-3 text-[14px] font-bold leading-snug"
         style={{ color: isRight ? "#fff" : "rgba(255,255,255,0.45)" }}
       >
         {heading}
@@ -192,7 +190,7 @@ function VSCentre() {
           }}
         />
         <div
-          className="relative z-10 flex h-9 w-9 items-center justify-center rounded-full text-[10px] font-black"
+          className="relative z-10 flex h-9 w-9 items-center justify-center rounded-full text-[16px] font-black"
           style={{
             background: "#07071A",
             border: "1px solid rgba(255,45,107,0.35)",
@@ -214,7 +212,7 @@ function VSCentre() {
           }}
         />
         <div
-          className="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-full text-[10px] font-black"
+          className="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-full text-[14px] font-black"
           style={{
             background: "#07071A",
             border: "1px solid rgba(255,45,107,0.35)",
@@ -346,7 +344,7 @@ export function OldVsOxSection() {
 
       {/* Closing */}
       <div
-        className="relative z-10 w-full max-w-[1080px] border-t border-white/[0.06] pt-3 text-center text-[11px] text-white/28 sm:text-[12px]"
+        className="relative z-10 w-full max-w-[1080px] border-t border-white/[0.06] pt-3 text-center text-[16px] text-white/28"
         style={fadeIn(180)}
       >
         <strong className="font-semibold text-white/55">
