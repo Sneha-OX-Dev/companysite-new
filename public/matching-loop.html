@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>OX — The Matching Loop</title>
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{
+      background:radial-gradient(ellipse at 50% 20%,#1e0535 0%,#07071A 65%);
+      min-height:100vh;display:flex;flex-direction:column;align-items:center;
+      justify-content:center;padding:40px 16px;
+      font-family:'Segoe UI',system-ui,sans-serif;overflow-x:hidden
+    }
+    @keyframes spin{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+    @keyframes pulse{0%,100%{opacity:.4;transform:scale(1)}50%{opacity:.9;transform:scale(1.2)}}
+    @keyframes ring{0%{transform:scale(1);opacity:.7}100%{transform:scale(2.5);opacity:0}}
+    @keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
+    @keyframes shimmer{0%{background-position:-300% center}100%{background-position:300% center}}
+    @keyframes fadein{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+  </style>
+</head>
+<body>
+
+<div style="display:inline-flex;align-items:center;gap:8px;background:rgba(255,45,107,.1);border:1px solid rgba(255,45,107,.3);border-radius:40px;padding:6px 20px;margin-bottom:14px">
+  <div style="width:7px;height:7px;border-radius:50%;background:#FF2D6B;box-shadow:0 0 12px #FF2D6B;animation:pulse 2s infinite"></div>
+  <span style="font-size:10px;color:#FF2D6B;letter-spacing:3px;font-weight:700;text-transform:uppercase">Human Intelligence Protocol</span>
+</div>
+<h1 style="font-size:clamp(24px,4vw,46px);font-weight:900;color:#fff;letter-spacing:-1.5px;text-align:center;margin-bottom:6px">The Matching Loop</h1>
+<p style="font-size:11px;color:rgba(255,255,255,.35);letter-spacing:2.5px;text-transform:uppercase;text-align:center;margin-bottom:44px">Six steps · Zero data exposed · Click any node</p>
+
+<div id="row" style="display:flex;align-items:flex-start;width:100%;max-width:1040px"></div>
+
+<div style="margin-top:40px;max-width:660px;width:100%;display:flex;border-radius:16px;overflow:hidden;box-shadow:0 8px 48px rgba(0,0,0,.6)">
+  <div style="width:5px;background:linear-gradient(to bottom,#FF2D6B,#7B1FA2);flex-shrink:0"></div>
+  <div style="flex:1;background:linear-gradient(135deg,rgba(255,45,107,.1),rgba(123,31,162,.08));padding:20px 26px;border:1px solid rgba(255,255,255,.07);border-left:none;border-radius:0 16px 16px 0">
+    <div style="font-size:16px;font-weight:800;color:#fff;margin-bottom:6px;line-height:1.4">The organisation gets certainty. You keep everything else.</div>
+    <div style="font-size:10px;color:rgba(255,255,255,.3);letter-spacing:2px;text-transform:uppercase">No data leaves your device at any point in this loop</div>
+  </div>
+</div>
+
+<div style="margin-top:18px;display:flex;background:rgba(255,255,255,.03);border-radius:14px;border:1px solid rgba(255,255,255,.08);overflow:hidden">
+  <div style="padding:16px 28px;text-align:center;border-right:1px solid rgba(255,255,255,.07)">
+    <div style="font-size:9px;color:rgba(255,255,255,.28);letter-spacing:2px;text-transform:uppercase;margin-bottom:5px">In-App Reward</div>
+    <div style="font-size:18px;font-weight:900;background:linear-gradient(90deg,#FF2D6B,#c0255a,#7B1FA2);background-size:200% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;animation:shimmer 3s linear infinite">OXIT</div>
+    <div style="font-size:10px;color:rgba(255,255,255,.28);margin-top:3px">Earned per verified action</div>
+  </div>
+  <div style="padding:16px 28px;text-align:center;border-right:1px solid rgba(255,255,255,.07)">
+    <div style="font-size:9px;color:rgba(255,255,255,.28);letter-spacing:2px;text-transform:uppercase;margin-bottom:5px">Fixed Rate</div>
+    <div style="font-size:18px;font-weight:900;background:linear-gradient(90deg,#FF2D6B,#c0255a,#7B1FA2);background-size:200% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;animation:shimmer 3s linear infinite">1,000 : 1</div>
+    <div style="font-size:10px;color:rgba(255,255,255,.28);margin-top:3px">OXIT converts to OXME</div>
+  </div>
+  <div style="padding:16px 28px;text-align:center">
+    <div style="font-size:9px;color:rgba(255,255,255,.28);letter-spacing:2px;text-transform:uppercase;margin-bottom:5px">Crypto Token</div>
+    <div style="font-size:18px;font-weight:900;background:linear-gradient(90deg,#FF2D6B,#c0255a,#7B1FA2);background-size:200% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;animation:shimmer 3s linear infinite">OXME</div>
+    <div style="font-size:10px;color:rgba(255,255,255,.28);margin-top:3px">1,371,000,000 · Forever</div>
+  </div>
+</div>
+
+<script>
+const PINK="#FF2D6B", PURPLE="#7B1FA2", DARK="#07071A";
+
+const ICON_STYLE = 'width:160px;height:160px;object-fit:contain;display:block;mix-blend-mode:screen';
+const icons = [
+  `<img src="icons/icon-work-request.png"    style="${ICON_STYLE}" alt="Work Request">`,
+  `<img src="icons/image.png" style="width:114px;height:114px;object-fit:cover;border-radius:50%;display:block;" alt="Machine Self">`,
+  `<img src="icons/icon-anonymous-hand.png"  style="${ICON_STYLE}" alt="Anonymous Hand">`,
+  `<img src="icons/icon-consent-signal.png"  style="${ICON_STYLE}" alt="Consent Signal">`,
+  `<img src="icons/icon-verified-outcome.png" style="${ICON_STYLE}" alt="Verified Outcome">`,
+  `<img src="icons/coins@3x.png" style="width:160px;height:160px;object-fit:contain;display:block;" alt="OXIT Rewarded">`,
+];
+
+const steps=[
+  {id:1,title:"Work Request",sub:"Enters OX Framework",detail:"An organisation posts structured demand into the OX network. The city never sleeps. The signal goes up."},
+  {id:2,title:"Machine Self",sub:"Evaluates On-Device",detail:"Human intelligence fused with AI. Your Machine Self privately checks eligibility on your phone. Nothing leaves."},
+  {id:3,title:"Anonymous Hand",sub:"Raised — Not Named",detail:"Eligible Machine Selves raise a hand. The organisation sees a count. Never a person. Never a name."},
+  {id:4,title:"Consent Signal",sub:"Only — Transmitted",detail:"Only your yes travels. No data. No identity. A verified biometric signal — not you."},
+  {id:5,title:"Verified Outcome",sub:"Confirmed by Network",detail:"Work complete. The OX network verifies. Deterministic, confirmed, settled on-chain."},
+  {id:6,title:"OXIT Rewarded",sub:"Instantly Issued",detail:"OXIT lands in your account. 1,000 OXIT = 1 OXME. Fixed supply. Scarce. Mined by you."},
+];
+
+let active=null;
+const row=document.getElementById('row');
+
+function render(){
+  row.innerHTML='';
+  steps.forEach((s,i)=>{
+    const on=active===i;
+    const wrap=document.createElement('div');
+    wrap.style.cssText='display:flex;align-items:center;flex:1;min-width:0';
+
+    const col=document.createElement('div');
+    col.style.cssText=`flex:1;display:flex;flex-direction:column;align-items:center;opacity:0;animation:fadein .6s ease ${i*0.12}s both`;
+
+    const node=document.createElement('div');
+    node.style.cssText=`position:relative;width:120px;height:120px;cursor:pointer;flex-shrink:0;${on?'animation:bob 2.4s ease-in-out infinite':''}`;
+
+    const glow=document.createElement('div');
+    glow.style.cssText=`position:absolute;inset:-20px;border-radius:50%;filter:blur(10px);pointer-events:none;animation:pulse 3s ${i*0.4}s infinite;background:radial-gradient(circle,${PINK}${on?'55':'22'} 0%,transparent 68%)`;
+    node.appendChild(glow);
+
+    if(on){[0,0.6,1.2].forEach(d=>{
+      const r=document.createElement('div');
+      r.style.cssText=`position:absolute;inset:-8px;border-radius:50%;border:1.5px solid rgba(255,45,107,0.45);animation:ring 2s ${d}s infinite;pointer-events:none`;
+      node.appendChild(r);
+    });}
+
+    const spinR=document.createElement('div');
+    spinR.style.cssText=`position:absolute;inset:0;border-radius:50%;padding:2px;animation:spin ${7+i}s linear infinite;background:${on?`conic-gradient(from 0deg,${PINK},${PURPLE},${PINK})`:`conic-gradient(from 0deg,${PINK}88,${PURPLE}55,${PINK}88)`}`;
+    const spinI=document.createElement('div');
+    spinI.style.cssText='width:100%;height:100%;border-radius:50%;background:#07071A';
+    spinR.appendChild(spinI);
+    node.appendChild(spinR);
+
+    const sphere=document.createElement('div');
+    sphere.style.cssText=`position:absolute;inset:3px;border-radius:50%;display:flex;align-items:center;justify-content:center;overflow:visible;transition:all .35s cubic-bezier(.34,1.56,.64,1);background:${on?`radial-gradient(circle at 36% 28%,${PINK}FF 0%,${PINK}99 30%,#2a003a 65%,#140022 100%)`:`radial-gradient(circle at 36% 28%,${PINK}CC 0%,${PINK}55 30%,#1a0028 65%,#0D0D2B 100%)`};box-shadow:${on?`0 0 60px ${PINK}AA,0 0 100px ${PINK}33,inset 0 2px 0 rgba(255,255,255,0.3),inset 0 -4px 12px rgba(0,0,0,0.5)`:`0 0 28px ${PINK}44,0 6px 24px rgba(0,0,0,0.7),inset 0 1px 0 rgba(255,255,255,0.18)`}`;
+
+    const sheen=document.createElement('div');
+    sheen.style.cssText='position:absolute;top:6px;left:10px;width:40%;height:28%;border-radius:50%;background:rgba(255,255,255,0.2);filter:blur(5px);pointer-events:none';
+    sphere.appendChild(sheen);
+    const dep=document.createElement('div');
+    dep.style.cssText='position:absolute;bottom:0;left:0;right:0;height:36%;border-radius:0 0 50% 50%;background:rgba(0,0,0,0.4);pointer-events:none';
+    sphere.appendChild(dep);
+
+    const ico=document.createElement('div');
+    ico.style.cssText='position:relative;z-index:1;display:flex;align-items:center;justify-content:center';
+    ico.innerHTML=icons[i];
+    sphere.appendChild(ico);
+    node.appendChild(sphere);
+
+    const badge=document.createElement('div');
+    badge.style.cssText=`position:absolute;top:-3px;right:-3px;width:22px;height:22px;border-radius:50%;background:linear-gradient(135deg,${PINK},${PURPLE});border:2px solid #07071A;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:900;color:white;box-shadow:0 0 10px rgba(255,45,107,.6);z-index:10`;
+    badge.textContent=s.id;
+    node.appendChild(badge);
+
+    node.addEventListener('click',()=>{active=active===i?null:i;render();});
+    col.appendChild(node);
+
+    const stem=document.createElement('div');
+    stem.style.cssText=`width:2px;height:12px;background:linear-gradient(to bottom,${PINK}77,transparent);margin-top:2px`;
+    col.appendChild(stem);
+
+    const lbl=document.createElement('div');
+    lbl.style.cssText='text-align:center;padding:2px 4px;max-width:120px';
+    lbl.innerHTML=`<div style="font-size:12px;font-weight:800;color:${on?PINK:'#fff'};margin-bottom:2px;transition:color .3s">${s.title}</div><div style="font-size:10px;color:rgba(255,255,255,0.4);line-height:1.4">${s.sub}</div>`;
+    col.appendChild(lbl);
+
+    if(on){
+      const det=document.createElement('div');
+      det.style.cssText=`margin-top:10px;max-width:138px;background:linear-gradient(135deg,rgba(255,45,107,0.13),rgba(123,31,162,0.1));border:1px solid ${PINK}44;border-top:2px solid ${PINK};border-radius:0 0 14px 14px;padding:12px 14px;font-size:11px;color:rgba(255,255,255,0.85);line-height:1.65;text-align:center;backdrop-filter:blur(14px)`;
+      det.textContent=s.detail;
+      col.appendChild(det);
+    }
+
+    wrap.appendChild(col);
+
+    if(i<5){
+      const arw=document.createElement('div');
+      arw.style.cssText='flex-shrink:0;padding-bottom:52px;padding-top:4px';
+      arw.innerHTML=`<svg width="36" height="16" viewBox="0 0 36 16"><defs><linearGradient id="ag${i}" x1="0%" x2="100%"><stop offset="0%" stop-color="${PINK}" stop-opacity="0.8"/><stop offset="100%" stop-color="${PURPLE}" stop-opacity="0.8"/></linearGradient></defs><line x1="2" y1="8" x2="26" y2="8" stroke="url(#ag${i})" stroke-width="2" stroke-dasharray="4 3"/><polygon points="24,4 36,8 24,12" fill="${PURPLE}" opacity="0.9"/></svg>`;
+      wrap.appendChild(arw);
+    }
+
+    row.appendChild(wrap);
+  });
+}
+render();
+</script>
+
+</body>
+</html>

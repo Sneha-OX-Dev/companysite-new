@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OX — Ecosystem Map</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700;9..40,800&display=swap" rel="stylesheet">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --dark:   #07071A;
+  --navy:   #0D0D2B;
+  --pink:   #FF2D6B;
+  --red:    #E8264A;
+  --purple: #7B1FA2;
+  --white:  #FFFFFF;
+}
+
+html, body {
+  width: 100%; height: 100%;
+  overflow: hidden;
+  background: var(--dark);
+  font-family: 'DM Sans', sans-serif;
+  color: var(--white);
+}
+
+body::before {
+  content: '';
+  position: fixed; inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.014) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.014) 1px, transparent 1px);
+  background-size: 44px 44px;
+  pointer-events: none;
+}
+
+.wrap {
+  position: relative; z-index: 1;
+  width: 100%; height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 18px 36px;
+  gap: 12px;
+}
+
+/* ── HEADER ── */
+.hdr { text-align: center; }
+.hdr-tag {
+  display: inline-block;
+  font-size: 9px; font-weight: 700;
+  letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--pink);
+  border: 1px solid rgba(255,45,107,0.3);
+  background: rgba(255,45,107,0.07);
+  padding: 3px 12px; border-radius: 2px;
+  margin-bottom: 8px;
+}
+.hdr-title {
+  font-size: clamp(15px, 1.7vw, 20px);
+  font-weight: 800; letter-spacing: -0.025em;
+}
+.hdr-title em {
+  font-style: normal;
+  background: linear-gradient(90deg, var(--red), var(--pink), var(--purple));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ── MAIN GRID — 4 quadrants + centre ── */
+.ecosystem {
+  width: 100%; max-width: 980px;
+  display: grid;
+  grid-template-columns: 1fr 130px 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 10px;
+  flex: 1;
+  min-height: 0;
+}
+
+/* quadrant cards */
+.quad {
+  background: var(--navy);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 4px;
+  padding: 14px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-height: 0;
+}
+
+/* accent top bar */
+.quad::before {
+  content: '';
+  display: block;
+  height: 2px;
+  border-radius: 1px;
+  margin-bottom: 4px;
+  flex-shrink: 0;
+}
+
+.q1::before { background: linear-gradient(90deg, var(--red), var(--pink)); }
+.q2::before { background: linear-gradient(90deg, var(--pink), var(--purple)); }
+.q3::before { background: linear-gradient(90deg, rgba(255,255,255,0.3), rgba(255,255,255,0.1)); }
+.q4::before { background: linear-gradient(90deg, var(--purple), rgba(123,31,162,0.3)); }
+
+.quad-label {
+  font-size: 8px; font-weight: 700;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  margin-bottom: 2px;
+}
+.q1 .quad-label { color: var(--pink); }
+.q2 .quad-label { color: var(--pink); }
+.q3 .quad-label { color: rgba(255,255,255,0.3); }
+.q4 .quad-label { color: var(--purple); }
+
+.quad-title {
+  font-size: clamp(10.5px, 0.95vw, 12.5px);
+  font-weight: 700; line-height: 1.2;
+  margin-bottom: 4px;
+  color: var(--white);
+}
+
+.item {
+  display: flex; align-items: baseline; gap: 7px;
+  font-size: clamp(9px, 0.8vw, 10.5px);
+  line-height: 1.35; color: rgba(255,255,255,0.55);
+}
+
+.item-dot {
+  width: 4px; height: 4px; border-radius: 50%;
+  flex-shrink: 0; margin-top: 3px;
+}
+.q1 .item-dot { background: var(--pink); }
+.q2 .item-dot { background: var(--pink); }
+.q3 .item-dot { background: rgba(255,255,255,0.25); }
+.q4 .item-dot { background: var(--purple); }
+
+.item-name { font-weight: 600; color: rgba(255,255,255,0.8); }
+.item-desc { color: rgba(255,255,255,0.38); }
+
+/* ── CENTRE COLUMN — spans both rows ── */
+.centre-col {
+  grid-column: 2;
+  grid-row: 1 / 3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  position: relative;
+}
+
+/* vertical spine */
+.centre-col::before {
+  content: '';
+  position: absolute;
+  top: 5%; bottom: 5%;
+  left: 50%; transform: translateX(-50%);
+  width: 1.5px;
+  background: linear-gradient(180deg,
+    transparent 0%, var(--red) 20%,
+    var(--pink) 50%, var(--purple) 80%, transparent 100%);
+}
+
+.core-node {
+  position: relative; z-index: 2;
+  background: rgba(232,38,74,0.1);
+  border: 1.5px solid var(--red);
+  border-radius: 4px;
+  padding: 10px 8px;
+  text-align: center;
+  width: 100%;
+}
+
+.core-label {
+  font-size: 7px; font-weight: 700;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--red); margin-bottom: 3px;
+}
+
+.core-title {
+  font-size: clamp(9px, 0.85vw, 11px);
+  font-weight: 800; line-height: 1.3;
+  color: var(--white);
+}
+
+.conn-node {
+  position: relative; z-index: 2;
+  background: rgba(255,255,255,0.02);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 3px;
+  padding: 6px 8px;
+  text-align: center;
+  width: 100%;
+  font-size: clamp(8px, 0.75vw, 9.5px);
+  color: rgba(255,255,255,0.4);
+  line-height: 1.3;
+}
+
+.arr {
+  position: relative; z-index: 2;
+  font-size: 9px; color: rgba(255,45,107,0.5);
+  line-height: 1;
+}
+
+/* ── BOTTOM STRIP ── */
+.fits {
+  width: 100%; max-width: 980px;
+  background: var(--navy);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 4px;
+  padding: 10px 16px;
+  display: flex;
+  align-items: center;
+  gap: 0;
+  flex-shrink: 0;
+}
+
+.fits-label {
+  font-size: 8px; font-weight: 700;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  color: rgba(255,255,255,0.3);
+  white-space: nowrap;
+  margin-right: 16px;
+  padding-right: 16px;
+  border-right: 1px solid rgba(255,255,255,0.08);
+}
+
+.fits-items {
+  display: flex; flex: 1;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6px;
+  flex-wrap: nowrap;
+}
+
+.fits-item {
+  display: flex; align-items: center; gap: 6px;
+  font-size: clamp(8.5px, 0.75vw, 10px);
+  color: rgba(255,255,255,0.5);
+  white-space: nowrap;
+}
+
+.fits-dot {
+  width: 5px; height: 5px; border-radius: 50%; flex-shrink: 0;
+}
+
+.fits-sep {
+  color: rgba(255,255,255,0.12);
+  font-size: 14px;
+  line-height: 1;
+}
+
+/* ── CLOSING ── */
+.closing {
+  width: 100%; max-width: 980px;
+  text-align: center;
+  font-size: clamp(9px, 0.8vw, 11px);
+  color: rgba(255,255,255,0.32);
+  border-top: 1px solid rgba(255,255,255,0.06);
+  padding-top: 10px;
+  line-height: 1.4;
+  flex-shrink: 0;
+}
+.closing strong { color: rgba(255,255,255,0.6); font-weight: 600; }
+
+/* ── ANIMATIONS ── */
+.wrap > * { animation: up 0.45s ease both; }
+.wrap > *:nth-child(1) { animation-delay: 0.00s; }
+.wrap > *:nth-child(2) { animation-delay: 0.06s; }
+.wrap > *:nth-child(3) { animation-delay: 0.14s; }
+.wrap > *:nth-child(4) { animation-delay: 0.22s; }
+.wrap > *:nth-child(5) { animation-delay: 0.30s; }
+
+@keyframes up {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hdr">
+    <div class="hdr-tag">Diagram 14 — Ecosystem Map</div>
+    <div class="hdr-title">Who the network <em>serves.</em></div>
+  </div>
+
+  <div class="ecosystem">
+
+    <!-- Q1 — Human Participation (top left) -->
+    <div class="quad q1">
+      <div class="quad-label">Human Participation Marketplace</div>
+      <div class="quad-title">Individuals &amp; Builders</div>
+      <div class="item"><div class="item-dot"></div><div><span class="item-name">Builders</span> <span class="item-desc">— early participants building Machine Self</span></div></div>
+      <div class="item"><div class="item-dot"></div><div><span class="item-name">Contributors</span> <span class="item-desc">— providing knowledge, context, decisions</span></div></div>
+      <div class="item"><div class="item-dot"></div><div><span class="item-name">Workers (Digital)</span> <span class="item-desc">— digital task execution</span></div></div>
+      <div class="item"><div class="item-dot"></div><div><span class="item-name">Workers (Physical)</span> <span class="item-desc">— real-world task execution</span></div></div>
+      <div class="item"><div class="item-dot"></div><div><span class="item-name">Validators</span> <span class="item-desc">— confirming outcomes &amp; AI outputs</span></div></div>
+      <div class="item"><div class="item-dot"></div><div><span class="item-name">Specialists</span> <span class="item-desc">— domain experts, skilled professionals</span></div></div>
+    </div>
+
+    <!-- CENTRE -->
+    <div class="centre-col">
+      <div class="conn-node">Demand<br>enters</div>
+      <div class="arr">↓</div>
+      <div class="core-node">
+        <div class="core-label">OX Protocol</div>
+        <div class="core-title">1 Billion<br>Machine<br>Selves</div>
+      </div>
+      <div class="arr">↓</div>
+      <div class="conn-node">Value<br>returns</div>
+    </div>
+
+    <!-- Q2 — Enterprise (top right) -->
+    <div class="quad q2">
+      <div class="quad-label">Enterprise &amp; Commercial Marketplace</div>
+      <div class="quad-title">Organisations &amp; Business</div>
+      <div class="item"><div class="item-dot"></div><div><span class="item-name">Operations</span> <span class="item-desc">— manufacturing, logistics, supply chains</span></div></div>
+      <div class="item"><div class="item-dot"></div><div><span class="item-name">Marketplace Operators</span> <span class="item-desc">— e-commerce, gig platforms, procurement</span></div></div>
+      <div class="item"><div class="item-dot"></div><div><span class="item-name">Enterprise Decision Systems</span> <span class="item-desc">— consulting, intelligence, analytics</span></div></div>
+      <div class="item"><div class="item-dot"></div><div><span class="item-name">Service Providers</span> <span class="item-desc">— outsourcing, verification services</span></div></div>
+      <div class="item"><div class="item-dot"></div><div><span class="item-name">Industry Verticals</span> <span class="item-desc">— retail, energy, healthcare, finance, defence</span></div></div>
+    </div>
+
+    <!-- Q3 — Developer (bottom left) -->
+    <div class="quad q3">
+      <div class="quad-label">Developer &amp; Technology Marketplace</div>
+      <div class="quad-title">Developers &amp; Builders</div>
+      <div class="item"><div class="item-dot"></div><div><span class="item-name">Platform Developers</span> <span class="item-desc">— building on the network</span></div></div>
+      <div class="item"><div class="item-dot"></div><div><span class="item-name">AI Developers</span> <span class="item-desc">— model builders, human-in-the-loop AI</span></div></div>
+      <div class="item"><div class="item-dot"></div><div><span class="item-name">Robotics &amp; Automation</span> <span class="item-desc">— robotics, drones, industrial automation</span></div></div>
+      <div class="item"><div class="item-dot"></div><div><span class="item-name">Application Developers</span> <span class="item-desc">— startups building applications</span></div></div>
+      <div class="item"><div class="item-dot"></div><div><span class="item-name">Integration Providers</span> <span class="item-desc">— APIs, enterprise system integrators</span></div></div>
+    </div>
+
+    <!-- Q4 — Government (bottom right) -->
+    <div class="quad q4">
+      <div class="quad-label">Government &amp; Public Infrastructure</div>
+      <div class="quad-title">Governments &amp; Smart Cities</div>
+      <div class="item"><div class="item-dot"></div><div><span class="item-name">Smart Cities</span> <span class="item-desc">— city governments, urban planning</span></div></div>
+      <div class="item"><div class="item-dot"></div><div><span class="item-name">Public Infrastructure</span> <span class="item-desc">— transportation, energy grids, utilities</span></div></div>
+      <div class="item"><div class="item-dot"></div><div><span class="item-name">Emergency &amp; Response</span> <span class="item-desc">— disaster response, safety coordination</span></div></div>
+      <div class="item"><div class="item-dot"></div><div><span class="item-name">Public Services</span> <span class="item-desc">— healthcare, education, social services</span></div></div>
+      <div class="item"><div class="item-dot"></div><div><span class="item-name">National Systems</span> <span class="item-desc">— federal governments, national infrastructure</span></div></div>
+    </div>
+
+  </div>
+
+  <div class="fits">
+    <div class="fits-label">How it fits</div>
+    <div class="fits-items">
+      <div class="fits-item"><div class="fits-dot" style="background:var(--pink)"></div>Humans supply capability</div>
+      <div class="fits-sep">›</div>
+      <div class="fits-item"><div class="fits-dot" style="background:var(--pink)"></div>Enterprises create demand</div>
+      <div class="fits-sep">›</div>
+      <div class="fits-item"><div class="fits-dot" style="background:rgba(255,255,255,0.25)"></div>Developers build on top</div>
+      <div class="fits-sep">›</div>
+      <div class="fits-item"><div class="fits-dot" style="background:var(--purple)"></div>Governments run public systems</div>
+      <div class="fits-sep">›</div>
+      <div class="fits-item"><div class="fits-dot" style="background:var(--red)"></div>Tokens fund &amp; price the network</div>
+    </div>
+  </div>
+
+  <div class="closing">
+    <strong>All coordinated by one underlying system:</strong> A decentralised network of Machine Selves turning static big data into live human intelligence.
+  </div>
+
+</div>
+</body>
+</html>

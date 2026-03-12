@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OX — Old vs OX Model</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700;9..40,800&display=swap" rel="stylesheet">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --dark:   #07071A;
+  --navy:   #0D0D2B;
+  --pink:   #FF2D6B;
+  --red:    #E8264A;
+  --purple: #7B1FA2;
+  --white:  #FFFFFF;
+}
+
+html, body {
+  width: 100%; height: 100%;
+  overflow: hidden;
+  background: var(--dark);
+  font-family: 'DM Sans', sans-serif;
+  color: var(--white);
+}
+
+body::before {
+  content: '';
+  position: fixed; inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.013) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.013) 1px, transparent 1px);
+  background-size: 44px 44px;
+  pointer-events: none;
+}
+
+.wrap {
+  position: relative; z-index: 1;
+  width: 100vw; height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 36px 10px;
+  gap: 8px;
+}
+
+/* HEADER */
+.hdr { text-align: center; flex-shrink: 0; }
+.hdr-tag {
+  display: inline-block;
+  font-size: 8px; font-weight: 700;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--pink);
+  border: 1px solid rgba(255,45,107,0.3);
+  background: rgba(255,45,107,0.07);
+  padding: 3px 10px; border-radius: 2px;
+  margin-bottom: 6px;
+}
+.hdr-title {
+  font-size: clamp(13px, 1.45vw, 18px);
+  font-weight: 800; letter-spacing: -0.025em; line-height: 1.1;
+}
+.hdr-title em {
+  font-style: normal;
+  background: linear-gradient(90deg, var(--red), var(--pink), var(--purple));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* COLS */
+.cols {
+  width: 100%; max-width: 980px;
+  display: grid;
+  grid-template-columns: 1fr 44px 1fr;
+  align-items: stretch;
+  flex: 1; min-height: 0;
+}
+
+.panel {
+  background: var(--navy);
+  border: 1px solid rgba(255,255,255,0.07);
+  padding: 11px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  min-height: 0;
+  overflow: hidden;
+}
+.panel-left  { border-radius: 4px 0 0 4px; }
+.panel-right { border-radius: 0 4px 4px 0; border-left: none; }
+
+.panel-label {
+  font-size: 7.5px; font-weight: 700;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  margin-bottom: 1px; flex-shrink: 0;
+}
+.panel-left  .panel-label { color: rgba(255,255,255,0.28); }
+.panel-right .panel-label { color: var(--pink); }
+
+.panel-heading {
+  font-size: clamp(10px, 0.9vw, 12px);
+  font-weight: 700; line-height: 1.2;
+  padding-bottom: 6px;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  margin-bottom: 1px; flex-shrink: 0;
+}
+.panel-left  .panel-heading { color: rgba(255,255,255,0.4); }
+.panel-right .panel-heading { color: var(--white); }
+
+.row {
+  display: flex; align-items: stretch; gap: 7px;
+  padding: 6px 8px;
+  border-radius: 3px;
+  border: 1px solid;
+  flex: 1; min-height: 0;
+}
+.panel-left .row {
+  border-color: rgba(255,255,255,0.05);
+  background: rgba(255,255,255,0.02);
+}
+.panel-right .row {
+  border-color: rgba(255,45,107,0.1);
+  background: rgba(255,45,107,0.025);
+}
+
+.row-bar {
+  width: 2px; border-radius: 2px; flex-shrink: 0;
+}
+.panel-left  .row-bar { background: rgba(255,255,255,0.12); }
+.panel-right .row-bar { background: var(--pink); }
+
+.row-title {
+  font-size: clamp(9px, 0.82vw, 11px);
+  font-weight: 700; line-height: 1.2; margin-bottom: 2px;
+}
+.panel-left  .row-title { color: rgba(255,255,255,0.45); }
+.panel-right .row-title { color: var(--white); }
+
+.row-desc {
+  font-size: clamp(8px, 0.72vw, 10px);
+  color: rgba(255,255,255,0.3); line-height: 1.3;
+}
+
+/* CENTRE */
+.centre {
+  display: flex; align-items: center; justify-content: center;
+  position: relative;
+}
+.centre::before {
+  content: '';
+  position: absolute;
+  top: 6%; bottom: 6%; left: 50%; transform: translateX(-50%);
+  width: 1px;
+  background: linear-gradient(180deg, transparent, rgba(255,45,107,0.25) 30%, rgba(255,45,107,0.25) 70%, transparent);
+}
+.vs {
+  position: relative; z-index: 1;
+  width: 28px; height: 28px; border-radius: 50%;
+  background: var(--dark);
+  border: 1px solid rgba(255,45,107,0.3);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 8.5px; font-weight: 800; color: var(--pink);
+}
+
+/* BOTTOM */
+.bottom {
+  width: 100%; max-width: 980px;
+  display: grid;
+  grid-template-columns: 1fr 44px 1fr;
+  flex-shrink: 0;
+}
+.bpill {
+  padding: 7px 11px;
+  border-radius: 3px;
+  border: 1px solid rgba(255,255,255,0.06);
+  background: var(--navy);
+  font-size: clamp(8.5px, 0.75vw, 10.5px);
+  color: rgba(255,255,255,0.4); line-height: 1.4;
+}
+.bpill strong { color: var(--white); font-weight: 700; }
+.bpill.right { border-color: rgba(255,45,107,0.15); background: rgba(255,45,107,0.04); }
+
+/* CLOSING */
+.closing {
+  width: 100%; max-width: 980px;
+  text-align: center;
+  font-size: clamp(8.5px, 0.75vw, 10.5px);
+  color: rgba(255,255,255,0.28);
+  border-top: 1px solid rgba(255,255,255,0.06);
+  padding-top: 8px;
+  flex-shrink: 0;
+}
+.closing strong { color: rgba(255,255,255,0.55); font-weight: 600; }
+
+.wrap > * { animation: up 0.4s ease both; }
+.wrap > *:nth-child(1) { animation-delay: 0.00s; }
+.wrap > *:nth-child(2) { animation-delay: 0.07s; }
+.wrap > *:nth-child(3) { animation-delay: 0.14s; }
+.wrap > *:nth-child(4) { animation-delay: 0.20s; }
+
+@keyframes up {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hdr">
+    <div class="hdr-tag">Diagram 9 — Section 6 · What Is OX</div>
+    <div class="hdr-title">A different architecture <em>to every existing marketplace.</em></div>
+  </div>
+
+  <div class="cols">
+
+    <div class="panel panel-left">
+      <div class="panel-label">The Old Model</div>
+      <div class="panel-heading">Centralised. Extractive. Platform takes the value.</div>
+      <div class="row"><div class="row-bar"></div><div><div class="row-title">Centralised data ownership</div><div class="row-desc">Platform holds all participant data centrally — owned by the company, not the individual</div></div></div>
+      <div class="row"><div class="row-bar"></div><div><div class="row-title">Platform extracts value from participants</div><div class="row-desc">Every gig platform, professional network, and task exchange takes a cut — participants are the product</div></div></div>
+      <div class="row"><div class="row-bar"></div><div><div class="row-title">Ratings and reputation scores control access</div><div class="row-desc">Historical behaviour determines who gets work — not verified capability</div></div></div>
+      <div class="row"><div class="row-bar"></div><div><div class="row-title">Platform owns the supply-demand relationship</div><div class="row-desc">The intermediary sits between every buyer and seller — and charges accordingly</div></div></div>
+      <div class="row"><div class="row-bar"></div><div><div class="row-title">Data can be hacked, sold, or subpoenaed</div><div class="row-desc">Central databases are single points of failure for privacy, security, and trust</div></div></div>
+      <div class="row"><div class="row-bar"></div><div><div class="row-title">Participants have no sovereignty</div><div class="row-desc">You participate on the platform's terms — your data, your identity, their asset</div></div></div>
+    </div>
+
+    <div class="centre"><div class="vs">VS</div></div>
+
+    <div class="panel panel-right">
+      <div class="panel-label">The OX Model</div>
+      <div class="panel-heading">Decentralised. Consent-based. Value flows back to participants.</div>
+      <div class="row"><div class="row-bar"></div><div><div class="row-title">Data never leaves the participant's device</div><div class="row-desc">Every Machine Self lives on the individual's phone — local, sovereign, unhackable at source</div></div></div>
+      <div class="row"><div class="row-bar"></div><div><div class="row-title">Value flows back through the token economy</div><div class="row-desc">Tokens earned by participants — not extracted by a platform intermediary</div></div></div>
+      <div class="row"><div class="row-bar"></div><div><div class="row-title">Matching based on verified, declared capability</div><div class="row-desc">2,000 human-created data points — not ratings, scores, or historical behaviour</div></div></div>
+      <div class="row"><div class="row-bar"></div><div><div class="row-title">OX replaces the architecture entirely</div><div class="row-desc">OX does not compete with existing platforms. It replaces the architecture they are all built on</div></div></div>
+      <div class="row"><div class="row-bar"></div><div><div class="row-title">One billion sovereign nodes — no central failure point</div><div class="row-desc">No database to hack, sell, or subpoena. Each Machine Self owned by the individual it represents</div></div></div>
+      <div class="row"><div class="row-bar"></div><div><div class="row-title">Participants are sovereign economic actors</div><div class="row-desc">You own your Machine Self. You control your data. You set your consent. You earn the value.</div></div></div>
+    </div>
+
+  </div>
+
+  <div class="bottom">
+    <div class="bpill"><strong>Old architecture:</strong> every existing human coordination marketplace extracts value from participants and holds their data centrally.</div>
+    <div></div>
+    <div class="bpill right"><strong>OX architecture:</strong> structured participation, not surveillance. Value flows back to the people who built the network.</div>
+  </div>
+
+  <div class="closing">
+    <strong>OX does not compete with these platforms.</strong> It replaces the architecture they are all built on.
+  </div>
+
+</div>
+</body>
+</html>

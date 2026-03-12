@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OX — Human Mining vs Machine Mining</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700;9..40,800&display=swap" rel="stylesheet">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --dark:   #07071A;
+  --navy:   #0D0D2B;
+  --pink:   #FF2D6B;
+  --red:    #E8264A;
+  --purple: #7B1FA2;
+  --white:  #FFFFFF;
+}
+
+html, body {
+  width: 100%; height: 100%;
+  overflow: hidden;
+  background: var(--dark);
+  font-family: 'DM Sans', sans-serif;
+  color: var(--white);
+}
+
+body::before {
+  content: '';
+  position: fixed; inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.013) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.013) 1px, transparent 1px);
+  background-size: 44px 44px;
+  pointer-events: none;
+}
+
+.wrap {
+  position: relative; z-index: 1;
+  width: 100vw; height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 16px 48px 14px;
+  gap: 12px;
+}
+
+/* HEADER */
+.hdr { text-align: center; flex-shrink: 0; }
+.hdr-tag {
+  display: inline-block;
+  font-size: 8px; font-weight: 700;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--pink);
+  border: 1px solid rgba(255,45,107,0.3);
+  background: rgba(255,45,107,0.07);
+  padding: 3px 10px; border-radius: 2px;
+  margin-bottom: 7px;
+}
+.hdr-title {
+  font-size: clamp(15px, 1.7vw, 22px);
+  font-weight: 800; letter-spacing: -0.025em; line-height: 1.1;
+}
+.hdr-title em {
+  font-style: normal;
+  background: linear-gradient(90deg, var(--red), var(--pink), var(--purple));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* TWO CARDS */
+.cards {
+  width: 100%; max-width: 900px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  flex: 1; min-height: 0;
+}
+
+.card {
+  background: var(--navy);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 4px;
+  padding: 20px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  position: relative;
+  overflow: hidden;
+  min-height: 0;
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+}
+.card-btc::before { background: rgba(255,255,255,0.2); }
+.card-ox::before  { background: linear-gradient(90deg, var(--red), var(--pink), var(--purple)); }
+
+.card::after {
+  content: '';
+  position: absolute;
+  bottom: -60px; right: -60px;
+  width: 180px; height: 180px;
+  border-radius: 50%;
+  pointer-events: none;
+}
+.card-btc::after { background: radial-gradient(circle, rgba(255,255,255,0.03) 0%, transparent 70%); }
+.card-ox::after  { background: radial-gradient(circle, rgba(255,45,107,0.07) 0%, transparent 70%); }
+
+.card-label {
+  font-size: 8px; font-weight: 700;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  margin-bottom: 2px;
+}
+.card-btc .card-label { color: rgba(255,255,255,0.3); }
+.card-ox  .card-label { color: var(--pink); }
+
+.card-headline {
+  font-size: clamp(18px, 2.2vw, 28px);
+  font-weight: 800; letter-spacing: -0.03em; line-height: 1.05;
+}
+.card-btc .card-headline { color: rgba(255,255,255,0.5); }
+.card-ox  .card-headline {
+  background: linear-gradient(90deg, var(--red), var(--pink));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.card-sub {
+  font-size: clamp(10px, 0.9vw, 13px);
+  font-weight: 600; line-height: 1.3;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.card-btc .card-sub { color: rgba(255,255,255,0.35); }
+.card-ox  .card-sub { color: rgba(255,255,255,0.7); }
+
+.rows { display: flex; flex-direction: column; gap: 6px; flex: 1; min-height: 0; }
+
+.row {
+  display: flex; align-items: flex-start; gap: 8px;
+  padding: 7px 9px;
+  border-radius: 3px;
+  border: 1px solid;
+  flex: 1; min-height: 0;
+}
+.card-btc .row {
+  border-color: rgba(255,255,255,0.05);
+  background: rgba(255,255,255,0.02);
+}
+.card-ox .row {
+  border-color: rgba(255,45,107,0.12);
+  background: rgba(255,45,107,0.03);
+}
+
+.row-bar {
+  width: 2px; border-radius: 2px; flex-shrink: 0; align-self: stretch;
+}
+.card-btc .row-bar { background: rgba(255,255,255,0.15); }
+.card-ox  .row-bar { background: var(--pink); }
+
+.row-key {
+  font-size: clamp(9px, 0.8vw, 11px);
+  font-weight: 700; margin-bottom: 2px; line-height: 1.2;
+}
+.card-btc .row-key { color: rgba(255,255,255,0.4); }
+.card-ox  .row-key { color: var(--white); }
+
+.row-val {
+  font-size: clamp(8.5px, 0.75vw, 10.5px);
+  color: rgba(255,255,255,0.3); line-height: 1.3;
+}
+
+/* BOTTOM STATEMENT */
+.statement {
+  width: 100%; max-width: 900px;
+  background: var(--navy);
+  border: 1px solid rgba(255,45,107,0.2);
+  border-radius: 4px;
+  padding: 14px 20px;
+  text-align: center;
+  flex-shrink: 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.statement::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; height: 2px;
+  background: linear-gradient(90deg, var(--red), var(--pink), var(--purple));
+}
+
+.statement-text {
+  font-size: clamp(12px, 1.2vw, 16px);
+  font-weight: 700; letter-spacing: -0.01em; line-height: 1.4;
+  color: var(--white);
+}
+
+.statement-text em {
+  font-style: normal;
+  background: linear-gradient(90deg, var(--red), var(--pink));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* CLOSING */
+.closing {
+  width: 100%; max-width: 900px;
+  text-align: center;
+  font-size: clamp(8.5px, 0.75vw, 10.5px);
+  color: rgba(255,255,255,0.25);
+  border-top: 1px solid rgba(255,255,255,0.06);
+  padding-top: 10px;
+  flex-shrink: 0;
+}
+.closing strong { color: rgba(255,255,255,0.5); font-weight: 600; }
+
+.wrap > * { animation: up 0.45s ease both; }
+.wrap > *:nth-child(1) { animation-delay: 0.00s; }
+.wrap > *:nth-child(2) { animation-delay: 0.08s; }
+.wrap > *:nth-child(3) { animation-delay: 0.16s; }
+.wrap > *:nth-child(4) { animation-delay: 0.22s; }
+
+@keyframes up {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hdr">
+    <div class="hdr-tag">Diagram 11 — Section 9 · Token Economy</div>
+    <div class="hdr-title">Two ways to mine a <em>scarce token.</em></div>
+  </div>
+
+  <div class="cards">
+
+    <!-- BITCOIN -->
+    <div class="card card-btc">
+      <div class="card-label">Bitcoin</div>
+      <div class="card-headline">Mined with<br>electricity.</div>
+      <div class="card-sub">Machine computation. Energy consumption. Capital investment.</div>
+      <div class="rows">
+        <div class="row"><div class="row-bar"></div><div>
+          <div class="row-key">Entry point</div>
+          <div class="row-val">Capital — you need money to buy mining hardware and pay for electricity</div>
+        </div></div>
+        <div class="row"><div class="row-bar"></div><div>
+          <div class="row-key">What does the work</div>
+          <div class="row-val">Machines — ASICs running computations 24 hours a day</div>
+        </div></div>
+        <div class="row"><div class="row-bar"></div><div>
+          <div class="row-key">What is consumed</div>
+          <div class="row-val">Electricity — Bitcoin mining consumes more energy than many countries</div>
+        </div></div>
+        <div class="row"><div class="row-bar"></div><div>
+          <div class="row-key">What is produced</div>
+          <div class="row-val">Proof of work — a mathematical solution with no real-world utility beyond the token</div>
+        </div></div>
+        <div class="row"><div class="row-bar"></div><div>
+          <div class="row-key">Who benefits</div>
+          <div class="row-val">Those with the most capital and cheapest energy — highly centralised over time</div>
+        </div></div>
+      </div>
+    </div>
+
+    <!-- OX -->
+    <div class="card card-ox">
+      <div class="card-label">OX</div>
+      <div class="card-headline">Mined with<br>human intelligence.</div>
+      <div class="card-sub">Human participation. Time and attention. Verified contribution.</div>
+      <div class="rows">
+        <div class="row"><div class="row-bar"></div><div>
+          <div class="row-key">Entry point</div>
+          <div class="row-val">Time — 4 minutes a day. No money required. No hardware required.</div>
+        </div></div>
+        <div class="row"><div class="row-bar"></div><div>
+          <div class="row-key">What does the work</div>
+          <div class="row-val">Humans — building their Machine Self and contributing verified intelligence to the network</div>
+        </div></div>
+        <div class="row"><div class="row-bar"></div><div>
+          <div class="row-key">What is consumed</div>
+          <div class="row-val">Human capital — 16 hours of structured input stored as 2,000 data points</div>
+        </div></div>
+        <div class="row"><div class="row-bar"></div><div>
+          <div class="row-key">What is produced</div>
+          <div class="row-val">Verified human intelligence — real utility for every system and organisation in the network</div>
+        </div></div>
+        <div class="row"><div class="row-bar"></div><div>
+          <div class="row-key">Who benefits</div>
+          <div class="row-val">Every participant equally — the more humans who join, the more the network and every token is worth</div>
+        </div></div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="statement">
+    <div class="statement-text">
+      Bitcoin is mined with electricity. &nbsp;<em>OX is mined with human intelligence.</em><br>
+      <span style="font-size:0.85em;font-weight:500;color:rgba(255,255,255,0.45);">The only way a token enters circulation is when a human being earns it. Not generated. Not purchased. Earned.</span>
+    </div>
+  </div>
+
+  <div class="closing">
+    <strong>Fixed supply: 1,371,000,000 OXME.</strong> Set at genesis. No new tokens can ever be created. By anyone. Ever.
+  </div>
+
+</div>
+</body>
+</html>

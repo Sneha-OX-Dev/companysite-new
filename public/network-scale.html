@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OX — Network Scale Milestones</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700;9..40,800&display=swap" rel="stylesheet">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --dark:   #07071A;
+  --navy:   #0D0D2B;
+  --pink:   #FF2D6B;
+  --red:    #E8264A;
+  --purple: #7B1FA2;
+  --white:  #FFFFFF;
+}
+
+html, body {
+  width: 100%; height: 100%;
+  overflow: hidden;
+  background: var(--dark);
+  font-family: 'DM Sans', sans-serif;
+  color: var(--white);
+}
+
+body::before {
+  content: '';
+  position: fixed; inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.013) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.013) 1px, transparent 1px);
+  background-size: 44px 44px;
+  pointer-events: none;
+}
+
+.wrap {
+  position: relative; z-index: 1;
+  width: 100%; height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 24px 48px 20px;
+  gap: 16px;
+}
+
+/* ── HEADER ── */
+.hdr { text-align: center; }
+.hdr-tag {
+  display: inline-block;
+  font-size: 9px; font-weight: 700;
+  letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--pink);
+  border: 1px solid rgba(255,45,107,0.3);
+  background: rgba(255,45,107,0.07);
+  padding: 3px 12px; border-radius: 2px;
+  margin-bottom: 10px;
+}
+.hdr-title {
+  font-size: clamp(16px, 1.9vw, 24px);
+  font-weight: 800; letter-spacing: -0.025em; line-height: 1.1;
+}
+.hdr-title em {
+  font-style: normal;
+  background: linear-gradient(90deg, var(--red), var(--pink), var(--purple));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ── PROGRESS BAR TRACK ── */
+.track-wrap {
+  width: 100%; max-width: 900px;
+  position: relative;
+}
+
+.track {
+  width: 100%;
+  height: 4px;
+  background: rgba(255,255,255,0.07);
+  border-radius: 2px;
+  position: relative;
+  margin: 40px 0;
+}
+
+.track-fill {
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  background: linear-gradient(90deg, var(--red), var(--pink), var(--purple));
+  border-radius: 2px;
+  animation: grow 1.2s ease both;
+  animation-delay: 0.3s;
+}
+
+@keyframes grow {
+  from { width: 0%; opacity: 0; }
+  to   { width: 100%; opacity: 1; }
+}
+
+/* milestone dots on track */
+.m-dot {
+  position: absolute;
+  top: 50%; transform: translate(-50%, -50%);
+  width: 16px; height: 16px;
+  border-radius: 50%;
+  border: 2px solid var(--dark);
+  z-index: 2;
+}
+
+.m-dot-1 { left: 16.5%; background: var(--red); }
+.m-dot-2 { left: 50%;   background: var(--pink); }
+.m-dot-3 { left: 83.5%; background: var(--purple); }
+
+/* ── THREE MILESTONE CARDS ── */
+.milestones {
+  width: 100%; max-width: 900px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 14px;
+}
+
+.mcard {
+  background: var(--navy);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 4px;
+  padding: 22px 18px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* top colour bar */
+.mcard::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+}
+.m1::before { background: var(--red); }
+.m2::before { background: var(--pink); }
+.m3::before { background: linear-gradient(90deg, var(--pink), var(--purple)); }
+
+/* bg glow */
+.mcard::after {
+  content: '';
+  position: absolute;
+  top: -40px; right: -40px;
+  width: 120px; height: 120px;
+  border-radius: 50%;
+  pointer-events: none;
+}
+.m1::after { background: radial-gradient(circle, rgba(232,38,74,0.07) 0%, transparent 70%); }
+.m2::after { background: radial-gradient(circle, rgba(255,45,107,0.07) 0%, transparent 70%); }
+.m3::after { background: radial-gradient(circle, rgba(123,31,162,0.07) 0%, transparent 70%); }
+
+.m-label {
+  font-size: 8.5px; font-weight: 700;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  margin-bottom: 2px;
+}
+.m1 .m-label { color: var(--red); }
+.m2 .m-label { color: var(--pink); }
+.m3 .m-label { color: var(--purple); }
+
+.m-number {
+  font-size: clamp(24px, 2.8vw, 36px);
+  font-weight: 800; letter-spacing: -0.03em;
+  line-height: 1;
+}
+.m1 .m-number { color: var(--red); }
+.m2 .m-number { color: var(--pink); }
+.m3 .m-number { color: var(--purple); }
+
+.m-unit {
+  font-size: clamp(10px, 0.9vw, 13px);
+  font-weight: 600;
+  color: rgba(255,255,255,0.4);
+  margin-top: 2px;
+}
+
+.m-divider {
+  width: 28px; height: 2px; border-radius: 1px;
+}
+.m1 .m-divider { background: var(--red); }
+.m2 .m-divider { background: var(--pink); }
+.m3 .m-divider { background: var(--purple); }
+
+.m-unlocks {
+  font-size: 9px; font-weight: 700;
+  letter-spacing: 0.15em; text-transform: uppercase;
+  color: rgba(255,255,255,0.25);
+  margin-bottom: 2px;
+}
+
+.m-items {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.m-item {
+  display: flex; align-items: flex-start; gap: 8px;
+  font-size: clamp(10px, 0.88vw, 12px);
+  color: rgba(255,255,255,0.55);
+  line-height: 1.4;
+}
+
+.m-item-dot {
+  width: 4px; height: 4px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  margin-top: 5px;
+}
+.m1 .m-item-dot { background: var(--red); }
+.m2 .m-item-dot { background: var(--pink); }
+.m3 .m-item-dot { background: var(--purple); }
+
+.m-item strong { color: rgba(255,255,255,0.85); font-weight: 600; }
+
+/* ── BOTTOM STAT ROW ── */
+.stats {
+  width: 100%; max-width: 900px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 10px;
+}
+
+.stat {
+  background: var(--navy);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 3px;
+  padding: 10px 14px;
+  text-align: center;
+}
+
+.stat-num {
+  font-size: clamp(14px, 1.4vw, 18px);
+  font-weight: 800; letter-spacing: -0.02em;
+  background: linear-gradient(90deg, var(--red), var(--pink));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 3px;
+}
+
+.stat-label {
+  font-size: clamp(9px, 0.78vw, 10.5px);
+  color: rgba(255,255,255,0.32);
+  line-height: 1.3;
+}
+
+/* ── CLOSING ── */
+.closing {
+  width: 100%; max-width: 900px;
+  text-align: center;
+  font-size: clamp(10px, 0.85vw, 12px);
+  color: rgba(255,255,255,0.3);
+  border-top: 1px solid rgba(255,255,255,0.06);
+  padding-top: 12px;
+}
+.closing strong { color: rgba(255,255,255,0.6); font-weight: 600; }
+
+/* ── ANIMATIONS ── */
+.wrap > * { animation: up 0.45s ease both; }
+.wrap > *:nth-child(1) { animation-delay: 0.00s; }
+.wrap > *:nth-child(2) { animation-delay: 0.08s; }
+.wrap > *:nth-child(3) { animation-delay: 0.14s; }
+.wrap > *:nth-child(4) { animation-delay: 0.20s; }
+.wrap > *:nth-child(5) { animation-delay: 0.26s; }
+
+.mcard { animation: up 0.45s ease both; }
+.m1 { animation-delay: 0.16s; }
+.m2 { animation-delay: 0.22s; }
+.m3 { animation-delay: 0.28s; }
+
+@keyframes up {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hdr">
+    <div class="hdr-tag">Diagram 13 — Section 13 · Network Effects &amp; Scale</div>
+    <div class="hdr-title">The network grows every time another <em>human agent joins.</em></div>
+  </div>
+
+  <div class="track-wrap">
+    <div class="track">
+      <div class="track-fill"></div>
+      <div class="m-dot m-dot-1"></div>
+      <div class="m-dot m-dot-2"></div>
+      <div class="m-dot m-dot-3"></div>
+    </div>
+  </div>
+
+  <div class="milestones">
+
+    <div class="mcard m1">
+      <div>
+        <div class="m-label">Milestone 1</div>
+        <div class="m-number">10M</div>
+        <div class="m-unit">Machine Selves</div>
+      </div>
+      <div class="m-divider"></div>
+      <div class="m-unlocks">What this unlocks</div>
+      <div class="m-items">
+        <div class="m-item"><div class="m-item-dot"></div><strong>Network effect takes hold.</strong> Matching precision increases with every new participant.</div>
+        <div class="m-item"><div class="m-item-dot"></div>Enterprise demand begins routing at meaningful scale.</div>
+        <div class="m-item"><div class="m-item-dot"></div>Token scarcity becomes structurally significant.</div>
+        <div class="m-item"><div class="m-item-dot"></div>Geographic and domain coverage begins to diversify.</div>
+      </div>
+    </div>
+
+    <div class="mcard m2">
+      <div>
+        <div class="m-label">Milestone 2</div>
+        <div class="m-number">100M</div>
+        <div class="m-unit">Machine Selves</div>
+      </div>
+      <div class="m-divider"></div>
+      <div class="m-unlocks">What this unlocks</div>
+      <div class="m-items">
+        <div class="m-item"><div class="m-item-dot"></div><strong>Global coordination layer operational.</strong> Any geography, any domain, any work type.</div>
+        <div class="m-item"><div class="m-item-dot"></div>Enterprises can route at national and continental scale.</div>
+        <div class="m-item"><div class="m-item-dot"></div>OX becomes a credible replacement for centralised data infrastructure.</div>
+        <div class="m-item"><div class="m-item-dot"></div>Token demand outpaces new supply entering circulation.</div>
+      </div>
+    </div>
+
+    <div class="mcard m3">
+      <div>
+        <div class="m-label">Milestone 3</div>
+        <div class="m-number">1B</div>
+        <div class="m-unit">Machine Selves</div>
+      </div>
+      <div class="m-divider"></div>
+      <div class="m-unlocks">What this unlocks</div>
+      <div class="m-items">
+        <div class="m-item"><div class="m-item-dot"></div><strong>Universal deployment on smartphones globally.</strong> The protocol layer the world runs on.</div>
+        <div class="m-item"><div class="m-item-dot"></div>One billion sovereign economies — each connected, each earning.</div>
+        <div class="m-item"><div class="m-item-dot"></div>AI, business, government, and society operating on OX infrastructure.</div>
+        <div class="m-item"><div class="m-item-dot"></div>The planet reorganises around individual intelligence.</div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="stats">
+    <div class="stat">
+      <div class="stat-num">1,371,000,000</div>
+      <div class="stat-label">OXME total fixed supply — set at genesis</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">16 hours</div>
+      <div class="stat-label">Human capital pre-invested per Machine Self</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">4 minutes</div>
+      <div class="stat-label">Daily activity to build a Machine Self</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">2,000</div>
+      <div class="stat-label">Human-created data points per Machine Self</div>
+    </div>
+  </div>
+
+  <div class="closing">
+    <strong>Under network effect principles, network value scales with participant density.</strong> Each Machine Self adds declared truth, permission boundaries, regulatory eligibility, and reliability history.
+  </div>
+
+</div>
+</body>
+</html>

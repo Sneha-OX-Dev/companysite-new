@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OX — 2,000 Points / 16 Hours / 4 Minutes</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700;9..40,800&display=swap" rel="stylesheet">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --dark:   #07071A;
+  --navy:   #0D0D2B;
+  --pink:   #FF2D6B;
+  --red:    #E8264A;
+  --purple: #7B1FA2;
+  --white:  #FFFFFF;
+}
+
+html, body {
+  width: 100%; height: 100%;
+  overflow: hidden;
+  background: var(--dark);
+  font-family: 'DM Sans', sans-serif;
+  color: var(--white);
+}
+
+body::before {
+  content: '';
+  position: fixed; inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.013) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.013) 1px, transparent 1px);
+  background-size: 44px 44px;
+  pointer-events: none;
+}
+
+.wrap {
+  position: relative; z-index: 1;
+  width: 100vw; height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 16px 48px 14px;
+  gap: 12px;
+}
+
+/* HEADER */
+.hdr { text-align: center; flex-shrink: 0; }
+.hdr-tag {
+  display: inline-block;
+  font-size: 8px; font-weight: 700;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--pink);
+  border: 1px solid rgba(255,45,107,0.3);
+  background: rgba(255,45,107,0.07);
+  padding: 3px 10px; border-radius: 2px;
+  margin-bottom: 7px;
+}
+.hdr-title {
+  font-size: clamp(15px, 1.7vw, 22px);
+  font-weight: 800; letter-spacing: -0.025em; line-height: 1.1;
+}
+.hdr-title em {
+  font-style: normal;
+  background: linear-gradient(90deg, var(--red), var(--pink), var(--purple));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* THREE STAT CARDS */
+.stats {
+  width: 100%; max-width: 900px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 14px;
+  flex-shrink: 0;
+}
+
+.scard {
+  background: var(--navy);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 4px;
+  padding: 20px 18px 16px;
+  display: flex; flex-direction: column;
+  gap: 8px;
+  position: relative; overflow: hidden;
+  text-align: center;
+}
+
+.scard::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; height: 3px;
+}
+.s1::before { background: var(--red); }
+.s2::before { background: var(--pink); }
+.s3::before { background: linear-gradient(90deg, var(--pink), var(--purple)); }
+
+.scard::after {
+  content: '';
+  position: absolute;
+  top: -30px; left: 50%; transform: translateX(-50%);
+  width: 160px; height: 160px; border-radius: 50%;
+  pointer-events: none;
+}
+.s1::after { background: radial-gradient(circle, rgba(232,38,74,0.07) 0%, transparent 70%); }
+.s2::after { background: radial-gradient(circle, rgba(255,45,107,0.07) 0%, transparent 70%); }
+.s3::after { background: radial-gradient(circle, rgba(123,31,162,0.07) 0%, transparent 70%); }
+
+.scard-label {
+  font-size: 8px; font-weight: 700;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  margin-bottom: 2px;
+}
+.s1 .scard-label { color: var(--red); }
+.s2 .scard-label { color: var(--pink); }
+.s3 .scard-label { color: var(--purple); }
+
+.scard-number {
+  font-size: clamp(38px, 5vw, 64px);
+  font-weight: 800; letter-spacing: -0.04em; line-height: 1;
+}
+.s1 .scard-number { color: var(--red); }
+.s2 .scard-number { color: var(--pink); }
+.s3 .scard-number {
+  background: linear-gradient(135deg, var(--pink), var(--purple));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.scard-unit {
+  font-size: clamp(11px, 1vw, 14px);
+  font-weight: 700; color: rgba(255,255,255,0.5);
+  letter-spacing: 0.02em;
+}
+
+.scard-divider {
+  width: 32px; height: 2px; border-radius: 1px; margin: 0 auto;
+}
+.s1 .scard-divider { background: var(--red); }
+.s2 .scard-divider { background: var(--pink); }
+.s3 .scard-divider { background: var(--purple); }
+
+.scard-desc {
+  font-size: clamp(10px, 0.88vw, 12.5px);
+  color: rgba(255,255,255,0.55); line-height: 1.5;
+}
+
+.scard-note {
+  font-size: clamp(8.5px, 0.75vw, 10.5px);
+  color: rgba(255,255,255,0.28); line-height: 1.4;
+  font-style: italic;
+}
+
+/* DETAIL ROWS */
+.detail {
+  width: 100%; max-width: 900px;
+  background: var(--navy);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 4px;
+  padding: 14px 18px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 14px;
+  flex-shrink: 0;
+}
+
+.detail-col {
+  display: flex; flex-direction: column; gap: 5px;
+}
+
+.detail-label {
+  font-size: 8px; font-weight: 700;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  margin-bottom: 3px;
+}
+.d1 .detail-label { color: var(--red); }
+.d2 .detail-label { color: var(--pink); }
+.d3 .detail-label { color: var(--purple); }
+
+.detail-item {
+  display: flex; align-items: flex-start; gap: 7px;
+  font-size: clamp(9px, 0.8vw, 11px);
+  color: rgba(255,255,255,0.45); line-height: 1.35;
+}
+
+.detail-dot {
+  width: 4px; height: 4px; border-radius: 50%; flex-shrink: 0; margin-top: 4px;
+}
+.d1 .detail-dot { background: var(--red); }
+.d2 .detail-dot { background: var(--pink); }
+.d3 .detail-dot { background: var(--purple); }
+
+/* STATEMENT */
+.statement {
+  width: 100%; max-width: 900px;
+  background: rgba(255,45,107,0.05);
+  border: 1px solid rgba(255,45,107,0.2);
+  border-radius: 4px;
+  padding: 12px 20px;
+  text-align: center;
+  flex-shrink: 0;
+  position: relative; overflow: hidden;
+}
+.statement::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; height: 2px;
+  background: linear-gradient(90deg, var(--red), var(--pink), var(--purple));
+}
+.statement-text {
+  font-size: clamp(11px, 1.1vw, 14px);
+  font-weight: 700; color: var(--white); line-height: 1.5;
+}
+.statement-text em {
+  font-style: normal; color: var(--pink);
+}
+
+/* CLOSING */
+.closing {
+  width: 100%; max-width: 900px;
+  text-align: center;
+  font-size: clamp(8.5px, 0.75vw, 10.5px);
+  color: rgba(255,255,255,0.25);
+  border-top: 1px solid rgba(255,255,255,0.06);
+  padding-top: 10px;
+  flex-shrink: 0;
+}
+.closing strong { color: rgba(255,255,255,0.5); font-weight: 600; }
+
+.wrap > * { animation: up 0.45s ease both; }
+.wrap > *:nth-child(1) { animation-delay: 0.00s; }
+.wrap > *:nth-child(2) { animation-delay: 0.08s; }
+.wrap > *:nth-child(3) { animation-delay: 0.14s; }
+.wrap > *:nth-child(4) { animation-delay: 0.20s; }
+.wrap > *:nth-child(5) { animation-delay: 0.26s; }
+
+@keyframes up {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hdr">
+    <div class="hdr-tag">Diagram 6 — Section 7 · Your Machine Self</div>
+    <div class="hdr-title">Three numbers. One <em>sovereign economic asset.</em></div>
+  </div>
+
+  <div class="stats">
+    <div class="scard s1">
+      <div class="scard-label">Data Points</div>
+      <div class="scard-number">2,000</div>
+      <div class="scard-unit">human-created data points</div>
+      <div class="scard-divider"></div>
+      <div class="scard-desc">Directly provided by you. Not inferred. Not approximated. Not guessable by any AI.</div>
+      <div class="scard-note">Stored only on your device. Never transmitted without your consent.</div>
+    </div>
+
+    <div class="scard s2">
+      <div class="scard-label">Total Build Time</div>
+      <div class="scard-number">16</div>
+      <div class="scard-unit">hours of structured human capital</div>
+      <div class="scard-divider"></div>
+      <div class="scard-desc">A genuine representation of who you are. Built once. Working for you continuously.</div>
+      <div class="scard-note">Pre-invested capital stored in your Machine Self — permanently matchable to any work in the network.</div>
+    </div>
+
+    <div class="scard s3">
+      <div class="scard-label">Daily Commitment</div>
+      <div class="scard-number">4</div>
+      <div class="scard-unit">minutes of daily activity</div>
+      <div class="scard-divider"></div>
+      <div class="scard-desc">From the moment you start — you mine. Every verified contribution earns OXIT.</div>
+      <div class="scard-note">The building is the mining. The earning never stops.</div>
+    </div>
+  </div>
+
+  <div class="detail">
+    <div class="detail-col d1">
+      <div class="detail-label">What the 2,000 points cover</div>
+      <div class="detail-item"><div class="detail-dot"></div>Identity and personal context</div>
+      <div class="detail-item"><div class="detail-dot"></div>Skills, expertise, and capabilities</div>
+      <div class="detail-item"><div class="detail-dot"></div>Behavioural and cognitive signals</div>
+      <div class="detail-item"><div class="detail-dot"></div>Environmental and location context</div>
+      <div class="detail-item"><div class="detail-dot"></div>Unique and unknowable personal intelligence</div>
+    </div>
+    <div class="detail-col d2">
+      <div class="detail-label">What the 16 hours produces</div>
+      <div class="detail-item"><div class="detail-dot"></div>A fully matchable Machine Self</div>
+      <div class="detail-item"><div class="detail-dot"></div>Eligibility across all network work types</div>
+      <div class="detail-item"><div class="detail-dot"></div>A sovereign digital economic agent</div>
+      <div class="detail-item"><div class="detail-dot"></div>Continuous passive earning capability</div>
+      <div class="detail-item"><div class="detail-dot"></div>Permanent participation in the OX network</div>
+    </div>
+    <div class="detail-col d3">
+      <div class="detail-label">What 4 minutes a day earns</div>
+      <div class="detail-item"><div class="detail-dot"></div>OXIT for every verified contribution</div>
+      <div class="detail-item"><div class="detail-dot"></div>Progress toward a complete Machine Self</div>
+      <div class="detail-item"><div class="detail-dot"></div>Matched commercial work opportunities</div>
+      <div class="detail-item"><div class="detail-dot"></div>Scarce tokens that grow with the network</div>
+      <div class="detail-item"><div class="detail-dot"></div>A machine that earns even while you sleep</div>
+    </div>
+  </div>
+
+  <div class="statement">
+    <div class="statement-text">
+      Built once. Working continuously. <em>On your terms. Under your consent. Earning on your behalf.</em>
+    </div>
+  </div>
+
+  <div class="closing">
+    <strong>YOUR DATA NEVER LEAVES YOUR DEVICE.</strong> &nbsp;The machine may optimise execution — never the human. Consent defines the ceiling of autonomy.
+  </div>
+
+</div>
+</body>
+</html>

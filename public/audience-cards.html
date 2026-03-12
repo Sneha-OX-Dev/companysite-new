@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OX — Audience Cards</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --dark:    #07071A;
+    --navy:    #0D0D2B;
+    --pink:    #FF2D6B;
+    --red:     #E8264A;
+    --purple:  #7B1FA2;
+    --white:   #FFFFFF;
+    --muted:   rgba(255,255,255,0.45);
+    --border:  rgba(255,255,255,0.08);
+  }
+
+  html, body {
+    width: 100%; height: 100%;
+    overflow: hidden;
+    background: var(--dark);
+    font-family: 'DM Sans', sans-serif;
+    color: var(--white);
+  }
+
+  /* grid noise texture */
+  body::before {
+    content: '';
+    position: fixed; inset: 0;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+    background-size: 40px 40px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* ambient glow */
+  body::after {
+    content: '';
+    position: fixed;
+    width: 600px; height: 600px;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    background: radial-gradient(circle, rgba(232,38,74,0.06) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .stage {
+    position: relative;
+    z-index: 1;
+    width: 100%; height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 28px;
+    padding: 32px 48px;
+  }
+
+  /* ── header ── */
+  .header { text-align: center; }
+
+  .eyebrow {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--pink);
+    margin-bottom: 8px;
+  }
+
+  .headline {
+    font-size: clamp(22px, 2.8vw, 34px);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+  }
+
+  .headline span {
+    background: linear-gradient(90deg, var(--red), var(--pink), var(--purple));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .subhead {
+    margin-top: 8px;
+    font-size: 13px;
+    color: var(--muted);
+    font-weight: 400;
+    letter-spacing: 0.01em;
+  }
+
+  /* ── cards row ── */
+  .cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    width: 100%;
+    max-width: 960px;
+  }
+
+  .card {
+    position: relative;
+    background: var(--navy);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 32px 30px 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    overflow: hidden;
+    transition: border-color 0.3s ease, transform 0.3s ease;
+  }
+
+  .card:hover {
+    border-color: rgba(232,38,74,0.35);
+    transform: translateY(-2px);
+  }
+
+  /* top accent bar */
+  .card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+  }
+
+  .card-investor::before { background: linear-gradient(90deg, var(--red), var(--purple)); }
+  .card-user::before     { background: linear-gradient(90deg, var(--pink), var(--purple)); }
+
+  /* corner tag */
+  .card-tag {
+    position: absolute;
+    top: 20px; right: 20px;
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 2px;
+    border: 1px solid;
+  }
+
+  .card-investor .card-tag {
+    color: var(--red);
+    border-color: rgba(232,38,74,0.3);
+    background: rgba(232,38,74,0.06);
+  }
+
+  .card-user .card-tag {
+    color: var(--pink);
+    border-color: rgba(255,45,107,0.3);
+    background: rgba(255,45,107,0.06);
+  }
+
+  .card-title {
+    font-size: clamp(15px, 1.4vw, 18px);
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    line-height: 1.25;
+    margin-bottom: 20px;
+    padding-right: 90px;
+  }
+
+  /* divider */
+  .card-divider {
+    width: 32px;
+    height: 2px;
+    margin-bottom: 18px;
+  }
+
+  .card-investor .card-divider { background: var(--red); }
+  .card-user .card-divider     { background: var(--pink); }
+
+  .card-body {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    flex: 1;
+  }
+
+  .card-line {
+    font-size: clamp(11px, 1vw, 13px);
+    line-height: 1.55;
+    color: rgba(255,255,255,0.78);
+    font-weight: 400;
+    padding-left: 14px;
+    position: relative;
+  }
+
+  .card-line::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 8px;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+  }
+
+  .card-investor .card-line::before { background: var(--red); }
+  .card-user .card-line::before     { background: var(--pink); }
+
+  .card-line.card-hero {
+    font-size: clamp(12px, 1.1vw, 14px);
+    font-weight: 600;
+    color: var(--white);
+    padding-left: 0;
+  }
+
+  .card-line.card-hero::before { display: none; }
+
+  /* CTA button */
+  .card-cta {
+    margin-top: 22px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 10px 20px;
+    border-radius: 3px;
+    cursor: pointer;
+    border: none;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    align-self: flex-start;
+  }
+
+  .card-cta:hover { opacity: 0.85; transform: translateX(2px); }
+
+  .card-investor .card-cta {
+    background: linear-gradient(90deg, var(--red), var(--purple));
+    color: var(--white);
+  }
+
+  .card-user .card-cta {
+    background: linear-gradient(90deg, var(--pink), var(--purple));
+    color: var(--white);
+  }
+
+  .card-cta-arrow {
+    font-size: 13px;
+    transition: transform 0.2s ease;
+  }
+
+  .card-cta:hover .card-cta-arrow { transform: translateX(3px); }
+
+  /* ── unifying line ── */
+  .unifying {
+    text-align: center;
+    font-size: clamp(11px, 0.95vw, 13px);
+    color: var(--muted);
+    letter-spacing: 0.04em;
+    font-weight: 400;
+    border-top: 1px solid var(--border);
+    padding-top: 20px;
+    width: 100%;
+    max-width: 960px;
+  }
+
+  .unifying strong {
+    color: rgba(255,255,255,0.7);
+    font-weight: 600;
+  }
+
+  /* entrance animation */
+  .header   { animation: fadeUp 0.5s ease both; animation-delay: 0s; }
+  .card     { animation: fadeUp 0.5s ease both; }
+  .card-investor { animation-delay: 0.1s; }
+  .card-user     { animation-delay: 0.2s; }
+  .unifying { animation: fadeUp 0.5s ease both; animation-delay: 0.3s; }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+</style>
+</head>
+<body>
+<div class="stage">
+
+  <div class="header">
+    <div class="eyebrow">Hero — Audience Cards</div>
+    <div class="headline">Who is OX <span>for?</span></div>
+    <div class="subhead">Two audiences. One network. One fixed supply.</div>
+  </div>
+
+  <div class="cards">
+
+    <!-- CARD 1 — Investors -->
+    <div class="card card-investor">
+      <div class="card-tag">Investors &amp; Token Buyers</div>
+      <div class="card-title">A scarce token backed entirely by real human capital.</div>
+      <div class="card-divider"></div>
+      <div class="card-body">
+        <div class="card-line card-hero">Fixed supply. Human-mined. Backed 100% by real human capital.</div>
+        <div class="card-line">The only crypto network on earth where every token in circulation is earned through human participation — not sold to users.</div>
+        <div class="card-line">Fixed supply set at genesis. No new minting. Ever. The earlier you hold — the scarcer it gets.</div>
+      </div>
+      <button class="card-cta">Learn About the Token <span class="card-cta-arrow">→</span></button>
+    </div>
+
+    <!-- CARD 2 — Users -->
+    <div class="card card-user">
+      <div class="card-tag">Users &amp; Builders</div>
+      <div class="card-title">The only crypto you mine with your time — not your money.</div>
+      <div class="card-divider"></div>
+      <div class="card-body">
+        <div class="card-line card-hero">The only crypto you mine with human capital — your time and attention — not your money.</div>
+        <div class="card-line">Spend 4 minutes a day building your Machine Self.</div>
+        <div class="card-line">Your time and attention power the network — and earn you OX.</div>
+        <div class="card-line">As your Machine Self is being built, you can be matched to paid commercial work and earn even more.</div>
+        <div class="card-line">Your Machine Self continues working in the background — earning for you even while you sleep.</div>
+      </div>
+      <button class="card-cta">Build Your Machine Self. Start Earning. <span class="card-cta-arrow">→</span></button>
+    </div>
+
+  </div>
+
+  <div class="unifying">
+    <strong>One billion human agents.</strong> &nbsp;One fixed supply token. &nbsp;Mined entirely by human participation.
+  </div>
+
+</div>
+</body>
+</html>
