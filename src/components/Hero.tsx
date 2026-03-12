@@ -21,15 +21,15 @@ export default function Hero() {
         </div>
         <Image src={LOGO_URL} alt="OX" width={80} height={32} className="h-8 w-20 text-white" />
         <div className="space-y-4">
-          <h1 className="text-4xl font-bold tracking-tight text-white sm:text-5xl md:text-6xl">
+          <h1 className="font-heading text-4xl font-bold tracking-tight text-white text-balance sm:text-5xl md:text-6xl">
             {landing.hero.headline}
           </h1>
-          <p className="bg-gradient-to-r from-white via-zinc-200 to-[var(--accent)] bg-clip-text text-xl font-medium text-transparent sm:text-2xl md:text-3xl">
+          <p className="font-heading bg-gradient-to-r from-white via-zinc-200 to-[var(--accent)] bg-clip-text text-xl font-medium text-transparent text-balance sm:text-2xl md:text-3xl">
             {landing.hero.subline}
           </p>
         </div>
         <Link
-          href="#get-the-app"
+          href="/#get-the-app"
           className="relative rounded-full bg-[var(--accent)] px-10 py-4 text-lg font-semibold text-white shadow-[0_0_32px_rgba(255,13,116,0.55)] transition hover:translate-y-0.5 hover:shadow-[0_0_40px_rgba(255,13,116,0.9)] animate-pulse-ring"
         >
           {landing.hero.cta}

@@ -18,6 +18,16 @@ export default function AboutPage() {
             OX is a network for people, not profiles. The story starts with a simple idea: what if
             your digital self worked for you rather than for an ad auction?
           </p>
+          <section className="rounded-2xl border border-indigo-900/60 bg-indigo-950/30 p-6">
+            <h2 className="text-sm font-semibold uppercase tracking-wide text-[var(--accent)]">
+              Values / Why We Build
+            </h2>
+            <p className="mt-3 text-base text-zinc-200">
+              Human-first. Privacy by design. Consent always. No extraction. OX rewards contribution
+              instead of harvesting attention. We build because we believe your digital self should
+              work for you, not for someone else&apos;s algorithm.
+            </p>
+          </section>
           <div className="grid gap-6 md:grid-cols-2">
             <section className="rounded-2xl border border-indigo-900/60 bg-indigo-950/30 p-6">
               <h2 className="text-sm font-semibold uppercase tracking-wide text-[var(--accent)]">
@@ -34,7 +44,7 @@ export default function AboutPage() {
                 Mission
               </h2>
               <p className="mt-3 text-base text-zinc-200">
-                Our mission is to give every person a sovereign digital twin that they train, own and
+                Our mission is to give every person a Machine Self that they train, own and
                 control. OX combines token incentives, continuous learning and privacy-preserving
                 infrastructure so that every micro-action can be rewarded without compromising your
                 rights.
@@ -42,7 +52,7 @@ export default function AboutPage() {
             </section>
             <section className="rounded-2xl border border-indigo-900/60 bg-indigo-950/30 p-6">
               <h2 className="text-sm font-semibold uppercase tracking-wide text-[var(--accent)]">
-                1B Connected Users
+                1B Connected Devices
               </h2>
               <p className="mt-3 text-base text-zinc-200">
                 We design OX for scale from day one. The mobile app, referral mechanics and mining

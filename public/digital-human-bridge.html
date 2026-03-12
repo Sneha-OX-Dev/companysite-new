@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OX — Digital vs Human Bridge</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&display=swap" rel="stylesheet">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --dark:   #07071A;
+  --navy:   #0D0D2B;
+  --pink:   #FF2D6B;
+  --red:    #E8264A;
+  --purple: #7B1FA2;
+  --white:  #FFFFFF;
+}
+
+html, body {
+  width: 100%; height: 100%;
+  overflow: hidden;
+  background: var(--dark);
+  font-family: 'DM Sans', sans-serif;
+  color: var(--white);
+}
+
+body::before {
+  content: '';
+  position: fixed; inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.015) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.015) 1px, transparent 1px);
+  background-size: 44px 44px;
+  pointer-events: none;
+}
+
+body::after {
+  content: '';
+  position: fixed;
+  width: 500px; height: 500px;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(circle, rgba(232,38,74,0.07) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.wrap {
+  position: relative; z-index: 1;
+  width: 100%; height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 36px 16px;
+  gap: 14px;
+}
+
+.hdr { text-align: center; }
+.hdr-tag {
+  display: inline-block;
+  font-size: 9.5px; font-weight: 700;
+  letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--pink);
+  border: 1px solid rgba(255,45,107,0.3);
+  background: rgba(255,45,107,0.07);
+  padding: 4px 12px; border-radius: 2px;
+  margin-bottom: 10px;
+}
+.hdr-title {
+  font-size: clamp(16px, 1.9vw, 22px);
+  font-weight: 800; letter-spacing: -0.025em; line-height: 1.1;
+}
+.hdr-title em {
+  font-style: normal;
+  background: linear-gradient(90deg, var(--red), var(--pink), var(--purple));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.cols {
+  width: 100%; max-width: 1000px;
+  display: grid;
+  grid-template-columns: 1fr 148px 1fr;
+  gap: 0;
+  align-items: stretch;
+}
+
+.panel {
+  background: var(--navy);
+  border: 1px solid rgba(255,255,255,0.07);
+  padding: 18px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.panel-left  { border-radius: 4px 0 0 4px; }
+.panel-right { border-radius: 0 4px 4px 0; border-left: none; }
+
+.panel-tag {
+  font-size: 8.5px; font-weight: 700;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  margin-bottom: 2px;
+}
+.panel-left .panel-tag  { color: rgba(255,255,255,0.35); }
+.panel-right .panel-tag { color: var(--pink); }
+
+.panel-heading {
+  font-size: clamp(12px, 1.1vw, 14px);
+  font-weight: 700; line-height: 1.2;
+  margin-bottom: 4px;
+}
+.panel-left .panel-heading  { color: rgba(255,255,255,0.6); }
+.panel-right .panel-heading { color: var(--white); }
+
+.row {
+  display: flex; align-items: stretch; gap: 10px;
+  padding: 9px 10px;
+  border-radius: 3px;
+  border: 1px solid rgba(255,255,255,0.06);
+  background: rgba(255,255,255,0.02);
+}
+
+.panel-right .row {
+  border-color: rgba(255,45,107,0.12);
+  background: rgba(255,45,107,0.03);
+}
+
+.row-accent {
+  width: 3px; border-radius: 2px; flex-shrink: 0; align-self: stretch;
+}
+.panel-left .row-accent  { background: rgba(255,255,255,0.15); }
+.panel-right .row-accent { background: var(--pink); }
+
+.row-body { flex: 1; }
+.row-verb {
+  font-size: clamp(11px, 1vw, 13px);
+  font-weight: 700; line-height: 1;
+  margin-bottom: 3px;
+}
+.panel-left .row-verb  { color: rgba(255,255,255,0.55); }
+.panel-right .row-verb { color: var(--white); }
+
+.row-desc {
+  font-size: clamp(9.5px, 0.82vw, 11px);
+  color: rgba(255,255,255,0.38);
+  line-height: 1.35;
+}
+
+.bridge {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  position: relative;
+  padding: 0 8px;
+}
+
+.spine {
+  position: absolute;
+  top: 8%; bottom: 8%;
+  left: 50%; transform: translateX(-50%);
+  width: 2px;
+  background: linear-gradient(180deg,
+    transparent 0%,
+    var(--red) 15%,
+    var(--pink) 45%,
+    var(--purple) 80%,
+    transparent 100%);
+  border-radius: 1px;
+}
+
+.bnode {
+  position: relative; z-index: 2;
+  width: 100%;
+  padding: 9px 10px;
+  border-radius: 3px;
+  text-align: center;
+  margin: 4px 0;
+}
+
+.bnode-ms  { border: 1.5px solid var(--red);    background: rgba(232,38,74,0.1); }
+.bnode-vx  { border: 1.5px solid var(--purple); background: rgba(123,31,162,0.1); }
+.bnode-dim { border: 1px solid rgba(255,255,255,0.08); background: rgba(255,255,255,0.02); }
+
+.bnode-cap {
+  font-size: 7.5px; font-weight: 700;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  margin-bottom: 3px;
+}
+.bnode-ms .bnode-cap  { color: var(--red); }
+.bnode-vx .bnode-cap  { color: var(--purple); }
+.bnode-dim .bnode-cap { color: rgba(255,255,255,0.3); }
+
+.bnode-txt {
+  font-size: clamp(9px, 0.85vw, 11px);
+  font-weight: 700; line-height: 1.4;
+  color: var(--white);
+}
+.bnode-dim .bnode-txt { color: rgba(255,255,255,0.45); font-weight: 500; }
+
+.tick {
+  position: relative; z-index: 2;
+  font-size: 10px; color: rgba(255,45,107,0.6);
+  line-height: 1; padding: 1px 0;
+}
+
+.bottom {
+  width: 100%; max-width: 1000px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.bpill {
+  border-radius: 3px;
+  border: 1px solid rgba(255,255,255,0.07);
+  background: var(--navy);
+  padding: 10px 14px;
+  display: flex; align-items: flex-start; gap: 10px;
+}
+
+.bpill-bar {
+  width: 3px; min-height: 100%;
+  border-radius: 2px; flex-shrink: 0;
+  align-self: stretch;
+}
+.bpill:first-child .bpill-bar { background: rgba(255,255,255,0.2); }
+.bpill:last-child .bpill-bar  { background: var(--pink); }
+
+.bpill-text {
+  font-size: clamp(10px, 0.85vw, 11.5px);
+  color: rgba(255,255,255,0.6); line-height: 1.45;
+}
+.bpill-text strong { color: var(--white); font-weight: 700; }
+
+.closing {
+  width: 100%; max-width: 1000px;
+  border-top: 1px solid rgba(255,255,255,0.07);
+  padding-top: 12px;
+  text-align: center;
+  font-size: clamp(10px, 0.85vw, 12px);
+  color: rgba(255,255,255,0.38);
+  line-height: 1.5;
+}
+.closing strong { color: rgba(255,255,255,0.65); font-weight: 600; }
+
+.wrap > * { animation: up 0.5s ease both; }
+.wrap > *:nth-child(1) { animation-delay: 0.00s; }
+.wrap > *:nth-child(2) { animation-delay: 0.08s; }
+.wrap > *:nth-child(3) { animation-delay: 0.16s; }
+.wrap > *:nth-child(4) { animation-delay: 0.24s; }
+.wrap > *:nth-child(5) { animation-delay: 0.32s; }
+
+@keyframes up {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hdr">
+    <div class="hdr-tag">Diagram 8 — Digital vs Human Bridge</div>
+    <div class="hdr-title">Where systems stop predicting — and start <em>knowing.</em></div>
+  </div>
+
+  <div class="cols">
+
+    <div class="panel panel-left">
+      <div class="panel-tag">Digital &amp; AI Systems</div>
+      <div class="panel-heading">What systems do without OX</div>
+      <div class="row">
+        <div class="row-accent"></div>
+        <div class="row-body">
+          <div class="row-verb">Predict</div>
+          <div class="row-desc">Probabilistic inference from historical data</div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="row-accent"></div>
+        <div class="row-body">
+          <div class="row-verb">Infer</div>
+          <div class="row-desc">Pattern-matching on aggregated behaviour</div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="row-accent"></div>
+        <div class="row-body">
+          <div class="row-verb">Forecast</div>
+          <div class="row-desc">Approximation — never confirmed truth</div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="row-accent"></div>
+        <div class="row-body">
+          <div class="row-verb">Route work blind</div>
+          <div class="row-desc">Broad targeting — high waste, low precision</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="bridge">
+      <div class="spine"></div>
+      <div class="bnode bnode-dim">
+        <div class="bnode-cap">Demand enters</div>
+        <div class="bnode-txt">Enterprise<br>request</div>
+      </div>
+      <div class="tick">↓</div>
+      <div class="bnode bnode-ms">
+        <div class="bnode-cap">Machine Self</div>
+        <div class="bnode-txt">Match<br>Filter<br>Contextualise</div>
+      </div>
+      <div class="tick">↓</div>
+      <div class="bnode bnode-vx">
+        <div class="bnode-cap">OX Verification</div>
+        <div class="bnode-txt">Verify<br>Consent<br>Confirm</div>
+      </div>
+      <div class="tick">↓</div>
+      <div class="bnode bnode-dim">
+        <div class="bnode-cap">Settled on-chain</div>
+        <div class="bnode-txt">Reward<br>issued</div>
+      </div>
+    </div>
+
+    <div class="panel panel-right">
+      <div class="panel-tag">Human Participants</div>
+      <div class="panel-heading">What humans provide through OX</div>
+      <div class="row">
+        <div class="row-accent"></div>
+        <div class="row-body">
+          <div class="row-verb">Act</div>
+          <div class="row-desc">Real decisions from real people in real time</div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="row-accent"></div>
+        <div class="row-body">
+          <div class="row-verb">Decide</div>
+          <div class="row-desc">Verified consent — cryptographically bound</div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="row-accent"></div>
+        <div class="row-body">
+          <div class="row-verb">Execute</div>
+          <div class="row-desc">Physical and digital work — confirmed on-chain</div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="row-accent"></div>
+        <div class="row-body">
+          <div class="row-verb">Earn</div>
+          <div class="row-desc">OXIT rewarded for every verified contribution</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="bottom">
+    <div class="bpill">
+      <div class="bpill-bar"></div>
+      <div class="bpill-text"><strong>Systems gain certainty.</strong> Enterprises purchase verified outcomes — not user data.</div>
+    </div>
+    <div class="bpill">
+      <div class="bpill-bar"></div>
+      <div class="bpill-text"><strong>Humans retain agency.</strong> Data never leaves the device. Only a consent signal is transmitted.</div>
+    </div>
+  </div>
+
+  <div class="closing">
+    <strong>This is not better data.</strong> &nbsp;This is a different category of input entirely. The difference between a weather forecast and looking out the window.
+  </div>
+
+</div>
+</body>
+</html>

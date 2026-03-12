@@ -1,4 +1,6 @@
 import { landing } from "@/content/landing";
+import { GlossaryTerm } from "@/components/GlossaryTerm";
+import MicroactionsFlowchart from "@/components/diagrams/MicroactionsFlowchart";
 
 export default function MomentsSection() {
   return (
@@ -13,8 +15,16 @@ export default function MomentsSection() {
         <p className="mt-1 text-2xl font-semibold text-zinc-300">
           {landing.moments.subheadline}
         </p>
+        <div className="mt-6">
+          <MicroactionsFlowchart />
+        </div>
         <p className="mt-6 text-lg leading-relaxed text-zinc-400">
-          {landing.moments.body}
+          Every click, swipe, share is a value exchange.{" "}
+          <GlossaryTerm termKey="microaction">Microactions</GlossaryTerm>: Tiny
+          actions—like sharing, skipping, approving, or learning—earn real
+          rewards. The Source of Value: OX turns your presence into power —
+          because the value isn&apos;t just what you do. It&apos;s you. One click
+          at a time. Real ownership. Real earnings. Because you are valuable.
         </p>
       </div>
     </section>

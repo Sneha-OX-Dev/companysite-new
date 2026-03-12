@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>OX — Phone as Sovereign Node</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:radial-gradient(ellipse at 50% 20%,#1e0535 0%,#07071A 65%);min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:20px 16px;font-family:'Segoe UI',sans-serif;overflow:hidden}
+@keyframes spin{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+@keyframes pulse{0%,100%{opacity:.3;transform:scale(1)}50%{opacity:.8;transform:scale(1.15)}}
+@keyframes shimmer{0%{background-position:-300% center}100%{background-position:300% center}}
+@keyframes fadein{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
+@keyframes scanline{0%{top:5%}100%{top:90%}}
+@keyframes orbitdot{from{transform:rotate(0deg) translateX(70px) rotate(0deg)}to{transform:rotate(360deg) translateX(70px) rotate(-360deg)}}
+@keyframes orbitdot2{from{transform:rotate(120deg) translateX(70px) rotate(-120deg)}to{transform:rotate(480deg) translateX(70px) rotate(-480deg)}}
+@keyframes orbitdot3{from{transform:rotate(240deg) translateX(70px) rotate(-240deg)}to{transform:rotate(600deg) translateX(70px) rotate(-600deg)}}
+</style>
+</head>
+<body>
+
+<div style="text-align:center;margin-bottom:14px;animation:fadein .5s ease both">
+  <div style="display:inline-flex;align-items:center;gap:7px;background:rgba(255,45,107,.1);border:1px solid rgba(255,45,107,.3);border-radius:40px;padding:4px 14px;margin-bottom:8px">
+    <div style="width:6px;height:6px;border-radius:50%;background:#FF2D6B;box-shadow:0 0 10px #FF2D6B;animation:pulse 2s infinite"></div>
+    <span style="font-size:9px;color:#FF2D6B;letter-spacing:2.5px;font-weight:700;text-transform:uppercase">OX Network Architecture</span>
+  </div>
+  <h1 style="font-size:clamp(16px,2.8vw,32px);font-weight:900;color:#fff;letter-spacing:-1px;margin-bottom:3px">Your Phone Is a Sovereign Node</h1>
+  <p style="font-size:9px;color:rgba(255,255,255,.3);letter-spacing:2px;text-transform:uppercase">Not a client. Not a terminal. A node.</p>
+</div>
+
+<div style="display:flex;align-items:center;justify-content:center;width:100%;max-width:940px;gap:12px;animation:fadein .6s ease .1s both">
+
+  <!-- LEFT -->
+  <div style="display:flex;flex-direction:column;gap:7px;flex:1;max-width:195px">
+    <div style="font-size:7px;color:#FF2D6B;letter-spacing:2px;text-transform:uppercase;text-align:center;font-weight:700;margin-bottom:1px">Stays On Device</div>
+
+    <div style="background:linear-gradient(135deg,rgba(255,45,107,0.13),rgba(123,31,162,0.08));border:1px solid rgba(255,45,107,0.4);border-radius:10px;padding:9px 11px">
+      <div style="display:flex;align-items:center;gap:7px;margin-bottom:2px">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="4" stroke="#FF2D6B" stroke-width="2"/><path d="M4 20 Q4 14 12 14 Q20 14 20 20" stroke="#FF2D6B" stroke-width="2" stroke-linecap="round"/></svg>
+        <span style="font-size:11px;font-weight:800;color:#fff">Your Identity</span>
+      </div>
+      <div style="font-size:9px;color:rgba(255,255,255,0.4)">Biometric. Local. Never uploaded.</div>
+    </div>
+
+    <div style="background:linear-gradient(135deg,rgba(255,45,107,0.13),rgba(123,31,162,0.08));border:1px solid rgba(255,45,107,0.4);border-radius:10px;padding:9px 11px">
+      <div style="display:flex;align-items:center;gap:7px;margin-bottom:2px">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><rect x="5" y="2" width="14" height="20" rx="3" stroke="#FF2D6B" stroke-width="2"/><circle cx="12" cy="11" r="3" stroke="#FF2D6B" stroke-width="1.5"/><circle cx="12" cy="11" r="1.2" fill="#FF2D6B"/></svg>
+        <span style="font-size:11px;font-weight:800;color:#fff">Machine Self</span>
+      </div>
+      <div style="font-size:9px;color:rgba(255,255,255,0.4)">Your AI. Runs locally. 9 superpowers.</div>
+    </div>
+
+    <div style="background:linear-gradient(135deg,rgba(255,45,107,0.13),rgba(123,31,162,0.08));border:1px solid rgba(255,45,107,0.4);border-radius:10px;padding:9px 11px">
+      <div style="display:flex;align-items:center;gap:7px;margin-bottom:2px">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><ellipse cx="12" cy="6" rx="8" ry="3" stroke="#FF2D6B" stroke-width="2"/><path d="M4 6 L4 18 Q4 21 12 21 Q20 21 20 18 L20 6" stroke="#FF2D6B" stroke-width="2"/></svg>
+        <span style="font-size:11px;font-weight:800;color:#fff">Your Data</span>
+      </div>
+      <div style="font-size:9px;color:rgba(255,255,255,0.4)">2,000 data points. Sovereign. Yours.</div>
+    </div>
+
+    <div style="background:linear-gradient(135deg,rgba(255,45,107,0.13),rgba(123,31,162,0.08));border:1px solid rgba(255,45,107,0.4);border-radius:10px;padding:9px 11px">
+      <div style="display:flex;align-items:center;gap:7px;margin-bottom:2px">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><circle cx="8" cy="12" r="5" stroke="#FF2D6B" stroke-width="2"/><line x1="13" y1="12" x2="21" y2="12" stroke="#FF2D6B" stroke-width="2" stroke-linecap="round"/><line x1="18" y1="12" x2="18" y2="15" stroke="#FF2D6B" stroke-width="2" stroke-linecap="round"/><line x1="21" y1="12" x2="21" y2="15" stroke="#FF2D6B" stroke-width="2" stroke-linecap="round"/></svg>
+        <span style="font-size:11px;font-weight:800;color:#fff">Private Keys</span>
+      </div>
+      <div style="font-size:9px;color:rgba(255,255,255,0.4)">Cryptographic. Non-custodial.</div>
+    </div>
+  </div>
+
+  <!-- CENTRE PHONE -->
+  <div style="position:relative;width:200px;height:260px;flex-shrink:0;display:flex;align-items:center;justify-content:center">
+    <div style="position:absolute;width:170px;height:170px;border-radius:50%;border:1px solid rgba(255,45,107,0.18);animation:spin 18s linear infinite;top:50%;left:50%;transform:translate(-50%,-50%)"></div>
+    <div style="position:absolute;width:210px;height:210px;border-radius:50%;border:1px dashed rgba(123,31,162,0.12);animation:spin 28s linear infinite reverse;top:50%;left:50%;transform:translate(-50%,-50%)"></div>
+    <div style="position:absolute;width:0;height:0;top:50%;left:50%">
+      <div style="position:absolute;width:8px;height:8px;border-radius:50%;background:#FF2D6B;box-shadow:0 0 10px #FF2D6B;margin:-4px;animation:orbitdot 7s linear infinite"></div>
+    </div>
+    <div style="position:absolute;width:0;height:0;top:50%;left:50%">
+      <div style="position:absolute;width:6px;height:6px;border-radius:50%;background:#7B1FA2;box-shadow:0 0 8px #7B1FA2;margin:-3px;animation:orbitdot2 7s linear infinite"></div>
+    </div>
+    <div style="position:absolute;width:0;height:0;top:50%;left:50%">
+      <div style="position:absolute;width:5px;height:5px;border-radius:50%;background:white;opacity:0.6;margin:-2.5px;animation:orbitdot3 7s linear infinite"></div>
+    </div>
+
+    <div style="position:relative;width:84px;height:158px;background:linear-gradient(160deg,#1a0030,#0D0D2B);border-radius:16px;border:2px solid rgba(255,45,107,0.7);box-shadow:0 0 40px rgba(255,45,107,0.3),0 0 80px rgba(123,31,162,0.2),inset 0 1px 0 rgba(255,255,255,0.12);animation:float 3.5s ease-in-out infinite;z-index:10">
+      <div style="position:absolute;top:7px;left:50%;transform:translateX(-50%);width:24px;height:4px;background:rgba(0,0,0,0.9);border-radius:3px"></div>
+      <div style="position:relative;margin:18px 5px 5px;height:110px;background:linear-gradient(160deg,#0f0020,#07071A);border-radius:10px;overflow:hidden;border:1px solid rgba(255,45,107,0.3)">
+        <div style="position:absolute;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,#FF2D6B,transparent);animation:scanline 2.5s ease-in-out infinite;opacity:0.8"></div>
+        <div style="display:flex;flex-direction:column;align-items:center;padding:7px 5px;gap:4px">
+          <div style="width:30px;height:30px;border-radius:50%;background:linear-gradient(135deg,rgba(255,45,107,0.4),rgba(123,31,162,0.4));border:1.5px solid #FF2D6B;display:flex;align-items:center;justify-content:center">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none"><rect x="3" y="4" width="18" height="16" rx="4" fill="rgba(255,45,107,0.2)" stroke="#FF2D6B" stroke-width="1.5"/><rect x="5" y="9" width="5" height="4" rx="1.5" fill="rgba(255,45,107,0.6)" stroke="#FF2D6B" stroke-width="0.8"/><circle cx="7.5" cy="11" r="1.3" fill="#FF2D6B"/><rect x="14" y="9" width="5" height="4" rx="1.5" fill="rgba(123,31,162,0.6)" stroke="#7B1FA2" stroke-width="0.8"/><circle cx="16.5" cy="11" r="1.3" fill="#7B1FA2"/></svg>
+          </div>
+          <div style="font-size:6px;color:#FF2D6B;font-weight:800;letter-spacing:1px;text-transform:uppercase">Machine Self</div>
+          <div style="width:100%;display:flex;flex-direction:column;gap:2px">
+            <div style="display:flex;align-items:center;gap:2px"><div style="font-size:5px;color:rgba(255,255,255,0.4);width:12px">IQ</div><div style="flex:1;height:2px;background:rgba(255,255,255,0.1);border-radius:2px"><div style="width:78%;height:100%;background:linear-gradient(90deg,#FF2D6B,#7B1FA2);border-radius:2px"></div></div></div>
+            <div style="display:flex;align-items:center;gap:2px"><div style="font-size:5px;color:rgba(255,255,255,0.4);width:12px">EQ</div><div style="flex:1;height:2px;background:rgba(255,255,255,0.1);border-radius:2px"><div style="width:65%;height:100%;background:linear-gradient(90deg,#FF2D6B,#7B1FA2);border-radius:2px"></div></div></div>
+            <div style="display:flex;align-items:center;gap:2px"><div style="font-size:5px;color:rgba(255,255,255,0.4);width:12px">XP</div><div style="flex:1;height:2px;background:rgba(255,255,255,0.1);border-radius:2px"><div style="width:90%;height:100%;background:linear-gradient(90deg,#FFD700,#FF2D6B);border-radius:2px"></div></div></div>
+          </div>
+          <div style="background:rgba(255,45,107,0.15);border:1px solid rgba(255,45,107,0.3);border-radius:5px;padding:3px 5px;width:100%;text-align:center">
+            <div style="font-size:5px;color:rgba(255,255,255,0.4);text-transform:uppercase;letter-spacing:1px">Balance</div>
+            <div style="font-size:8px;font-weight:900;color:#FF2D6B">2,400 OXIT</div>
+          </div>
+        </div>
+      </div>
+      <div style="position:absolute;bottom:4px;left:50%;transform:translateX(-50%);width:20px;height:3px;background:rgba(255,255,255,0.2);border-radius:2px"></div>
+      <div style="position:absolute;top:-9px;right:-16px;background:linear-gradient(135deg,#FF2D6B,#7B1FA2);border-radius:20px;padding:2px 6px;font-size:6px;font-weight:900;color:white;letter-spacing:1px;text-transform:uppercase;box-shadow:0 0 10px rgba(255,45,107,0.6);white-space:nowrap">SOVEREIGN</div>
+    </div>
+  </div>
+
+  <!-- RIGHT -->
+  <div style="display:flex;flex-direction:column;gap:7px;flex:1;max-width:195px">
+    <div style="font-size:7px;color:rgba(255,255,255,0.4);letter-spacing:2px;text-transform:uppercase;text-align:center;font-weight:700;margin-bottom:1px">Signal Only — To Network</div>
+
+    <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:9px 11px">
+      <div style="display:flex;align-items:center;gap:7px;margin-bottom:2px">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M12 2 L20 6 L20 14 Q20 20 12 23 Q4 20 4 14 L4 6 Z" stroke="rgba(255,255,255,0.5)" stroke-width="2" fill="none"/><path d="M8 12 L11 15 L16 9" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span style="font-size:11px;font-weight:800;color:rgba(255,255,255,0.7)">Consent Signal</span>
+      </div>
+      <div style="font-size:9px;color:rgba(255,255,255,0.3)">Yes or no. That's all that leaves.</div>
+    </div>
+
+    <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:9px 11px">
+      <div style="display:flex;align-items:center;gap:7px;margin-bottom:2px">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><rect x="3" y="11" width="18" height="11" rx="3" stroke="rgba(255,255,255,0.5)" stroke-width="2"/><path d="M7 11 L7 7 Q7 3 12 3 Q17 3 17 7 L17 11" stroke="rgba(255,255,255,0.5)" stroke-width="2" fill="none" stroke-linecap="round"/><circle cx="12" cy="16" r="2" fill="white" opacity="0.6"/></svg>
+        <span style="font-size:11px;font-weight:800;color:rgba(255,255,255,0.7)">Verified Proof</span>
+      </div>
+      <div style="font-size:9px;color:rgba(255,255,255,0.3)">Zero knowledge. No metadata.</div>
+    </div>
+
+    <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:9px 11px">
+      <div style="display:flex;align-items:center;gap:7px;margin-bottom:2px">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="rgba(255,255,255,0.5)" stroke-width="2"/><path d="M12 7 L12 12 L16 12" stroke="white" stroke-width="2" stroke-linecap="round"/></svg>
+        <span style="font-size:11px;font-weight:800;color:rgba(255,255,255,0.7)">Timestamp</span>
+      </div>
+      <div style="font-size:9px;color:rgba(255,255,255,0.3)">When you participated. Nothing more.</div>
+    </div>
+
+    <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:9px 11px">
+      <div style="display:flex;align-items:center;gap:7px;margin-bottom:2px">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><ellipse cx="12" cy="17" rx="7" ry="2.5" stroke="rgba(255,255,255,0.5)" stroke-width="1.6"/><ellipse cx="12" cy="13" rx="7" ry="2.5" stroke="rgba(255,255,255,0.5)" stroke-width="1.6"/><ellipse cx="12" cy="9" rx="7" ry="2.5" stroke="rgba(255,255,255,0.5)" stroke-width="1.8"/></svg>
+        <span style="font-size:11px;font-weight:800;color:rgba(255,255,255,0.7)">OXIT Earned</span>
+      </div>
+      <div style="font-size:9px;color:rgba(255,255,255,0.3)">On-chain. Immutable. Yours.</div>
+    </div>
+  </div>
+</div>
+
+<!-- BOTTOM -->
+<div style="margin-top:16px;max-width:700px;width:100%;display:flex;border-radius:12px;overflow:hidden;box-shadow:0 6px 36px rgba(0,0,0,.5);animation:fadein .7s ease .3s both">
+  <div style="width:4px;background:linear-gradient(to bottom,#FF2D6B,#7B1FA2);flex-shrink:0"></div>
+  <div style="flex:1;background:linear-gradient(135deg,rgba(255,45,107,.1),rgba(123,31,162,.08));padding:12px 20px;border:1px solid rgba(255,255,255,.07);border-left:none;border-radius:0 12px 12px 0;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px">
+    <div style="font-size:13px;font-weight:800;color:#fff;line-height:1.4">Your phone is not a window into OX. It <em>is</em> OX.</div>
+    <div style="display:flex;gap:18px">
+      <div style="text-align:center">
+        <div style="font-size:15px;font-weight:900;background:linear-gradient(90deg,#FF2D6B,#7B1FA2);background-size:200% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;animation:shimmer 3s linear infinite">2,000</div>
+        <div style="font-size:7px;color:rgba(255,255,255,.3);text-transform:uppercase;letter-spacing:1px">Data Points</div>
+      </div>
+      <div style="text-align:center">
+        <div style="font-size:15px;font-weight:900;background:linear-gradient(90deg,#FF2D6B,#7B1FA2);background-size:200% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;animation:shimmer 3s linear infinite">4 mins</div>
+        <div style="font-size:7px;color:rgba(255,255,255,.3);text-transform:uppercase;letter-spacing:1px">Daily</div>
+      </div>
+      <div style="text-align:center">
+        <div style="font-size:15px;font-weight:900;background:linear-gradient(90deg,#FF2D6B,#7B1FA2);background-size:200% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;animation:shimmer 3s linear infinite">Zero</div>
+        <div style="font-size:7px;color:rgba(255,255,255,.3);text-transform:uppercase;letter-spacing:1px">Uploaded</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

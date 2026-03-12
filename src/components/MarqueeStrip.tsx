@@ -1,6 +1,6 @@
 const PHRASES = [
   "Sovereignty",
-  "MindTwin",
+  "Machine Self",
   "16h Work",
   "Token",
   "Marketplace",
@@ -8,6 +8,8 @@ const PHRASES = [
   "Your Data",
   "Earn OXME",
   "Alive in the Network",
+  "Unlocking $3 Trillion",
+  "Monetise Your Unique Self",
 ];
 
 function MarqueeRow({ reverse = false }: { reverse?: boolean }) {

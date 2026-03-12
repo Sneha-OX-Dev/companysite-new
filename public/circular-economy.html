@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>OX — Circular Economy</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:100%;height:100%;overflow:hidden}
+body{background:radial-gradient(ellipse at 50% 20%,#1e0535 0%,#07071A 65%);display:flex;flex-direction:column;align-items:center;justify-content:center;font-family:'Segoe UI',sans-serif;padding:12px}
+@keyframes spin{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+@keyframes spinrev{from{transform:rotate(0deg)}to{transform:rotate(-360deg)}}
+@keyframes pulse{0%,100%{opacity:.3}50%{opacity:.9}}
+@keyframes shimmer{0%{background-position:-300% center}100%{background-position:300% center}}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
+@keyframes flowdot{from{transform:rotate(0deg) translateX(102px) rotate(0deg)}to{transform:rotate(360deg) translateX(102px) rotate(-360deg)}}
+@keyframes flowdot2{from{transform:rotate(120deg) translateX(102px) rotate(-120deg)}to{transform:rotate(480deg) translateX(102px) rotate(-480deg)}}
+@keyframes flowdot3{from{transform:rotate(240deg) translateX(102px) rotate(-240deg)}to{transform:rotate(600deg) translateX(102px) rotate(-600deg)}}
+.card-l{background:linear-gradient(135deg,rgba(255,45,107,0.1),rgba(123,31,162,0.07));border:1px solid rgba(255,45,107,0.35);border-radius:10px;padding:8px 10px}
+.card-r{background:linear-gradient(135deg,rgba(123,31,162,0.1),rgba(255,45,107,0.07));border:1px solid rgba(123,31,162,0.35);border-radius:10px;padding:8px 10px}
+.tag-l{display:inline-block;background:rgba(255,45,107,0.15);border:1px solid rgba(255,45,107,0.3);border-radius:20px;padding:1px 7px;font-size:7px;color:#FF2D6B;font-weight:700;margin-bottom:4px}
+.tag-r{display:inline-block;background:rgba(123,31,162,0.2);border:1px solid rgba(123,31,162,0.4);border-radius:20px;padding:1px 7px;font-size:7px;color:#a855f7;font-weight:700;margin-bottom:4px}
+.ctitle{font-size:10px;font-weight:800;color:#fff;margin-bottom:2px}
+.csub{font-size:8px;color:rgba(255,255,255,0.4);line-height:1.4}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div style="text-align:center;margin-bottom:10px">
+  <div style="display:inline-flex;align-items:center;gap:6px;background:rgba(255,45,107,.1);border:1px solid rgba(255,45,107,.3);border-radius:40px;padding:3px 12px;margin-bottom:6px">
+    <div style="width:5px;height:5px;border-radius:50%;background:#FF2D6B;box-shadow:0 0 8px #FF2D6B;animation:pulse 2s infinite"></div>
+    <span style="font-size:8px;color:#FF2D6B;letter-spacing:2.5px;font-weight:700;text-transform:uppercase">Token Economy</span>
+  </div>
+  <div style="font-size:clamp(14px,2.4vw,28px);font-weight:900;color:#fff;letter-spacing:-0.8px;margin-bottom:2px">Human-Mined Circular Economy</div>
+  <div style="font-size:8px;color:rgba(255,255,255,.3);letter-spacing:1.5px;text-transform:uppercase">Organisations pay in · Humans earn out · Fixed supply · Growing demand</div>
+</div>
+
+<!-- MAIN ROW -->
+<div style="display:flex;align-items:center;justify-content:center;width:100%;max-width:920px;gap:14px">
+
+  <!-- LEFT — demand -->
+  <div style="display:flex;flex-direction:column;gap:7px;flex:1;max-width:185px">
+    <div style="font-size:7px;color:rgba(255,255,255,0.3);letter-spacing:2px;text-transform:uppercase;text-align:right;font-weight:700">Demand Side</div>
+
+    <div class="card-l">
+      <div class="tag-l">OXME IN →</div>
+      <div class="ctitle">Organisations</div>
+      <div class="csub">Pay OXME to access verified human intelligence at scale</div>
+    </div>
+
+    <div class="card-l">
+      <div class="tag-l">OXME IN →</div>
+      <div class="ctitle">Research Bodies</div>
+      <div class="csub">Buy verified human data insights from the protocol</div>
+    </div>
+
+    <div class="card-l">
+      <div class="tag-l">OXME IN →</div>
+      <div class="ctitle">AI Companies</div>
+      <div class="csub">Pay for verified human-labelled training data</div>
+    </div>
+
+    <div class="card-l">
+      <div class="tag-l">OXME IN →</div>
+      <div class="ctitle">Investors</div>
+      <div class="csub">15% allocation. Fixed. No new minting ever.</div>
+    </div>
+  </div>
+
+  <!-- CENTRE -->
+  <div style="position:relative;width:240px;height:240px;flex-shrink:0;display:flex;align-items:center;justify-content:center">
+
+    <!-- Rings -->
+    <div style="position:absolute;inset:0;border-radius:50%;border:1px dashed rgba(255,45,107,0.2);animation:spin 22s linear infinite"></div>
+    <div style="position:absolute;inset:8px;border-radius:50%;border:1px solid rgba(123,31,162,0.15);animation:spinrev 32s linear infinite"></div>
+
+    <!-- SVG arc arrows -->
+    <svg style="position:absolute;inset:0;width:100%;height:100%" viewBox="0 0 240 240">
+      <defs>
+        <linearGradient id="ag" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" stop-color="#FF2D6B" stop-opacity="0.7"/>
+          <stop offset="100%" stop-color="#7B1FA2" stop-opacity="0.7"/>
+        </linearGradient>
+        <marker id="mh1" markerWidth="5" markerHeight="5" refX="2.5" refY="2.5" orient="auto">
+          <path d="M0,0 L5,2.5 L0,5 Z" fill="#FF2D6B" opacity="0.9"/>
+        </marker>
+        <marker id="mh2" markerWidth="5" markerHeight="5" refX="2.5" refY="2.5" orient="auto">
+          <path d="M0,0 L5,2.5 L0,5 Z" fill="#7B1FA2" opacity="0.9"/>
+        </marker>
+      </defs>
+      <!-- Top arc clockwise -->
+      <path d="M 120 8 A 112 112 0 0 1 232 120" stroke="#FF2D6B" stroke-width="2" fill="none" stroke-linecap="round" marker-end="url(#mh1)" opacity="0.6" stroke-dasharray="6 4"/>
+      <!-- Bottom arc clockwise -->
+      <path d="M 232 120 A 112 112 0 0 1 8 120" stroke="#7B1FA2" stroke-width="2" fill="none" stroke-linecap="round" marker-end="url(#mh2)" opacity="0.6" stroke-dasharray="6 4"/>
+      <!-- Left arc -->
+      <path d="M 8 120 A 112 112 0 0 1 120 8" stroke="rgba(255,255,255,0.25)" stroke-width="1.5" fill="none" stroke-linecap="round" opacity="0.5" stroke-dasharray="4 4"/>
+    </svg>
+
+    <!-- Flow dots -->
+    <div style="position:absolute;width:0;height:0;top:50%;left:50%;animation:spin 5s linear infinite">
+      <div style="position:absolute;width:7px;height:7px;border-radius:50%;background:#FF2D6B;box-shadow:0 0 10px #FF2D6B;margin:-3.5px;transform:translateX(102px)"></div>
+    </div>
+    <div style="position:absolute;width:0;height:0;top:50%;left:50%;animation:spin 5s linear infinite;animation-delay:-1.67s">
+      <div style="position:absolute;width:6px;height:6px;border-radius:50%;background:#7B1FA2;box-shadow:0 0 8px #7B1FA2;margin:-3px;transform:translateX(102px)"></div>
+    </div>
+    <div style="position:absolute;width:0;height:0;top:50%;left:50%;animation:spin 5s linear infinite;animation-delay:-3.33s">
+      <div style="position:absolute;width:5px;height:5px;border-radius:50%;background:white;opacity:0.6;margin:-2.5px;transform:translateX(102px)"></div>
+    </div>
+
+    <!-- Top label -->
+    <div style="position:absolute;top:0;left:50%;transform:translateX(-50%);font-size:6px;color:rgba(255,255,255,0.4);text-transform:uppercase;letter-spacing:1px;white-space:nowrap;font-weight:700">OXME Flows In</div>
+    <!-- Bottom label -->
+    <div style="position:absolute;bottom:0;left:50%;transform:translateX(-50%);font-size:6px;color:rgba(255,255,255,0.4);text-transform:uppercase;letter-spacing:1px;white-space:nowrap;font-weight:700">OXIT Flows Out</div>
+
+    <!-- Core -->
+    <div style="position:relative;width:110px;height:110px;border-radius:50%;background:radial-gradient(circle at 38% 30%,#FF2D6B99 0%,#FF2D6B33 35%,#1a0028 65%,#07071A 100%);border:2px solid rgba(255,45,107,0.6);box-shadow:0 0 40px rgba(255,45,107,0.3),0 0 80px rgba(123,31,162,0.15),inset 0 2px 0 rgba(255,255,255,0.12);animation:float 3s ease-in-out infinite;z-index:10;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px">
+      <div style="position:absolute;top:9px;left:16px;width:36%;height:24%;border-radius:50%;background:rgba(255,255,255,0.15);filter:blur(4px)"></div>
+      <div style="font-size:24px;font-weight:900;color:white;letter-spacing:-1.5px;text-shadow:0 0 18px #FF2D6B;z-index:1">OX</div>
+      <div style="font-size:6px;color:rgba(255,255,255,0.45);letter-spacing:2px;text-transform:uppercase;z-index:1">Protocol</div>
+      <div style="margin-top:3px;background:rgba(255,45,107,0.2);border:1px solid rgba(255,45,107,0.4);border-radius:8px;padding:1px 6px;font-size:5.5px;color:#FF2D6B;font-weight:700;letter-spacing:0.5px;z-index:1;white-space:nowrap">FIXED SUPPLY</div>
+    </div>
+
+  </div>
+
+  <!-- RIGHT — supply -->
+  <div style="display:flex;flex-direction:column;gap:7px;flex:1;max-width:185px">
+    <div style="font-size:7px;color:rgba(255,255,255,0.3);letter-spacing:2px;text-transform:uppercase;text-align:left;font-weight:700">Supply Side</div>
+
+    <div class="card-r">
+      <div class="tag-r">← OXIT OUT</div>
+      <div class="ctitle">Humans</div>
+      <div class="csub">Earn OXIT for every verified task and participation</div>
+    </div>
+
+    <div class="card-r">
+      <div class="tag-r">1,000 : 1</div>
+      <div class="ctitle">Conversion</div>
+      <div class="csub">1,000 OXIT = 1 OXME. Fixed rate. Immutable. Forever.</div>
+    </div>
+
+    <div class="card-r">
+      <div class="tag-r">← OXME HELD</div>
+      <div class="ctitle">Holders</div>
+      <div class="csub">Holding creates scarcity. More demand. Rising value.</div>
+    </div>
+
+    <div class="card-r">
+      <div class="tag-r">75%</div>
+      <div class="ctitle">User Programs</div>
+      <div class="csub">75% of all OXME reserved for the humans who mine it.</div>
+    </div>
+  </div>
+
+</div>
+
+<!-- BOTTOM BAR -->
+<div style="margin-top:10px;max-width:780px;width:100%;display:flex;border-radius:10px;overflow:hidden;box-shadow:0 4px 28px rgba(0,0,0,.5)">
+  <div style="width:4px;background:linear-gradient(to bottom,#FF2D6B,#7B1FA2);flex-shrink:0"></div>
+  <div style="flex:1;background:linear-gradient(135deg,rgba(255,45,107,.09),rgba(123,31,162,.07));padding:10px 16px;border:1px solid rgba(255,255,255,.06);border-left:none;border-radius:0 10px 10px 0;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px">
+    <div style="font-size:11px;font-weight:800;color:#fff;line-height:1.4;max-width:300px">Organisations pay tokens to access the network. Humans earn those tokens by participating. Fixed supply. Growing demand.</div>
+    <div style="display:flex;gap:16px;flex-shrink:0">
+      <div style="text-align:center">
+        <div style="font-size:13px;font-weight:900;background:linear-gradient(90deg,#FF2D6B,#7B1FA2);background-size:200% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;animation:shimmer 3s linear infinite">1,371,000,000</div>
+        <div style="font-size:6px;color:rgba(255,255,255,.3);text-transform:uppercase;letter-spacing:1px">OXME · Fixed Forever</div>
+      </div>
+      <div style="text-align:center">
+        <div style="font-size:13px;font-weight:900;background:linear-gradient(90deg,#FF2D6B,#7B1FA2);background-size:200% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;animation:shimmer 3s linear infinite">1,000:1</div>
+        <div style="font-size:6px;color:rgba(255,255,255,.3);text-transform:uppercase;letter-spacing:1px">OXIT to OXME</div>
+      </div>
+      <div style="text-align:center">
+        <div style="font-size:13px;font-weight:900;background:linear-gradient(90deg,#FF2D6B,#7B1FA2);background-size:200% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;animation:shimmer 3s linear infinite">ERC-20</div>
+        <div style="font-size:6px;color:rgba(255,255,255,.3);text-transform:uppercase;letter-spacing:1px">Base Network</div>
+      </div>
+      <div style="text-align:center">
+        <div style="font-size:13px;font-weight:900;background:linear-gradient(90deg,#FF2D6B,#7B1FA2);background-size:200% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;animation:shimmer 3s linear infinite">75 / 15 / 10</div>
+        <div style="font-size:6px;color:rgba(255,255,255,.3);text-transform:uppercase;letter-spacing:1px">Users / Investors / Treasury</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
