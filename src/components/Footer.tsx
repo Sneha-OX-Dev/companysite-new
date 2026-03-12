@@ -130,14 +130,14 @@ export default function Footer() {
       style={{ background: "#07071A", fontFamily: "'DM Sans', sans-serif" }}
     >
       {/* grid overlay */}
-      <div
+      {/* <div
         className="pointer-events-none absolute inset-0"
         style={{
           backgroundImage:
             "linear-gradient(rgba(255,255,255,0.012) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.012) 1px,transparent 1px)",
           backgroundSize: "44px 44px",
         }}
-      />
+      /> */}
 
       {/* top glow */}
       <div

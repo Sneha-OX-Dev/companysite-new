@@ -315,15 +315,15 @@ export default function DigitalHumanBridgeSection() {
       className="relative flex min-h-screen w-full flex-col items-center justify-center gap-4 px-4 py-10 sm:px-8 sm:py-12"
       style={{ background: "#07071A", fontFamily: "'DM Sans', sans-serif" }}
     >
-      {/* grid overlay */}
+      {/* grid overlay
       <div
         className="pointer-events-none fixed inset-0"
         style={{
           backgroundImage:
             "linear-gradient(rgba(255,255,255,0.015) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.015) 1px,transparent 1px)",
           backgroundSize: "44px 44px",
-        }}
-      />
+        }} */}
+      {/* /> */}
       {/* centre glow */}
       <div
         className="pointer-events-none fixed"
@@ -337,7 +337,6 @@ export default function DigitalHumanBridgeSection() {
             "radial-gradient(circle,rgba(232,38,74,0.07) 0%,transparent 70%)",
         }}
       />
-
       {/* Header */}
       <div className="relative z-10 text-center" style={fadeIn(0)}>
         <span
@@ -364,7 +363,6 @@ export default function DigitalHumanBridgeSection() {
           </em>
         </h2>
       </div>
-
       {/* Main columns */}
       <div className="relative z-10 w-full max-w-[1060px]" style={fadeIn(80)}>
         {/* Desktop 3-col */}
@@ -402,7 +400,6 @@ export default function DigitalHumanBridgeSection() {
           />
         </div>
       </div>
-
       {/* Bottom pills */}
       <div
         className="relative z-10 grid w-full max-w-[1060px] grid-cols-1 gap-3 sm:grid-cols-2"
@@ -428,7 +425,6 @@ export default function DigitalHumanBridgeSection() {
           </div>
         ))}
       </div>
-
       {/* Closing */}
       <div
         className="relative z-10 w-full max-w-[1060px] border-t border-white/[0.07] pt-4 text-center text-[11px] leading-relaxed text-white/38 sm:text-[12px]"

@@ -1,7 +1,7 @@
 import { CARDS } from "@/lib/constants";
 import AudienceCard from "../cards/AudienceCard";
 
-export function AudienceCards() {
+export default function AudienceCards() {
   return (
     <section className="relative mx-auto flex w-full max-w-5xl flex-col items-center gap-16 px-6 pb-20 pt-20 text-white sm:pb-24 sm:pt-24">
       <div

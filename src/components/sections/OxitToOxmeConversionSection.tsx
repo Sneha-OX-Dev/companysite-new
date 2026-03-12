@@ -173,14 +173,14 @@ export function OxitToOxmeConversionSection() {
       className="relative flex min-h-screen w-full flex-col items-center justify-center gap-4 px-6 py-10 sm:px-12"
       style={{ background: "#07071A", fontFamily: "'DM Sans', sans-serif" }}
     >
-      <div
+      {/* <div
         className="pointer-events-none fixed inset-0"
         style={{
           backgroundImage:
             "linear-gradient(rgba(255,255,255,0.013) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.013) 1px,transparent 1px)",
           backgroundSize: "44px 44px",
         }}
-      />
+      /> */}
 
       {/* Header */}
       <div className="relative z-10 text-center" style={fadeIn(0)}>

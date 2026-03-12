@@ -1,17 +1,13 @@
 "use client";
 
-import { useState } from "react";
-import Image from "next/image";
-import Link from "next/link";
-import { Menu } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
-import {
-  Sheet,
-  SheetContent,
-  SheetTrigger,
-} from "@/components/ui/sheet";
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { Menu } from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
+import { useState } from "react";
 
 const LOGO_URL = "/ox.svg";
 
@@ -72,7 +68,7 @@ export default function Navbar() {
           size="sm"
           className="hidden shrink-0 rounded-full lg:inline-flex"
         >
-          <Link href="/#get-the-app">Get The App</Link>
+          <Link href="/#get-the-app">Download App</Link>
         </Button>
 
         {/* Mobile/Tablet: Sheet (slide-out menu) - below lg */}
@@ -113,7 +109,11 @@ export default function Navbar() {
                 </Link>
               ))}
               <Separator className="my-4 bg-indigo-900/60" />
-              <Button asChild className="rounded-full" onClick={() => setSheetOpen(false)}>
+              <Button
+                asChild
+                className="rounded-full"
+                onClick={() => setSheetOpen(false)}
+              >
                 <Link href="/#get-the-app">Get The App</Link>
               </Button>
             </nav>
@@ -123,4 +123,3 @@ export default function Navbar() {
     </header>
   );
 }
-

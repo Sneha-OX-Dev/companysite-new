@@ -196,7 +196,7 @@ export function HumanMiningSection() {
       className="relative flex min-h-screen w-full flex-col items-center justify-center gap-5 px-4 py-10 sm:px-8 sm:py-14"
       style={{ background: "#07071A", fontFamily: "'DM Sans', sans-serif" }}
     >
-      {/* grid overlay */}
+      {/* grid overlay
       <div
         className="pointer-events-none fixed inset-0"
         style={{
@@ -204,8 +204,7 @@ export function HumanMiningSection() {
             "linear-gradient(rgba(255,255,255,0.013) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.013) 1px,transparent 1px)",
           backgroundSize: "44px 44px",
         }}
-      />
-
+      /> */}
       {/* ── HEADER ── */}
       <div
         className="relative z-10 flex flex-col items-center text-center"
@@ -235,7 +234,6 @@ export function HumanMiningSection() {
           </em>
         </h2>
       </div>
-
       {/* ── CARDS ── */}
       <div
         className="relative z-10 grid w-full max-w-[1060px] grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5"
@@ -244,7 +242,6 @@ export function HumanMiningSection() {
         <MiningCard />
         <MiningCard isOx />
       </div>
-
       {/* ── STATEMENT ── */}
       <div
         className="relative z-10 w-full max-w-[1060px] overflow-hidden rounded-lg text-center"
@@ -281,7 +278,6 @@ export function HumanMiningSection() {
           </p>
         </div>
       </div>
-
       {/* ── CLOSING ── */}
       <div
         className="relative z-10 w-full max-w-[1060px] border-t border-white/[0.06] pt-4 text-center text-[12px] text-white/28 sm:text-[13px]"

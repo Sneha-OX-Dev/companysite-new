@@ -167,14 +167,14 @@ export function SystemsWithoutWithOX() {
       style={{ background: "#07071A", fontFamily: "'DM Sans', sans-serif" }}
     >
       {/* grid overlay */}
-      <div
+      {/* <div
         className="pointer-events-none fixed inset-0"
         style={{
           backgroundImage:
             "linear-gradient(rgba(255,255,255,0.013) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.013) 1px,transparent 1px)",
           backgroundSize: "44px 44px",
         }}
-      />
+      /> */}
 
       {/* Header */}
       <div className="relative z-10 text-center" style={fadeIn(0)}>

@@ -2,6 +2,7 @@ import Footer from "@/components/Footer";
 import GetTheAppSection from "@/components/GetTheAppSection";
 import Hero from "@/components/Hero";
 import MarqueeStrip from "@/components/MarqueeStrip";
+import AudienceCards from "@/components/sections/AudienceCardsSection";
 import { CircularEconomySection } from "@/components/sections/CircularEconomySection";
 import DigitalHumanBridgeSection from "@/components/sections/DigitalHumanBridgeSection";
 import { EcosystemMapSection } from "@/components/sections/EcosystemMapSection";
@@ -23,6 +24,8 @@ export default function Home() {
         {/* Section 1 — Hero (incl. audience cards) */}
         <section id="hero">
           <Hero />
+
+          <AudienceCards />
         </section>
 
         {/* Section 2 — The Only Crypto You Mine With Your Time (Two-Stage Earning) */}
