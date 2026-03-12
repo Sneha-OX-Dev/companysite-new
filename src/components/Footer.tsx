@@ -293,7 +293,7 @@ export default function Footer() {
           ))}
         </div>
 
-        {/* ── BOTTOM BAR ──  just addeding*/}
+        {/* ── BOTTOM BAR ──  just addedingtt*/}
         <div
           className="mt-8 flex flex-col items-center justify-between gap-3 border-t pt-6 sm:flex-row"
           style={{ borderColor: "rgba(255,255,255,0.07)" }}
