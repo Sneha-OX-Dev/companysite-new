@@ -83,6 +83,14 @@ export default function Footer() {
           <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-3">
             {landing.footer.columns.map((column, i) => (
               <nav key={i} className="flex flex-col gap-3">
+                {i === 0 && (
+                  <Link
+                    href={landing.entryPoint.href}
+                    className="text-sm font-medium text-[var(--accent)] hover:text-white"
+                  >
+                    {landing.entryPoint.label}
+                  </Link>
+                )}
                 {column.map((link) => (
                   <Link
                     key={link.label}

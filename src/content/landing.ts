@@ -4,15 +4,30 @@ export const landing = {
     subline: "You're alive in the network.",
     cta: "Get The App",
   },
+  whatIsOx: {
+    headline: "What is OX?",
+    oneLiner: "OX is a network where your Machine Self learns from short answers and earns tokens for you—built from the equivalent of 16 hours of your verified work over time.",
+    steps: [
+      { label: "Answer", description: "Short questions in the app" },
+      { label: "AI learns", description: "Machine Self builds from your answers" },
+      { label: "Earn", description: "Get rewarded in tokens" },
+    ],
+    cta: "New here? Learn OX in 5 minutes",
+  },
+  entryPoint: {
+    label: "New here? Start with Learn",
+    href: "/learn",
+  },
   value: {
     headline: "We built OX to work for you.",
-    body: "OX puts you in control—shaping, training, and owning your personal intelligence. Every action, every share, every Twin is a vote for AI freedom. You're not the product. You're the power source.",
+    whatYouDo: "Answer short questions. Your AI learns. You earn.",
+    body: "Unlocking a $3 trillion opportunity. Monetise your unique self. One billion digital workers, 16 billion verified human hours. OX puts you in control—shaping, training, and owning your personal intelligence. Every action, every share, every Machine Self is a vote for AI freedom. You're not the product. You're the power source.",
   },
-  mindtwin: {
-    eyebrow: "Embrace the Power of MindTwin",
-    headline: "MindTwin AI - It's not a tool",
+  machineSelf: {
+    eyebrow: "Embrace the Power of Machine Self",
+    headline: "Machine Self AI - It's not a tool",
     subheadline: "It is your digital self",
-    body: "MindTwin is your private AI that lives on your device and acts only with your permission. It learns how you think. Understands how you feel. Evolves with every signal. It answers to you.",
+    body: "Your Machine Self learns and acts on your behalf. It lives on your device and acts only with your permission. It learns how you think. Understands how you feel. Evolves with every signal. It answers to you.",
   },
   moments: {
     eyebrow: "New Dawn for",
@@ -22,9 +37,23 @@ export const landing = {
   },
   join: {
     headline: "Join the Revolution",
-    stat: "1.5M citizens have joined. A billion in sight.",
-    body: "You make the difference. Welcome to OX, where your digital presence becomes power.",
+    stat: "1.5M citizens have joined. A billion in sight. 1 billion self-expanding digital workers.",
+    body: "You make the difference. Welcome to OX, where your digital presence becomes power. Get the app. Start earning. Join the network.",
     cta: "Get The App",
+  },
+  clarify: {
+    ox: "OX is the network and token.",
+    oxygean: "Oxygean is the mobile app you use to participate.",
+    cryptoOptional: "No crypto needed to start—earn in the app, convert when you're ready.",
+  },
+  whyOx: {
+    headline: "Why OX?",
+    items: [
+      "You own your data—no extraction, consent always",
+      "Solutions, not ads—brands reach you with value, not noise",
+      "Earn from micro-actions—every click, share, and answer counts",
+      "Your Machine Self works for you—built from 16 hours of your verified work over time",
+    ],
   },
   getTheApp: {
     headline: "Get The App To Earn OXME",
@@ -66,10 +95,21 @@ export const landing = {
     columns: [
       [
         { label: "Home", href: "/" },
+        { label: "Product", href: "/product" },
+        { label: "Token", href: "/token" },
+        { label: "Network", href: "/network" },
+        { label: "Learn", href: "/learn" },
+      ],
+      [
+        { label: "Use Cases", href: "/use-cases" },
+        { label: "About", href: "/about" },
+        { label: "Developers", href: "/developers" },
+        { label: "Whitepaper", href: "/whitepaper" },
+        { label: "Contact", href: "/contact" },
+      ],
+      [
         { label: "Terms & Conditions", href: "/term-conditions" },
         { label: "Privacy Policy", href: "/privacy-policy" },
-        { label: "Contact Us", href: "/contact" },
-        { label: "Whitepaper", href: "/whitepaper" },
       ],
     ],
     company: {

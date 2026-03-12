@@ -22,7 +22,7 @@ export default function GetTheAppSection() {
               />
             </div>
             <div className="text-left">
-              <h2 className="text-3xl font-bold text-white sm:text-4xl">
+              <h2 className="font-heading text-3xl font-bold text-white text-balance sm:text-4xl">
                 Get{" "}
                 <span className="text-accent">
                   {landing.getTheApp.headlineHighlight}
