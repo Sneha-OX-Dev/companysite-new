@@ -1,8 +1,7 @@
 "use client";
+import SectionHeader from "@/components/Headings/SectionHeader";
+import { PINK, PURPLE } from "@/lib/constants";
 import { useEffect, useState } from "react";
-
-const PINK = "#FF2D6B";
-const PURPLE = "#7B1FA2";
 
 const stage1Steps = [
   {
@@ -445,39 +444,11 @@ export function TwoStageEarningSection() {
       }}
     >
       {/* Header */}
-      <div
-        className="mb-8 flex flex-col items-center gap-2 text-center sm:mb-10"
+      <SectionHeader
+        title="Two-Stage Earning Model"
+        subtitle="The only crypto in the world you mine with your time"
         style={fadeIn(0)}
-      >
-        <div
-          className="mb-1 flex items-center gap-2 rounded-full px-4 py-1.5"
-          style={{
-            background: "rgba(255,45,107,.1)",
-            border: "1px solid rgba(255,45,107,.3)",
-          }}
-        >
-          <span
-            className="h-[5px] w-[5px] rounded-full"
-            style={{
-              background: PINK,
-              boxShadow: `0 0 8px ${PINK}`,
-              animation: "pulse 2s infinite",
-            }}
-          />
-          <span
-            className="text-[9px] font-bold uppercase tracking-[2.5px] sm:text-[10px]"
-            style={{ color: PINK }}
-          >
-            Human Intelligence Protocol
-          </span>
-        </div>
-        <h1 className="text-2xl font-black tracking-tight text-white sm:text-3xl lg:text-4xl">
-          Two-Stage Earning Model
-        </h1>
-        <p className="text-[10px] uppercase tracking-[2px] text-white/30 sm:text-[11px]">
-          The only crypto in the world you mine with your time
-        </p>
-      </div>
+      />
 
       {/* Two columns — stacks on mobile */}
       <div
