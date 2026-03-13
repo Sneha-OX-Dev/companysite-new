@@ -23,17 +23,92 @@ const FIX_SYSTEMS = [
   "One billion sovereign economies — each individual, each connected",
 ];
 
+function BulletItem({
+  text,
+  color = "pink",
+}: {
+  text: string;
+  color?: "pink" | "white" | "green";
+}) {
+  const dotStyles = {
+    pink: "bg-[#FF2D6B] shadow-[0_0_8px_rgba(255,45,107,0.85)]",
+    white: "bg-white/50",
+    green: "bg-emerald-400 shadow-[0_0_8px_rgba(52,211,153,0.85)]",
+  };
+  return (
+    <li className="flex items-start gap-3.5 text-[14px] leading-relaxed text-white/75 sm:text-[15px]">
+      <span className="relative mt-[7px] flex h-4 w-4 shrink-0 items-center justify-center">
+        {color !== "white" && (
+          <span
+            className={`absolute inset-0 rounded-full opacity-15 ${color === "pink" ? "bg-[#FF2D6B]" : "bg-emerald-400"}`}
+          />
+        )}
+        <span className={`h-1.5 w-1.5 rounded-full ${dotStyles[color]}`} />
+      </span>
+      {text}
+    </li>
+  );
+}
+
+function Card({
+  children,
+  accent = "pink",
+  className = "",
+}: {
+  children: React.ReactNode;
+  accent?: "pink" | "purple" | "green" | "none";
+  className?: string;
+}) {
+  const accentColors = {
+    pink: "via-[#FF2D6B]",
+    purple: "via-[#7B1FA2]",
+    green: "via-emerald-400",
+    none: "via-white/10",
+  };
+  const glowColors = {
+    pink: "bg-[#FF2D6B]",
+    purple: "bg-[#7B1FA2]",
+    green: "bg-emerald-400",
+    none: "bg-white",
+  };
+  return (
+    <div
+      className={`group relative overflow-hidden rounded-3xl border border-white/[0.07] bg-gradient-to-br from-white/[0.06] to-white/[0.01] p-7 shadow-[0_24px_70px_rgba(0,0,0,0.55)] backdrop-blur-sm ${className}`}
+    >
+      {accent !== "none" && (
+        <>
+          <div
+            className={`absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent ${accentColors[accent]} to-transparent opacity-70`}
+          />
+          <div
+            className={`pointer-events-none absolute -right-12 -top-12 h-36 w-36 rounded-full ${glowColors[accent]} opacity-[0.06] blur-3xl transition-opacity duration-500 group-hover:opacity-[0.12]`}
+          />
+        </>
+      )}
+      {children}
+    </div>
+  );
+}
+
+function Label({ children }: { children: React.ReactNode }) {
+  return (
+    <p className="text-[11px] font-bold uppercase tracking-[0.28em] text-white/40 sm:text-[12px]">
+      {children}
+    </p>
+  );
+}
+
 export default function ProblemAndFixSection() {
   return (
-    <section className="relative mx-auto flex w-full max-w-6xl flex-col gap-14 px-6 py-20 text-white sm:gap-16 sm:py-24">
-      {/* Background wash */}
+    <section className="relative mx-auto flex w-full max-w-6xl flex-col gap-20 px-6 py-24 text-white sm:py-32">
+      {/* Ambient background */}
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-0 -z-10 opacity-70 [background-image:radial-gradient(circle_at_top,_rgba(248,113,113,0.18),transparent_55%),radial-gradient(circle_at_bottom,_rgba(59,130,246,0.16),transparent_60%)]"
+        className="pointer-events-none absolute inset-0 -z-10 [background-image:radial-gradient(ellipse_70%_45%_at_30%_20%,rgba(248,113,113,0.13),transparent_65%),radial-gradient(ellipse_60%_40%_at_70%_80%,rgba(59,130,246,0.11),transparent_65%)]"
       />
 
-      {/* The Problem */}
-      <div className="space-y-8">
+      {/* ── THE PROBLEM ── */}
+      <div className="flex flex-col gap-10">
         <SectionHeader
           pillText="The Problem"
           title="Systems operate on stale assumptions, while humans act in real time."
@@ -41,61 +116,54 @@ export default function ProblemAndFixSection() {
           align="left"
         />
 
-        <div className="grid gap-8 lg:grid-cols-[minmax(0,1.4fr)_minmax(0,1fr)]">
-          <div className="space-y-5 text-[13px] leading-relaxed text-white/75 sm:text-[14px]">
-            <p>
-              Modern digital systems operate primarily on inferred historical
-              behaviour, centralised data aggregation, and probabilistic
-              prediction. They guess. They approximate. They project the past
-              onto the present.
-            </p>
-            <div>
-              <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-white/40">
-                Three root causes
-              </p>
-              <ul className="mt-3 space-y-2">
-                {PROBLEM_ROOT_CAUSES.map((item) => (
-                  <li key={item} className="relative pl-5">
-                    <span className="absolute left-0 top-[9px] h-1.5 w-1.5 rounded-full bg-[#FF2D6B] shadow-[0_0_8px_rgba(255,45,107,0.8)]" />
-                    {item}
-                  </li>
-                ))}
-              </ul>
-            </div>
+        <div className="grid gap-5 lg:grid-cols-[minmax(0,1.35fr)_minmax(0,1fr)] lg:items-start">
+          {/* Left — root causes + results */}
+          <Card accent="pink">
+            <Label>Three root causes</Label>
+            <ul className="mt-5 space-y-4">
+              {PROBLEM_ROOT_CAUSES.map((item) => (
+                <BulletItem key={item} text={item} color="pink" />
+              ))}
+            </ul>
 
-            <div>
-              <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-white/40">
-                Four results
-              </p>
-              <ul className="mt-3 space-y-2">
-                {PROBLEM_RESULTS.map((item) => (
-                  <li key={item} className="relative pl-5">
-                    <span className="absolute left-0 top-[9px] h-1.5 w-1.5 rounded-full bg-white/60" />
-                    {item}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
+            <div className="my-6 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
 
-          <div className="space-y-5 rounded-2xl border border-white/10 bg-black/40 p-6 shadow-[0_18px_60px_rgba(0,0,0,0.6)]">
-            <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-white/45">
-              Core statement
+            <Label>Four results</Label>
+            <ul className="mt-5 space-y-3">
+              {PROBLEM_RESULTS.map((item) => (
+                <BulletItem key={item} text={item} color="white" />
+              ))}
+            </ul>
+          </Card>
+
+          {/* Right — core statement */}
+          <Card accent="purple" className="lg:sticky lg:top-8">
+            <Label>Core statement</Label>
+
+            <p className="mt-5 text-[30px] font-bold leading-tight tracking-[-0.03em] text-white sm:text-[34px]">
+              Systems guess.
+              <br />
+              <span className="bg-gradient-to-r from-[#FF2D6B] to-[#7B1FA2] bg-clip-text text-transparent">
+                Humans know.
+              </span>
             </p>
-            <p className="text-[15px] font-semibold text-white sm:text-[16px]">
-              Systems guess. Humans know.
-            </p>
-            <p className="mt-3 text-[13px] leading-relaxed text-white/70 sm:text-[14px]">
+
+            <div className="my-6 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+
+            <p className="text-[13.5px] leading-relaxed text-white/60 sm:text-[14px]">
               There is no infrastructure layer today that enables live,
               consented, structured human intelligence to participate directly
-              in digital coordination. Humans are observed, not integrated.
+              in digital coordination.
             </p>
-          </div>
+            <p className="mt-4 text-[13.5px] leading-relaxed text-white/60 sm:text-[14px]">
+              Humans are observed, not integrated.
+            </p>
+          </Card>
         </div>
       </div>
 
-      {/* The Fix */}
-      <div className="space-y-8">
+      {/* ── THE FIX ── */}
+      <div className="flex flex-col gap-10">
         <SectionHeader
           pillText="The Fix"
           title="From probability to certainty. From extraction to participation."
@@ -103,68 +171,80 @@ export default function ProblemAndFixSection() {
           align="left"
         />
 
-        <div className="grid gap-10 lg:grid-cols-[minmax(0,1.3fr)_minmax(0,1.1fr)]">
-          {/* For digital systems & AI */}
-          <div className="space-y-5 rounded-2xl border border-white/10 bg-black/40 p-6 shadow-[0_18px_60px_rgba(0,0,0,0.6)]">
-            <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-white/40">
-              For digital systems and AI
-            </p>
-            <h3 className="mt-2 font-heading text-[18px] font-semibold tracking-[-0.02em] text-white sm:text-[20px]">
+        <div className="grid gap-5 lg:grid-cols-2 lg:items-start">
+          {/* What OX does */}
+          <Card accent="green">
+            <Label>For digital systems and AI</Label>
+
+            <h3 className="mt-4 text-[20px] font-bold tracking-[-0.02em] text-white sm:text-[22px]">
               What OX does
             </h3>
-            <p className="mt-3 text-[13px] leading-relaxed text-white/75 sm:text-[14px]">
+
+            <p className="mt-4 text-[13.5px] leading-relaxed text-white/65 sm:text-[14px]">
               Through Machine Selves, any digital system, any AI, any machine
               can now reach a verified, consented, live human being and receive
-              a real decision, a confirmed physical action, verified expertise,
+              a real decision — a confirmed physical action, verified expertise,
               or a cryptographically binding consent signal.
             </p>
-            <p className="mt-3 text-[13px] leading-relaxed text-white/75 sm:text-[14px]">
-              This is not better data. This is a different category of input
-              entirely. The difference between a weather forecast and looking
-              out the window.
-            </p>
-            <div className="mt-4">
-              <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-white/40">
-                What OX enables
-              </p>
-              <ul className="mt-3 space-y-2">
-                {FIX_SYSTEMS.map((item) => (
-                  <li key={item} className="relative pl-5">
-                    <span className="absolute left-0 top-[9px] h-1.5 w-1.5 rounded-full bg-[#22C55E] shadow-[0_0_10px_rgba(34,197,94,0.8)]" />
-                    {item}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
+
+            <blockquote className="my-6 border-l-2 border-emerald-400/50 pl-4 text-[14px] italic leading-relaxed text-white/75">
+              "Not better data. A different category of input entirely — the
+              difference between a weather forecast and looking out the window."
+            </blockquote>
+
+            <div className="my-6 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+
+            <Label>What OX enables</Label>
+            <ul className="mt-5 space-y-3.5">
+              {FIX_SYSTEMS.map((item) => (
+                <BulletItem key={item} text={item} color="green" />
+              ))}
+            </ul>
+          </Card>
 
           {/* For humans */}
-          <div className="space-y-5 rounded-2xl border border-white/10 bg-black/40 p-6 shadow-[0_18px_60px_rgba(0,0,0,0.6)]">
-            <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-white/40">
-              For humans
-            </p>
-            <h3 className="mt-2 font-heading text-[18px] font-semibold tracking-[-0.02em] text-white sm:text-[20px]">
+          <Card accent="pink">
+            <Label>For humans</Label>
+
+            <h3 className="mt-4 text-[20px] font-bold tracking-[-0.02em] text-white sm:text-[22px]">
               The bigger fix
             </h3>
-            <p className="mt-3 text-[13px] leading-relaxed text-white/75 sm:text-[14px]">
-              OX does not just improve how systems access human intelligence. It
+
+            <p className="mt-4 text-[13.5px] leading-relaxed text-white/65 sm:text-[14px]">
+              OX doesn't just improve how systems access human intelligence. It
               restructures the relationship between humans and digital systems
               entirely.
             </p>
-            <p className="mt-3 text-[13px] leading-relaxed text-white/75 sm:text-[14px]">
-              Every human with a Machine Self becomes a sovereign economic unit
-              — not a data point in someone else&apos;s model, not a segment in
-              a demographic, not a profile in a centralised database. A market
-              of one. And a contributor of one.
-            </p>
-            <p className="mt-3 text-[13px] leading-relaxed text-white/75 sm:text-[14px]">
+
+            <div className="my-6 rounded-2xl border border-white/[0.07] bg-white/[0.04] p-5">
+              <p className="text-[13px] font-semibold uppercase tracking-[0.2em] text-white/30">
+                From
+              </p>
+              <p className="mt-2 text-[14px] leading-relaxed text-white/55 line-through decoration-white/20">
+                A data point in someone else's model. A segment in a
+                demographic. A profile in a centralised database.
+              </p>
+              <div className="my-4 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+              <p className="text-[13px] font-semibold uppercase tracking-[0.2em] text-[#FF2D6B]/70">
+                To
+              </p>
+              <p className="mt-2 text-[14px] leading-relaxed text-white/80">
+                A sovereign economic unit. A market of one. A contributor of
+                one.
+              </p>
+            </div>
+
+            <p className="mt-5 text-[13.5px] leading-relaxed text-white/65 sm:text-[14px]">
               At one billion Machine Selves, OX breaks the planet into one
               billion individual economies — each sovereign, each connected,
-              each earning. Systems don&apos;t have to guess what humans think,
-              want, or will do. They can coordinate directly. And every human
-              who participates is not just contributing — they are being paid.
+              each earning.
             </p>
-          </div>
+
+            <div className="mt-6 flex items-center gap-2.5 rounded-full border border-white/10 bg-white/[0.04] px-4 py-2.5 text-[11px] font-bold uppercase tracking-[0.22em] text-white/45">
+              <span className="h-1.5 w-1.5 rounded-full bg-[#FF2D6B] shadow-[0_0_6px_rgba(255,45,107,0.9)]" />
+              Systems coordinate. Humans earn.
+            </div>
+          </Card>
         </div>
       </div>
     </section>
