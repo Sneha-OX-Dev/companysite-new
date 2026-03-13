@@ -16,7 +16,7 @@ export default function WhatIsOxSection() {
       />
 
       <SectionHeader
-        pillText="Section 6 — What Is OX"
+        pillText="What Is OX"
         title="OX is the Human Intelligence Protocol."
         subtitle="The layer where you — a living, consented, sovereign individual — participate directly in the digital systems that shape your world."
       />
@@ -25,26 +25,26 @@ export default function WhatIsOxSection() {
         {/* Protocol definition & architecture */}
         <div className="space-y-5 text-[13px] leading-relaxed text-white/80 sm:text-[14px]">
           <p>
-            Not through data extracted without your knowledge. Through intelligence you
-            declare, control, and own. OX provides structured participation, not
-            surveillance.
+            Not through data extracted without your knowledge. Through
+            intelligence you declare, control, and own. OX provides structured
+            participation, not surveillance.
           </p>
           <div className="rounded-2xl border border-white/10 bg-black/40 p-5 shadow-[0_18px_60px_rgba(0,0,0,0.6)]">
             <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-white/40">
               A different architecture to every existing marketplace
             </p>
             <p className="mt-3">
-              Every existing human coordination marketplace — from gig platforms to
-              professional networks to task exchanges — extracts value from participants,
-              holds their data centrally, and owns the relationship between supply and
-              demand.
+              Every existing human coordination marketplace — from gig platforms
+              to professional networks to task exchanges — extracts value from
+              participants, holds their data centrally, and owns the
+              relationship between supply and demand.
             </p>
             <p className="mt-3">
               OX is a different architecture entirely. Data never leaves the
               participant&apos;s device. Matching is based on verified, declared
-              capability — not ratings, reputation scores, or historical behaviour. Value
-              flows back to participants through the token economy, not to a platform
-              intermediary.
+              capability — not ratings, reputation scores, or historical
+              behaviour. Value flows back to participants through the token
+              economy, not to a platform intermediary.
             </p>
             <p className="mt-3">
               OX does not compete with these platforms. It{" "}
@@ -78,4 +78,3 @@ export default function WhatIsOxSection() {
     </section>
   );
 }
-

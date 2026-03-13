@@ -35,7 +35,7 @@ export default function ProblemAndFixSection() {
       {/* The Problem */}
       <div className="space-y-8">
         <SectionHeader
-          pillText="Section 4 — The Problem"
+          pillText="The Problem"
           title="Systems operate on stale assumptions, while humans act in real time."
           subtitle="Modern digital systems operate primarily on inferred history and probabilistic prediction."
           align="left"
@@ -44,9 +44,10 @@ export default function ProblemAndFixSection() {
         <div className="grid gap-8 lg:grid-cols-[minmax(0,1.4fr)_minmax(0,1fr)]">
           <div className="space-y-5 text-[13px] leading-relaxed text-white/75 sm:text-[14px]">
             <p>
-              Modern digital systems operate primarily on inferred historical behaviour,
-              centralised data aggregation, and probabilistic prediction. They guess.
-              They approximate. They project the past onto the present.
+              Modern digital systems operate primarily on inferred historical
+              behaviour, centralised data aggregation, and probabilistic
+              prediction. They guess. They approximate. They project the past
+              onto the present.
             </p>
             <div>
               <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-white/40">
@@ -85,9 +86,9 @@ export default function ProblemAndFixSection() {
               Systems guess. Humans know.
             </p>
             <p className="mt-3 text-[13px] leading-relaxed text-white/70 sm:text-[14px]">
-              There is no infrastructure layer today that enables live, consented,
-              structured human intelligence to participate directly in digital
-              coordination. Humans are observed, not integrated.
+              There is no infrastructure layer today that enables live,
+              consented, structured human intelligence to participate directly
+              in digital coordination. Humans are observed, not integrated.
             </p>
           </div>
         </div>
@@ -96,7 +97,7 @@ export default function ProblemAndFixSection() {
       {/* The Fix */}
       <div className="space-y-8">
         <SectionHeader
-          pillText="Section 5 — The Fix"
+          pillText="The Fix"
           title="From probability to certainty. From extraction to participation."
           subtitle="OX removes the architectural limitation that has always separated systems from real human intelligence."
           align="left"
@@ -112,14 +113,15 @@ export default function ProblemAndFixSection() {
               What OX does
             </h3>
             <p className="mt-3 text-[13px] leading-relaxed text-white/75 sm:text-[14px]">
-              Through Machine Selves, any digital system, any AI, any machine can now
-              reach a verified, consented, live human being and receive a real decision,
-              a confirmed physical action, verified expertise, or a cryptographically
-              binding consent signal.
+              Through Machine Selves, any digital system, any AI, any machine
+              can now reach a verified, consented, live human being and receive
+              a real decision, a confirmed physical action, verified expertise,
+              or a cryptographically binding consent signal.
             </p>
             <p className="mt-3 text-[13px] leading-relaxed text-white/75 sm:text-[14px]">
-              This is not better data. This is a different category of input entirely.
-              The difference between a weather forecast and looking out the window.
+              This is not better data. This is a different category of input
+              entirely. The difference between a weather forecast and looking
+              out the window.
             </p>
             <div className="mt-4">
               <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-white/40">
@@ -146,20 +148,21 @@ export default function ProblemAndFixSection() {
             </h3>
             <p className="mt-3 text-[13px] leading-relaxed text-white/75 sm:text-[14px]">
               OX does not just improve how systems access human intelligence. It
-              restructures the relationship between humans and digital systems entirely.
+              restructures the relationship between humans and digital systems
+              entirely.
             </p>
             <p className="mt-3 text-[13px] leading-relaxed text-white/75 sm:text-[14px]">
-              Every human with a Machine Self becomes a sovereign economic unit — not a
-              data point in someone else&apos;s model, not a segment in a demographic,
-              not a profile in a centralised database. A market of one. And a
-              contributor of one.
+              Every human with a Machine Self becomes a sovereign economic unit
+              — not a data point in someone else&apos;s model, not a segment in
+              a demographic, not a profile in a centralised database. A market
+              of one. And a contributor of one.
             </p>
             <p className="mt-3 text-[13px] leading-relaxed text-white/75 sm:text-[14px]">
-              At one billion Machine Selves, OX breaks the planet into one billion
-              individual economies — each sovereign, each connected, each earning.
-              Systems don&apos;t have to guess what humans think, want, or will do.
-              They can coordinate directly. And every human who participates is not just
-              contributing — they are being paid.
+              At one billion Machine Selves, OX breaks the planet into one
+              billion individual economies — each sovereign, each connected,
+              each earning. Systems don&apos;t have to guess what humans think,
+              want, or will do. They can coordinate directly. And every human
+              who participates is not just contributing — they are being paid.
             </p>
           </div>
         </div>
@@ -167,4 +170,3 @@ export default function ProblemAndFixSection() {
     </section>
   );
 }
-

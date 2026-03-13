@@ -18,7 +18,7 @@ export default function MachineSelfSection() {
       />
 
       <SectionHeader
-        pillText="Section 7 — Machine Self"
+        pillText="Machine Self"
         title="Your Machine Self"
         subtitle="A permissioned digital agent owned by you that represents your identity, data, capabilities, and intelligence."
       />
@@ -27,16 +27,18 @@ export default function MachineSelfSection() {
         {/* Definition and what it is */}
         <div className="space-y-4 text-[13px] leading-relaxed text-white/80 sm:text-[14px]">
           <p>
-            Every person has a Machine Self — a permissioned digital agent owned by the
-            individual that represents their identity, data, capabilities, and
-            intelligence, including the unique and unknowable aspects of the individual
-            that cannot be externally observed or reconstructed.
+            Every person has a Machine Self — a permissioned digital agent owned
+            by the individual that represents their identity, data,
+            capabilities, and intelligence, including the unique and unknowable
+            aspects of the individual that cannot be externally observed or
+            reconstructed.
           </p>
           <p>
-            The Machine Self acts as an active digital agent for the individual, exposing
-            thousands of capability signals derived from the person&apos;s unique
-            experience and context, and enabling participation in coordination,
-            decision-making, task routing, and economic activity within the network.
+            The Machine Self acts as an active digital agent for the individual,
+            exposing thousands of capability signals derived from the
+            person&apos;s unique experience and context, and enabling
+            participation in coordination, decision-making, task routing, and
+            economic activity within the network.
           </p>
 
           <div className="rounded-2xl border border-white/10 bg-black/40 p-5 shadow-[0_18px_60px_rgba(0,0,0,0.6)]">
@@ -47,8 +49,8 @@ export default function MachineSelfSection() {
               <span className="font-semibold text-white">
                 2,000 human-created data points.
               </span>{" "}
-              16 hours to build. Unguessable by any AI — because they come directly from
-              you.
+              16 hours to build. Unguessable by any AI — because they come
+              directly from you.
             </p>
           </div>
         </div>
@@ -71,4 +73,3 @@ export default function MachineSelfSection() {
     </section>
   );
 }
-
