@@ -1,8 +1,7 @@
+import { TooltipProvider } from "@/components/ui/tooltip";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Syne } from "next/font/google";
 import "./globals.css";
-import Navbar from "@/components/Navbar";
-import { TooltipProvider } from "@/components/ui/tooltip";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -41,7 +40,7 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} ${syne.variable} antialiased`}
       >
         <TooltipProvider>
-          <Navbar />
+          {/* <Navbar /> */}
           {children}
         </TooltipProvider>
       </body>

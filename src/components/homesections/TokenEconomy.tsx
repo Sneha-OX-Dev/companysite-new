@@ -145,7 +145,7 @@ export default function TokenEconomySection() {
           <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#7B1FA2]/50 to-transparent" />
           <div className="pointer-events-none absolute -left-10 -top-10 h-40 w-40 rounded-full bg-[#7B1FA2] opacity-[0.06] blur-3xl transition-opacity duration-500 group-hover:opacity-[0.11]" />
 
-          <p className="text-[11px] font-bold uppercase tracking-[0.28em] text-[#7B1FA2]/70">
+          <p className="text-[11px] font-bold uppercase tracking-[0.28em] text-[#7B1FA2]">
             The circular economy
           </p>
 
