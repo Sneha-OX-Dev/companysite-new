@@ -2,14 +2,18 @@ export const landing = {
   hero: {
     headline: "You're not just online anymore.",
     subline: "You're alive in the network.",
-    cta: "Get The App",
+    cta: "Download App",
   },
   whatIsOx: {
     headline: "What is OX?",
-    oneLiner: "OX is a network where your Machine Self learns from short answers and earns tokens for you—built from the equivalent of 16 hours of your verified work over time.",
+    oneLiner:
+      "OX is a network where your Machine Self learns from short answers and earns tokens for you—built from the equivalent of 16 hours of your verified work over time.",
     steps: [
       { label: "Answer", description: "Short questions in the app" },
-      { label: "AI learns", description: "Machine Self builds from your answers" },
+      {
+        label: "AI learns",
+        description: "Machine Self builds from your answers",
+      },
       { label: "Earn", description: "Get rewarded in tokens" },
     ],
     cta: "New here? Learn OX in 5 minutes",
@@ -44,7 +48,8 @@ export const landing = {
   clarify: {
     ox: "OX is the network and token.",
     oxygean: "Oxygean is the mobile app you use to participate.",
-    cryptoOptional: "No crypto needed to start—earn in the app, convert when you're ready.",
+    cryptoOptional:
+      "No crypto needed to start—earn in the app, convert when you're ready.",
   },
   whyOx: {
     headline: "Why OX?",
@@ -64,34 +69,53 @@ export const landing = {
         label: "Download on the Google Play",
         href: "https://play.google.com/store/apps/details?id=com.ellorem.oxygean&hl=en_IE&gl=US",
         id: "google",
-        image: "https://cdn.prod.website-files.com/6601ebe1041cb651c3a023e8/660f8d842dc9dd278a5e663f_google%20play.webp",
+        image:
+          "https://cdn.prod.website-files.com/6601ebe1041cb651c3a023e8/660f8d842dc9dd278a5e663f_google%20play.webp",
       },
       {
         label: "Download on the App Store",
         href: "https://apps.apple.com/ie/app/oxygean/id1491335024",
         id: "appstore",
-        image: "https://cdn.prod.website-files.com/6601ebe1041cb651c3a023e8/660f8d84cc470588810e54b7_app%20store.webp",
+        image:
+          "https://cdn.prod.website-files.com/6601ebe1041cb651c3a023e8/660f8d84cc470588810e54b7_app%20store.webp",
       },
       {
         label: "Download on the AppGallery",
         href: "https://appgallery.huawei.com/app/C110410089",
         id: "appgallery",
-        image: "https://cdn.prod.website-files.com/6601ebe1041cb651c3a023e8/660f8d845946f20ec8d0ad88_app%20galary.webp",
+        image:
+          "https://cdn.prod.website-files.com/6601ebe1041cb651c3a023e8/660f8d845946f20ec8d0ad88_app%20galary.webp",
       },
     ],
   },
   footer: {
-    tagline: "Evolved digital engagement using web3 technologies",
-    taglineBanner: "You're not just online anymore. You're alive in the network.",
+    tagline: "Systems stop guessing. Humans start earning.",
+    taglineBanner:
+      "OX is the Human Intelligence Protocol — the coordination layer between structured human intelligence and the systems that require it.",
     follow: "Follow Us On",
     interact: "Connect with OX",
     social: [
-      { label: "Instagram", href: "https://www.instagram.com/oxygean_social/?hl=en", id: "instagram" },
-      { label: "Facebook", href: "https://www.facebook.com/oxygeansocial", id: "facebook" },
-      { label: "LinkedIn", href: "https://www.linkedin.com/company/oxygean/mycompany/", id: "linkedin" },
+      {
+        label: "Instagram",
+        href: "https://www.instagram.com/oxygean_social/?hl=en",
+        id: "instagram",
+      },
+      {
+        label: "Facebook",
+        href: "https://www.facebook.com/oxygeansocial",
+        id: "facebook",
+      },
+      {
+        label: "LinkedIn",
+        href: "https://www.linkedin.com/company/oxygean/mycompany/",
+        id: "linkedin",
+      },
       { label: "X (Twitter)", href: "https://x.com/OXygean_app", id: "x" },
     ],
-    telegram: { label: "Join the OX Community on Telegram", href: "https://t.me/oxygeancommunity" },
+    telegram: {
+      label: "Join the OX Community on Telegram",
+      href: "https://t.me/oxygeancommunity",
+    },
     columns: [
       [
         { label: "Home", href: "/" },

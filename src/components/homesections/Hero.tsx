@@ -132,7 +132,8 @@ export default function HomeHero() {
       {/* Video buttons row */}
       <div className="mt-3 flex w-full max-w-6xl flex-wrap items-center gap-3">
         <Link
-          href="/videos/ox-story"
+          target="_blank"
+          href="https://s3.eu-west-1.amazonaws.com/oxy.prod1.static-media/public-upload/2026-02-24/oxygean-video-feb-2026.mp4"
           className="inline-flex items-center gap-2 rounded-full border border-white/25 bg-black/40 px-5 py-2.5 text-[12px] font-semibold text-white/80 transition hover:bg-white/10 hover:text-white"
         >
           <span className="inline-flex h-6 w-6 items-center justify-center rounded-full border border-white/50 bg-white/10 text-[10px]">

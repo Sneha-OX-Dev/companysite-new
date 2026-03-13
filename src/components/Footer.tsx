@@ -1,12 +1,11 @@
 "use client";
-import { landing } from "@/content/landing";
+
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 
 const PINK = "#FF2D6B";
 const PURPLE = "#7B1FA2";
-const RED = "#E8264A";
 
 const SOCIAL_ICONS: Record<string, React.ReactNode> = {
   instagram: (
@@ -30,282 +29,128 @@ const SOCIAL_ICONS: Record<string, React.ReactNode> = {
     </svg>
   ),
 };
+function SocialButton({ id, href }: { id: string; href: string }) {
+  const [hover, setHover] = useState(false);
 
-function SocialButton({
-  id,
-  href,
-  label,
-}: {
-  id: string;
-  href: string;
-  label: string;
-}) {
-  const [hovered, setHovered] = useState(false);
   return (
     <a
       href={href}
-      // target="_blank"
-      rel="noopener noreferrer"
-      aria-label={label}
-      className="relative flex h-10 w-10 items-center justify-center rounded-full transition-all duration-200"
-      style={{
-        background: hovered
-          ? `linear-gradient(135deg,${PINK},${PURPLE})`
-          : "rgba(255,255,255,0.06)",
-        border: `1px solid ${hovered ? "transparent" : "rgba(255,255,255,0.1)"}`,
-        color: hovered ? "#fff" : "rgba(255,255,255,0.5)",
-        transform: hovered ? "translateY(-2px)" : "none",
-        boxShadow: hovered ? `0 6px 20px rgba(255,45,107,0.35)` : "none",
-      }}
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
-    >
-      {SOCIAL_ICONS[id] ?? null}
-    </a>
-  );
-}
-
-function FooterLink({
-  href,
-  children,
-}: {
-  href: string;
-  children: React.ReactNode;
-}) {
-  const [hovered, setHovered] = useState(false);
-  return (
-    <Link
-      href={href}
-      className="flex items-center gap-2 text-[14px] transition-all duration-150"
-      style={{ color: hovered ? "#fff" : "rgba(255,255,255,0.45)" }}
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
-    >
-      <span
-        className="h-[1px] flex-shrink-0 transition-all duration-150"
-        style={{
-          width: hovered ? 14 : 6,
-          background: hovered
-            ? `linear-gradient(90deg,${PINK},${PURPLE})`
-            : "rgba(255,255,255,0.2)",
-        }}
-      />
-      {children}
-    </Link>
-  );
-}
-
-function TelegramButton({ href, label }: { href: string; label: string }) {
-  const [hovered, setHovered] = useState(false);
-  return (
-    <Link
-      href={href}
       target="_blank"
       rel="noopener noreferrer"
-      className="inline-flex items-center gap-2 rounded-lg px-5 py-2.5 text-[14px] font-semibold text-white transition-all duration-200"
+      className="flex h-10 w-10 items-center justify-center rounded-full transition-all"
       style={{
-        background: hovered
-          ? `linear-gradient(135deg,${RED},${PINK},${PURPLE})`
-          : `linear-gradient(135deg,rgba(255,45,107,0.15),rgba(123,31,162,0.15))`,
-        border: `1px solid ${hovered ? "transparent" : "rgba(255,45,107,0.3)"}`,
-        boxShadow: hovered ? `0 6px 24px rgba(255,45,107,0.35)` : "none",
-        transform: hovered ? "translateY(-1px)" : "none",
+        background: hover
+          ? `linear-gradient(135deg,${PINK},${PURPLE})`
+          : "rgba(255,255,255,0.06)",
+        border: "1px solid rgba(255,255,255,0.1)",
+        color: "#fff",
+        transform: hover ? "translateY(-2px)" : "none",
       }}
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
+      onMouseEnter={() => setHover(true)}
+      onMouseLeave={() => setHover(false)}
     >
-      {/* telegram icon */}
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-        <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L7.88 13.47l-2.967-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.832.95l-.527-.861z" />
-      </svg>
-      {label}
-    </Link>
+      {SOCIAL_ICONS[id]}
+    </a>
   );
 }
 
 export default function Footer() {
   return (
-    <footer
-      className="relative overflow-hidden"
-      style={{ background: "#07071A", fontFamily: "'DM Sans', sans-serif" }}
-    >
-      {/* grid overlay */}
-      {/* <div
-        className="pointer-events-none absolute inset-0"
-        style={{
-          backgroundImage:
-            "linear-gradient(rgba(255,255,255,0.012) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.012) 1px,transparent 1px)",
-          backgroundSize: "44px 44px",
-        }}
-      /> */}
-
-      {/* top glow */}
-      <div
-        className="pointer-events-none absolute left-1/2 top-0 -translate-x-1/2"
-        style={{
-          width: 600,
-          height: 300,
-          background: `radial-gradient(ellipse at 50% 0%,rgba(255,45,107,0.07) 0%,transparent 70%)`,
-        }}
-      />
-
-      {/* top gradient border */}
-      <div
-        className="absolute left-0 right-0 top-0 h-[1px]"
-        style={{
-          background: `linear-gradient(90deg,transparent,${PINK}55,${PURPLE}55,transparent)`,
-        }}
-      />
-
-      <div className="relative z-10 mx-auto max-w-5xl px-6 py-14 md:py-20">
-        {/* ── MAIN ROW ── */}
-        <div className="flex flex-col gap-12 md:flex-row md:items-start md:justify-between">
-          {/* LEFT — brand block */}
-          <div className="flex flex-col gap-5 md:max-w-[280px]">
-            {/* logo */}
-            <Link href="/" className="inline-block">
-              <Image
-                src="https://cdn.prod.website-files.com/6601ebe1041cb651c3a023e8/6601f1ceaf0f5b2dda2239dd_ox.svg"
-                alt="OX"
-                width={48}
-                height={48}
-              />
-            </Link>
-
-            {/* taglines */}
-            <div className="space-y-2">
-              <p className="text-[16px] font-semibold leading-snug text-white/80">
-                {landing.footer.taglineBanner}
-              </p>
-              <p className="text-[14px] leading-snug text-white/40">
-                {landing.footer.tagline}
-              </p>
-            </div>
-
-            {/* company address */}
-            {landing.footer.company && (
-              <div
-                className="rounded-lg px-4 py-3 text-[14px] leading-relaxed text-white/30"
-                style={{
-                  background: "rgba(255,255,255,0.03)",
-                  border: "1px solid rgba(255,255,255,0.07)",
-                }}
-              >
-                <p className="font-semibold text-white/50">
-                  {landing.footer.company.name}
-                </p>
-                <p>{landing.footer.company.addressLine1}</p>
-                <p>{landing.footer.company.addressLine2}</p>
-              </div>
-            )}
-
-            {/* social */}
-            <div>
-              <p className="mb-3 text-[14px] font-bold uppercase tracking-[0.18em] text-white/30">
-                {landing.footer.interact}
-              </p>
-              <div className="flex flex-wrap gap-2.5">
-                {landing.footer.social.map((item) => (
-                  <SocialButton
-                    key={item.id}
-                    id={item.id}
-                    href={item.href}
-                    label={item.label}
-                  />
-                ))}
-              </div>
-            </div>
-
-            {/* telegram CTA */}
-            <TelegramButton
-              href={landing.footer.telegram.href}
-              label={landing.footer.telegram.label}
+    <footer className="relative overflow-hidden bg-[#07071A] text-white">
+      <div className="mx-auto max-w-6xl px-6 py-20">
+        {/* MAIN GRID */}
+        <div className="grid gap-12 md:grid-cols-3">
+          {/* BRAND */}
+          <div className="space-y-6">
+            <Image
+              src="https://cdn.prod.website-files.com/6601ebe1041cb651c3a023e8/6601f1ceaf0f5b2dda2239dd_ox.svg"
+              alt="OX"
+              width={50}
+              height={50}
             />
-          </div>
 
-          {/* RIGHT — nav columns */}
-          <div className="grid grid-cols-2 gap-8 sm:grid-cols-3 md:gap-10">
-            {landing.footer.columns.map((column, i) => (
-              <nav key={i} className="flex flex-col gap-3">
-                {/* accent entry point on first column */}
-                {i === 0 && (
-                  <Link
-                    href={landing.entryPoint.href}
-                    className="mb-1 text-[14px] font-bold transition-colors duration-150 hover:text-white"
-                    style={{ color: PINK }}
-                  >
-                    {landing.entryPoint.label}
-                  </Link>
-                )}
-                {/* col heading — first item styled as heading */}
-                {column.map((link, j) =>
-                  j === 0 ? (
-                    <p
-                      key={link.label}
-                      className="mb-1 text-[14px] font-bold uppercase tracking-[0.18em] text-white/25"
-                    >
-                      {link.label}
-                    </p>
-                  ) : (
-                    <FooterLink key={link.label} href={link.href}>
-                      {link.label}
-                    </FooterLink>
-                  ),
-                )}
-              </nav>
-            ))}
-          </div>
-        </div>
+            <p className="text-lg font-semibold">
+              Systems stop guessing. Humans start earning.
+            </p>
 
-        {/* ── STAT BAR ── */}
-        <div
-          className="mt-14 grid grid-cols-2 gap-3 rounded-xl px-6 py-5 sm:grid-cols-4"
-          style={{
-            background:
-              "linear-gradient(135deg,rgba(255,45,107,0.06),rgba(123,31,162,0.06))",
-            border: "1px solid rgba(255,45,107,0.12)",
-          }}
-        >
-          {[
-            { val: "1,371,000,000", label: "Fixed OXME Supply" },
-            { val: "1,000 : 1", label: "OXIT to OXME Rate" },
-            { val: "2,000", label: "Data Points per Self" },
-            { val: "ERC-20", label: "Base Network" },
-          ].map((s) => (
-            <div
-              key={s.label}
-              className="flex flex-col items-center gap-1 text-center"
-            >
-              <p
-                className="text-[18px] font-black tracking-[-0.02em]"
-                style={{
-                  background: `linear-gradient(90deg,${PINK},${PURPLE})`,
-                  WebkitBackgroundClip: "text",
-                  WebkitTextFillColor: "transparent",
-                }}
-              >
-                {s.val}
+            <p className="text-[14px] text-white/60 leading-relaxed">
+              OX is the Human Intelligence Protocol — the coordination layer
+              between structured human intelligence and the systems that require
+              it.
+            </p>
+
+            {/* CONTACT */}
+            <div className="space-y-1 text-[14px] text-white/60">
+              <p className="uppercase tracking-[0.2em] text-white/40 text-xs">
+                Contact
               </p>
-              <p className="text-[14px] uppercase tracking-[1px] text-white/30">
-                {s.label}
-              </p>
+              <a href="mailto:Bernard.Flynn@oxygean.com">
+                Bernard.Flynn@oxygean.com
+              </a>
+              <p>www.oxygean.com</p>
             </div>
-          ))}
+
+            {/* SOCIAL */}
+            <div className="flex gap-3 pt-2">
+              <SocialButton id="x" href="https://twitter.com/OXygean" />
+              <SocialButton
+                id="instagram"
+                href="https://instagram.com/OXygean"
+              />
+              <SocialButton
+                id="linkedin"
+                href="https://linkedin.com/company/oxygean"
+              />
+              <SocialButton id="facebook" href="#" />
+            </div>
+          </div>
+
+          {/* NAVIGATION */}
+          <div className="space-y-4">
+            <p className="text-xs uppercase tracking-[0.2em] text-white/40">
+              Navigation
+            </p>
+
+            <div className="flex flex-col gap-2 text-[14px] text-white/70">
+              <Link href="/ai-team">AI Team</Link>
+              <Link href="/tokenomics">Tokenomics</Link>
+              <Link href="/whitepaper">White Paper</Link>
+              <Link href="/human-team-whitepaper">Human Team White Paper</Link>
+            </div>
+          </div>
+
+          {/* RESOURCES */}
+          <div className="space-y-4">
+            <p className="text-xs uppercase tracking-[0.2em] text-white/40">
+              Documentation
+            </p>
+
+            <div className="flex flex-col gap-2 text-[14px] text-white/70">
+              <Link href="/whitepaper">White Paper</Link>
+              <Link href="/human-team-whitepaper">Human Team White Paper</Link>
+            </div>
+
+            <p className="text-[12px] text-white/40 pt-6 leading-relaxed">
+              OX is operated by Ellorem Ireland Ltd. (OXygean). For token
+              information, terms, and disclaimers, please refer to our
+              documentation.
+            </p>
+          </div>
         </div>
 
-        {/* ── BOTTOM BAR ──  just addedingtt*/}
-        <div
-          className="mt-8 flex flex-col items-center justify-between gap-3 border-t pt-6 sm:flex-row"
-          style={{ borderColor: "rgba(255,255,255,0.07)" }}
-        >
-          <p className="text-[14px] text-white/28">
-            {landing.footer.copyright}
-          </p>
+        {/* BOTTOM BAR */}
+        <div className="mt-16 border-t border-white/10 pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-sm text-white/40">
+          <p>All Rights Reserved ©OXygean</p>
+
           <div className="flex items-center gap-1.5">
             <div
               className="h-[6px] w-[6px] rounded-full"
-              style={{ background: PINK, boxShadow: `0 0 8px ${PINK}` }}
+              style={{
+                background: PINK,
+                boxShadow: `0 0 8px ${PINK}`,
+              }}
             />
+
             <p className="text-[14px] font-semibold uppercase tracking-[0.15em] text-white/25">
               Human Intelligence Protocol
             </p>
