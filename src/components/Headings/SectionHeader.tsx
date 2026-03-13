@@ -1,4 +1,7 @@
 import { PINK } from "@/lib/constants";
+import { Badge } from "@/components/ui/badge";
+import { SectionTitle, Eyebrow, Muted } from "@/components/ui/typography";
+import { cn } from "@/lib/utils";
 import type { CSSProperties, ReactNode } from "react";
 
 type SectionHeaderProps = {
@@ -21,7 +24,7 @@ type SectionHeaderProps = {
 };
 
 export default function SectionHeader({
-  pillText = "Human Intelligence Protocol",
+  pillText,
   eyebrowText,
   title,
   subtitle,
@@ -35,46 +38,28 @@ export default function SectionHeader({
 
   return (
     <div
-      className={`mb-8 flex flex-col gap-2 ${alignClasses} ${className}`}
+      className={cn("flex flex-col gap-3", alignClasses, className)}
       style={style}
     >
-      {eyebrowText && (
-        <p className="text-[10px] font-semibold uppercase tracking-[0.22em] text-white/40 sm:text-[11px]">
-          {eyebrowText}
-        </p>
-      )}
+      {eyebrowText && <Eyebrow>{eyebrowText}</Eyebrow>}
 
       {pillText && (
-        <div
-          className="mb-1 inline-flex items-center gap-2 rounded-full px-4 py-1.5"
-          style={{
-            background: "rgba(255,45,107,.1)",
-            border: "1px solid rgba(255,45,107,.3)",
-          }}
-        >
+        <Badge variant="pill-accent" className="mb-1 gap-2">
           <span
-            className="h-[5px] w-[5px] rounded-full"
+            className="h-1.5 w-1.5 rounded-full"
             style={{
               background: PINK,
               boxShadow: `0 0 8px ${PINK}`,
               animation: "pulse 2s infinite",
             }}
           />
-          <span className="text-[9px] font-bold uppercase tracking-[2.5px] text-[var(--accent)] sm:text-[10px]">
-            {pillText}
-          </span>
-        </div>
+          {pillText}
+        </Badge>
       )}
 
-      <h2 className="text-2xl font-black tracking-tight text-white sm:text-3xl lg:text-4xl">
-        {title}
-      </h2>
+      <SectionTitle>{title}</SectionTitle>
 
-      {subtitle && (
-        <p className="text-[10px] uppercase tracking-[2px] text-white/35 sm:text-[11px]">
-          {subtitle}
-        </p>
-      )}
+      {subtitle && <Muted>{subtitle}</Muted>}
 
       {children}
     </div>
