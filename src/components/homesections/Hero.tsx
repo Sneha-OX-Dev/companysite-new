@@ -4,7 +4,7 @@ import Link from "next/link";
 const HERO_BG =
   "bg-[radial-gradient(circle_at_top,rgba(129,140,248,0.35),transparent_60%),radial-gradient(circle_at_bottom,rgba(236,72,153,0.25),transparent_60%)]";
 
-const HERO_ASSET_SRC = "/images/home-section/hero1.png";
+const HERO_ASSET_SRC = "/images/home-section/machine-self-banner1.png";
 const HERO_WIDE_SRC = "/images/home-section/hero3.png";
 
 export default function HomeHero() {

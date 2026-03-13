@@ -50,7 +50,7 @@ export default function AiTeamSection() {
     <section className="relative mx-auto flex w-full max-w-6xl flex-col gap-10 px-6 py-20 text-white sm:gap-12 sm:py-24">
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-0 -z-10 opacity-80 [background-image:radial-gradient(circle_at_top,_rgba(129,140,248,0.26),transparent_55%),radial-gradient(circle_at_bottom,_rgba(56,189,248,0.18),transparent_60%)]"
+        className="pointer-events-none absolute inset-0 -z-10 opacity-80 bg-[radial-gradient(circle_at_top,rgba(129,140,248,0.26),transparent_55%),radial-gradient(circle_at_bottom,rgba(56,189,248,0.18),transparent_60%)]"
       />
 
       <SectionHeader
