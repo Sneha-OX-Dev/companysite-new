@@ -164,12 +164,13 @@ export default function HomeHero() {
 
       {/* Full-width hero image (hero3) */}
       <div className="relative mt-8 w-full overflow-hidden">
-        <div className="relative mx-auto h-[260px] w-full max-w-6xl sm:h-[360px] md:h-[460px] lg:h-[560px]">
+        <div className="relative mx-auto w-full max-w-6xl">
           <Image
             src={HERO_WIDE_SRC}
             alt=""
-            fill
-            className="object-cover object-center"
+            width={1600}
+            height={900}
+            className="h-auto w-full rounded-3xl object-contain sm:object-cover"
             sizes="100vw"
             priority
           />
