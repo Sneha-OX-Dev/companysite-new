@@ -31,7 +31,7 @@ export default function HomeHero() {
           </div>
 
           {/* Core idea */}
-          <div className="space-y-2 text-[13px] text-white/75">
+          <div className="space-y-2 text-[14px] text-white/75">
             <p>
               Today, digital systems and AI operate largely without direct
               access to real human agency. OX changes this by enabling humans to
@@ -64,10 +64,8 @@ export default function HomeHero() {
         {/* Right column: hero visual placeholder (swap src when asset ready) */}
         <div className="flex-1">
           <div className="relative mx-auto w-full max-w-[520px] md:max-w-none">
-            <div className="pointer-events-none absolute inset-0 -z-10 rounded-[28px] bg-linear-to-br from-white/10 to-transparent blur-2xl" />
-
             <div
-              className="relative h-[420px] w-full overflow-hidden rounded-[28px] border border-white/10 bg-black/35 shadow-[0_28px_90px_rgba(0,0,0,0.75)]"
+              className="relative h-[420px] w-full overflow-hidden rounded-[28px]"
               style={{
                 maskImage:
                   "radial-gradient(ellipse 90% 85% at 50% 50%, black 40%, transparent 100%)",
@@ -81,7 +79,7 @@ export default function HomeHero() {
                 fill
                 className="object-cover mix-blend-screen"
                 priority
-                sizes="(max-width: 768px) 100vw, 520px"
+                sizes="(max-width: 968px) 100vw, 520px"
               />
             </div>
           </div>
