@@ -277,7 +277,7 @@ export function EcosystemMapSection() {
       {/* GRID */}
 
       <div
-        className="grid w-full max-w-[1100px] grid-cols-2 gap-4"
+        className="grid w-full max-w-[1100px] grid-cols-1 gap-4 md:grid-cols-2 md:gap-5"
         style={fadeIn(70)}
       >
         <QuadCard variant="q1" />
@@ -319,7 +319,7 @@ export function EcosystemMapSection() {
       {/* FOOTER */}
 
       <div
-        className="max-w-[1100px] border-t border-white/[0.06] pt-4 text-center text-[13px] text-white/40"
+        className="w-full max-w-[1100px] border-t border-white/[0.06] pt-4 text-center text-[13px] text-white/40"
         style={fadeIn(210)}
       >
         <strong className="text-white/70">
