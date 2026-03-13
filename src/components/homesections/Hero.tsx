@@ -5,13 +5,14 @@ const HERO_BG =
   "bg-[radial-gradient(circle_at_top,rgba(129,140,248,0.35),transparent_60%),radial-gradient(circle_at_bottom,rgba(236,72,153,0.25),transparent_60%)]";
 
 const HERO_ASSET_SRC = "/images/home-section/hero1.png";
+const HERO_WIDE_SRC = "/images/home-section/hero3.png";
 
 export default function HomeHero() {
   return (
     <section
       className={`relative flex min-h-screen flex-col items-center justify-center overflow-hidden px-6 pt-12 pb-16 text-left ${HERO_BG}`}
     >
-      <div className="relative z-10 flex w-full max-w-6xl flex-col gap-6 md:flex-row md:items-start md:gap-10">
+      <div className="relative z-10 flex w-full max-w-6xl flex-col gap-6 md:flex-row md:items-stretch md:gap-10">
         {/* Left column: copy */}
         <div className="flex-[1.4] space-y-5">
           {/* Category line */}
@@ -24,13 +25,13 @@ export default function HomeHero() {
             <h1 className="font-heading text-4xl font-bold tracking-[-0.05em] text-white sm:text-5xl md:text-6xl">
               1 Billion Machine Selves
             </h1>
-            <p className="text-[14px] font-medium text-white/70 sm:text-[15px]">
+            <p className="text-[14px] font-semibold text-white/90 sm:text-[15px]">
               1.5 million people have already started.
             </p>
           </div>
 
           {/* Core idea */}
-          <div className="space-y-2 text-[13px] text-white/75 sm:text-[14px]">
+          <div className="space-y-2 text-[13px] text-white/75">
             <p>
               Today, digital systems and AI operate largely without direct
               access to real human agency. OX changes this by enabling humans to
@@ -41,7 +42,7 @@ export default function HomeHero() {
           </div>
 
           {/* What is OX — one line */}
-          <p className="max-w-2xl text-[13px] text-white/70 sm:text-[14px]">
+          <p className="max-w-2xl text-[16px] text-white/70">
             <span className="font-semibold text-white">
               OX is the Human Agency Layer for digital systems and AI,
             </span>{" "}
@@ -64,18 +65,24 @@ export default function HomeHero() {
         <div className="flex-1">
           <div className="relative mx-auto w-full max-w-[520px] md:max-w-none">
             <div className="pointer-events-none absolute inset-0 -z-10 rounded-[28px] bg-linear-to-br from-white/10 to-transparent blur-2xl" />
-            <div className="relative overflow-hidden rounded-[28px] border border-white/10 bg-black/35 shadow-[0_28px_90px_rgba(0,0,0,0.75)]">
+
+            <div
+              className="relative h-[420px] w-full overflow-hidden rounded-[28px] border border-white/10 bg-black/35 shadow-[0_28px_90px_rgba(0,0,0,0.75)]"
+              style={{
+                maskImage:
+                  "radial-gradient(ellipse 90% 85% at 50% 50%, black 40%, transparent 100%)",
+                WebkitMaskImage:
+                  "radial-gradient(ellipse 90% 85% at 50% 50%, black 40%, transparent 100%)",
+              }}
+            >
               <Image
                 src={HERO_ASSET_SRC}
                 alt=""
-                width={1100}
-                height={900}
-                className="h-[240px] w-full object-cover opacity-90 mix-blend-screen sm:h-[300px] md:h-[360px]"
+                fill
+                className="object-cover mix-blend-screen"
                 priority
                 sizes="(max-width: 768px) 100vw, 520px"
               />
-              <div className="pointer-events-none absolute inset-0 bg-linear-to-br from-white/10 via-transparent to-[#FF2D6B]/10" />
-              <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_30%_10%,rgba(255,45,107,0.22),transparent_55%)]" />
             </div>
           </div>
         </div>
@@ -91,12 +98,12 @@ export default function HomeHero() {
           ].map((text) => (
             <div
               key={text}
-              className="group flex items-center justify-center gap-3 rounded-xl border border-white/12 bg-black/40 px-4 py-4 text-[15px] font-medium text-white/85 shadow-[0_16px_50px_rgba(0,0,0,0.65)] transition hover:border-[var(--accent)]/70 hover:bg-black/60"
+              className="group flex items-center justify-start gap-3 rounded-xl border border-white/12 bg-black/40 px-4 py-4 text-[15px] font-medium text-white/85 shadow-[0_16px_50px_rgba(0,0,0,0.65)] transition hover:border-[var(--accent)]/70 hover:bg-black/60"
             >
               <span className="text-[20px] leading-none text-[var(--accent)] transition-transform group-hover:translate-x-0.5 group-hover:text-white">
                 →
               </span>
-              <p className="text-center leading-snug">{text}</p>
+              <p className="text-left leading-snug">{text}</p>
             </div>
           ))}
         </div>
@@ -147,13 +154,27 @@ export default function HomeHero() {
       </div>
 
       {/* Unifying line above any following audience cards */}
-      <div className="mt-6 w-full max-w-6xl border-t border-white/10 pt-4 text-[12px] text-white/60 sm:text-[13px]">
+      <div className="mt-6 text-center w-full max-w-6xl border-t border-white/10 pt-4 text-[20px] text-white/60 ">
         <p>
           <strong className="font-semibold text-white/80">
             One billion human agents.
           </strong>{" "}
           One fixed supply token. Mined entirely by human participation.
         </p>
+      </div>
+
+      {/* Full-width hero image (hero3) */}
+      <div className="relative mt-8 w-screen overflow-hidden">
+        <div className="relative h-[320px] w-full sm:h-[420px] md:h-[520px] lg:h-[620px]">
+          <Image
+            src={HERO_WIDE_SRC}
+            alt=""
+            fill
+            className="object-cover object-center"
+            sizes="100vw"
+            priority
+          />
+        </div>
       </div>
     </section>
   );
