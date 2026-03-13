@@ -31,13 +31,11 @@ export default function SectionHeader({
   children,
 }: SectionHeaderProps) {
   const alignClasses =
-    align === "left"
-      ? "items-start text-left"
-      : "items-center text-center";
+    align === "left" ? "items-start text-left" : "items-center text-center";
 
   return (
     <div
-      className={`mb-8 flex flex-col gap-2 sm:mb-10 ${alignClasses} ${className}`}
+      className={`mb-8 flex flex-col gap-2 ${alignClasses} ${className}`}
       style={style}
     >
       {eyebrowText && (
@@ -62,9 +60,7 @@ export default function SectionHeader({
               animation: "pulse 2s infinite",
             }}
           />
-          <span
-            className="text-[9px] font-bold uppercase tracking-[2.5px] text-[var(--accent)] sm:text-[10px]"
-          >
+          <span className="text-[9px] font-bold uppercase tracking-[2.5px] text-[var(--accent)] sm:text-[10px]">
             {pillText}
           </span>
         </div>
