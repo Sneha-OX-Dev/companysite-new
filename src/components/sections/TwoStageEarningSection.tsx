@@ -1,6 +1,7 @@
 "use client";
 import SectionHeader from "@/components/Headings/SectionHeader";
 import { PINK, PURPLE } from "@/lib/constants";
+import { cn } from "@/lib/utils";
 import { useEffect, useState } from "react";
 
 const stage1Steps = [
@@ -410,7 +411,7 @@ function StageCard({
           </div>
         </div>
         <div className="my-4 flex justify-center">{icon}</div>
-        <p className={`text-center text-[14px] leading-relaxed ${accentClass}`}>
+        <p className={cn("text-center text-[14px] leading-relaxed", accentClass)}>
           {description}
         </p>
       </div>

@@ -1,4 +1,6 @@
 import SectionHeader from "@/components/Headings/SectionHeader";
+import { Badge } from "@/components/ui/badge";
+import { SectionLabel, Body, DisplayText, CardTitle, Muted, Subhead } from "@/components/ui/typography";
 
 const MACHINE_SELF_POINTS = [
   {
@@ -31,7 +33,7 @@ const PRIVACY_POINTS = [
 
 export default function MachineSelfSection() {
   return (
-    <section className="relative mx-auto flex w-full max-w-6xl flex-col gap-14 px-6 py-24 text-white sm:py-32">
+    <section className="relative mx-auto flex w-full max-w-6xl flex-col gap-14 px-6 py-24 text-white">
       <div
         aria-hidden
         className="pointer-events-none absolute inset-0 -z-10 [background-image:radial-gradient(ellipse_70%_50%_at_20%_10%,rgba(52,211,153,0.15),transparent_65%),radial-gradient(ellipse_55%_40%_at_80%_90%,rgba(59,130,246,0.12),transparent_65%)]"
@@ -81,19 +83,19 @@ export default function MachineSelfSection() {
 
           {/* Centre content */}
           <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 px-6 text-center">
-            <div className="rounded-full border border-emerald-400/30 bg-emerald-400/10 px-4 py-1.5 text-[11px] font-bold uppercase tracking-[0.28em] text-emerald-300/80">
+            <Badge variant="status-live">
               On-device · Permissioned · Sovereign
-            </div>
-            <p className="max-w-lg text-[22px] font-bold leading-tight tracking-[-0.03em] text-white sm:text-[28px]">
+            </Badge>
+            <CardTitle className="max-w-lg font-bold leading-tight tracking-tight text-white">
               Intelligence that lives{" "}
               <span className="bg-gradient-to-r from-emerald-300 to-blue-300 bg-clip-text text-transparent">
                 with you, not about you.
               </span>
-            </p>
-            <p className="max-w-md text-[14px] text-white/45 sm:text-[15px]">
+            </CardTitle>
+            <Muted className="max-w-md text-white/60">
               2,000 data points. Built by you. Owned by you. Never leaving your
               device.
-            </p>
+            </Muted>
           </div>
 
           {/* Bottom fade */}
@@ -105,15 +107,13 @@ export default function MachineSelfSection() {
         {/* Left — definition + stat grid */}
         <div className="flex flex-col gap-5">
           {/* Definition card */}
-          <div className="group relative overflow-hidden rounded-3xl border border-white/[0.07] bg-gradient-to-br from-white/[0.06] to-white/[0.01] p-8 shadow-[0_28px_72px_rgba(0,0,0,0.55)] backdrop-blur-sm">
+          <div className="glass-card group relative overflow-hidden p-8">
             <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-emerald-400/50 to-transparent" />
             <div className="pointer-events-none absolute -right-10 -top-10 h-40 w-40 rounded-full bg-emerald-400 opacity-[0.06] blur-3xl transition-opacity duration-500 group-hover:opacity-[0.12]" />
 
-            <p className="text-[11px] font-bold uppercase tracking-[0.28em] text-emerald-400/60">
-              What it is
-            </p>
+            <SectionLabel className="text-emerald-400/80">What it is</SectionLabel>
 
-            <p className="mt-5 text-[17px] leading-[1.85] text-white/65 sm:text-[18px]">
+            <Body className="mt-5">
               Every person has a Machine Self — a permissioned digital agent
               owned by the individual that represents their identity, data,
               capabilities, and intelligence, including the{" "}
@@ -122,17 +122,17 @@ export default function MachineSelfSection() {
               </span>{" "}
               of the individual that cannot be externally observed or
               reconstructed.
-            </p>
+            </Body>
 
             <div className="my-6 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
 
-            <p className="text-[17px] leading-[1.85] text-white/65 sm:text-[18px]">
+            <Body>
               The Machine Self acts as an active digital agent — exposing
-              thousands of capability signals derived from the person's unique
+              thousands of capability signals derived from the person&apos;s unique
               experience and context, enabling participation in coordination,
               decision-making, task routing, and economic activity within the
               network.
-            </p>
+            </Body>
           </div>
 
           {/* Stat grid */}
@@ -140,18 +140,18 @@ export default function MachineSelfSection() {
             {MACHINE_SELF_POINTS.map((point) => (
               <div
                 key={point.stat}
-                className="group relative overflow-hidden rounded-2xl border border-white/[0.07] bg-gradient-to-br from-white/[0.05] to-transparent p-5 transition-colors duration-300 hover:border-emerald-400/20"
+                className="glass-card group relative overflow-hidden p-5 transition-colors duration-300 hover:border-emerald-400/20"
               >
                 <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-emerald-400/30 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
-                <p className="bg-gradient-to-r from-emerald-300 to-blue-300 bg-clip-text text-[30px] font-black leading-none tracking-[-0.04em] text-transparent sm:text-[34px]">
+                <DisplayText className="bg-gradient-to-r from-emerald-300 to-blue-300 bg-clip-text text-headline leading-none tracking-[-0.04em] text-transparent">
                   {point.stat}
-                </p>
-                <p className="mt-2 text-[14px] font-semibold leading-snug text-white/80 sm:text-[15px]">
+                </DisplayText>
+                <Subhead className="mt-2 text-white/80">
                   {point.label}
-                </p>
-                <p className="mt-1 text-[12.5px] leading-snug text-white/40 sm:text-[13px]">
+                </Subhead>
+                <Muted className="mt-1 leading-snug text-white/50">
                   {point.sub}
-                </p>
+                </Muted>
               </div>
             ))}
           </div>
@@ -159,68 +159,86 @@ export default function MachineSelfSection() {
 
         {/* Right — how it works + privacy */}
         <div className="flex flex-col gap-5 lg:sticky lg:top-8">
-          <div className="group relative overflow-hidden rounded-3xl border border-white/[0.07] bg-gradient-to-br from-white/[0.06] to-white/[0.01] p-8 shadow-[0_28px_72px_rgba(0,0,0,0.55)] backdrop-blur-sm">
+          <div className="glass-card group relative overflow-hidden p-8">
             <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-blue-400/50 to-transparent" />
             <div className="pointer-events-none absolute -left-10 -top-10 h-40 w-40 rounded-full bg-blue-400 opacity-[0.06] blur-3xl transition-opacity duration-500 group-hover:opacity-[0.11]" />
 
-            <p className="text-[11px] font-bold uppercase tracking-[0.28em] text-blue-400/60">
-              How it works
-            </p>
+            <SectionLabel className="text-blue-400/80">How it works</SectionLabel>
 
-            <p className="mt-5 text-[19px] font-bold leading-tight tracking-[-0.02em] text-white/90 sm:text-[21px]">
+            <CardTitle className="mt-5 font-bold leading-tight tracking-tight text-foreground/90">
               Built in 16 hours.
               <br />
               <span className="bg-gradient-to-r from-emerald-300 to-blue-300 bg-clip-text text-transparent">
                 Maintained in 4 minutes a day.
               </span>
-            </p>
+            </CardTitle>
 
             <div className="my-6 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
 
-            <p className="text-[16px] leading-[1.85] text-white/60 sm:text-[17px]">
+            <Body>
               The Machine Self is not a profile built by observation. It is a
               structured representation you build yourself — through daily
               activity that takes less time than making a coffee.
-            </p>
+            </Body>
 
-            <p className="mt-4 text-[16px] leading-[1.85] text-white/60 sm:text-[17px]">
+            <Body className="mt-4">
               2,000 human-created data points. Unguessable by any AI — because
               every single one comes{" "}
-              <span className="font-semibold text-white/85">
+              <span className="font-semibold text-white/90">
                 directly from you.
               </span>
-            </p>
+            </Body>
           </div>
 
           {/* Privacy card */}
-          <div className="relative overflow-hidden rounded-2xl border border-white/[0.07] bg-gradient-to-br from-white/[0.04] to-transparent p-6">
+          <div className="glass-card relative overflow-hidden p-6">
             <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-emerald-400/30 to-transparent" />
 
-            <p className="text-[11px] font-bold uppercase tracking-[0.28em] text-emerald-400/50">
-              Sovereignty by design
-            </p>
+            <SectionLabel className="text-emerald-400/80">Sovereignty by design</SectionLabel>
 
             <ul className="mt-5 space-y-4">
               {PRIVACY_POINTS.map((item) => (
                 <li
                   key={item}
-                  className="flex items-start gap-3.5 text-[15px] leading-snug text-white/65 sm:text-[16px]"
+                  className="flex items-start gap-3.5"
                 >
                   <span className="relative mt-[6px] flex h-4 w-4 shrink-0 items-center justify-center">
                     <span className="absolute inset-0 rounded-full bg-emerald-400/15" />
                     <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 shadow-[0_0_8px_rgba(52,211,153,0.9)]" />
                   </span>
-                  {item}
+                  <Body className="text-foreground/70">{item}</Body>
                 </li>
               ))}
             </ul>
 
-            <div className="mt-6 inline-flex items-center gap-2.5 rounded-full border border-emerald-400/20 bg-emerald-400/[0.07] px-5 py-2.5 text-[12px] font-bold uppercase tracking-[0.22em] text-emerald-300/70">
+            <Badge variant="status-live" className="mt-6 gap-2.5">
               <span className="h-2 w-2 animate-pulse rounded-full bg-emerald-300 shadow-[0_0_6px_rgba(52,211,153,0.9)]" />
               Your data never leaves your device
-            </div>
+            </Badge>
           </div>
         </div>
+      </div>
+      {/* Canonical Statement callout */}
+      <blockquote className="relative overflow-hidden rounded-2xl border border-emerald-400/25 bg-emerald-400/[0.06] p-8">
+        <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-emerald-400/50 to-transparent" />
+        <div className="absolute left-0 inset-y-0 w-1 bg-gradient-to-b from-emerald-400 to-blue-400 rounded-l-2xl" />
+        <SectionLabel className="pl-6 text-emerald-400/80">Canonical Statement</SectionLabel>
+        <Body className="mt-4 pl-6 text-lg font-medium leading-relaxed text-foreground/90 italic">
+          "The Machine Self converts a human into an executable economic participant — authoritative in truth, contextual in environment, and controlled in execution — enabling machine-speed coordination with human-speed action."
+        </Body>
+      </blockquote>
+
+      {/* Phone as Sovereign Node */}
+      <div className="glass-card group relative overflow-hidden p-8">
+        <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-blue-400/50 to-transparent" />
+        <div className="pointer-events-none absolute -right-10 -top-10 h-40 w-40 rounded-full bg-blue-400 opacity-[0.06] blur-3xl transition-opacity duration-500 group-hover:opacity-[0.12]" />
+        <SectionLabel className="text-blue-400/80">Phone as Sovereign Node</SectionLabel>
+        <Body className="mt-5">
+          Every Machine Self lives entirely on the participant&apos;s phone. The phone is not a portal to a central database. It is the node. The intelligence is stored locally, evaluated locally, and matched locally — within the OX app. There is no central server holding anyone&apos;s Machine Self. No database that can be hacked, sold, or subpoenaed.
+        </Body>
+        <Body className="mt-4">
+          One billion participants. One billion sovereign nodes. Each one owned entirely by the individual it represents.
+        </Body>
       </div>
     </section>
   );

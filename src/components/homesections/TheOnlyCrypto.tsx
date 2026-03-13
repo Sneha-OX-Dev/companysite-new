@@ -1,6 +1,9 @@
 "use client";
 import SectionHeader from "@/components/Headings/SectionHeader";
+import { Button } from "@/components/ui/button";
+import { Body, SectionLabel, CardTitle, DisplayText, Eyebrow, Muted } from "@/components/ui/typography";
 import { PINK, PURPLE } from "@/lib/constants";
+import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
@@ -156,17 +159,17 @@ function StepCard({
   return (
     <div
       className="flex items-center gap-3 rounded-xl px-3 py-3 sm:px-4"
-      style={{ background: `${color}0f`, border: `1px solid ${color}40` }}
+      style={{ background: `${color}0d`, border: `1px solid ${color}35` }}
     >
       <div
         className="flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-md sm:h-8 sm:w-8"
-        style={{ background: `${color}33`, border: `1px solid ${color}66` }}
+        style={{ background: `${color}25`, border: `1px solid ${color}55` }}
       >
         {step.icon}
       </div>
       <div>
-        <p className="text-[14px] font-bold text-white">{step.label}</p>
-        <p className="text-[12px] text-white/60">{step.sub}</p>
+        <Body className="font-bold text-white">{step.label}</Body>
+        <Muted className="text-white/60">{step.sub}</Muted>
       </div>
     </div>
   );
@@ -371,14 +374,22 @@ function StageCard({
   return (
     <div className="flex flex-1 flex-col gap-3">
       <div
-        className="relative overflow-hidden rounded-2xl p-5 sm:p-6"
+        className="group relative overflow-hidden rounded-2xl p-5 sm:p-6 transition-all duration-300"
         style={{
-          background: `linear-gradient(135deg,${color}2e,${color === PINK ? PURPLE : PINK}1a)`,
-          border: `1.5px solid ${color}`,
-          boxShadow:
-            color === PINK ? `0 0 32px rgba(255,45,107,0.2)` : undefined,
+          background: `linear-gradient(135deg,${color}20,${color === PINK ? PURPLE : PINK}12)`,
+          border: `1px solid ${color}50`,
+          backdropFilter: "blur(24px)",
+          WebkitBackdropFilter: "blur(24px)",
+          boxShadow: `0 8px 32px rgba(0,0,0,0.45), inset 0 1px 0 rgba(255,255,255,0.08)`,
         }}
       >
+        {/* Glow orb */}
+        <div
+          className={cn(
+            "pointer-events-none absolute -right-10 -top-10 h-36 w-36 rounded-full opacity-[0.07] blur-3xl transition-opacity duration-500 group-hover:opacity-[0.16]",
+            color === PINK ? "bg-primary" : "bg-brand-purple"
+          )}
+        />
         <div
           className="absolute inset-x-0 top-0 h-[1.5px]"
           style={{
@@ -399,19 +410,12 @@ function StageCard({
             {stage}
           </div>
           <div>
-            <p
-              className="text-[14px] font-black tracking-wide sm:text-[15px]"
-              style={{ color }}
-            >
-              {label}
-            </p>
-            <p className="text-[14px] font-bold text-white sm:text-[13px]">
-              {title}
-            </p>
+            <Eyebrow style={{ color }}>{label}</Eyebrow>
+            <Body className="font-bold text-white">{title}</Body>
           </div>
         </div>
         <div className="my-4 flex justify-center">{icon}</div>
-        <p className={`text-center text-[14px] leading-relaxed ${accentClass}`}>
+        <p className={cn("text-center text-sm leading-relaxed", accentClass)}>
           {description}
         </p>
       </div>
@@ -423,6 +427,7 @@ function StageCard({
     </div>
   );
 }
+
 export default function TheOnlyCryptoSection() {
   const [visible, setVisible] = useState(false);
   useEffect(() => {
@@ -438,24 +443,25 @@ export default function TheOnlyCryptoSection() {
   return (
     <section
       id="two-stage-earning"
-      className="relative mx-auto flex w-full max-w-6xl flex-col gap-4 px-6 py-20 text-white justify-center items-center"
+      className="relative mx-auto flex w-full max-w-6xl flex-col gap-4 px-6 py-24 text-white"
     >
       <SectionHeader
-        title="The Only Crypto You Mine With Your Time"
+        title="The Only Crypto In The World You Mine With Your Time"
+        eyebrowText="HOW YOU EARN"
         subtitle="Every crypto network on earth wants your money. OX wants your time."
         align="center"
       />
 
       {/* Core explanation */}
-      <p className="max-w-3xl text-[13px] leading-relaxed text-white/75 sm:text-[14px] mb-4">
+      <Body className="max-w-3xl mb-4">
         This is the only crypto network in the world where financial investment
         is not the entry point. You do not buy your way in. You build your way
         in. And while you build — you earn.
-      </p>
+      </Body>
 
-      {/* Two columns — stacks on mobile */}
+      {/* Two columns */}
       <div
-        className="flex w-full max-w-4xl flex-col gap-6 sm:flex-row sm:items-stretch sm:gap-4"
+        className="flex w-full flex-col gap-6 sm:flex-row sm:items-stretch sm:gap-4"
         style={fadeIn(100)}
       >
         <StageCard
@@ -473,13 +479,16 @@ export default function TheOnlyCryptoSection() {
               </span>{" "}
               completing your Machine Self.
               <br />
-              16 hours of structured human capital. From day one — you mine.
+              16 hours of structured human capital, stored on your phone, owned by you. From day one — you mine.
+              <br />
+              <br />
+              Every verified contribution earns OXIT. The building is the mining.
             </>
           }
           steps={stage1Steps}
         />
 
-        {/* Centre divider — hidden on mobile, shown on sm+ */}
+        {/* Centre divider — desktop */}
         <div className="hidden w-14 shrink-0 flex-col items-center justify-center gap-3 sm:flex">
           <div
             className="w-px flex-1"
@@ -491,7 +500,7 @@ export default function TheOnlyCryptoSection() {
             className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl"
             style={{
               background: `linear-gradient(135deg,rgba(255,45,107,0.2),rgba(123,31,162,0.15))`,
-              border: `1.5px solid rgba(255,45,107,0.5)`,
+              border: `1px solid rgba(255,45,107,0.4)`,
             }}
           >
             <svg width="18" height="18" viewBox="0 0 20 20" fill="none">
@@ -504,13 +513,13 @@ export default function TheOnlyCryptoSection() {
               />
             </svg>
           </div>
-          <p className="text-center text-[7px] uppercase leading-relaxed tracking-widest text-white/80">
+          <Eyebrow className="text-center leading-relaxed text-white/60">
             Complete
             <br />
             Machine
             <br />
             Self
-          </p>
+          </Eyebrow>
           <div
             className="w-px flex-1"
             style={{
@@ -527,7 +536,7 @@ export default function TheOnlyCryptoSection() {
               background: `linear-gradient(to right,transparent,${PINK}80,${PURPLE}80,transparent)`,
             }}
           />
-          <p className="text-[8px] uppercase tracking-widest text-white/70">
+          <p className="text-xs uppercase tracking-widest text-white/60">
             Complete Machine Self
           </p>
           <div
@@ -547,141 +556,131 @@ export default function TheOnlyCryptoSection() {
           accentClass="text-white/70"
           description={
             <>
-              Your Machine Self gets matched to{" "}
-              <span className="font-bold text-purple-400">real paid work</span>.
+              Your Machine Self evaluates every opportunity privately on your device. You see only what you qualify for. You choose whether to participate. You complete the work.
               <br />
-              Complete work. Earn more OXIT. The matching never stops.
+              <br />
+              The earning never stops.
             </>
           }
           steps={stage2Steps}
         />
       </div>
 
-      {/* Bottom bar */}
+      {/* Stats bar */}
       <div
-        className="mt-6 flex w-full max-w-4xl overflow-hidden rounded-xl shadow-2xl sm:mt-8"
+        className="mt-12 w-full border-t border-white/[0.07] pt-8"
         style={fadeIn(200)}
       >
         <div
-          className="w-1 shrink-0"
-          style={{ background: `linear-gradient(to bottom,${PINK},${PURPLE})` }}
-        />
-        <div
-          className="flex flex-1 flex-wrap items-center justify-between gap-4 rounded-r-xl border border-white/[0.06] px-4 py-4 sm:px-6"
+          className="flex overflow-hidden rounded-xl shadow-2xl border border-white/[0.07]"
           style={{
-            background:
-              "linear-gradient(135deg,rgba(255,45,107,.08),rgba(123,31,162,.07))",
+            backdropFilter: "blur(24px)",
+            WebkitBackdropFilter: "blur(24px)",
           }}
         >
-          <p className="text-[11px] font-bold leading-relaxed text-white sm:max-w-xs sm:text-[13px]">
-            Every other crypto: invest money. Hope the price rises.
-            <br />
-            OX: invest your time. Get matched to paid work. Earn.
-          </p>
-          <div className="flex flex-wrap gap-5 shrink-0">
-            {stats.map((s) => (
-              <div key={s.label} className="text-center">
-                <p
-                  className="text-[14px] font-black sm:text-[16px]"
-                  style={{
-                    background: `linear-gradient(90deg,${PINK},${PURPLE})`,
-                    WebkitBackgroundClip: "text",
-                    WebkitTextFillColor: "transparent",
-                  }}
-                >
-                  {s.value}
-                </p>
-                <p className="text-[7px] uppercase tracking-widest text-white sm:text-[8px]">
-                  {s.label}
-                </p>
-              </div>
-            ))}
+          {/* Left gradient accent bar — correct flex approach (no floats) */}
+          <div
+            className="w-1 shrink-0 self-stretch"
+            style={{ background: `linear-gradient(to bottom,${PINK},${PURPLE})` }}
+          />
+          <div
+            className="flex flex-1 flex-wrap items-center justify-between gap-4 px-6 py-5"
+            style={{
+              background:
+                "linear-gradient(135deg,rgba(255,45,107,.07),rgba(123,31,162,.06))",
+              boxShadow: "inset 0 1px 0 rgba(255,255,255,0.07)",
+            }}
+          >
+            <Body className="font-bold text-foreground sm:max-w-xs">
+              Every other crypto: invest money. Hope the price rises.
+              <br />
+              OX: invest your time. Get matched to paid work. Earn.
+            </Body>
+            <div className="flex flex-wrap gap-6 shrink-0">
+              {stats.map((s) => (
+                <div key={s.label} className="text-center">
+                  <DisplayText className="text-title font-black bg-gradient-to-r from-primary to-brand-purple bg-clip-text text-transparent">
+                    {s.value}
+                  </DisplayText>
+                  <Eyebrow className="text-white/50">{s.label}</Eyebrow>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </div>
 
-      <style>{`@keyframes pulse { 0%,100%{opacity:.3} 50%{opacity:.9} }`}</style>
-
       {/* Token block */}
-      <div className="rounded-2xl border border-white/10 bg-black/30 p-6 shadow-[0_18px_60px_rgba(0,0,0,0.6)] sm:p-7">
-        <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-white/45">
-          The token
-        </p>
-        <h3 className="mt-2 font-heading text-[20px] font-semibold tracking-[-0.02em] text-white sm:text-[22px]">
-          Fixed conversion. Fixed supply. Human-mined.
-        </h3>
-        <div className="mt-4 grid gap-4 lg:grid-cols-[minmax(0,1.2fr)_minmax(0,0.8fr)]">
-          <p className="text-[13px] leading-relaxed text-white/75 sm:text-[14px]">
-            OXIT converts to OXME at a fixed, immutable rate.{" "}
-            <span className="font-semibold text-white">1,000 OXIT</span> to{" "}
-            <span className="font-semibold text-white">1 OXME</span>. Both
-            tokens have a fixed total supply set at genesis. No additional
-            tokens can ever be created. By anyone. Ever.
-            <br />
-            <br />
-            The only way either token enters circulation is through{" "}
-            <span className="font-semibold text-white">
-              verified human participation
-            </span>
-            . Not capital. Not machines. People.
-          </p>
-          <div className="rounded-xl border border-white/10 bg-white/5 p-5">
-            <p className="text-[10px] font-semibold uppercase tracking-[0.22em] text-white/45">
-              Rate
-            </p>
-            <p className="mt-1 bg-linear-to-r from-[#FF2D6B] via-[#c0255a] to-[#7B1FA2] bg-clip-text text-[26px] font-black tracking-[-0.04em] text-transparent">
-              1,000 : 1
-            </p>
-            <p className="mt-2 text-[12px] leading-relaxed text-white/60">
-              OXIT converts to OXME at a fixed, immutable rate.
-            </p>
+      <div className="w-full border-t border-white/[0.07] pt-8 mt-4">
+        <div className="glass-card glass-card-accent-pink p-6 sm:p-7">
+          <SectionLabel className="text-foreground/80">The token</SectionLabel>
+          <CardTitle className="mt-2 tracking-tight text-white">
+            Fixed conversion. Fixed supply. Human-mined.
+          </CardTitle>
+          <div className="mt-4 grid gap-4 lg:grid-cols-[minmax(0,1.2fr)_minmax(0,0.8fr)]">
+            <Body>
+              OXIT converts to OXME at a fixed, immutable rate.{" "}
+              <span className="font-semibold text-white">1,000 OXIT</span> to{" "}
+              <span className="font-semibold text-white">1 OXME</span>. Both
+              tokens have a fixed total supply set at genesis. No additional
+              tokens can ever be created. By anyone. Ever.
+              <br />
+              <br />
+              The only way either token enters circulation is through{" "}
+              <span className="font-semibold text-white">
+                verified human participation
+              </span>
+              . Not capital. Not machines. People.
+            </Body>
+            <div className="glass-card p-5">
+              <SectionLabel className="text-foreground/80">Rate</SectionLabel>
+              <DisplayText className="mt-1 bg-gradient-to-r from-primary via-primary/80 to-brand-purple bg-clip-text text-headline font-black tracking-tight text-transparent">
+                1,000 : 1
+              </DisplayText>
+              <Muted className="mt-2 text-white/60">
+                OXIT converts to OXME at a fixed, immutable rate.
+              </Muted>
+            </div>
           </div>
         </div>
       </div>
 
       {/* Comparison block */}
-      <div className="grid gap-5 lg:grid-cols-2">
-        <div className="rounded-2xl border border-white/10 bg-white/5 p-6">
-          <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-white/45">
-            The comparison
-          </p>
-          <h3 className="mt-2 font-heading text-[18px] font-semibold tracking-[-0.02em] text-white sm:text-[20px]">
-            Every other crypto
-          </h3>
-          <p className="mt-3 text-[13px] leading-relaxed text-white/70 sm:text-[14px]">
-            Invest money. Hope the price rises.
-          </p>
-        </div>
+      <div className="w-full border-t border-white/[0.07] pt-8 mt-4">
+        <div className="grid gap-5 lg:grid-cols-2">
+          <div className="glass-card p-6">
+            <SectionLabel className="text-foreground/80">The comparison</SectionLabel>
+            <CardTitle className="mt-3 tracking-tight text-white">
+              Every other crypto
+            </CardTitle>
+            <Body className="mt-3">Invest money. Hope the price rises.</Body>
+          </div>
 
-        <div className="rounded-2xl border border-[#FF2D6B]/25 bg-black/35 p-6 shadow-[0_18px_60px_rgba(255,45,107,0.12)]">
-          <p className="text-[16px] font-semibold uppercase tracking-[0.22em] text-[#FF9BB8]">
-            OX
-          </p>
-          <h3 className="mt-2 font-heading text-[18px] font-semibold tracking-[-0.02em] text-white sm:text-[20px]">
-            Invest your time. Earn the network.
-          </h3>
-          <p className="mt-3 text-[13px] leading-relaxed text-white/75 sm:text-[14px]">
-            Get matched to paid work. Earn a scarce token backed by real human
-            capital. The supply is fixed. The work keeps coming. The network
-            grows every time another human agent joins.
-          </p>
-          <p className="mt-4 text-[13px] font-semibold text-white sm:text-[14px]">
-            Bitcoin is mined with electricity.{" "}
-            <span className="bg-linear-to-r from-[#FF2D6B] to-[#7B1FA2] bg-clip-text text-transparent">
-              OX is mined with human TIME.
-            </span>
-          </p>
+          <div className="glass-card glass-card-accent-pink rounded-2xl p-6 border-primary/25">
+            <SectionLabel className="text-primary/80">OX</SectionLabel>
+            <CardTitle className="mt-3 tracking-tight text-white">
+              Invest your time. Earn the network.
+            </CardTitle>
+            <Body className="mt-3">
+              Get matched to paid work. Earn a scarce token backed by real human
+              capital. The supply is fixed. The work keeps coming. The network
+              grows every time another human agent joins.
+            </Body>
+            <Body className="mt-4 font-semibold text-white">
+              Bitcoin is mined with electricity.{" "}
+              <span className="bg-gradient-to-r from-primary to-brand-purple bg-clip-text text-transparent">
+                OX is mined with human TIME.
+              </span>
+            </Body>
+          </div>
         </div>
       </div>
 
       {/* CTA */}
-      <div className="pt-2">
-        <Link
-          href="#machine-self"
-          className="inline-flex items-center justify-center rounded-full bg-[var(--accent)] px-8 py-3 text-[16px] font-semibold text-white shadow-[0_0_34px_rgba(255,45,107,0.55)] transition hover:-translate-y-0.5 hover:shadow-[0_0_46px_rgba(255,45,107,0.9)]"
-        >
-          Build Your Machine Self. Start earning.
-        </Link>
+      <div className="pt-4">
+        <Button asChild variant="accent" size="pill">
+          <Link href="/machine-self">Build Your Machine Self. Start earning.</Link>
+        </Button>
       </div>
     </section>
   );

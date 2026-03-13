@@ -9,6 +9,7 @@ import {
   YAxis,
 } from "recharts";
 import { TOKEN_CHART_DATA } from "@/data/chart-data";
+import { cn } from "@/lib/utils";
 
 interface TokenChartProps {
   compact?: boolean;
@@ -16,7 +17,12 @@ interface TokenChartProps {
 
 export default function TokenChart({ compact = false }: TokenChartProps) {
   return (
-    <div className={compact ? "h-[180px] w-full md:h-[200px]" : "h-[280px] w-full"}>
+    <div
+      className={cn("w-full", {
+        "h-[180px] md:h-[200px]": compact,
+        "h-[280px]": !compact,
+      })}
+    >
       <ResponsiveContainer width="100%" height="100%">
         <AreaChart data={TOKEN_CHART_DATA}>
           <defs>

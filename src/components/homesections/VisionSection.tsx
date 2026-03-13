@@ -1,4 +1,6 @@
 import SectionHeader from "@/components/Headings/SectionHeader";
+import { CardTitle, SectionLabel, Body, Muted, DisplayText, Subhead } from "@/components/ui/typography";
+import { cn } from "@/lib/utils";
 
 const PILLARS = [
   { label: "Completes AI", num: "01" },
@@ -28,10 +30,10 @@ const BODY_POINTS = [
 
 export default function VisionSection() {
   return (
-    <section className="relative mx-auto flex w-full max-w-6xl flex-col gap-14 px-6 py-24 text-white">
+    <section className="relative mx-auto flex w-full max-w-6xl flex-col gap-14 px-6 pb-24 pt-10 text-white">
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-0 -z-10 [background-image:radial-gradient(ellipse_70%_50%_at_20%_10%,rgba(255,45,107,0.15),transparent_65%),radial-gradient(ellipse_55%_45%_at_80%_90%,rgba(123,31,162,0.13),transparent_65%)]"
+        className="atm-amber-rose pointer-events-none absolute inset-0 -z-10"
       />
 
       <SectionHeader
@@ -41,11 +43,11 @@ export default function VisionSection() {
       />
 
       {/* Hero statement — full width */}
-      <div className="relative overflow-hidden rounded-3xl border border-white/[0.07] bg-gradient-to-br from-[#FF2D6B]/[0.07] via-[#7B1FA2]/[0.05] to-transparent p-10 md:p-14">
-        <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#FF2D6B]/60 to-transparent" />
-        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-[#7B1FA2]/40 to-transparent" />
-        <div className="pointer-events-none absolute -left-20 -top-20 h-72 w-72 rounded-full bg-[#FF2D6B] opacity-[0.07] blur-[80px]" />
-        <div className="pointer-events-none absolute -bottom-20 -right-20 h-72 w-72 rounded-full bg-[#7B1FA2] opacity-[0.07] blur-[80px]" />
+      <div className="glass-card glass-card-accent-pink relative overflow-hidden p-10 md:p-14 bg-gradient-to-br from-primary/[0.06] via-brand-purple/[0.04] to-transparent">
+        <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-primary/60 to-transparent" />
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-brand-purple/40 to-transparent" />
+        <div className="pointer-events-none absolute -left-20 -top-20 h-72 w-72 rounded-full bg-primary opacity-[0.07] blur-[80px]" />
+        <div className="pointer-events-none absolute -bottom-20 -right-20 h-72 w-72 rounded-full bg-brand-purple opacity-[0.07] blur-[80px]" />
 
         {/* Watermark */}
         <div className="pointer-events-none absolute inset-0 flex items-center justify-center select-none">
@@ -55,21 +57,19 @@ export default function VisionSection() {
         </div>
 
         <div className="relative flex flex-col gap-3">
-          <p className="text-[11px] font-bold uppercase tracking-[0.28em] text-[#FF2D6B]/60">
-            Infrastructure
-          </p>
-          <p className="text-[36px] font-black leading-[1.1] tracking-[-0.04em] text-white sm:text-[44px] md:text-[52px]">
+          <SectionLabel className="text-primary/80">Infrastructure</SectionLabel>
+          <DisplayText className="text-display">
             We are scaling a network of
             <br />
-            <span className="bg-gradient-to-r from-[#FF2D6B] to-[#7B1FA2] bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-primary to-brand-purple bg-clip-text text-transparent">
               one billion human agents.
             </span>
-          </p>
-          <p className="mt-3 max-w-2xl text-[17px] leading-[1.85] text-white/55 sm:text-[18px]">
+          </DisplayText>
+          <Body className="mt-3 max-w-2xl">
             Where the Machine Self represents the unique intelligence of
             individuals and coordinates human and artificial intelligence to
             solve problems, perform work, and create economic value.
-          </p>
+          </Body>
         </div>
       </div>
 
@@ -78,15 +78,15 @@ export default function VisionSection() {
         {PILLARS.map((p) => (
           <div
             key={p.num}
-            className="group relative overflow-hidden rounded-2xl border border-white/[0.07] bg-gradient-to-br from-white/[0.05] to-transparent p-5 transition-all duration-300 hover:border-[#FF2D6B]/20"
+            className="glass-card group relative overflow-hidden p-5 transition-all duration-300 hover:border-primary/20"
           >
-            <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#FF2D6B]/40 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
-            <span className="font-mono text-[11px] font-bold tracking-[0.24em] text-[#FF2D6B]/50">
+            <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-primary/40 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+            <span className="font-mono text-xs font-bold tracking-widest text-primary/50">
               {p.num}
             </span>
-            <p className="mt-3 text-[17px] font-black leading-tight tracking-[-0.02em] text-white sm:text-[18px]">
+            <CardTitle className="mt-3 leading-tight tracking-tight text-white">
               {p.label}
-            </p>
+            </CardTitle>
           </div>
         ))}
       </div>
@@ -96,22 +96,29 @@ export default function VisionSection() {
         {BODY_POINTS.map((pt, i) => (
           <div
             key={pt.title}
-            className="group relative overflow-hidden rounded-3xl border border-white/[0.07] bg-gradient-to-br from-white/[0.05] to-transparent p-7 transition-all duration-300 hover:border-[#7B1FA2]/20 sm:p-8"
+            className="glass-card group relative overflow-hidden p-7 transition-all duration-300 hover:border-brand-purple/20 sm:p-8"
           >
             <div
-              className={`pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent ${i % 2 === 0 ? "via-[#FF2D6B]/40" : "via-[#7B1FA2]/40"} to-transparent`}
+              className={cn(
+                "pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent to-transparent",
+                { "via-primary/40": i % 2 === 0, "via-brand-purple/40": i % 2 !== 0 }
+              )}
             />
             <div
-              className={`pointer-events-none absolute -right-10 -top-10 h-32 w-32 rounded-full ${i % 2 === 0 ? "bg-[#FF2D6B]" : "bg-[#7B1FA2]"} opacity-[0.06] blur-2xl transition-opacity duration-500 group-hover:opacity-[0.13]`}
+              className={cn(
+                "pointer-events-none absolute -right-10 -top-10 h-32 w-32 rounded-full opacity-[0.06] blur-2xl transition-opacity duration-500 group-hover:opacity-[0.13]",
+                { "bg-primary": i % 2 === 0, "bg-brand-purple": i % 2 !== 0 }
+              )}
             />
-            <h4
-              className={`bg-gradient-to-r ${i % 2 === 0 ? "from-[#FF2D6B] to-[#7B1FA2]" : "from-[#7B1FA2] to-[#FF2D6B]"} bg-clip-text text-[18px] font-black leading-snug tracking-[-0.02em] text-transparent sm:text-[19px]`}
+            <CardTitle
+              className={cn(
+                "bg-gradient-to-r bg-clip-text text-title leading-snug tracking-[-0.02em] text-transparent",
+                { "from-primary to-brand-purple": i % 2 === 0, "from-brand-purple to-primary": i % 2 !== 0 }
+              )}
             >
               {pt.title}
-            </h4>
-            <p className="mt-4 text-[16px] leading-[1.85] text-white/58 sm:text-[17px]">
-              {pt.body}
-            </p>
+            </CardTitle>
+            <Body className="mt-4">{pt.body}</Body>
           </div>
         ))}
       </div>
@@ -119,63 +126,57 @@ export default function VisionSection() {
       {/* Scale statement — asymmetric two col */}
       <div className="grid gap-4 lg:grid-cols-[1fr_1.4fr]">
         {/* Left — stat card */}
-        <div className="relative overflow-hidden rounded-3xl border border-white/[0.07] bg-gradient-to-br from-[#FF2D6B]/[0.08] to-[#7B1FA2]/[0.05] p-8">
-          <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#FF2D6B]/50 to-transparent" />
-          <div className="pointer-events-none absolute -left-10 -top-10 h-40 w-40 rounded-full bg-[#FF2D6B] opacity-[0.07] blur-3xl" />
-          <p className="text-[11px] font-bold uppercase tracking-[0.28em] text-[#FF2D6B]/60">
-            Scale target
-          </p>
-          <p className="mt-5 bg-gradient-to-r from-[#FF2D6B] to-[#7B1FA2] bg-clip-text text-[64px] font-black leading-none tracking-[-0.05em] text-transparent sm:text-[80px]">
+        <div className="glass-card glass-card-accent-pink relative overflow-hidden p-8 bg-gradient-to-br from-primary/[0.07] to-brand-purple/[0.04]">
+          <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-primary/50 to-transparent" />
+          <div className="pointer-events-none absolute -left-10 -top-10 h-40 w-40 rounded-full bg-primary opacity-[0.07] blur-3xl" />
+          <SectionLabel className="text-primary/80">Scale target</SectionLabel>
+          <DisplayText className="mt-5 bg-gradient-to-r from-primary to-brand-purple bg-clip-text text-display leading-none tracking-[-0.05em] text-transparent">
             1B
-          </p>
-          <p className="mt-3 text-[18px] font-bold text-white/80 sm:text-[20px]">
+          </DisplayText>
+          <CardTitle className="mt-3 font-bold text-foreground/80">
             Machine Selves.
-          </p>
-          <p className="mt-2 text-[15px] text-white/40 sm:text-[16px]">
-            One for every human with a phone.
-          </p>
+          </CardTitle>
+          <Muted className="mt-2">One for every human with a phone.</Muted>
         </div>
 
         {/* Right — productivity statement */}
-        <div className="relative overflow-hidden rounded-3xl border border-white/[0.07] bg-gradient-to-br from-white/[0.05] to-transparent p-8">
-          <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#7B1FA2]/50 to-transparent" />
-          <div className="pointer-events-none absolute -right-10 -top-10 h-40 w-40 rounded-full bg-[#7B1FA2] opacity-[0.07] blur-3xl" />
-          <p className="text-[11px] font-bold uppercase tracking-[0.28em] text-[#7B1FA2]/70">
-            The outcome
-          </p>
-          <p className="mt-5 text-[19px] font-bold leading-[1.6] tracking-[-0.02em] text-white/85 sm:text-[21px]">
+        <div className="glass-card glass-card-accent-purple relative overflow-hidden p-8">
+          <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-brand-purple/50 to-transparent" />
+          <div className="pointer-events-none absolute -right-10 -top-10 h-40 w-40 rounded-full bg-brand-purple opacity-[0.07] blur-3xl" />
+          <SectionLabel className="text-brand-purple/70">The outcome</SectionLabel>
+          <CardTitle className="mt-5 font-bold leading-snug tracking-tight text-foreground/80">
             Human intelligence and machine intelligence operating together —
             producing levels of productivity{" "}
-            <span className="bg-gradient-to-r from-[#7B1FA2] to-[#FF2D6B] bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-brand-purple to-primary bg-clip-text text-transparent">
               never previously possible.
             </span>
-          </p>
-          <p className="mt-5 text-[16px] leading-[1.85] text-white/55 sm:text-[17px]">
+          </CardTitle>
+          <Body className="mt-5">
             Dramatically greater output or dramatically lower cost — as human
             participation becomes directly integrated into digital
             infrastructure.
-          </p>
+          </Body>
         </div>
       </div>
 
       {/* Closing — full width inevitability bar */}
-      <div className="relative overflow-hidden rounded-3xl border border-white/[0.07] bg-gradient-to-r from-[#FF2D6B]/[0.08] via-[#7B1FA2]/[0.06] to-[#FF2D6B]/[0.05] p-10 text-center md:p-14">
-        <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#FF2D6B]/70 to-transparent" />
-        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-[#7B1FA2]/50 to-transparent" />
-        <div className="pointer-events-none absolute -left-20 top-1/2 h-56 w-56 -translate-y-1/2 rounded-full bg-[#FF2D6B] opacity-[0.08] blur-3xl" />
-        <div className="pointer-events-none absolute -right-20 top-1/2 h-56 w-56 -translate-y-1/2 rounded-full bg-[#7B1FA2] opacity-[0.08] blur-3xl" />
+      <div className="glass-card glass-card-accent-pink relative overflow-hidden p-10 text-center md:p-14 bg-gradient-to-r from-primary/[0.07] via-brand-purple/[0.05] to-primary/[0.04]">
+        <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-primary/70 to-transparent" />
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-brand-purple/50 to-transparent" />
+        <div className="pointer-events-none absolute -left-20 top-1/2 h-56 w-56 -translate-y-1/2 rounded-full bg-primary opacity-[0.08] blur-3xl" />
+        <div className="pointer-events-none absolute -right-20 top-1/2 h-56 w-56 -translate-y-1/2 rounded-full bg-brand-purple opacity-[0.08] blur-3xl" />
 
-        <p className="relative text-[32px] font-black leading-tight tracking-[-0.04em] text-white sm:text-[40px] md:text-[48px]">
+        <DisplayText className="relative text-headline">
           This is not optional.
           <br />
-          <span className="bg-gradient-to-r from-[#FF2D6B] to-[#7B1FA2] bg-clip-text text-transparent">
+          <span className="bg-gradient-to-r from-primary to-brand-purple bg-clip-text text-transparent">
             It is inevitable.
           </span>
-        </p>
-        <p className="relative mx-auto mt-5 max-w-xl text-[16px] leading-[1.85] text-white/45 sm:text-[17px]">
+        </DisplayText>
+        <Body className="relative mx-auto mt-5 max-w-xl text-foreground/60">
           OX is infrastructure. Not a product. Not a platform. The layer that
           connects human intelligence to every system on earth.
-        </p>
+        </Body>
       </div>
     </section>
   );
