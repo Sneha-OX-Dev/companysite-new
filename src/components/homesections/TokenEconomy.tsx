@@ -10,104 +10,183 @@ const HUMAN_MINING_POINTS = [
 
 const CIRCULAR_STEPS = [
   {
+    num: "01",
     title: "Humans mine the tokens",
-    desc: "Individuals build their Machine Self and participate in the network, earning tokens for verified contributions.",
+    desc: "Build a Machine Self, participate, earn tokens for verified contributions.",
+    glow: "bg-[#FF2D6B]",
+    border: "hover:border-[#FF2D6B]/25",
+    topLine: "via-[#FF2D6B]/50",
+    tag: "text-[#FF2D6B]/70",
   },
   {
+    num: "02",
     title: "Organisations acquire tokens",
-    desc: "Third parties obtain tokens in order to access the network and submit job requests.",
+    desc: "Third parties obtain tokens to access the network and submit job requests.",
+    glow: "bg-[#7B1FA2]",
+    border: "hover:border-[#7B1FA2]/25",
+    topLine: "via-[#7B1FA2]/50",
+    tag: "text-[#7B1FA2]/90",
   },
   {
-    title: "Tokens fund work in the network",
-    desc: "Organisations use tokens to request work, intelligence, and validation from the network.",
+    num: "03",
+    title: "Tokens fund work",
+    desc: "Organisations request work, intelligence, and validation from the network.",
+    glow: "bg-[#FF2D6B]",
+    border: "hover:border-[#FF2D6B]/25",
+    topLine: "via-[#FF2D6B]/50",
+    tag: "text-[#FF2D6B]/70",
   },
   {
-    title: "Tokens return to the community",
+    num: "04",
+    title: "Tokens return to community",
     desc: "Participants complete the work and receive tokens as rewards.",
+    glow: "bg-[#7B1FA2]",
+    border: "hover:border-[#7B1FA2]/25",
+    topLine: "via-[#7B1FA2]/50",
+    tag: "text-[#7B1FA2]/90",
   },
 ];
 
 export default function TokenEconomySection() {
   return (
-    <section className="relative mx-auto flex w-full max-w-6xl flex-col gap-12 px-6 py-20 text-white sm:gap-14 sm:py-24">
+    <section className="relative mx-auto flex w-full max-w-6xl flex-col gap-14 px-6 py-24 text-white sm:py-32">
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-0 -z-10 opacity-80 [background-image:radial-gradient(circle_at_top,_rgba(251,191,36,0.22),transparent_55%),radial-gradient(circle_at_bottom,_rgba(248,113,113,0.18),transparent_60%)]"
+        className="pointer-events-none absolute inset-0 -z-10 [background-image:radial-gradient(ellipse_65%_50%_at_15%_10%,rgba(255,45,107,0.15),transparent_65%),radial-gradient(ellipse_55%_45%_at_85%_85%,rgba(123,31,162,0.13),transparent_65%)]"
       />
 
       <SectionHeader
         pillText="Token Economy"
-        title="Token economy — human-mined circular crypto economy"
+        title="Human-mined circular crypto economy."
         subtitle="Organisations pay tokens to access the network. Humans earn those tokens by participating. Fixed supply. Growing demand. Mined only by people."
       />
 
-      <div className="grid gap-10 lg:grid-cols-[minmax(0,1.4fr)_minmax(0,1.1fr)] lg:items-start">
-        {/* Human mining narrative */}
-        <div className="space-y-5 text-[13px] leading-relaxed text-white/80 sm:text-[14px]">
-          <p>
-            OX is the Human Agency Layer — and its economy is powered entirely
-            by human participation. In the OX protocol, tokens are not created
-            through capital investment, financial speculation, or machine
-            computation. They are created through human participation.
+      {/* Hero statement bar */}
+      <div className="relative overflow-hidden rounded-3xl border border-white/[0.07] bg-gradient-to-r from-[#FF2D6B]/[0.08] via-[#7B1FA2]/[0.06] to-[#FF2D6B]/[0.06] p-8">
+        <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#FF2D6B]/60 to-transparent" />
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-[#7B1FA2]/40 to-transparent" />
+        <div className="pointer-events-none absolute -left-16 top-1/2 h-48 w-48 -translate-y-1/2 rounded-full bg-[#FF2D6B] opacity-[0.07] blur-3xl" />
+        <div className="pointer-events-none absolute -right-16 top-1/2 h-48 w-48 -translate-y-1/2 rounded-full bg-[#7B1FA2] opacity-[0.07] blur-3xl" />
+
+        <div className="flex flex-col items-center gap-6 text-center sm:flex-row sm:justify-between sm:text-left">
+          <p className="text-[24px] font-black leading-tight tracking-[-0.03em] text-white sm:text-[30px]">
+            Not created by{" "}
+            <span className="text-white/30 line-through decoration-white/20">
+              machines
+            </span>
+            .
+            <br />
+            <span className="bg-gradient-to-r from-[#FF2D6B] to-[#7B1FA2] bg-clip-text text-transparent">
+              Created by humans.
+            </span>
           </p>
-          <p>
-            The only way a token enters circulation is when a person builds
-            their Machine Self and contributes their time, attention, and
-            intelligence to the network. This process is called{" "}
-            <span className="font-semibold text-white">human mining</span>.
+          <div className="flex shrink-0 flex-col items-center gap-1.5 rounded-2xl border border-[#FF2D6B]/20 bg-[#FF2D6B]/[0.07] px-7 py-4">
+            <span className="text-[10px] font-bold uppercase tracking-[0.26em] text-[#FF2D6B]/55">
+              Supply
+            </span>
+            <span className="bg-gradient-to-r from-[#FF2D6B] to-[#7B1FA2] bg-clip-text text-[30px] font-black leading-none tracking-[-0.04em] text-transparent">
+              Fixed
+            </span>
+            <span className="text-[11px] text-white/30">growing demand</span>
+          </div>
+        </div>
+      </div>
+
+      {/* Equal-height two-column grid */}
+      <div className="grid gap-5 lg:grid-cols-2 lg:items-stretch">
+        {/* Left — human mining */}
+        <div className="group relative flex flex-col overflow-hidden rounded-3xl border border-white/[0.07] bg-gradient-to-br from-white/[0.06] to-white/[0.01] p-8 shadow-[0_28px_72px_rgba(0,0,0,0.55)] backdrop-blur-sm">
+          <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#FF2D6B]/50 to-transparent" />
+          <div className="pointer-events-none absolute -right-10 -top-10 h-44 w-44 rounded-full bg-[#FF2D6B] opacity-[0.06] blur-3xl transition-opacity duration-500 group-hover:opacity-[0.12]" />
+
+          <p className="text-[11px] font-bold uppercase tracking-[0.28em] text-[#FF2D6B]/60">
+            Human mining
           </p>
 
-          <div className="rounded-2xl border border-white/10 bg-black/40 p-5 shadow-[0_18px_60px_rgba(0,0,0,0.6)]">
-            <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-white/40">
-              Human mining
-            </p>
-            <p className="mt-2">
-              Participants join the network by creating their Machine Self — a
-              sovereign digital agent that represents their capabilities,
-              context, and intelligence. As individuals:
-            </p>
-            <ul className="mt-3 space-y-2">
-              {HUMAN_MINING_POINTS.map((item) => (
-                <li key={item} className="relative pl-5">
-                  <span className="absolute left-0 top-[9px] h-1.5 w-1.5 rounded-full bg-amber-300 shadow-[0_0_10px_rgba(252,211,77,0.9)]" />
-                  {item}
-                </li>
-              ))}
-            </ul>
-            <p className="mt-3">
-              the protocol distributes tokens to them as rewards for their
-              participation. Tokens are therefore mined by humans, not machines.
-            </p>
+          <p className="mt-5 text-[17px] leading-[1.8] text-white/65 sm:text-[18px]">
+            Tokens are not created through capital investment or machine
+            computation. The{" "}
+            <span className="font-semibold text-white/90">
+              only way a token enters circulation
+            </span>{" "}
+            is through human participation.
+          </p>
+
+          <div className="my-6 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+
+          <p className="text-[11px] font-bold uppercase tracking-[0.28em] text-[#7B1FA2]/70">
+            Participants earn by
+          </p>
+
+          <ul className="mt-5 flex flex-1 flex-col justify-between space-y-3">
+            {HUMAN_MINING_POINTS.map((item, i) => (
+              <li
+                key={item}
+                className="flex items-center gap-4 text-[16px] leading-snug text-white/65 sm:text-[17px]"
+              >
+                <span className="relative flex h-6 w-6 shrink-0 items-center justify-center rounded-full border border-white/10 bg-gradient-to-br from-[#FF2D6B]/15 to-[#7B1FA2]/15">
+                  <span className="text-[10px] font-bold text-white/45">
+                    {i + 1}
+                  </span>
+                </span>
+                {item}
+              </li>
+            ))}
+          </ul>
+
+          <div className="mt-7 inline-flex items-center gap-2.5 rounded-full border border-[#FF2D6B]/20 bg-[#FF2D6B]/[0.07] px-5 py-2.5 text-[12px] font-bold uppercase tracking-[0.22em] text-[#FF2D6B]/70">
+            <span className="h-2 w-2 animate-pulse rounded-full bg-[#FF2D6B] shadow-[0_0_6px_rgba(255,45,107,0.9)]" />
+            Mined by humans, not machines
           </div>
         </div>
 
-        {/* Circular economy diagram-style card */}
-        <div className="space-y-5 rounded-3xl border border-white/10 bg-black/40 p-6 shadow-[0_22px_80px_rgba(0,0,0,0.75)]">
-          <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-white/40">
+        {/* Right — circular economy */}
+        <div className="group relative flex flex-col overflow-hidden rounded-3xl border border-white/[0.07] bg-gradient-to-br from-white/[0.06] to-white/[0.01] p-8 shadow-[0_28px_72px_rgba(0,0,0,0.55)] backdrop-blur-sm">
+          <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#7B1FA2]/50 to-transparent" />
+          <div className="pointer-events-none absolute -left-10 -top-10 h-40 w-40 rounded-full bg-[#7B1FA2] opacity-[0.06] blur-3xl transition-opacity duration-500 group-hover:opacity-[0.11]" />
+
+          <p className="text-[11px] font-bold uppercase tracking-[0.28em] text-[#7B1FA2]/70">
             The circular economy
           </p>
-          <div className="mt-4 grid gap-6 lg:grid-cols-2">
-            {CIRCULAR_STEPS.map((step, index) => (
-              <div key={step.title} className="space-y-2">
-                <div className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.16em] text-white/70">
-                  <span className="h-5 w-5 rounded-full bg-amber-400 text-[11px] font-bold text-black">
-                    <span className="flex h-full w-full items-center justify-center">
-                      {index + 1}
-                    </span>
-                  </span>
+
+          <div className="mt-6 grid flex-1 grid-cols-2 gap-3">
+            {CIRCULAR_STEPS.map((step) => (
+              <div
+                key={step.num}
+                className={`group/card relative flex flex-col overflow-hidden rounded-2xl border border-white/[0.07] bg-gradient-to-br from-white/[0.04] to-transparent p-4 transition-all duration-300 ${step.border}`}
+              >
+                <div
+                  className={`pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent ${step.topLine} to-transparent opacity-60`}
+                />
+                <div
+                  className={`pointer-events-none absolute -right-4 -top-4 h-14 w-14 rounded-full ${step.glow} opacity-[0.08] blur-xl transition-opacity duration-300 group-hover/card:opacity-[0.18]`}
+                />
+                <span
+                  className={`font-mono text-[11px] font-bold tracking-[0.22em] ${step.tag}`}
+                >
+                  {step.num}
+                </span>
+                <p className="mt-2 text-[14px] font-bold leading-snug text-white/85 sm:text-[15px]">
                   {step.title}
-                </div>
-                <p className="text-[13px] leading-relaxed text-white/75 sm:text-[14px]">
+                </p>
+                <p className="mt-2 flex-1 text-[12.5px] leading-relaxed text-white/40 sm:text-[13px]">
                   {step.desc}
                 </p>
               </div>
             ))}
           </div>
-          <p className="mt-3 text-[13px] leading-relaxed text-white/80 sm:text-[14px]">
-            The result is a closed-loop participation economy: humans mine the
-            tokens, organisations acquire them to access the network, tokens
-            fund work, and then flow back to the humans who do that work.
+
+          <div className="my-6 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+
+          <p className="text-[15px] leading-[1.8] text-white/55 sm:text-[16px]">
+            A closed-loop economy: humans mine tokens, organisations acquire
+            them, tokens fund work, then flow back to the humans who do it.
           </p>
+
+          <div className="mt-7 inline-flex items-center gap-2.5 rounded-full border border-[#7B1FA2]/20 bg-[#7B1FA2]/[0.07] px-5 py-2.5 text-[12px] font-bold uppercase tracking-[0.22em] text-[#7B1FA2]/80">
+            <span className="h-2 w-2 animate-pulse rounded-full bg-[#7B1FA2] shadow-[0_0_6px_rgba(123,31,162,0.9)]" />
+            Human-powered. Closed loop.
+          </div>
         </div>
       </div>
     </section>
