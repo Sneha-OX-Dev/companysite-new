@@ -48,7 +48,7 @@ function SideCard({
             }
       }
     >
-      <p className="text-[15px] font-black text-white">{label}</p>
+      <p className="text-[14px] font-black text-white">{label}</p>
       <p className="text-[13px] leading-snug text-white/45">{sub}</p>
     </div>
   );
@@ -291,7 +291,7 @@ export function PhoneSovereignNodeSection() {
 
       {/* Bottom bar */}
       <div
-        className="flex w-full max-w-[800px] overflow-hidden rounded-2xl shadow-2xl"
+        className="flex w-full max-w-[900px] overflow-hidden rounded-2xl shadow-2xl"
         style={fadeIn(200)}
       >
         <div

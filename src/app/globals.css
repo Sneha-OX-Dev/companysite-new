@@ -212,3 +212,20 @@ body {
     @apply text-foreground leading-relaxed;
   }
 }
+
+/* Normalize custom pixel-based small text sizes across the app */
+[class*="text-[9px]"] {
+  font-size: 0.70rem !important;
+}
+[class*="text-[10px]"],
+[class*="text-[11px]"],
+[class*="text-[12px]"],
+[class*="text-[13px]"] {
+  font-size: 0.85rem !important;
+}
+[class*="text-[14px]"] {
+  font-size: 0.90rem !important;
+}
+[class*="text-[15px]"] {
+  font-size: 0.95rem !important;
+}
