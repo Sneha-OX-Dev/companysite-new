@@ -16,7 +16,7 @@ export default function HowOxWorksSection() {
       />
 
       <SectionHeader
-        pillText="Section 8 — How OX Works"
+        pillText="How OX Works"
         title="Where systems stop predicting — and start knowing."
         subtitle="Enterprises post demand. Machine Selves evaluate privately. Only consent and verified outcomes leave the device."
       />
@@ -35,8 +35,9 @@ export default function HowOxWorksSection() {
                 Digital systems & AI
               </p>
               <p className="text-[13px] leading-relaxed text-white/75 sm:text-[14px]">
-                Enterprises post structured demand into the network. Not raw data pulls.
-                Clear, typed requests for work, intelligence, validation, or action.
+                Enterprises post structured demand into the network. Not raw
+                data pulls. Clear, typed requests for work, intelligence,
+                validation, or action.
               </p>
             </div>
 
@@ -61,8 +62,8 @@ export default function HowOxWorksSection() {
                 Human participation
               </p>
               <p className="text-[13px] leading-relaxed text-white/75 sm:text-[14px]">
-                Only eligible participants see the opportunity to opt in. Only the
-                consent signal is transmitted — never raw data.
+                Only eligible participants see the opportunity to opt in. Only
+                the consent signal is transmitted — never raw data.
               </p>
             </div>
           </div>
@@ -91,11 +92,14 @@ export default function HowOxWorksSection() {
               </p>
               <p className="text-[13px] leading-relaxed text-white/80 sm:text-[14px]">
                 Enterprises do not purchase user data. They purchase{" "}
-                <span className="font-semibold text-white">verified outcomes</span>.
+                <span className="font-semibold text-white">
+                  verified outcomes
+                </span>
+                .
               </p>
               <p className="text-[13px] leading-relaxed text-white/80 sm:text-[14px]">
-                You choose to participate. You do the work. You get paid. The system
-                never acts without your consent.
+                You choose to participate. You do the work. You get paid. The
+                system never acts without your consent.
               </p>
             </div>
           </div>
@@ -107,18 +111,17 @@ export default function HowOxWorksSection() {
             How demand reaches participants
           </p>
           <p className="text-[13px] leading-relaxed text-white/80 sm:text-[14px]">
-            Enterprises post structured demand into the network. The Machine Self
-            evaluates privately within the OX app, on the participant&apos;s device,
-            whether they qualify.
+            Enterprises post structured demand into the network. The Machine
+            Self evaluates privately within the OX app, on the
+            participant&apos;s device, whether they qualify.
           </p>
           <p className="text-[13px] leading-relaxed text-white/80 sm:text-[14px]">
-            Only eligible participants see the opportunity to opt in. Only the consent
-            signal is transmitted — never raw data. Verified work completes. Rewards are
-            issued.
+            Only eligible participants see the opportunity to opt in. Only the
+            consent signal is transmitted — never raw data. Verified work
+            completes. Rewards are issued.
           </p>
         </div>
       </div>
     </section>
   );
 }
-

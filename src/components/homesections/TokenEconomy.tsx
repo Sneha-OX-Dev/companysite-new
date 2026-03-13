@@ -36,7 +36,7 @@ export default function TokenEconomySection() {
       />
 
       <SectionHeader
-        pillText="Section 9 — Token Economy"
+        pillText="Token Economy"
         title="Token economy — human-mined circular crypto economy"
         subtitle="Organisations pay tokens to access the network. Humans earn those tokens by participating. Fixed supply. Growing demand. Mined only by people."
       />
@@ -45,15 +45,15 @@ export default function TokenEconomySection() {
         {/* Human mining narrative */}
         <div className="space-y-5 text-[13px] leading-relaxed text-white/80 sm:text-[14px]">
           <p>
-            OX is the Human Agency Layer — and its economy is powered entirely by human
-            participation. In the OX protocol, tokens are not created through capital
-            investment, financial speculation, or machine computation. They are created
-            through human participation.
+            OX is the Human Agency Layer — and its economy is powered entirely
+            by human participation. In the OX protocol, tokens are not created
+            through capital investment, financial speculation, or machine
+            computation. They are created through human participation.
           </p>
           <p>
-            The only way a token enters circulation is when a person builds their Machine
-            Self and contributes their time, attention, and intelligence to the network.
-            This process is called{" "}
+            The only way a token enters circulation is when a person builds
+            their Machine Self and contributes their time, attention, and
+            intelligence to the network. This process is called{" "}
             <span className="font-semibold text-white">human mining</span>.
           </p>
 
@@ -62,9 +62,9 @@ export default function TokenEconomySection() {
               Human mining
             </p>
             <p className="mt-2">
-              Participants join the network by creating their Machine Self — a sovereign
-              digital agent that represents their capabilities, context, and intelligence.
-              As individuals:
+              Participants join the network by creating their Machine Self — a
+              sovereign digital agent that represents their capabilities,
+              context, and intelligence. As individuals:
             </p>
             <ul className="mt-3 space-y-2">
               {HUMAN_MINING_POINTS.map((item) => (
@@ -75,8 +75,8 @@ export default function TokenEconomySection() {
               ))}
             </ul>
             <p className="mt-3">
-              the protocol distributes tokens to them as rewards for their participation.
-              Tokens are therefore mined by humans, not machines.
+              the protocol distributes tokens to them as rewards for their
+              participation. Tokens are therefore mined by humans, not machines.
             </p>
           </div>
         </div>
@@ -104,13 +104,12 @@ export default function TokenEconomySection() {
             ))}
           </div>
           <p className="mt-3 text-[13px] leading-relaxed text-white/80 sm:text-[14px]">
-            The result is a closed-loop participation economy: humans mine the tokens,
-            organisations acquire them to access the network, tokens fund work, and then
-            flow back to the humans who do that work.
+            The result is a closed-loop participation economy: humans mine the
+            tokens, organisations acquire them to access the network, tokens
+            fund work, and then flow back to the humans who do that work.
           </p>
         </div>
       </div>
     </section>
   );
 }
-
