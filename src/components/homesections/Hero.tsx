@@ -1,16 +1,19 @@
+import Image from "next/image";
 import Link from "next/link";
 
 const HERO_BG =
   "bg-[radial-gradient(circle_at_top,rgba(129,140,248,0.35),transparent_60%),radial-gradient(circle_at_bottom,rgba(236,72,153,0.25),transparent_60%)]";
 
+const HERO_ASSET_SRC = "/images/home-section/hero1.png";
+
 export default function HomeHero() {
   return (
     <section
-      className={`relative flex min-h-[90vh] flex-col items-center justify-center overflow-hidden px-6 pt-10 pb-20 text-left ${HERO_BG}`}
+      className={`relative flex min-h-screen flex-col items-center justify-center overflow-hidden px-6 pt-12 pb-16 text-left ${HERO_BG}`}
     >
-      <div className="relative z-10 flex w-full max-w-6xl flex-col gap-10 md:flex-row md:items-start md:gap-12">
+      <div className="relative z-10 flex w-full max-w-6xl flex-col gap-6 md:flex-row md:items-start md:gap-10">
         {/* Left column: copy */}
-        <div className="flex-1 space-y-7">
+        <div className="flex-[1.4] space-y-5">
           {/* Category line */}
           <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-white/50 sm:text-[12px]">
             Connecting Machines, AI, and Systems to Real Human Agency
@@ -27,7 +30,7 @@ export default function HomeHero() {
           </div>
 
           {/* Core idea */}
-          <div className="space-y-3 text-[9px] text-white/75">
+          <div className="space-y-2 text-[13px] text-white/75 sm:text-[14px]">
             <p>
               Today, digital systems and AI operate largely without direct
               access to real human agency. OX changes this by enabling humans to
@@ -47,7 +50,7 @@ export default function HomeHero() {
           </p>
 
           {/* Scale number */}
-          <div className="space-y-1">
+          <div className="space-y-1 pt-1">
             <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-white/40">
               Scale target
             </p>
@@ -57,30 +60,50 @@ export default function HomeHero() {
           </div>
         </div>
 
-        {/* Right column: three pillars */}
-        <div className="mt-6 flex-1 md:mt-0">
-          <div className="grid gap-4 sm:grid-cols-1">
-            {[
-              "Humans become verified Machine Selves",
-              "Phones become live intelligence nodes",
-              "Systems connect to living human reality",
-            ].map((text) => (
-              <div
-                key={text}
-                className="group flex items-start gap-3 rounded-xl border border-white/12 bg-black/40 px-4 py-4 text-[13px] text-white/80 shadow-[0_18px_60px_rgba(0,0,0,0.75)] transition hover:border-[var(--accent)]/70 hover:bg-black/60"
-              >
-                <span className="mt-0.5 text-[18px] text-[var(--accent)] transition-transform group-hover:translate-x-0.5 group-hover:text-white">
-                  →
-                </span>
-                <p className="leading-snug">{text}</p>
-              </div>
-            ))}
+        {/* Right column: hero visual placeholder (swap src when asset ready) */}
+        <div className="flex-1">
+          <div className="relative mx-auto w-full max-w-[520px] md:max-w-none">
+            <div className="pointer-events-none absolute inset-0 -z-10 rounded-[28px] bg-linear-to-br from-white/10 to-transparent blur-2xl" />
+            <div className="relative overflow-hidden rounded-[28px] border border-white/10 bg-black/35 shadow-[0_28px_90px_rgba(0,0,0,0.75)]">
+              <Image
+                src={HERO_ASSET_SRC}
+                alt=""
+                width={1100}
+                height={900}
+                className="h-[240px] w-full object-cover opacity-90 mix-blend-screen sm:h-[300px] md:h-[360px]"
+                priority
+                sizes="(max-width: 768px) 100vw, 520px"
+              />
+              <div className="pointer-events-none absolute inset-0 bg-linear-to-br from-white/10 via-transparent to-[#FF2D6B]/10" />
+              <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_30%_10%,rgba(255,45,107,0.22),transparent_55%)]" />
+            </div>
           </div>
         </div>
       </div>
 
+      {/* Three pillars above CTAs */}
+      <div className="mt-6 flex w-full max-w-6xl flex-col gap-3">
+        <div className="grid grid-cols-1 gap-3 md:grid-cols-3">
+          {[
+            "Humans become verified Machine Selves",
+            "Phones become live intelligence nodes",
+            "Systems connect to living human reality",
+          ].map((text) => (
+            <div
+              key={text}
+              className="group flex items-center justify-center gap-3 rounded-xl border border-white/12 bg-black/40 px-4 py-4 text-[15px] font-medium text-white/85 shadow-[0_16px_50px_rgba(0,0,0,0.65)] transition hover:border-[var(--accent)]/70 hover:bg-black/60"
+            >
+              <span className="text-[20px] leading-none text-[var(--accent)] transition-transform group-hover:translate-x-0.5 group-hover:text-white">
+                →
+              </span>
+              <p className="text-center leading-snug">{text}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+
       {/* CTAs row */}
-      <div className="mt-10 flex w-full max-w-6xl flex-wrap items-center gap-3">
+      <div className="mt-6 flex w-full max-w-6xl flex-wrap items-center gap-3">
         <Link
           href="#machine-self"
           className="inline-flex items-center justify-center rounded-full bg-[var(--accent)] px-7 py-3 text-[13px] font-semibold text-white shadow-[0_0_32px_rgba(255,45,107,0.55)] transition hover:translate-y-0.5 hover:shadow-[0_0_40px_rgba(255,45,107,0.9)]"
@@ -102,7 +125,7 @@ export default function HomeHero() {
       </div>
 
       {/* Video buttons row */}
-      <div className="mt-4 flex w-full max-w-6xl flex-wrap items-center gap-3">
+      <div className="mt-3 flex w-full max-w-6xl flex-wrap items-center gap-3">
         <Link
           href="/videos/ox-story"
           className="inline-flex items-center gap-2 rounded-full border border-white/25 bg-black/40 px-5 py-2.5 text-[12px] font-semibold text-white/80 transition hover:bg-white/10 hover:text-white"
@@ -124,7 +147,7 @@ export default function HomeHero() {
       </div>
 
       {/* Unifying line above any following audience cards */}
-      <div className="mt-10 w-full max-w-6xl border-t border-white/10 pt-4 text-[12px] text-white/60 sm:text-[13px]">
+      <div className="mt-6 w-full max-w-6xl border-t border-white/10 pt-4 text-[12px] text-white/60 sm:text-[13px]">
         <p>
           <strong className="font-semibold text-white/80">
             One billion human agents.
