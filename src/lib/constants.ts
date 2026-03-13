@@ -42,3 +42,6 @@ export const CARDS = [
     cta: "Build your Machine Self. Start earning.",
   },
 ];
+
+export const PINK = "#FF2D6B";
+export const PURPLE = "#7B1FA2";

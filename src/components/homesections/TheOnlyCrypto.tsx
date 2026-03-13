@@ -1,6 +1,7 @@
 "use client";
 import SectionHeader from "@/components/Headings/SectionHeader";
 import { PINK, PURPLE } from "@/lib/constants";
+import Link from "next/link";
 import { useEffect, useState } from "react";
 
 const stage1Steps = [
@@ -422,8 +423,7 @@ function StageCard({
     </div>
   );
 }
-
-export function TwoStageEarningSection() {
+export default function TheOnlyCryptoSection() {
   const [visible, setVisible] = useState(false);
   useEffect(() => {
     setTimeout(() => setVisible(true), 50);
@@ -437,18 +437,21 @@ export function TwoStageEarningSection() {
 
   return (
     <section
-      className="flex min-h-screen w-full flex-col items-center justify-center px-4 py-12 sm:px-6 sm:py-16"
-      style={{
-        background:
-          "radial-gradient(ellipse at 50% 20%, #1e0535 0%, #07071A 65%)",
-      }}
+      id="two-stage-earning"
+      className="relative mx-auto flex w-full max-w-6xl flex-col gap-4 px-6 py-20 text-white justify-center items-center"
     >
-      {/* Header */}
       <SectionHeader
-        title="Two-Stage Earning Model"
-        subtitle="The only crypto in the world you mine with your time"
-        style={fadeIn(0)}
+        title="The Only Crypto You Mine With Your Time"
+        subtitle="Every crypto network on earth wants your money. OX wants your time."
+        align="center"
       />
+
+      {/* Core explanation */}
+      <p className="max-w-3xl text-[13px] leading-relaxed text-white/75 sm:text-[14px] mb-4">
+        This is the only crypto network in the world where financial investment
+        is not the entry point. You do not buy your way in. You build your way
+        in. And while you build — you earn.
+      </p>
 
       {/* Two columns — stacks on mobile */}
       <div
@@ -598,6 +601,88 @@ export function TwoStageEarningSection() {
       </div>
 
       <style>{`@keyframes pulse { 0%,100%{opacity:.3} 50%{opacity:.9} }`}</style>
+
+      {/* Token block */}
+      <div className="rounded-2xl border border-white/10 bg-black/30 p-6 shadow-[0_18px_60px_rgba(0,0,0,0.6)] sm:p-7">
+        <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-white/45">
+          The token
+        </p>
+        <h3 className="mt-2 font-heading text-[20px] font-semibold tracking-[-0.02em] text-white sm:text-[22px]">
+          Fixed conversion. Fixed supply. Human-mined.
+        </h3>
+        <div className="mt-4 grid gap-4 lg:grid-cols-[minmax(0,1.2fr)_minmax(0,0.8fr)]">
+          <p className="text-[13px] leading-relaxed text-white/75 sm:text-[14px]">
+            OXIT converts to OXME at a fixed, immutable rate.{" "}
+            <span className="font-semibold text-white">1,000 OXIT</span> to{" "}
+            <span className="font-semibold text-white">1 OXME</span>. Both
+            tokens have a fixed total supply set at genesis. No additional
+            tokens can ever be created. By anyone. Ever.
+            <br />
+            <br />
+            The only way either token enters circulation is through{" "}
+            <span className="font-semibold text-white">
+              verified human participation
+            </span>
+            . Not capital. Not machines. People.
+          </p>
+          <div className="rounded-xl border border-white/10 bg-white/5 p-5">
+            <p className="text-[10px] font-semibold uppercase tracking-[0.22em] text-white/45">
+              Rate
+            </p>
+            <p className="mt-1 bg-linear-to-r from-[#FF2D6B] via-[#c0255a] to-[#7B1FA2] bg-clip-text text-[26px] font-black tracking-[-0.04em] text-transparent">
+              1,000 : 1
+            </p>
+            <p className="mt-2 text-[12px] leading-relaxed text-white/60">
+              OXIT converts to OXME at a fixed, immutable rate.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      {/* Comparison block */}
+      <div className="grid gap-5 lg:grid-cols-2">
+        <div className="rounded-2xl border border-white/10 bg-white/5 p-6">
+          <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-white/45">
+            The comparison
+          </p>
+          <h3 className="mt-2 font-heading text-[18px] font-semibold tracking-[-0.02em] text-white sm:text-[20px]">
+            Every other crypto
+          </h3>
+          <p className="mt-3 text-[13px] leading-relaxed text-white/70 sm:text-[14px]">
+            Invest money. Hope the price rises.
+          </p>
+        </div>
+
+        <div className="rounded-2xl border border-[#FF2D6B]/25 bg-black/35 p-6 shadow-[0_18px_60px_rgba(255,45,107,0.12)]">
+          <p className="text-[16px] font-semibold uppercase tracking-[0.22em] text-[#FF9BB8]">
+            OX
+          </p>
+          <h3 className="mt-2 font-heading text-[18px] font-semibold tracking-[-0.02em] text-white sm:text-[20px]">
+            Invest your time. Earn the network.
+          </h3>
+          <p className="mt-3 text-[13px] leading-relaxed text-white/75 sm:text-[14px]">
+            Get matched to paid work. Earn a scarce token backed by real human
+            capital. The supply is fixed. The work keeps coming. The network
+            grows every time another human agent joins.
+          </p>
+          <p className="mt-4 text-[13px] font-semibold text-white sm:text-[14px]">
+            Bitcoin is mined with electricity.{" "}
+            <span className="bg-linear-to-r from-[#FF2D6B] to-[#7B1FA2] bg-clip-text text-transparent">
+              OX is mined with human TIME.
+            </span>
+          </p>
+        </div>
+      </div>
+
+      {/* CTA */}
+      <div className="pt-2">
+        <Link
+          href="#machine-self"
+          className="inline-flex items-center justify-center rounded-full bg-[var(--accent)] px-8 py-3 text-[16px] font-semibold text-white shadow-[0_0_34px_rgba(255,45,107,0.55)] transition hover:-translate-y-0.5 hover:shadow-[0_0_46px_rgba(255,45,107,0.9)]"
+        >
+          Build Your Machine Self. Start earning.
+        </Link>
+      </div>
     </section>
   );
 }
