@@ -73,7 +73,6 @@ export default function Footer() {
             {/* CONTACT */}
             <div className="space-y-1">
               <Eyebrow className="text-foreground/60">Contact</Eyebrow>
-              <Muted><a href="mailto:Bernard.Flynn@oxygean.com" className="transition-colors hover:text-foreground/80">Bernard.Flynn@oxygean.com</a></Muted>
               <Muted>www.oxygean.com</Muted>
             </div>
 
