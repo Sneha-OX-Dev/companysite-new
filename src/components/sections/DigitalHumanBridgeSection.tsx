@@ -86,12 +86,14 @@ function PanelRow({
       />
       <div>
         <p
-          className="text-sm font-bold leading-tight mb-0.5"
+          className="mb-0.5 text-[15px] font-bold leading-snug sm:text-[16px]"
           style={{ color: isRight ? "#fff" : "rgba(255,255,255,0.70)" }}
         >
           {verb}
         </p>
-        <p className="text-xs leading-snug text-white/55">{desc}</p>
+        <p className="text-[13px] leading-relaxed text-white/60 sm:text-[14px]">
+          {desc}
+        </p>
       </div>
     </div>
   );
