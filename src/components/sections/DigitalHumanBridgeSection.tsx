@@ -231,14 +231,14 @@ function Bridge() {
           border: "1px solid rgba(255,255,255,0.07)",
         }}
       >
-        <p className="text-[9px] font-bold uppercase tracking-[0.2em] text-white/30 mb-1">
+        <p className="mb-1 text-[9px] font-bold uppercase tracking-[0.2em] text-white/30">
           OX Bridge
         </p>
-        <div className="flex items-center gap-2 overflow-x-auto pb-1">
+        <div className="flex max-w-full min-w-0 items-stretch gap-3 overflow-x-auto pb-2 overscroll-x-contain [-webkit-overflow-scrolling:touch]">
           {bridgeNodes.map((n, i) => (
-            <div key={n.cap} className="flex items-center gap-2 flex-shrink-0">
+            <div key={n.cap} className="flex shrink-0 items-center gap-2">
               <div
-                className="rounded-sm px-2.5 py-2 text-center"
+                className="min-w-[160px] rounded-sm px-2.5 py-2 text-center"
                 style={{
                   border:
                     n.type === "ms"
@@ -255,7 +255,7 @@ function Bridge() {
                 }}
               >
                 <p
-                  className="text-[8px] font-bold uppercase tracking-wider mb-0.5"
+                  className="mb-0.5 text-[8px] font-bold uppercase tracking-wider"
                   style={{
                     color:
                       n.type === "ms"
@@ -270,7 +270,7 @@ function Bridge() {
                 {n.lines.map((l) => (
                   <p
                     key={l}
-                    className="text-[11px] font-bold leading-snug"
+                    className="text-[10px] font-semibold leading-snug"
                     style={{
                       color:
                         n.type === "dim" ? "rgba(255,255,255,0.45)" : "#fff",
@@ -282,7 +282,7 @@ function Bridge() {
               </div>
               {i < bridgeNodes.length - 1 && (
                 <p
-                  className="text-[11px] flex-shrink-0"
+                  className="shrink-0 text-[11px]"
                   style={{ color: "rgba(255,45,107,0.6)" }}
                 >
                   →
@@ -310,7 +310,7 @@ export default function DigitalHumanBridgeSection() {
 
   return (
     <section
-      className="relative w-full px-4 py-16 sm:px-6 sm:py-24"
+      className="relative w-full overflow-x-hidden px-4 py-16 sm:px-6 sm:py-24"
       style={{ background: "#07071A" }}
     >
       {/* centre glow */}
@@ -326,7 +326,7 @@ export default function DigitalHumanBridgeSection() {
             "radial-gradient(circle,rgba(232,38,74,0.07) 0%,transparent 70%)",
         }}
       />
-      <div className="relative z-10 mx-auto flex w-full max-w-6xl flex-col items-center gap-10">
+      <div className="relative z-10 mx-auto flex w-full max-w-6xl min-w-0 flex-col items-center gap-10">
       {/* Header */}
       <SectionHeader
         pillText="Digital vs Human Bridge"
@@ -348,7 +348,7 @@ export default function DigitalHumanBridgeSection() {
         style={fadeIn(0)}
       />
       {/* Main columns */}
-      <div className="relative z-10 w-full max-w-[1060px]" style={fadeIn(80)}>
+      <div className="relative z-10 w-full max-w-[1060px] min-w-0" style={fadeIn(80)}>
         {/* Desktop 3-col */}
         <div
           className="hidden sm:grid"
