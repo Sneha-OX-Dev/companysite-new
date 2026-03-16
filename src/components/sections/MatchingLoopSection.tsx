@@ -130,12 +130,9 @@ function StepNode({
     >
       {/* node */}
       <div
-        className="relative cursor-pointer"
+        className="relative h-22 w-22 cursor-pointer flex-shrink-0 md:h-28 md:w-28"
         style={{
-          width: 116,
-          height: 116,
           animation: active ? "bob 2.4s ease-in-out infinite" : undefined,
-          flexShrink: 0,
         }}
         onClick={onClick}
       >
