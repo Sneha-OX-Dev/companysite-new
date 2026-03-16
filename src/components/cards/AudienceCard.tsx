@@ -1,75 +1,80 @@
+import Link from "next/link";
 import { cn } from "@/lib/utils";
+import { CardTitle, Body, Muted } from "@/components/ui/typography";
+import { Button } from "@/components/ui/button";
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 function AudienceCard({ card }: { card: Record<string, any> }) {
-  const accentStyle = { backgroundColor: card.badgeColor };
-  const borderStyle = { borderColor: `${card.badgeColor}66` };
-  const bgStyle = { backgroundColor: `${card.badgeColor}1a` };
-
   return (
     <article
       className={cn(
-        "group relative flex flex-col overflow-hidden rounded-xl border border-white/10 bg-[#050618]/80 px-7 pb-7 pt-9 shadow-[0_22px_60px_rgba(15,23,42,0.7)] backdrop-blur-sm transition-all duration-300 hover:-translate-y-1",
-        card.hoverBorder,
+        "group glass-card-dark relative flex flex-col overflow-hidden px-7 pb-7 pt-9 transition-all duration-300 hover:border-primary/20",
         card.hoverShadow
       )}
     >
-      {/* top accent bar */}
+      {/* top gradient accent bar */}
       <div
-        className={cn("absolute inset-x-0 top-0 h-[3px] bg-linear-to-r", card.gradient)}
+        className={cn(
+          "pointer-events-none absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r",
+          card.gradient
+        )}
       />
 
-      {/* badge */}
-      <div
-        className="absolute right-5 top-5 rounded-full px-3.5 py-1 text-[9px] font-semibold uppercase tracking-[0.18em]"
-        style={{
-          ...borderStyle,
-          ...bgStyle,
-          color: card.badgeText,
-          border: "1px solid",
-        }}
-      >
-        {card.badge}
+      {/* glow orb */}
+      <div className="pointer-events-none absolute -right-8 -top-8 h-40 w-40 rounded-full bg-primary opacity-[0.08] blur-3xl transition-opacity duration-300 group-hover:opacity-[0.18]" />
+
+      {/* badge — centered at top */}
+      <div className="flex justify-center">
+        <span className={cn(
+          "inline-flex items-center rounded-full border px-4 py-1 text-[10px] font-semibold uppercase tracking-widest",
+          "border-white/15 bg-white/5 text-foreground/50"
+        )}>
+          {card.badge}
+        </span>
       </div>
 
-      <h3 className="my-5 text-[20px] font-semibold leading-snug tracking-[-0.01em] md:text-[24px] text-center">
+      {/* heading — centered */}
+      <CardTitle className="mt-5 text-center leading-snug">
         {card.heading}
-      </h3>
+      </CardTitle>
 
       {/* divider */}
-      <div className="mb-5 flex items-center gap-2">
-        <span className="h-[2px] w-9 rounded-full" style={accentStyle} />
-      </div>
+      <div
+        className={cn(
+          "my-5 h-px w-8 rounded-full bg-gradient-to-r",
+          card.gradient
+        )}
+      />
 
       {/* body */}
-      <div className="flex flex-1 flex-col gap-2.5 text-[12px] leading-relaxed text-white/80 sm:text-[13px] text-start">
-        <p className="text-sm font-semibold text-white">{card.lead}</p>
+      <div className="flex flex-1 flex-col gap-3">
+        <Body className="font-semibold text-foreground/80">{card.lead}</Body>
         {card.bullets.map((text: string) => (
-          <p key={text} className="relative pl-4">
+          <div key={text} className="flex gap-2.5">
             <span
-              className={cn("absolute left-0 top-[9px] h-1 w-1 rounded-full", card.dotGlow)}
-              style={accentStyle}
+              className={cn(
+                "mt-[7px] h-1.5 w-1.5 shrink-0 rounded-full bg-gradient-to-r",
+                card.gradient
+              )}
             />
-            {text}
-          </p>
+            <Muted className="text-foreground/50">{text}</Muted>
+          </div>
         ))}
       </div>
 
-      <button
-        type="button"
-        className={cn(
-          "mt-6 inline-flex w-fit items-center gap-2 rounded-full bg-gradient-to-r px-5 py-2 text-[11px] font-semibold uppercase tracking-[0.18em] text-white outline-none transition-all duration-200 hover:translate-x-0.5 focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-[#050618]",
-          card.gradient,
-          card.glowShadow,
-          card.focusRing
-        )}
+      {/* CTA */}
+      <Button
+        variant="accent"
+        size="pill"
+        className={cn("mt-6 w-fit", card.glowShadow)}
+        asChild
       >
-        {card.cta}
-        <span className="text-[13px] transition-transform duration-200 group-hover:translate-x-[3px]">
-          →
-        </span>
-      </button>
+        <Link href="#">
+          {card.cta} →
+        </Link>
+      </Button>
     </article>
   );
 }
+
 export default AudienceCard;

@@ -61,7 +61,7 @@ const AUDIENCES = [
       { val: "On-chain", label: "verified outcomes" },
     ],
     body: "Plug into a foundational AI and human intelligence infrastructure. Access real-time human signals, coordinate human and AI workflows, verify outcomes, and trigger real-world actions — through a decentralised network of Machine Selves representing real people.",
-    callout: "Bernard.Flynn@oxygean.com · www.oxygean.com",
+    callout: "www.oxygean.com",
   },
   {
     tag: "Government & Smart Cities",
