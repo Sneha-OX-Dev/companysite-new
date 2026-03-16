@@ -4,7 +4,7 @@ import { CardTitle, Body, Muted } from "@/components/ui/typography";
 import { Button } from "@/components/ui/button";
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-function AudienceCard({ card }: { card: Record<string, any> }) {
+function AudienceCard({ card }: Readonly<{ card: Record<string, any> }>) {
   return (
     <article
       className={cn(
@@ -15,7 +15,7 @@ function AudienceCard({ card }: { card: Record<string, any> }) {
       {/* top gradient accent bar */}
       <div
         className={cn(
-          "pointer-events-none absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r",
+          "pointer-events-none absolute inset-x-0 top-0 h-[2px] bg-linear-to-r",
           card.gradient
         )}
       />
@@ -41,7 +41,7 @@ function AudienceCard({ card }: { card: Record<string, any> }) {
       {/* divider */}
       <div
         className={cn(
-          "my-5 h-px w-8 rounded-full bg-gradient-to-r",
+          "my-5 h-px w-8 rounded-full bg-linear-to-r",
           card.gradient
         )}
       />
@@ -53,7 +53,7 @@ function AudienceCard({ card }: { card: Record<string, any> }) {
           <div key={text} className="flex gap-2.5">
             <span
               className={cn(
-                "mt-[7px] h-1.5 w-1.5 shrink-0 rounded-full bg-gradient-to-r",
+                "mt-[7px] h-1.5 w-1.5 shrink-0 rounded-full bg-linear-to-r",
                 card.gradient
               )}
             />
@@ -66,11 +66,17 @@ function AudienceCard({ card }: { card: Record<string, any> }) {
       <Button
         variant="accent"
         size="pill"
-        className={cn("mt-6 w-fit", card.glowShadow)}
+        className={cn(
+          "mt-6 w-full justify-center whitespace-normal text-center sm:w-fit sm:justify-start",
+          card.glowShadow
+        )}
         asChild
       >
-        <Link href="#">
-          {card.cta} →
+        <Link href="#" className="w-full">
+          <span className="inline-flex w-full items-center justify-center gap-2 sm:w-auto sm:justify-start">
+            <span className="wrap-break-word">{card.cta}</span>
+            <span aria-hidden>→</span>
+          </span>
         </Link>
       </Button>
     </article>

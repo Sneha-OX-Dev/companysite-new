@@ -149,17 +149,17 @@ const stats = [
 function StepCard({
   step,
   color,
-}: {
+}: Readonly<{
   step: (typeof stage1Steps)[0];
   color: string;
-}) {
+}>) {
   return (
     <div
       className="flex items-center gap-3 rounded-xl px-3 py-3 sm:px-4"
       style={{ background: `${color}0f`, border: `1px solid ${color}40` }}
     >
       <div
-        className="flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-md sm:h-8 sm:w-8"
+        className="flex h-7 w-7 shrink-0 items-center justify-center rounded-md sm:h-8 sm:w-8"
         style={{ background: `${color}33`, border: `1px solid ${color}66` }}
       >
         {step.icon}
@@ -358,7 +358,7 @@ function StageCard({
   description,
   steps,
   accentClass,
-}: {
+}: Readonly<{
   stage: string;
   color: string;
   label: string;
@@ -367,7 +367,7 @@ function StageCard({
   description: React.ReactNode;
   steps: typeof stage1Steps;
   accentClass: string;
-}) {
+}>) {
   return (
     <div className="flex flex-1 flex-col gap-3">
       <div
@@ -411,7 +411,9 @@ function StageCard({
           </div>
         </div>
         <div className="my-4 flex justify-center">{icon}</div>
-        <p className={cn("text-center text-[14px] leading-relaxed", accentClass)}>
+        <p
+          className={cn("text-center text-[14px] leading-relaxed", accentClass)}
+        >
           {description}
         </p>
       </div>
@@ -445,161 +447,166 @@ export function TwoStageEarningSection() {
       }}
     >
       <div className="relative z-10 mx-auto flex w-full max-w-6xl flex-col items-center gap-10">
-      {/* Header */}
-      <SectionHeader
-        title="Two-Stage Earning Model"
-        subtitle="The only crypto in the world you mine with your time"
-        style={fadeIn(0)}
-      />
-
-      {/* Two columns — stacks on mobile */}
-      <div
-        className="flex w-full max-w-4xl flex-col gap-6 sm:flex-row sm:items-stretch sm:gap-4"
-        style={fadeIn(100)}
-      >
-        <StageCard
-          stage="1"
-          color={PINK}
-          label="STAGE 1"
-          title="Mine While You Build"
-          icon={<PhoneClockIcon />}
-          accentClass="text-white/70"
-          description={
-            <>
-              Spend{" "}
-              <span className="font-bold" style={{ color: PINK }}>
-                4 minutes a day
-              </span>{" "}
-              completing your Machine Self.
-              <br />
-              16 hours of structured human capital. From day one — you mine.
-            </>
-          }
-          steps={stage1Steps}
+        {/* Header */}
+        <SectionHeader
+          title="Two-Stage Earning Model"
+          subtitle="The only crypto in the world you mine with your time"
+          style={fadeIn(0)}
         />
 
-        {/* Centre divider — hidden on mobile, shown on sm+ */}
-        <div className="hidden w-14 shrink-0 flex-col items-center justify-center gap-3 sm:flex">
+        {/* Two columns — stacks on mobile */}
+        <div
+          className="flex w-full max-w-4xl flex-col gap-6 sm:flex-row sm:items-stretch sm:gap-4"
+          style={fadeIn(100)}
+        >
+          <StageCard
+            stage="1"
+            color={PINK}
+            label="STAGE 1"
+            title="Mine While You Build"
+            icon={<PhoneClockIcon />}
+            accentClass="text-white/70"
+            description={
+              <>
+                Spend{" "}
+                <span className="font-bold" style={{ color: PINK }}>
+                  4 minutes a day
+                </span>{" "}
+                completing your Machine Self.
+                <br />
+                16 hours of structured human capital. From day one — you mine.
+              </>
+            }
+            steps={stage1Steps}
+          />
+
+          {/* Centre divider — hidden on mobile, shown on sm+ */}
+          <div className="hidden w-14 shrink-0 flex-col items-center justify-center gap-3 sm:flex">
+            <div
+              className="w-px flex-1"
+              style={{
+                background: `linear-gradient(to bottom,transparent,${PINK}80,${PURPLE}80,transparent)`,
+              }}
+            />
+            <div
+              className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl"
+              style={{
+                background: `linear-gradient(135deg,rgba(255,45,107,0.2),rgba(123,31,162,0.15))`,
+                border: `1.5px solid rgba(255,45,107,0.5)`,
+              }}
+            >
+              <svg width="18" height="18" viewBox="0 0 20 20" fill="none">
+                <path
+                  d="M10 3 L10 17 M5 12 L10 17 L15 12"
+                  stroke={PINK}
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+            </div>
+            <p className="text-center text-[7px] uppercase leading-relaxed tracking-widest text-white/80">
+              Complete
+              <br />
+              Machine
+              <br />
+              Self
+            </p>
+            <div
+              className="w-px flex-1"
+              style={{
+                background: `linear-gradient(to bottom,transparent,${PURPLE}80,${PINK}80,transparent)`,
+              }}
+            />
+          </div>
+
+          {/* Mobile divider */}
+          <div className="flex items-center gap-3 sm:hidden">
+            <div
+              className="h-px flex-1"
+              style={{
+                background: `linear-gradient(to right,transparent,${PINK}80,${PURPLE}80,transparent)`,
+              }}
+            />
+            <p className="text-[8px] uppercase tracking-widest text-white/70">
+              Complete Machine Self
+            </p>
+            <div
+              className="h-px flex-1"
+              style={{
+                background: `linear-gradient(to right,transparent,${PURPLE}80,${PINK}80,transparent)`,
+              }}
+            />
+          </div>
+
+          <StageCard
+            stage="2"
+            color={PURPLE}
+            label="STAGE 2"
+            title="Mine While You Work"
+            icon={<BriefcaseIcon />}
+            accentClass="text-white/70"
+            description={
+              <>
+                Your Machine Self gets matched to{" "}
+                <span className="font-bold text-purple-400">
+                  real paid work
+                </span>
+                .
+                <br />
+                Complete work. Earn more OXIT. The matching never stops.
+              </>
+            }
+            steps={stage2Steps}
+          />
+        </div>
+
+        {/* Bottom bar */}
+        <div
+          className="mt-6 flex w-full max-w-4xl overflow-hidden rounded-xl shadow-2xl sm:mt-8"
+          style={fadeIn(200)}
+        >
           <div
-            className="w-px flex-1"
+            className="w-1 shrink-0"
             style={{
-              background: `linear-gradient(to bottom,transparent,${PINK}80,${PURPLE}80,transparent)`,
+              background: `linear-gradient(to bottom,${PINK},${PURPLE})`,
             }}
           />
           <div
-            className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl"
+            className="flex flex-1 flex-wrap items-center justify-between gap-4 rounded-r-xl border border-white/6 px-4 py-4 sm:px-6"
             style={{
-              background: `linear-gradient(135deg,rgba(255,45,107,0.2),rgba(123,31,162,0.15))`,
-              border: `1.5px solid rgba(255,45,107,0.5)`,
+              background:
+                "linear-gradient(135deg,rgba(255,45,107,.08),rgba(123,31,162,.07))",
             }}
           >
-            <svg width="18" height="18" viewBox="0 0 20 20" fill="none">
-              <path
-                d="M10 3 L10 17 M5 12 L10 17 L15 12"
-                stroke={PINK}
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
-          </div>
-          <p className="text-center text-[7px] uppercase leading-relaxed tracking-widest text-white/80">
-            Complete
-            <br />
-            Machine
-            <br />
-            Self
-          </p>
-          <div
-            className="w-px flex-1"
-            style={{
-              background: `linear-gradient(to bottom,transparent,${PURPLE}80,${PINK}80,transparent)`,
-            }}
-          />
-        </div>
-
-        {/* Mobile divider */}
-        <div className="flex items-center gap-3 sm:hidden">
-          <div
-            className="h-px flex-1"
-            style={{
-              background: `linear-gradient(to right,transparent,${PINK}80,${PURPLE}80,transparent)`,
-            }}
-          />
-          <p className="text-[8px] uppercase tracking-widest text-white/70">
-            Complete Machine Self
-          </p>
-          <div
-            className="h-px flex-1"
-            style={{
-              background: `linear-gradient(to right,transparent,${PURPLE}80,${PINK}80,transparent)`,
-            }}
-          />
-        </div>
-
-        <StageCard
-          stage="2"
-          color={PURPLE}
-          label="STAGE 2"
-          title="Mine While You Work"
-          icon={<BriefcaseIcon />}
-          accentClass="text-white/70"
-          description={
-            <>
-              Your Machine Self gets matched to{" "}
-              <span className="font-bold text-purple-400">real paid work</span>.
+            <p className="text-[11px] font-bold leading-relaxed text-white sm:max-w-xs sm:text-[13px]">
+              Every other crypto: invest money. Hope the price rises.
               <br />
-              Complete work. Earn more OXIT. The matching never stops.
-            </>
-          }
-          steps={stage2Steps}
-        />
-      </div>
-
-      {/* Bottom bar */}
-      <div
-        className="mt-6 flex w-full max-w-4xl overflow-hidden rounded-xl shadow-2xl sm:mt-8"
-        style={fadeIn(200)}
-      >
-        <div
-          className="w-1 shrink-0"
-          style={{ background: `linear-gradient(to bottom,${PINK},${PURPLE})` }}
-        />
-        <div
-          className="flex flex-1 flex-wrap items-center justify-between gap-4 rounded-r-xl border border-white/[0.06] px-4 py-4 sm:px-6"
-          style={{
-            background:
-              "linear-gradient(135deg,rgba(255,45,107,.08),rgba(123,31,162,.07))",
-          }}
-        >
-          <p className="text-[11px] font-bold leading-relaxed text-white sm:max-w-xs sm:text-[13px]">
-            Every other crypto: invest money. Hope the price rises.
-            <br />
-            OX: invest your time. Get matched to paid work. Earn.
-          </p>
-          <div className="grid grid-cols-2 gap-4 shrink-0 sm:flex sm:flex-wrap sm:gap-5">
-            {stats.map((s) => (
-              <div key={s.label} className="text-center">
-                <p
-                  className="text-[14px] font-black sm:text-[16px]"
-                  style={{
-                    background: `linear-gradient(90deg,${PINK},${PURPLE})`,
-                    WebkitBackgroundClip: "text",
-                    WebkitTextFillColor: "transparent",
-                  }}
-                >
-                  {s.value}
-                </p>
-                <p className="text-[7px] uppercase tracking-widest text-white sm:text-[8px]">
-                  {s.label}
-                </p>
-              </div>
-            ))}
+              OX: invest your time. Get matched to paid work. Earn.
+            </p>
+            <div className="grid w-full grid-cols-3 gap-3 sm:w-auto sm:flex sm:flex-wrap sm:gap-5">
+              {stats.map((s) => (
+                <div key={s.label} className="min-w-0 text-center">
+                  <p
+                    className="text-[13px] font-black sm:text-[16px]"
+                    style={{
+                      background: `linear-gradient(90deg,${PINK},${PURPLE})`,
+                      WebkitBackgroundClip: "text",
+                      WebkitTextFillColor: "transparent",
+                    }}
+                  >
+                    {s.value}
+                  </p>
+                  <p className="text-[7px] uppercase tracking-[0.22em] text-white/90 sm:text-[8px]">
+                    {s.label}
+                  </p>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
-      </div>
 
-      <style>{`@keyframes pulse { 0%,100%{opacity:.3} 50%{opacity:.9} }`}</style>
+        <style>{`@keyframes pulse { 0%,100%{opacity:.3} 50%{opacity:.9} }`}</style>
       </div>
     </section>
   );

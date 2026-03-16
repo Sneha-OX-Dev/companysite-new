@@ -1,6 +1,6 @@
 "use client";
 import SectionHeader from "@/components/Headings/SectionHeader";
-import { RED, PINK, PURPLE } from "@/lib/constants";
+import { PINK, PURPLE, RED } from "@/lib/constants";
 import { useEffect, useState } from "react";
 
 const leftRows = [
@@ -86,12 +86,12 @@ function PanelRow({
       />
       <div>
         <p
-          className="text-sm font-bold leading-tight mb-0.5"
+          className="mb-0.5 text-[15px] font-bold leading-snug sm:text-[16px]"
           style={{ color: isRight ? "#fff" : "rgba(255,255,255,0.70)" }}
         >
           {verb}
         </p>
-        <p className="text-xs leading-snug text-white/55">
+        <p className="text-[13px] leading-relaxed text-white/60 sm:text-[14px]">
           {desc}
         </p>
       </div>
@@ -199,25 +199,30 @@ function Bridge() {
         className="relative hidden sm:flex flex-col items-center justify-center px-2"
         style={{ width: 148 }}
       >
-        {/* spine */}
-        <div
-          className="absolute left-1/2 -translate-x-1/2 w-[2px] rounded-sm"
-          style={{
-            top: "8%",
-            bottom: "8%",
-            background: `linear-gradient(180deg,transparent 0%,${RED} 15%,${PINK} 45%,${PURPLE} 80%,transparent 100%)`,
-          }}
-        />
         {bridgeNodes.map((n, i) => (
           <div key={n.cap} className="w-full">
             <BridgeNode node={n} />
             {i < bridgeNodes.length - 1 && (
-              <p
-                className="relative z-10 text-center text-[11px] py-0.5"
-                style={{ color: "rgba(255,45,107,0.6)" }}
-              >
-                ↓
-              </p>
+              <div className="flex flex-col items-center" aria-hidden>
+                <div
+                  className="h-3 w-[2px] rounded-sm"
+                  style={{
+                    background: `linear-gradient(180deg,transparent 0%,${RED}88 60%,${PINK}66 100%)`,
+                  }}
+                />
+                <span
+                  className="text-[11px]"
+                  style={{ color: "rgba(255,45,107,0.7)" }}
+                >
+                  ↓
+                </span>
+                <div
+                  className="h-3 w-[2px] rounded-sm"
+                  style={{
+                    background: `linear-gradient(180deg,${PINK}66 0%,${PURPLE}88 60%,transparent 100%)`,
+                  }}
+                />
+              </div>
             )}
           </div>
         ))}
@@ -231,14 +236,14 @@ function Bridge() {
           border: "1px solid rgba(255,255,255,0.07)",
         }}
       >
-        <p className="text-[9px] font-bold uppercase tracking-[0.2em] text-white/30 mb-1">
+        <p className="mb-1 text-[9px] font-bold uppercase tracking-[0.2em] text-white/30">
           OX Bridge
         </p>
-        <div className="flex items-center gap-2 overflow-x-auto pb-1">
+        <div className="flex max-w-full min-w-0 items-stretch gap-3 overflow-x-auto pb-2 overscroll-x-contain [-webkit-overflow-scrolling:touch]">
           {bridgeNodes.map((n, i) => (
-            <div key={n.cap} className="flex items-center gap-2 flex-shrink-0">
+            <div key={n.cap} className="flex shrink-0 items-center gap-2">
               <div
-                className="rounded-sm px-2.5 py-2 text-center"
+                className="min-w-[160px] rounded-sm px-2.5 py-2 text-center"
                 style={{
                   border:
                     n.type === "ms"
@@ -255,7 +260,7 @@ function Bridge() {
                 }}
               >
                 <p
-                  className="text-[8px] font-bold uppercase tracking-wider mb-0.5"
+                  className="mb-0.5 text-[8px] font-bold uppercase tracking-wider"
                   style={{
                     color:
                       n.type === "ms"
@@ -270,7 +275,7 @@ function Bridge() {
                 {n.lines.map((l) => (
                   <p
                     key={l}
-                    className="text-[11px] font-bold leading-snug"
+                    className="text-[10px] font-semibold leading-snug"
                     style={{
                       color:
                         n.type === "dim" ? "rgba(255,255,255,0.45)" : "#fff",
@@ -282,7 +287,7 @@ function Bridge() {
               </div>
               {i < bridgeNodes.length - 1 && (
                 <p
-                  className="text-[11px] flex-shrink-0"
+                  className="shrink-0 text-[11px]"
                   style={{ color: "rgba(255,45,107,0.6)" }}
                 >
                   →
@@ -310,7 +315,7 @@ export default function DigitalHumanBridgeSection() {
 
   return (
     <section
-      className="relative w-full px-4 py-16 sm:px-6 sm:py-24"
+      className="relative w-full overflow-x-hidden px-4 py-16 sm:px-6 sm:py-24"
       style={{ background: "#07071A" }}
     >
       {/* centre glow */}
@@ -326,100 +331,103 @@ export default function DigitalHumanBridgeSection() {
             "radial-gradient(circle,rgba(232,38,74,0.07) 0%,transparent 70%)",
         }}
       />
-      <div className="relative z-10 mx-auto flex w-full max-w-6xl flex-col items-center gap-10">
-      {/* Header */}
-      <SectionHeader
-        pillText="Digital vs Human Bridge"
-        title={
-          <>
-            Where systems stop predicting — and start{" "}
-            <em
-              className="not-italic"
+      <div className="relative z-10 mx-auto flex w-full max-w-6xl min-w-0 flex-col items-center gap-10">
+        {/* Header */}
+        <SectionHeader
+          pillText="Digital vs Human Bridge"
+          title={
+            <>
+              Where systems stop predicting — and start{" "}
+              <em
+                className="not-italic"
+                style={{
+                  background: `linear-gradient(90deg,${RED},${PINK},${PURPLE})`,
+                  WebkitBackgroundClip: "text",
+                  WebkitTextFillColor: "transparent",
+                }}
+              >
+                knowing.
+              </em>
+            </>
+          }
+          style={fadeIn(0)}
+        />
+        {/* Main columns */}
+        <div
+          className="relative z-10 w-full max-w-[1060px] min-w-0"
+          style={fadeIn(80)}
+        >
+          {/* Desktop 3-col */}
+          <div
+            className="hidden sm:grid"
+            style={{ gridTemplateColumns: "1fr 148px 1fr" }}
+          >
+            <Panel
+              tag="Digital & AI Systems"
+              heading="What systems do without OX"
+              rows={leftRows}
+            />
+            <Bridge />
+            <Panel
+              tag="Human Participants"
+              heading="What humans provide through OX"
+              rows={rightRows}
+              isRight
+            />
+          </div>
+
+          {/* Mobile stack */}
+          <div className="flex flex-col gap-4 sm:hidden">
+            <Panel
+              tag="Digital & AI Systems"
+              heading="What systems do without OX"
+              rows={leftRows}
+            />
+            <Bridge />
+            <Panel
+              tag="Human Participants"
+              heading="What humans provide through OX"
+              rows={rightRows}
+              isRight
+            />
+          </div>
+        </div>
+        {/* Bottom pills */}
+        <div
+          className="relative z-10 grid w-full max-w-[1060px] grid-cols-1 gap-3 sm:grid-cols-2"
+          style={fadeIn(160)}
+        >
+          {bottomPills.map((p) => (
+            <div
+              key={p.strong}
+              className="flex items-stretch gap-3 rounded-sm px-4 py-3"
               style={{
-                background: `linear-gradient(90deg,${RED},${PINK},${PURPLE})`,
-                WebkitBackgroundClip: "text",
-                WebkitTextFillColor: "transparent",
+                background: "#0D0D2B",
+                border: "1px solid rgba(255,255,255,0.07)",
               }}
             >
-              knowing.
-            </em>
-          </>
-        }
-        style={fadeIn(0)}
-      />
-      {/* Main columns */}
-      <div className="relative z-10 w-full max-w-[1060px]" style={fadeIn(80)}>
-        {/* Desktop 3-col */}
+              <div
+                className="w-[3px] flex-shrink-0 self-stretch rounded-sm"
+                style={{ background: p.color }}
+              />
+              <p className="text-[14px] leading-relaxed text-white/60">
+                <strong className="font-bold text-white">{p.strong}</strong>
+                {p.text}
+              </p>
+            </div>
+          ))}
+        </div>
+        {/* Closing */}
         <div
-          className="hidden sm:grid"
-          style={{ gridTemplateColumns: "1fr 148px 1fr" }}
+          className="relative z-10 w-full max-w-[1060px] border-t border-white/[0.07] pt-4 text-center text-[14px] leading-relaxed text-white/38"
+          style={fadeIn(220)}
         >
-          <Panel
-            tag="Digital & AI Systems"
-            heading="What systems do without OX"
-            rows={leftRows}
-          />
-          <Bridge />
-          <Panel
-            tag="Human Participants"
-            heading="What humans provide through OX"
-            rows={rightRows}
-            isRight
-          />
+          <strong className="font-semibold text-white/65">
+            This is not better data.
+          </strong>{" "}
+          This is a different category of input entirely. The difference between
+          a weather forecast and looking out the window.
         </div>
-
-        {/* Mobile stack */}
-        <div className="flex flex-col gap-4 sm:hidden">
-          <Panel
-            tag="Digital & AI Systems"
-            heading="What systems do without OX"
-            rows={leftRows}
-          />
-          <Bridge />
-          <Panel
-            tag="Human Participants"
-            heading="What humans provide through OX"
-            rows={rightRows}
-            isRight
-          />
-        </div>
-      </div>
-      {/* Bottom pills */}
-      <div
-        className="relative z-10 grid w-full max-w-[1060px] grid-cols-1 gap-3 sm:grid-cols-2"
-        style={fadeIn(160)}
-      >
-        {bottomPills.map((p) => (
-          <div
-            key={p.strong}
-            className="flex items-stretch gap-3 rounded-sm px-4 py-3"
-            style={{
-              background: "#0D0D2B",
-              border: "1px solid rgba(255,255,255,0.07)",
-            }}
-          >
-            <div
-              className="w-[3px] flex-shrink-0 self-stretch rounded-sm"
-              style={{ background: p.color }}
-            />
-            <p className="text-[14px] leading-relaxed text-white/60">
-              <strong className="font-bold text-white">{p.strong}</strong>
-              {p.text}
-            </p>
-          </div>
-        ))}
-      </div>
-      {/* Closing */}
-      <div
-        className="relative z-10 w-full max-w-[1060px] border-t border-white/[0.07] pt-4 text-center text-[14px] leading-relaxed text-white/38"
-        style={fadeIn(220)}
-      >
-        <strong className="font-semibold text-white/65">
-          This is not better data.
-        </strong>{" "}
-        This is a different category of input entirely. The difference between a
-        weather forecast and looking out the window.
-      </div>
       </div>
     </section>
   );

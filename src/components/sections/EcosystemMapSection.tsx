@@ -1,6 +1,6 @@
 "use client";
 import SectionHeader from "@/components/Headings/SectionHeader";
-import { RED, PINK, PURPLE } from "@/lib/constants";
+import { PINK, PURPLE, RED } from "@/lib/constants";
 import { useEffect, useState } from "react";
 
 /* ---------------- DATA ---------------- */
@@ -245,90 +245,98 @@ export function EcosystemMapSection() {
       style={{ background: "#07071A" }}
     >
       <div className="relative z-10 mx-auto flex w-full max-w-6xl flex-col items-center gap-10">
-      {/* HEADER */}
-      <SectionHeader
-        pillText="Ecosystem Map"
-        title={
-          <>
-            Who the network{" "}
-            <span
-              style={{
-                background: `linear-gradient(90deg,${RED},${PINK},${PURPLE})`,
-                WebkitBackgroundClip: "text",
-                WebkitTextFillColor: "transparent",
-              }}
-            >
-              serves.
-            </span>
-          </>
-        }
-        style={fadeIn(0)}
-      />
+        {/* HEADER */}
+        <SectionHeader
+          pillText="Ecosystem Map"
+          title={
+            <>
+              Who the network{" "}
+              <span
+                style={{
+                  background: `linear-gradient(90deg,${RED},${PINK},${PURPLE})`,
+                  WebkitBackgroundClip: "text",
+                  WebkitTextFillColor: "transparent",
+                }}
+              >
+                serves.
+              </span>
+            </>
+          }
+          style={fadeIn(0)}
+        />
 
-      {/* GRID */}
+        {/* GRID */}
 
-      <div
-        className="grid w-full max-w-[1100px] grid-cols-1 gap-4 md:grid-cols-2 md:gap-5"
-        style={fadeIn(70)}
-      >
-        <QuadCard variant="q1" />
-        <QuadCard variant="q2" />
-        <QuadCard variant="q3" />
-        <QuadCard variant="q4" />
-      </div>
+        <div
+          className="grid w-full max-w-[1100px] grid-cols-1 gap-4 md:grid-cols-2 md:gap-5"
+          style={fadeIn(70)}
+        >
+          <QuadCard variant="q1" />
+          <QuadCard variant="q2" />
+          <QuadCard variant="q3" />
+          <QuadCard variant="q4" />
+        </div>
 
-      {/* HOW IT FITS */}
+        {/* HOW IT FITS */}
 
-      <div
-        className="w-full max-w-[1180px] rounded-lg"
-        style={{
-          background: "#0D0D2B",
-          border: "1px solid rgba(255,255,255,0.07)",
-          boxShadow: "0 6px 30px rgba(0,0,0,0.25)",
-          ...fadeIn(150),
-        }}
-      >
-        {/* Desktop: single row */}
-        <div className="hidden items-center gap-6 px-6 py-4 sm:flex">
-          <p className="flex-shrink-0 border-r border-white/[0.08] pr-5 text-[11px] font-bold uppercase tracking-[0.18em] text-white/35">
-            How it fits
-          </p>
-          <div className="flex flex-1 items-center justify-between gap-6 whitespace-nowrap">
-            {fitsItems.map((f, i) => (
-              <div key={f.label} className="flex items-center gap-3">
-                <FitsItem label={f.label} color={f.color} />
-                {i < fitsItems.length - 1 && (
-                  <span className="text-[16px] text-white/20">›</span>
-                )}
-              </div>
-            ))}
+        <div
+          className="w-full max-w-[1180px] rounded-lg"
+          style={{
+            background: "#0D0D2B",
+            border: "1px solid rgba(255,255,255,0.07)",
+            boxShadow: "0 6px 30px rgba(0,0,0,0.25)",
+            ...fadeIn(150),
+          }}
+        >
+          {/* Desktop: single row */}
+          <div className="hidden items-center gap-3 px-6 py-4 sm:flex">
+            <p className="flex-shrink-0 border-r border-white/[0.08] pr-4 text-[11px] font-bold uppercase tracking-[0.18em] text-white/35">
+              How it fits
+            </p>
+            <div className="flex flex-1 items-center justify-between">
+              {fitsItems.map((f, i) => (
+                <div key={f.label} className="flex items-center gap-2">
+                  <div className="flex items-center gap-1.5">
+                    <div
+                      className="h-[6px] w-[6px] flex-shrink-0 rounded-full"
+                      style={{ background: f.color }}
+                    />
+                    <span className="text-[12px] text-white/60 whitespace-nowrap">
+                      {f.label}
+                    </span>
+                  </div>
+                  {i < fitsItems.length - 1 && (
+                    <span className="ml-2 text-[14px] text-white/20">›</span>
+                  )}
+                </div>
+              ))}
+            </div>
+          </div>
+          {/* Mobile: stacked */}
+          <div className="flex flex-col gap-2 px-4 py-4 sm:hidden">
+            <p className="mb-1 text-[11px] font-bold uppercase tracking-[0.18em] text-white/35">
+              How it fits
+            </p>
+            <div className="flex flex-col gap-2">
+              {fitsItems.map((f) => (
+                <FitsItem key={f.label} label={f.label} color={f.color} />
+              ))}
+            </div>
           </div>
         </div>
-        {/* Mobile: stacked */}
-        <div className="flex flex-col gap-2 px-4 py-4 sm:hidden">
-          <p className="mb-1 text-[11px] font-bold uppercase tracking-[0.18em] text-white/35">
-            How it fits
-          </p>
-          <div className="flex flex-col gap-2">
-            {fitsItems.map((f) => (
-              <FitsItem key={f.label} label={f.label} color={f.color} />
-            ))}
-          </div>
+
+        {/* FOOTER */}
+
+        <div
+          className="w-full max-w-[1100px] border-t border-white/[0.06] pt-4 text-center text-[13px] text-white/40"
+          style={fadeIn(210)}
+        >
+          <strong className="text-white/70">
+            All coordinated by one underlying system:
+          </strong>{" "}
+          A decentralised network of Machine Selves turning static big data into
+          live human intelligence.
         </div>
-      </div>
-
-      {/* FOOTER */}
-
-      <div
-        className="w-full max-w-[1100px] border-t border-white/[0.06] pt-4 text-center text-[13px] text-white/40"
-        style={fadeIn(210)}
-      >
-        <strong className="text-white/70">
-          All coordinated by one underlying system:
-        </strong>{" "}
-        A decentralised network of Machine Selves turning static big data into
-        live human intelligence.
-      </div>
       </div>
     </section>
   );

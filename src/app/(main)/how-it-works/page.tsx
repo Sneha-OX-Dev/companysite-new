@@ -1,12 +1,12 @@
-import type { Metadata } from "next";
 import CoreStatementsSection from "@/components/homesections/CoreStatements";
 import HowOxWorksSection from "@/components/homesections/HowOxWorks";
 import WhatIsOxSection from "@/components/homesections/WhatIsOx";
+import DigitalHumanBridgeSection from "@/components/sections/DigitalHumanBridgeSection";
+import { MatchingLoopSection } from "@/components/sections/MatchingLoopSection";
 import { OldVsOxSection } from "@/components/sections/OldVsNewModelSection";
 import { ProtocolStackSection } from "@/components/sections/ProtocolStackSection";
-import { MatchingLoopSection } from "@/components/sections/MatchingLoopSection";
-import DigitalHumanBridgeSection from "@/components/sections/DigitalHumanBridgeSection";
 import { Reveal } from "@/components/ui/Reveal";
+import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "How OX Works — OX",

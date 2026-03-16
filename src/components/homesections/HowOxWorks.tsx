@@ -1,5 +1,11 @@
 import SectionHeader from "@/components/Headings/SectionHeader";
-import { Eyebrow, Body, DisplayText, CardTitle, Muted } from "@/components/ui/typography";
+import {
+  Body,
+  CardTitle,
+  DisplayText,
+  Eyebrow,
+  Muted,
+} from "@/components/ui/typography";
 import { cn } from "@/lib/utils";
 
 const PHYSICAL_WORK_STEPS = [
@@ -72,16 +78,29 @@ export default function HowOxWorksSection() {
         {FLOW_STEPS.map((step, i) => (
           <div
             key={step.icon}
-            className={cn("glass-card group relative overflow-hidden bg-gradient-to-br p-5 transition-all duration-300", step.color, step.border)}
+            className={cn(
+              "glass-card group relative overflow-hidden bg-gradient-to-br p-5 transition-all duration-300",
+              step.color,
+              step.border,
+            )}
           >
             <div
-              className={cn("pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent to-transparent opacity-60", step.topLine)}
+              className={cn(
+                "pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent to-transparent opacity-60",
+                step.topLine,
+              )}
             />
             <div
-              className={cn("pointer-events-none absolute -right-6 -top-6 h-20 w-20 rounded-full opacity-[0.08] blur-2xl transition-opacity duration-500 group-hover:opacity-[0.16]", step.glow)}
+              className={cn(
+                "pointer-events-none absolute -right-6 -top-6 h-20 w-20 rounded-full opacity-[0.08] blur-2xl transition-opacity duration-500 group-hover:opacity-[0.16]",
+                step.glow,
+              )}
             />
             <span
-              className={cn("font-mono text-xs font-bold tracking-widest", step.accent)}
+              className={cn(
+                "font-mono text-xs font-bold tracking-widest",
+                step.accent,
+              )}
             >
               {step.icon}
             </span>
@@ -116,14 +135,12 @@ export default function HowOxWorksSection() {
           <div className="pointer-events-none absolute -left-10 -top-10 h-48 w-48 rounded-full bg-primary opacity-[0.06] blur-3xl transition-opacity duration-500 group-hover:opacity-[0.11]" />
           <div className="pointer-events-none absolute -bottom-10 -right-10 h-48 w-48 rounded-full bg-brand-purple opacity-[0.06] blur-3xl" />
 
-          <Eyebrow className="text-primary/60">
-            Machine–human bridge
-          </Eyebrow>
+          <Eyebrow className="text-primary/60">Machine–human bridge</Eyebrow>
 
           {/* Three-column bridge layout */}
           <div className="mt-7 flex flex-col gap-6 md:flex-row md:items-center">
             {/* Digital systems */}
-              <div className="flex-1 rounded-2xl border border-white/[0.07] bg-white/[0.03] p-5">
+            <div className="flex-1 rounded-2xl border border-white/[0.07] bg-white/[0.03] p-5">
               <Eyebrow className="text-primary/60">
                 Digital systems &amp; AI
               </Eyebrow>
@@ -135,15 +152,16 @@ export default function HowOxWorksSection() {
 
             {/* Centre bridge node */}
             <div className="flex shrink-0 flex-col items-center gap-2">
-              <div className="relative flex h-16 w-16 items-center justify-center rounded-2xl border border-primary/30 bg-gradient-to-br from-primary/20 to-brand-purple/20 shadow-[0_0_28px_rgba(255,45,107,0.25)]">
-                <div className="absolute inset-[4px] rounded-xl border border-white/10 bg-black/50" />
-                <span className="relative text-center text-xs font-bold uppercase leading-tight tracking-[0.1em] text-white/80">
-                  Machine
-                  <br />
-                  Self
-                </span>
+              <div className="relative flex h-20 w-20 items-center justify-center rounded-2xl border border-primary/30 bg-gradient-to-br from-primary/20 to-brand-purple/20 shadow-[0_0_28px_rgba(255,45,107,0.25)]">
+                <div className="absolute inset-[5px] rounded-xl border border-white/10 bg-black/50" />
+                <div className="relative flex h-full w-full items-center justify-center px-2 text-center">
+                  <span className="whitespace-nowrap text-[12px] font-semibold leading-tight text-white/80 sm:text-[13px]">
+                    Machine
+                    <br /> Self
+                  </span>
+                </div>
               </div>
-              <span className="text-xs text-white/35 tracking-wide">
+              <span className="text-[11px] tracking-wide text-white/35 sm:text-xs">
                 on-device
               </span>
             </div>
@@ -170,10 +188,7 @@ export default function HowOxWorksSection() {
               </Eyebrow>
               <ol className="mt-4 space-y-3">
                 {PHYSICAL_WORK_STEPS.map((step, i) => (
-                  <li
-                    key={step}
-                    className="flex items-start gap-3"
-                  >
+                  <li key={step} className="flex items-start gap-3">
                     <span className="relative flex h-5 w-5 shrink-0 items-center justify-center">
                       <span className="absolute inset-0 rounded-full bg-gradient-to-br from-primary/20 to-brand-purple/20" />
                       <span className="text-xs font-bold text-white/60">
@@ -280,9 +295,12 @@ export default function HowOxWorksSection() {
                   "Precision Routing: Verified eligibility drives exact routing",
                 ],
               ].map(([old, ox]) => (
-                <tr key={old} className="border-b border-white/[0.05] transition-colors last:border-0 hover:bg-white/[0.02]">
-                  <td className="py-4 pr-8 text-foreground/40">{old}</td>
-                  <td className="py-4 text-foreground/80">{ox}</td>
+                <tr
+                  key={old}
+                  className="border-b border-white/[0.05] transition-colors last:border-0 hover:bg-white/[0.02]"
+                >
+                  <td className="py-4 px-2 text-foreground/40">{old}</td>
+                  <td className="py-4 px-2 text-foreground/80">{ox}</td>
                 </tr>
               ))}
             </tbody>
