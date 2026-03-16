@@ -152,15 +152,16 @@ export default function HowOxWorksSection() {
 
             {/* Centre bridge node */}
             <div className="flex shrink-0 flex-col items-center gap-2">
-              <div className="relative flex h-16 w-16 items-center justify-center rounded-2xl border border-primary/30 bg-gradient-to-br from-primary/20 to-brand-purple/20 shadow-[0_0_28px_rgba(255,45,107,0.25)]">
-                <div className="absolute inset-[4px] rounded-xl border border-white/10 bg-black/50" />
-                <span className="relative text-center text-xs font-bold uppercase leading-tight tracking-[0.1em] text-white/80">
-                  Machine
-                  <br />
-                  Self
-                </span>
+              <div className="relative flex h-20 w-20 items-center justify-center rounded-2xl border border-primary/30 bg-gradient-to-br from-primary/20 to-brand-purple/20 shadow-[0_0_28px_rgba(255,45,107,0.25)]">
+                <div className="absolute inset-[5px] rounded-xl border border-white/10 bg-black/50" />
+                <div className="relative flex h-full w-full items-center justify-center px-2 text-center">
+                  <span className="whitespace-nowrap text-[12px] font-semibold leading-tight text-white/80 sm:text-[13px]">
+                    Machine
+                    <br /> Self
+                  </span>
+                </div>
               </div>
-              <span className="text-xs text-white/35 tracking-wide">
+              <span className="text-[11px] tracking-wide text-white/35 sm:text-xs">
                 on-device
               </span>
             </div>
