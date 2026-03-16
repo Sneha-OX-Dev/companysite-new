@@ -1,5 +1,7 @@
 "use client";
 
+import { cn } from "@/lib/utils";
+
 const RED = "#E8264A";
 const PINK = "#FF2D6B";
 const PURPLE = "#7B1FA2";
@@ -112,7 +114,7 @@ export default function MachineSelfSection() {
             key={c.label}
             className="relative overflow-hidden rounded bg-[#0D0D2B] border border-white/10 p-5 text-center sm:p-6"
           >
-            <div className={`absolute inset-x-0 top-0 h-[3px] ${c.topBar}`} />
+            <div className={cn("absolute inset-x-0 top-0 h-[3px]", c.topBar)} />
 
             <p
               className="text-[14px] font-bold uppercase tracking-[0.2em]"

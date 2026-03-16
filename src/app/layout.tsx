@@ -1,6 +1,7 @@
 import { TooltipProvider } from "@/components/ui/tooltip";
+import { cn } from "@/lib/utils";
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Syne } from "next/font/google";
+import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -13,15 +14,10 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-const syne = Syne({
-  variable: "--font-syne",
-  subsets: ["latin"],
-});
-
 export const metadata: Metadata = {
-  title: "Oxygean – You're alive in the network",
+  title: "OX — The Human Intelligence Protocol",
   description:
-    "Evolved digital engagement using web3 technologies. OX puts you in control—shaping, training, and owning your personal intelligence.",
+    "OX is the Human Intelligence Protocol. Systems stop guessing. Humans start earning.",
   icons: {
     icon: "/ox.svg",
     shortcut: "/ox.svg",
@@ -37,10 +33,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${syne.variable} antialiased`}
+        className={cn(geistSans.variable, geistMono.variable, "antialiased")}
       >
         <TooltipProvider>
-          {/* <Navbar /> */}
           {children}
         </TooltipProvider>
       </body>

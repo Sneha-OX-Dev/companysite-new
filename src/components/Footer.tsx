@@ -2,10 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
-
-const PINK = "#FF2D6B";
-const PURPLE = "#7B1FA2";
+import { Subhead, Body, Eyebrow, Muted } from "@/components/ui/typography";
 
 const SOCIAL_ICONS: Record<string, React.ReactNode> = {
   instagram: (
@@ -13,9 +10,14 @@ const SOCIAL_ICONS: Record<string, React.ReactNode> = {
       <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
     </svg>
   ),
-  facebook: (
+  telegram: (
     <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-      <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+      <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z" />
+    </svg>
+  ),
+  youtube: (
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
     </svg>
   ),
   linkedin: (
@@ -29,25 +31,14 @@ const SOCIAL_ICONS: Record<string, React.ReactNode> = {
     </svg>
   ),
 };
-function SocialButton({ id, href }: { id: string; href: string }) {
-  const [hover, setHover] = useState(false);
 
+function SocialButton({ id, href }: { id: string; href: string }) {
   return (
     <a
       href={href}
       target="_blank"
       rel="noopener noreferrer"
-      className="flex h-10 w-10 items-center justify-center rounded-full transition-all"
-      style={{
-        background: hover
-          ? `linear-gradient(135deg,${PINK},${PURPLE})`
-          : "rgba(255,255,255,0.06)",
-        border: "1px solid rgba(255,255,255,0.1)",
-        color: "#fff",
-        transform: hover ? "translateY(-2px)" : "none",
-      }}
-      onMouseEnter={() => setHover(true)}
-      onMouseLeave={() => setHover(false)}
+      className="flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/[0.06] text-white transition-all hover:-translate-y-0.5 hover:bg-gradient-to-br hover:from-primary hover:to-brand-purple"
     >
       {SOCIAL_ICONS[id]}
     </a>
@@ -56,38 +47,34 @@ function SocialButton({ id, href }: { id: string; href: string }) {
 
 export default function Footer() {
   return (
-    <footer className="relative overflow-hidden bg-[#07071A] text-white">
+    <footer className="relative overflow-hidden bg-background text-foreground">
       <div className="mx-auto max-w-6xl px-6 py-20">
         {/* MAIN GRID */}
         <div className="grid gap-12 md:grid-cols-3">
           {/* BRAND */}
           <div className="space-y-6">
             <Image
-              src="https://cdn.prod.website-files.com/6601ebe1041cb651c3a023e8/6601f1ceaf0f5b2dda2239dd_ox.svg"
+              src="/ox.svg"
               alt="OX"
               width={50}
               height={50}
             />
 
-            <p className="text-lg font-semibold">
+            <Subhead className="font-semibold">
               Systems stop guessing. Humans start earning.
-            </p>
+            </Subhead>
 
-            <p className="text-[14px] text-white/60 leading-relaxed">
+            <Body className="text-foreground/60">
               OX is the Human Intelligence Protocol — the coordination layer
               between structured human intelligence and the systems that require
               it.
-            </p>
+            </Body>
 
             {/* CONTACT */}
-            <div className="space-y-1 text-[14px] text-white/60">
-              <p className="uppercase tracking-[0.2em] text-white/40 text-xs">
-                Contact
-              </p>
-              <a href="mailto:Bernard.Flynn@oxygean.com">
-                Bernard.Flynn@oxygean.com
-              </a>
-              <p>www.oxygean.com</p>
+            <div className="space-y-1">
+              <Eyebrow className="text-foreground/60">Contact</Eyebrow>
+              <Muted><a href="mailto:Bernard.Flynn@oxygean.com" className="transition-colors hover:text-foreground/80">Bernard.Flynn@oxygean.com</a></Muted>
+              <Muted>www.oxygean.com</Muted>
             </div>
 
             {/* SOCIAL */}
@@ -101,59 +88,53 @@ export default function Footer() {
                 id="linkedin"
                 href="https://linkedin.com/company/oxygean"
               />
-              <SocialButton id="facebook" href="#" />
+              <SocialButton id="telegram" href="https://t.me/OXygean" />
+              <SocialButton id="youtube" href="https://youtube.com/@OXygean" />
             </div>
           </div>
 
           {/* NAVIGATION */}
           <div className="space-y-4">
-            <p className="text-xs uppercase tracking-[0.2em] text-white/40">
-              Navigation
-            </p>
+            <Eyebrow className="text-foreground/60">Navigation</Eyebrow>
 
-            <div className="flex flex-col gap-2 text-[14px] text-white/70">
-              <Link href="/ai-team">AI Team</Link>
-              <Link href="/tokenomics">Tokenomics</Link>
-              <Link href="/whitepaper">White Paper</Link>
-              <Link href="/human-team-whitepaper">Human Team White Paper</Link>
+            <div className="flex flex-col gap-2">
+              <Muted className="text-foreground/70"><Link href="/home">Overview</Link></Muted>
+              <Muted className="text-foreground/70"><Link href="/the-problem">The Problem</Link></Muted>
+              <Muted className="text-foreground/70"><Link href="/how-it-works">How It Works</Link></Muted>
+              <Muted className="text-foreground/70"><Link href="/machine-self">Machine Self</Link></Muted>
+              <Muted className="text-foreground/70"><Link href="/earn">Earn</Link></Muted>
+              <Muted className="text-foreground/70"><Link href="/marketplace">For Business</Link></Muted>
+              <Muted className="text-foreground/70"><Link href="/ai-team">AI Team</Link></Muted>
             </div>
           </div>
 
           {/* RESOURCES */}
           <div className="space-y-4">
-            <p className="text-xs uppercase tracking-[0.2em] text-white/40">
-              Documentation
-            </p>
+            <Eyebrow className="text-foreground/60">Documentation</Eyebrow>
 
-            <div className="flex flex-col gap-2 text-[14px] text-white/70">
-              <Link href="/whitepaper">White Paper</Link>
-              <Link href="/human-team-whitepaper">Human Team White Paper</Link>
+            <div className="flex flex-col gap-2">
+              <Muted className="cursor-not-allowed text-foreground/40">White Paper (coming soon)</Muted>
+              <Muted className="cursor-not-allowed text-foreground/40">Human Team White Paper (coming soon)</Muted>
             </div>
 
-            <p className="text-[12px] text-white/40 pt-6 leading-relaxed">
+            <Muted className="text-foreground/40 pt-6">
               OX is operated by Ellorem Ireland Ltd. (OXygean). For token
               information, terms, and disclaimers, please refer to our
               documentation.
-            </p>
+            </Muted>
           </div>
         </div>
 
         {/* BOTTOM BAR */}
-        <div className="mt-16 border-t border-white/10 pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-sm text-white/40">
-          <p>All Rights Reserved ©OXygean</p>
+        <div className="mt-16 border-t border-white/10 pt-6 flex flex-col sm:flex-row items-center justify-between gap-3">
+          <Muted className="text-foreground/40">All Rights Reserved ©OXygean</Muted>
 
           <div className="flex items-center gap-1.5">
-            <div
-              className="h-[6px] w-[6px] rounded-full"
-              style={{
-                background: PINK,
-                boxShadow: `0 0 8px ${PINK}`,
-              }}
-            />
+            <div className="relative h-1.5 w-1.5 rounded-full bg-primary shadow-[0_0_8px_rgba(255,45,107,0.9)]" />
 
-            <p className="text-[14px] font-semibold uppercase tracking-[0.15em] text-white/25">
+            <Eyebrow className="text-foreground/25">
               Human Intelligence Protocol
-            </p>
+            </Eyebrow>
           </div>
         </div>
       </div>

@@ -2,15 +2,13 @@ export const CARDS = [
   {
     id: "investors",
     badge: "Investors & Token Buyers",
-    badgeColor: "#E8264A",
-    badgeText: "#F97373",
-    gradient: "from-[#E8264A] to-[#7B1FA2]",
-    hoverBorder: "hover:border-[#E8264A]/50",
-    hoverShadow: "hover:shadow-[0_26px_80px_rgba(232,38,74,0.45)]",
-    focusRing: "focus-visible:ring-[#F97373]",
+    gradient: "from-primary to-brand-purple",
+    hoverBorder: "hover:border-primary/50",
+    hoverShadow: "hover:shadow-[0_26px_80px_rgba(255,45,107,0.45)]",
+    focusRing: "focus-visible:ring-primary/60",
     glowShadow:
-      "shadow-[0_0_26px_rgba(232,38,74,0.55)] hover:shadow-[0_0_40px_rgba(232,38,74,0.9)]",
-    dotGlow: "shadow-[0_0_8px_rgba(232,38,74,0.8)]",
+      "shadow-[0_0_26px_rgba(255,45,107,0.55)] hover:shadow-[0_0_40px_rgba(255,45,107,0.9)]",
+    dotGlow: "shadow-[0_0_8px_rgba(255,45,107,0.8)]",
     heading: "A scarce token backed entirely by real human capital.",
     lead: "Fixed supply. Human‑mined. Backed 100% by real human capital.",
     bullets: [
@@ -22,12 +20,10 @@ export const CARDS = [
   {
     id: "builders",
     badge: "Users & Builders",
-    badgeColor: "#FF2D6B",
-    badgeText: "#FF9BB8",
-    gradient: "from-[#FF2D6B] to-[#7B1FA2]",
-    hoverBorder: "hover:border-[#FF2D6B]/50",
+    gradient: "from-primary to-brand-purple",
+    hoverBorder: "hover:border-primary/50",
     hoverShadow: "hover:shadow-[0_26px_80px_rgba(255,45,107,0.45)]",
-    focusRing: "focus-visible:ring-[#FF9BB8]",
+    focusRing: "focus-visible:ring-primary/60",
     glowShadow:
       "shadow-[0_0_26px_rgba(255,45,107,0.55)] hover:shadow-[0_0_40px_rgba(255,45,107,0.9)]",
     dotGlow: "shadow-[0_0_8px_rgba(255,45,107,0.8)]",
@@ -43,5 +39,6 @@ export const CARDS = [
   },
 ];
 
+/** Used for SVG fill/stroke attributes where Tailwind classes cannot be applied */
 export const PINK = "#FF2D6B";
 export const PURPLE = "#7B1FA2";
