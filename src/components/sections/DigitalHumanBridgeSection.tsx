@@ -1,9 +1,7 @@
 "use client";
+import SectionHeader from "@/components/Headings/SectionHeader";
+import { RED, PINK, PURPLE } from "@/lib/constants";
 import { useEffect, useState } from "react";
-
-const RED = "#E8264A";
-const PINK = "#FF2D6B";
-const PURPLE = "#7B1FA2";
 
 const leftRows = [
   { verb: "Predict", desc: "Probabilistic inference from historical data" },
@@ -88,12 +86,12 @@ function PanelRow({
       />
       <div>
         <p
-          className="text-[13px] font-bold leading-tight mb-0.5 sm:text-[14px]"
-          style={{ color: isRight ? "#fff" : "rgba(255,255,255,0.55)" }}
+          className="text-sm font-bold leading-tight mb-0.5"
+          style={{ color: isRight ? "#fff" : "rgba(255,255,255,0.70)" }}
         >
           {verb}
         </p>
-        <p className="text-[11px] leading-snug text-white/38 sm:text-[12px]">
+        <p className="text-xs leading-snug text-white/55">
           {desc}
         </p>
       </div>
@@ -312,21 +310,12 @@ export default function DigitalHumanBridgeSection() {
 
   return (
     <section
-      className="relative flex min-h-screen w-full flex-col items-center justify-center gap-4 px-4 py-10 sm:px-8 sm:py-12"
-      style={{ background: "#07071A", fontFamily: "'DM Sans', sans-serif" }}
+      className="relative w-full px-4 py-16 sm:px-6 sm:py-24"
+      style={{ background: "#07071A" }}
     >
-      {/* grid overlay
-      <div
-        className="pointer-events-none fixed inset-0"
-        style={{
-          backgroundImage:
-            "linear-gradient(rgba(255,255,255,0.015) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.015) 1px,transparent 1px)",
-          backgroundSize: "44px 44px",
-        }} */}
-      {/* /> */}
       {/* centre glow */}
       <div
-        className="pointer-events-none fixed"
+        className="pointer-events-none absolute"
         style={{
           width: 500,
           height: 500,
@@ -337,32 +326,27 @@ export default function DigitalHumanBridgeSection() {
             "radial-gradient(circle,rgba(232,38,74,0.07) 0%,transparent 70%)",
         }}
       />
+      <div className="relative z-10 mx-auto flex w-full max-w-6xl flex-col items-center gap-10">
       {/* Header */}
-      <div className="relative z-10 text-center" style={fadeIn(0)}>
-        <span
-          className="mb-3 inline-block rounded-sm px-3 py-1 text-[9.5px] font-bold uppercase tracking-[0.22em] sm:text-[10.5px]"
-          style={{
-            color: PINK,
-            border: "1px solid rgba(255,45,107,0.3)",
-            background: "rgba(255,45,107,0.07)",
-          }}
-        >
-          Diagram 8 — Digital vs Human Bridge
-        </span>
-        <h2 className="text-[clamp(17px,2vw,24px)] font-extrabold leading-tight tracking-[-0.025em]">
-          Where systems stop predicting — and start{" "}
-          <em
-            className="not-italic"
-            style={{
-              background: `linear-gradient(90deg,${RED},${PINK},${PURPLE})`,
-              WebkitBackgroundClip: "text",
-              WebkitTextFillColor: "transparent",
-            }}
-          >
-            knowing.
-          </em>
-        </h2>
-      </div>
+      <SectionHeader
+        pillText="Digital vs Human Bridge"
+        title={
+          <>
+            Where systems stop predicting — and start{" "}
+            <em
+              className="not-italic"
+              style={{
+                background: `linear-gradient(90deg,${RED},${PINK},${PURPLE})`,
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+              }}
+            >
+              knowing.
+            </em>
+          </>
+        }
+        style={fadeIn(0)}
+      />
       {/* Main columns */}
       <div className="relative z-10 w-full max-w-[1060px]" style={fadeIn(80)}>
         {/* Desktop 3-col */}
@@ -435,6 +419,7 @@ export default function DigitalHumanBridgeSection() {
         </strong>{" "}
         This is a different category of input entirely. The difference between a
         weather forecast and looking out the window.
+      </div>
       </div>
     </section>
   );

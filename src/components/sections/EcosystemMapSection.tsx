@@ -1,9 +1,7 @@
 "use client";
+import SectionHeader from "@/components/Headings/SectionHeader";
+import { RED, PINK, PURPLE } from "@/lib/constants";
 import { useEffect, useState } from "react";
-
-const RED = "#E8264A";
-const PINK = "#FF2D6B";
-const PURPLE = "#7B1FA2";
 
 /* ---------------- DATA ---------------- */
 
@@ -243,36 +241,29 @@ export function EcosystemMapSection() {
 
   return (
     <section
-      className="relative flex min-h-screen w-full flex-col items-center justify-center gap-6 px-6 py-12"
-      style={{ background: "#07071A", fontFamily: "'DM Sans', sans-serif" }}
+      className="relative w-full px-4 py-16 sm:px-6 sm:py-24"
+      style={{ background: "#07071A" }}
     >
+      <div className="relative z-10 mx-auto flex w-full max-w-6xl flex-col items-center gap-10">
       {/* HEADER */}
-
-      <div className="text-center" style={fadeIn(0)}>
-        <span
-          className="mb-3 inline-block rounded-sm px-3 py-1 text-[11px] font-bold uppercase tracking-[0.22em]"
-          style={{
-            color: PINK,
-            border: "1px solid rgba(255,45,107,0.3)",
-            background: "rgba(255,45,107,0.07)",
-          }}
-        >
-          Diagram 14 — Ecosystem Map
-        </span>
-
-        <h2 className="text-[clamp(22px,2.3vw,30px)] font-extrabold">
-          Who the network{" "}
-          <span
-            style={{
-              background: `linear-gradient(90deg,${RED},${PINK},${PURPLE})`,
-              WebkitBackgroundClip: "text",
-              WebkitTextFillColor: "transparent",
-            }}
-          >
-            serves.
-          </span>
-        </h2>
-      </div>
+      <SectionHeader
+        pillText="Ecosystem Map"
+        title={
+          <>
+            Who the network{" "}
+            <span
+              style={{
+                background: `linear-gradient(90deg,${RED},${PINK},${PURPLE})`,
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+              }}
+            >
+              serves.
+            </span>
+          </>
+        }
+        style={fadeIn(0)}
+      />
 
       {/* GRID */}
 
@@ -297,20 +288,30 @@ export function EcosystemMapSection() {
           ...fadeIn(150),
         }}
       >
+        {/* Desktop: single row */}
         <div className="hidden items-center gap-6 px-6 py-4 sm:flex">
           <p className="flex-shrink-0 border-r border-white/[0.08] pr-5 text-[11px] font-bold uppercase tracking-[0.18em] text-white/35">
             How it fits
           </p>
-
           <div className="flex flex-1 items-center justify-between gap-6 whitespace-nowrap">
             {fitsItems.map((f, i) => (
               <div key={f.label} className="flex items-center gap-3">
                 <FitsItem label={f.label} color={f.color} />
-
                 {i < fitsItems.length - 1 && (
                   <span className="text-[16px] text-white/20">›</span>
                 )}
               </div>
+            ))}
+          </div>
+        </div>
+        {/* Mobile: stacked */}
+        <div className="flex flex-col gap-2 px-4 py-4 sm:hidden">
+          <p className="mb-1 text-[11px] font-bold uppercase tracking-[0.18em] text-white/35">
+            How it fits
+          </p>
+          <div className="flex flex-col gap-2">
+            {fitsItems.map((f) => (
+              <FitsItem key={f.label} label={f.label} color={f.color} />
             ))}
           </div>
         </div>
@@ -327,6 +328,7 @@ export function EcosystemMapSection() {
         </strong>{" "}
         A decentralised network of Machine Selves turning static big data into
         live human intelligence.
+      </div>
       </div>
     </section>
   );

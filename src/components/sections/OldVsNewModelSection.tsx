@@ -1,9 +1,7 @@
 "use client";
+import SectionHeader from "@/components/Headings/SectionHeader";
+import { PINK, RED, PURPLE } from "@/lib/constants";
 import { useEffect, useState } from "react";
-
-const PINK = "#FF2D6B";
-const RED = "#E8264A";
-const PURPLE = "#7B1FA2";
 
 const leftRows = [
   {
@@ -115,13 +113,13 @@ function PanelRow({
                 ? "#fff"
                 : "rgba(255,255,255,0.9)"
               : hovered
-                ? "rgba(255,255,255,0.75)"
-                : "rgba(255,255,255,0.45)",
+                ? "rgba(255,255,255,0.85)"
+                : "rgba(255,255,255,0.65)",
           }}
         >
           {title}
         </p>
-        <p className="text-[13px] leading-snug text-white/35">{desc}</p>
+        <p className="text-sm leading-snug text-white/55">{desc}</p>
       </div>
     </div>
   );
@@ -247,45 +245,30 @@ export function OldVsOxSection() {
 
   return (
     <section
-      className="relative flex min-h-screen w-full flex-col items-center justify-center gap-4 px-4 py-10 sm:px-8 sm:py-12"
-      style={{ background: "#07071A", fontFamily: "'DM Sans', sans-serif" }}
+      className="relative w-full px-4 py-16 sm:px-6 sm:py-24"
+      style={{ background: "#07071A" }}
     >
-      {/* grid */}
-      <div
-        className="pointer-events-none fixed inset-0"
-        style={{
-          backgroundImage:
-            "linear-gradient(rgba(255,255,255,0.013) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.013) 1px,transparent 1px)",
-          backgroundSize: "44px 44px",
-        }}
-      />
-
+      <div className="relative z-10 mx-auto flex w-full max-w-6xl flex-col items-center gap-10">
       {/* Header */}
-      <div className="relative z-10 text-center" style={fadeIn(0)}>
-        <span
-          className="mb-2 inline-block rounded-sm px-3 py-1 text-[9px] font-bold uppercase tracking-[0.2em] sm:text-[10px]"
-          style={{
-            color: PINK,
-            border: "1px solid rgba(255,45,107,0.3)",
-            background: "rgba(255,45,107,0.07)",
-          }}
-        >
-          Diagram 9 — Section 6 · What Is OX
-        </span>
-        <h2 className="text-[clamp(17px,1.9vw,24px)] font-extrabold leading-tight tracking-[-0.025em]">
-          A different architecture{" "}
-          <em
-            className="not-italic"
-            style={{
-              background: `linear-gradient(90deg,${RED},${PINK},${PURPLE})`,
-              WebkitBackgroundClip: "text",
-              WebkitTextFillColor: "transparent",
-            }}
-          >
-            to every existing marketplace.
-          </em>
-        </h2>
-      </div>
+      <SectionHeader
+        pillText="What Is OX"
+        title={
+          <>
+            A different architecture{" "}
+            <em
+              className="not-italic"
+              style={{
+                background: `linear-gradient(90deg,${RED},${PINK},${PURPLE})`,
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+              }}
+            >
+              to every existing marketplace.
+            </em>
+          </>
+        }
+        style={fadeIn(0)}
+      />
 
       {/* Main columns */}
       <div
@@ -344,13 +327,14 @@ export function OldVsOxSection() {
 
       {/* Closing */}
       <div
-        className="relative z-10 w-full max-w-[1080px] border-t border-white/[0.06] pt-3 text-center text-[16px] text-white/28"
+        className="relative z-10 w-full max-w-[1080px] border-t border-white/[0.06] pt-3 text-center text-body-lg text-white/50"
         style={fadeIn(180)}
       >
-        <strong className="font-semibold text-white/55">
+        <strong className="font-semibold text-white/70">
           OX does not compete with these platforms.
         </strong>{" "}
         It replaces the architecture they are all built on.
+      </div>
       </div>
     </section>
   );
@@ -398,7 +382,7 @@ function BottomPill({
           boxShadow: hovered ? (isRight ? `0 0 8px ${PINK}` : "none") : "none",
         }}
       />
-      <p className="text-[12px] leading-relaxed text-white/45 sm:text-[13px]">
+      <p className="text-xs leading-relaxed text-white/60 sm:text-sm">
         <strong className="font-bold text-white">{strong}</strong>
         {text}
       </p>

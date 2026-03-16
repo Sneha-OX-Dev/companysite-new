@@ -1,9 +1,7 @@
 "use client";
+import SectionHeader from "@/components/Headings/SectionHeader";
+import { PINK, RED, PURPLE } from "@/lib/constants";
 import { useEffect, useState } from "react";
-
-const PINK = "#FF2D6B";
-const RED = "#E8264A";
-const PURPLE = "#7B1FA2";
 
 const oxitFacts = [
   {
@@ -62,7 +60,7 @@ function FactRow({
         <p className="text-[16px] font-bold leading-snug text-white ">
           {fact.key}
         </p>
-        <p className="mt-0.5 text-[14px] leading-snug text-white/35">
+        <p className="mt-0.5 text-sm leading-snug text-white/55">
           {fact.val}
         </p>
       </div>
@@ -136,12 +134,12 @@ function TokenCard({
         {symbol}
       </p>
 
-      <p className="text-[15px] font-bold text-white/50 ">{name}</p>
+      <p className="text-sm font-bold text-white/65">{name}</p>
       <div
         className="h-0.5 w-9 rounded-sm"
         style={{ background: accentColor }}
       />
-      <p className="max-w-[300px] text-[14px] leading-relaxed text-white/50 ">
+      <p className="max-w-[300px] text-sm leading-relaxed text-white/65">
         {desc}
       </p>
 
@@ -168,44 +166,30 @@ export function OxitToOxmeConversionSection() {
 
   return (
     <section
-      className="relative flex min-h-screen w-full flex-col items-center justify-center gap-4 px-6 py-10 sm:px-12"
-      style={{ background: "#07071A", fontFamily: "'DM Sans', sans-serif" }}
+      className="relative w-full px-4 py-16 sm:px-6 sm:py-24"
+      style={{ background: "#07071A" }}
     >
-      {/* <div
-        className="pointer-events-none fixed inset-0"
-        style={{
-          backgroundImage:
-            "linear-gradient(rgba(255,255,255,0.013) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.013) 1px,transparent 1px)",
-          backgroundSize: "44px 44px",
-        }}
-      /> */}
-
+      <div className="relative z-10 mx-auto flex w-full max-w-6xl flex-col items-center gap-10">
       {/* Header */}
-      <div className="relative z-10 text-center" style={fadeIn(0)}>
-        <span
-          className="mb-2 inline-block rounded-sm px-3 py-1 text-[10px] font-bold uppercase tracking-[0.2em]"
-          style={{
-            color: PINK,
-            border: "1px solid rgba(255,45,107,0.3)",
-            background: "rgba(255,45,107,0.07)",
-          }}
-        >
-          Diagram 3 — Section 9 · Token Economy
-        </span>
-        <h2 className="text-[clamp(20px,2vw,28px)] font-extrabold leading-tight tracking-[-0.025em]">
-          One fixed rate.{" "}
-          <em
-            className="not-italic"
-            style={{
-              background: `linear-gradient(90deg,${RED},${PINK},${PURPLE})`,
-              WebkitBackgroundClip: "text",
-              WebkitTextFillColor: "transparent",
-            }}
-          >
-            Immutable. Forever.
-          </em>
-        </h2>
-      </div>
+      <SectionHeader
+        pillText="Token Economy"
+        title={
+          <>
+            One fixed rate.{" "}
+            <em
+              className="not-italic"
+              style={{
+                background: `linear-gradient(90deg,${RED},${PINK},${PURPLE})`,
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+              }}
+            >
+              Immutable. Forever.
+            </em>
+          </>
+        }
+        style={fadeIn(0)}
+      />
 
       {/* Conversion row */}
       <div className="relative z-10 w-full max-w-[1060px]" style={fadeIn(80)}>
@@ -331,14 +315,15 @@ export function OxitToOxmeConversionSection() {
 
       {/* Closing */}
       <div
-        className="relative z-10 w-full max-w-[1060px] border-t border-white/[0.06] pt-3 text-center text-[14px] text-white/25"
+        className="relative z-10 w-full max-w-[1060px] border-t border-white/[0.06] pt-3 text-center text-sm text-white/45"
         style={fadeIn(220)}
       >
-        <strong className="font-semibold text-white/50">
+        <strong className="font-semibold text-white/65">
           The conversion rate cannot be changed. Ever.
         </strong>{" "}
         Not by Oxygean. Not by token holders. Not by anyone. It is set at
         genesis and enforced by the smart contract.
+      </div>
       </div>
     </section>
   );

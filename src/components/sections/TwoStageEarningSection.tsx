@@ -438,12 +438,13 @@ export function TwoStageEarningSection() {
 
   return (
     <section
-      className="flex min-h-screen w-full flex-col items-center justify-center px-4 py-12 sm:px-6 sm:py-16"
+      className="relative w-full px-4 py-16 sm:px-6 sm:py-24"
       style={{
         background:
           "radial-gradient(ellipse at 50% 20%, #1e0535 0%, #07071A 65%)",
       }}
     >
+      <div className="relative z-10 mx-auto flex w-full max-w-6xl flex-col items-center gap-10">
       {/* Header */}
       <SectionHeader
         title="Two-Stage Earning Model"
@@ -576,7 +577,7 @@ export function TwoStageEarningSection() {
             <br />
             OX: invest your time. Get matched to paid work. Earn.
           </p>
-          <div className="flex flex-wrap gap-5 shrink-0">
+          <div className="grid grid-cols-2 gap-4 shrink-0 sm:flex sm:flex-wrap sm:gap-5">
             {stats.map((s) => (
               <div key={s.label} className="text-center">
                 <p
@@ -599,6 +600,7 @@ export function TwoStageEarningSection() {
       </div>
 
       <style>{`@keyframes pulse { 0%,100%{opacity:.3} 50%{opacity:.9} }`}</style>
+      </div>
     </section>
   );
 }
