@@ -1,8 +1,7 @@
 "use client";
+import SectionHeader from "@/components/Headings/SectionHeader";
+import { PINK, PURPLE } from "@/lib/constants";
 import { useEffect, useState } from "react";
-
-const PINK = "#FF2D6B";
-const PURPLE = "#7B1FA2";
 
 const leftCards = [
   {
@@ -118,7 +117,7 @@ function EconomyCard({
       <p className="mb-1 text-[15px] font-extrabold text-white sm:text-[16px]">
         {title}
       </p>
-      <p className="text-[13px] leading-snug text-white/45 sm:text-[14px]">
+      <p className="text-sm leading-snug text-white/60">
         {desc}
       </p>
     </div>
@@ -308,57 +307,20 @@ export function CircularEconomySection() {
 
   return (
     <section
-      className="relative flex min-h-screen w-full flex-col items-center justify-center gap-6 px-4 py-10 sm:px-8 sm:py-14"
+      className="relative w-full px-4 py-16 sm:px-6 sm:py-24"
       style={{
         background:
           "radial-gradient(ellipse at 50% 20%,#1e0535 0%,#07071A 65%)",
-        fontFamily: "'DM Sans', sans-serif",
       }}
     >
-      {/* grid */}
-      <div
-        className="pointer-events-none fixed inset-0"
-        style={{
-          backgroundImage:
-            "linear-gradient(rgba(255,255,255,0.013) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.013) 1px,transparent 1px)",
-          backgroundSize: "44px 44px",
-        }}
-      />
-
+      <div className="relative z-10 mx-auto flex w-full max-w-6xl flex-col items-center gap-10">
       {/* ── HEADER ── */}
-      <div
-        className="relative z-10 flex w-full flex-col items-center text-center"
+      <SectionHeader
+        pillText="Token Economy"
+        title="Human-Mined Circular Economy"
+        subtitle="Organisations pay in · Humans earn out · Fixed supply · Growing demand"
         style={fadeIn(0)}
-      >
-        <div
-          className="mb-3 inline-flex items-center gap-2 rounded-full px-4 py-1.5"
-          style={{
-            background: "rgba(255,45,107,.1)",
-            border: "1px solid rgba(255,45,107,.3)",
-          }}
-        >
-          <span
-            className="h-[7px] w-[7px] rounded-full"
-            style={{
-              background: PINK,
-              boxShadow: `0 0 9px ${PINK}`,
-              animation: "oxPulse 2s infinite",
-            }}
-          />
-          <span
-            className="text-[11px] font-bold uppercase tracking-[2.5px] sm:text-[12px]"
-            style={{ color: PINK }}
-          >
-            Token Economy
-          </span>
-        </div>
-        <h1 className="text-[clamp(24px,3.4vw,44px)] font-black tracking-tight text-white">
-          Human-Mined Circular Economy
-        </h1>
-        <p className="mt-2 text-[12px] uppercase tracking-[1.5px] text-white/30 sm:text-[13px]">
-          Organisations pay in · Humans earn out · Fixed supply · Growing demand
-        </p>
-      </div>
+      />
 
       {/* ── MAIN ROW ── */}
       <div
@@ -376,7 +338,7 @@ export function CircularEconomySection() {
         </div>
 
         {/* Centre orb */}
-        <div className="flex flex-shrink-0 items-center justify-center">
+        <div className="flex w-full max-w-[290px] flex-shrink-0 items-center justify-center sm:w-auto">
           <OrbitalCore />
         </div>
 
@@ -433,6 +395,7 @@ export function CircularEconomySection() {
         @keyframes oxFloat   { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-7px)} }
         @keyframes oxShimmer { 0%{background-position:-300% center} 100%{background-position:300% center} }
       `}</style>
+      </div>
     </section>
   );
 }

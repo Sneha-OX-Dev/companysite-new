@@ -1,9 +1,8 @@
 "use client";
+import SectionHeader from "@/components/Headings/SectionHeader";
+import { PINK, PURPLE } from "@/lib/constants";
 import Image from "next/image";
 import { useState } from "react";
-
-const PINK = "#FF2D6B";
-const PURPLE = "#7B1FA2";
 
 const steps = [
   {
@@ -257,7 +256,7 @@ function StepNode({
         >
           {step.title}
         </p>
-        <p className="text-[11px] text-white/40 leading-snug">{step.sub}</p>
+        <p className="text-xs text-white/55 leading-snug">{step.sub}</p>
       </div>
 
       {/* detail card */}
@@ -312,43 +311,19 @@ export function MatchingLoopSection() {
 
   return (
     <section
-      className="relative flex min-h-screen w-full flex-col items-center justify-center gap-6 overflow-x-hidden px-4 py-12 sm:px-8"
+      className="relative w-full overflow-x-hidden px-4 py-16 sm:px-6 sm:py-24"
       style={{
         background:
           "radial-gradient(ellipse at 50% 20%,#1e0535 0%,#07071A 65%)",
       }}
     >
+      <div className="relative z-10 mx-auto flex w-full max-w-6xl flex-col items-center gap-10">
       {/* Header */}
-      <div className="flex flex-col items-center gap-3 text-center">
-        <div
-          className="inline-flex items-center gap-2 rounded-full px-5 py-1.5"
-          style={{
-            background: "rgba(255,45,107,.1)",
-            border: "1px solid rgba(255,45,107,.3)",
-          }}
-        >
-          <span
-            className="h-[7px] w-[7px] rounded-full"
-            style={{
-              background: PINK,
-              boxShadow: `0 0 12px ${PINK}`,
-              animation: "pulse 2s infinite",
-            }}
-          />
-          <span
-            className="text-[10px] font-bold uppercase tracking-[3px]"
-            style={{ color: PINK }}
-          >
-            Human Intelligence Protocol
-          </span>
-        </div>
-        <h1 className="text-[clamp(26px,4vw,48px)] font-black tracking-tight text-white">
-          The Matching Loop
-        </h1>
-        <p className="text-[11px] uppercase tracking-[2.5px] text-white/35">
-          Six steps · Zero data exposed · Click any node
-        </p>
-      </div>
+      <SectionHeader
+        pillText="Human Intelligence Protocol"
+        title="The Matching Loop"
+        subtitle="Six steps · Zero data exposed · Click any node"
+      />
 
       {/* Steps — horizontal scroll on mobile, full row on desktop */}
       <div className="w-full max-w-[1080px]">
@@ -399,7 +374,7 @@ export function MatchingLoopSection() {
           <p className="text-[15px] font-black leading-snug text-white sm:text-[17px]">
             The organisation gets certainty. You keep everything else.
           </p>
-          <p className="text-[10px] uppercase tracking-[2px] text-white/30 sm:text-[11px]">
+          <p className="text-[10px] uppercase tracking-[2px] text-white/50 sm:text-xs">
             No data leaves your device at any point in this loop
           </p>
         </div>
@@ -422,7 +397,7 @@ export function MatchingLoopSection() {
                 i < 2 ? "1px solid rgba(255,255,255,0.07)" : undefined,
             }}
           >
-            <p className="text-[12px] uppercase tracking-[2px] text-white/28">
+            <p className="text-xs uppercase tracking-[2px] text-white/50">
               {t.label}
             </p>
             <p
@@ -437,7 +412,7 @@ export function MatchingLoopSection() {
             >
               {t.value}
             </p>
-            <p className="text-[12px] text-white/28 ">{t.sub}</p>
+            <p className="text-xs text-white/50">{t.sub}</p>
           </div>
         ))}
       </div>
@@ -450,6 +425,7 @@ export function MatchingLoopSection() {
         @keyframes shimmer { 0%{background-position:-300% center} 100%{background-position:300% center} }
         @keyframes fadein { from{opacity:0;transform:translateY(18px)} to{opacity:1;transform:translateY(0)} }
       `}</style>
+      </div>
     </section>
   );
 }

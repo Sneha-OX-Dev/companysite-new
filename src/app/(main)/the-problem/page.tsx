@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import ProblemAndFixSection from "@/components/homesections/ProblemAndFix";
 import WhyNowSection from "@/components/homesections/WhyNow";
+import { SystemsWithoutWithOX } from "@/components/sections/SystemsWithoutWithOX";
 import { Reveal } from "@/components/ui/Reveal";
 
 export const metadata: Metadata = {
@@ -17,6 +18,9 @@ const TheProblemPage = () => {
       </Reveal>
       <Reveal id="problem-fix" delay={150}>
         <ProblemAndFixSection />
+      </Reveal>
+      <Reveal id="systems-comparison" delay={300}>
+        <SystemsWithoutWithOX />
       </Reveal>
     </div>
   );

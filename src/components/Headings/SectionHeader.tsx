@@ -9,8 +9,8 @@ type SectionHeaderProps = {
   pillText?: string;
   /** Optional tiny eyebrow / diagram label above the pill */
   eyebrowText?: string;
-  /** Main section title */
-  title: string;
+  /** Main section title — accepts ReactNode so gradient spans can be passed */
+  title?: ReactNode;
   /** Optional subtitle / description line */
   subtitle?: string;
   /** Text alignment */
@@ -57,7 +57,7 @@ export default function SectionHeader({
         </Badge>
       )}
 
-      <SectionTitle>{title}</SectionTitle>
+      {title != null && <SectionTitle>{title}</SectionTitle>}
 
       {subtitle && <Muted>{subtitle}</Muted>}
 

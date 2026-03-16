@@ -1,8 +1,7 @@
 "use client";
+import SectionHeader from "@/components/Headings/SectionHeader";
+import { PINK, PURPLE } from "@/lib/constants";
 import { useEffect, useState } from "react";
-
-const PINK = "#FF2D6B";
-const PURPLE = "#7B1FA2";
 
 const leftCards = [
   { label: "Your Identity", sub: "Biometric. Local. Never uploaded." },
@@ -239,53 +238,55 @@ export function PhoneSovereignNodeSection() {
 
   return (
     <section
-      className="relative flex min-h-screen w-full flex-col items-center justify-center gap-8 overflow-hidden px-6 py-12 sm:px-10"
+      className="relative w-full overflow-hidden px-4 py-16 sm:px-6 sm:py-24"
       style={{
         background:
           "radial-gradient(ellipse at 50% 20%,#1e0535 0%,#07071A 65%)",
       }}
     >
+      <div className="relative z-10 mx-auto flex w-full max-w-6xl flex-col items-center gap-10">
       {/* Header */}
-      <div className="text-center" style={fadeIn(0)}>
-        <h1 className="text-[clamp(28px,4vw,52px)] font-black tracking-tight text-white">
-          Your Phone Is a Sovereign Node
-        </h1>
-        <p className="mt-2 text-[11px] uppercase tracking-[3px] text-white/30">
-          Not a client. Not a terminal. A node.
-        </p>
-      </div>
+      <SectionHeader
+        pillText="Machine Self"
+        title="Your Phone Is a Sovereign Node"
+        subtitle="Not a client. Not a terminal. A node."
+        style={fadeIn(0)}
+      />
 
-      {/* 3-col layout */}
+      {/* 3-col layout — phone first on mobile, then side cards in 2-col grid */}
       <div
-        className="flex w-full max-w-[1200px] flex-col items-center gap-8 sm:flex-row sm:items-center sm:gap-6"
+        className="flex w-full max-w-[1200px] flex-col items-center gap-6 sm:flex-row sm:items-center sm:gap-6"
         style={fadeIn(100)}
       >
-        {/* Left cards */}
-        <div className="flex w-full flex-col gap-3 sm:flex-1">
-          <p
-            className="mb-1 text-[9px] font-bold uppercase tracking-[2.5px]"
-            style={{ color: PINK }}
-          >
-            Stays On Device
-          </p>
-          {leftCards.map((c) => (
-            <SideCard key={c.label} {...c} isLeft />
-          ))}
-        </div>
-
-        {/* Centre phone */}
-        <div className="flex flex-shrink-0 items-center justify-center">
+        {/* Centre phone — first on mobile */}
+        <div className="flex flex-shrink-0 items-center justify-center sm:order-2">
           <PhoneVisual />
         </div>
 
-        {/* Right cards */}
-        <div className="flex w-full flex-col gap-3 sm:flex-1">
-          <p className="mb-1 text-[9px] font-bold uppercase tracking-[2.5px] text-white/35">
-            Signal Only — To Network
-          </p>
-          {rightCards.map((c) => (
-            <SideCard key={c.label} {...c} />
-          ))}
+        {/* Side cards — 2-col grid on mobile, single col on desktop */}
+        <div className="grid w-full grid-cols-2 gap-3 sm:contents sm:order-1">
+          {/* Left cards */}
+          <div className="flex flex-col gap-3 sm:flex-1">
+            <p
+              className="mb-1 text-[9px] font-bold uppercase tracking-[2.5px]"
+              style={{ color: PINK }}
+            >
+              Stays On Device
+            </p>
+            {leftCards.map((c) => (
+              <SideCard key={c.label} {...c} isLeft />
+            ))}
+          </div>
+
+          {/* Right cards */}
+          <div className="flex flex-col gap-3 sm:flex-1 sm:order-3">
+            <p className="mb-1 text-[9px] font-bold uppercase tracking-[2.5px] text-white/35">
+              Signal Only — To Network
+            </p>
+            {rightCards.map((c) => (
+              <SideCard key={c.label} {...c} />
+            ))}
+          </div>
         </div>
       </div>
 
@@ -345,6 +346,7 @@ export function PhoneSovereignNodeSection() {
         @keyframes orbitdot2 { from{transform:rotate(120deg) translateX(120px) rotate(-120deg)} to{transform:rotate(480deg) translateX(120px) rotate(-480deg)} }
         @keyframes orbitdot3 { from{transform:rotate(240deg) translateX(120px) rotate(-240deg)} to{transform:rotate(600deg) translateX(120px) rotate(-600deg)} }
       `}</style>
+      </div>
     </section>
   );
 }

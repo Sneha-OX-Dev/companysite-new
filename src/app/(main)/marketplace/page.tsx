@@ -3,6 +3,8 @@ import MarketplaceSegmentsSection from "@/components/homesections/MarketplaceSeg
 import NetworkScaleSection from "@/components/homesections/NetworkScaleSection";
 import VisionSection from "@/components/homesections/VisionSection";
 import WhoOxIsForSection from "@/components/homesections/WhoOxIsFor";
+import { EcosystemMapSection } from "@/components/sections/EcosystemMapSection";
+import { NetworkScaleMilestonesSection } from "@/components/sections/NetworkScaleMilestonesSection";
 import { Reveal } from "@/components/ui/Reveal";
 
 export const metadata: Metadata = {
@@ -17,13 +19,19 @@ const MarketplacePage = () => {
       <Reveal id="who-ox-is-for">
         <WhoOxIsForSection />
       </Reveal>
-      <Reveal id="marketplace" delay={150}>
+      <Reveal id="ecosystem-map" delay={150}>
+        <EcosystemMapSection />
+      </Reveal>
+      <Reveal id="marketplace" delay={300}>
         <MarketplaceSegmentsSection />
       </Reveal>
-      <Reveal id="network-scale" delay={300}>
+      <Reveal id="network-scale" delay={450}>
         <NetworkScaleSection />
       </Reveal>
-      <Reveal id="vision" delay={450}>
+      <Reveal id="network-scale-milestones" delay={600}>
+        <NetworkScaleMilestonesSection />
+      </Reveal>
+      <Reveal id="vision" delay={750}>
         <VisionSection />
       </Reveal>
     </div>

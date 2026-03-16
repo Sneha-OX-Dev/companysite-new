@@ -1,8 +1,9 @@
 import SectionHeader from "@/components/Headings/SectionHeader";
 import { Badge } from "@/components/ui/badge";
-import { Eyebrow, Body, Muted, DisplayText, CardTitle } from "@/components/ui/typography";
+import { Eyebrow, Body, Muted, CardTitle } from "@/components/ui/typography";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
+import AxiomCard from "@/components/homesections/AxiomCard";
 
 const AGENTS = [
   {
@@ -170,65 +171,8 @@ export default function AiTeamSection() {
         subtitle="Six dedicated AI agents operating across coordination, verification, and intelligence — each serving a specific function within the OX ecosystem."
       />
 
-      {/* ── AXIOM — hero, image fills full card height ── */}
-      <div
-        className={cn("glass-card glass-card-accent-pink group relative overflow-hidden transition-all duration-300", axiom.border)}
-      >
-        <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-primary/60 to-transparent" />
-        <div className="pointer-events-none absolute -left-20 -top-20 h-80 w-80 rounded-full bg-primary opacity-[0.07] blur-[90px]" />
-        <div className="pointer-events-none absolute -bottom-20 -right-20 h-80 w-80 rounded-full bg-brand-purple opacity-[0.07] blur-[90px]" />
-
-        <div className="relative grid lg:grid-cols-[420px_1px_1fr]">
-          {/* Image — stretches full card height, no padding */}
-          <div className="relative min-h-[520px] overflow-hidden lg:min-h-0">
-            <Image
-              src={axiom.imageSrc}
-              alt={axiom.name}
-              fill
-              className="object-cover object-top transition-transform duration-500 group-hover:scale-105"
-            />
-          </div>
-
-          {/* Vertical divider */}
-          <div className="hidden bg-gradient-to-b from-transparent via-white/[0.07] to-transparent lg:block" />
-
-          {/* Info */}
-          <div className="flex flex-col justify-center gap-7 p-8 lg:p-10">
-            <div>
-              <Eyebrow className={cn(axiom.tag)}>{axiom.role}</Eyebrow>
-              <DisplayText
-                className={cn("mt-2 bg-gradient-to-r bg-clip-text text-display leading-none tracking-tight text-transparent", axiom.accent)}
-              >
-                {axiom.name}
-              </DisplayText>
-              <Muted className="mt-2">{axiom.department}</Muted>
-            </div>
-
-            <div className="h-px bg-gradient-to-r from-transparent via-white/[0.08] to-transparent" />
-
-            <div>
-              <Eyebrow className="mb-3">Function</Eyebrow>
-              <Body className="text-foreground/70">{axiom.function}</Body>
-            </div>
-
-            <div className="h-px bg-gradient-to-r from-transparent via-white/[0.08] to-transparent" />
-
-            {/* Languages */}
-            <div>
-              <Eyebrow className="mb-3">Languages</Eyebrow>
-              <LanguageBadge
-                languages={axiom.languages}
-                isAxiom
-              />
-            </div>
-
-            <Badge variant="pill-accent" className="gap-2.5">
-              <span className="h-2 w-2 animate-pulse rounded-full bg-primary shadow-[0_0_6px_rgba(255,45,107,0.9)]" />
-              Primary AI voice
-            </Badge>
-          </div>
-        </div>
-      </div>
+      {/* ── AXIOM — hero card with video play button ── */}
+      <AxiomCard axiom={axiom} />
 
       {/* ── ROW 2: Olivia + Aarav — image fills full card height ── */}
       <div className="grid gap-4 lg:grid-cols-2">

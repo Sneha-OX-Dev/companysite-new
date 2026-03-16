@@ -1,9 +1,7 @@
 "use client";
+import SectionHeader from "@/components/Headings/SectionHeader";
+import { RED, PINK, PURPLE } from "@/lib/constants";
 import { useEffect, useState } from "react";
-
-const RED = "#E8264A";
-const PINK = "#FF2D6B";
-const PURPLE = "#7B1FA2";
 
 const milestones = [
   {
@@ -154,7 +152,7 @@ function MilestoneCard({
         >
           {m.number}
         </p>
-        <p className="mt-1 text-[13px] font-semibold text-white/42 sm:text-[14px]">
+        <p className="mt-1 text-sm font-semibold text-white/60">
           {m.unit}
         </p>
       </div>
@@ -164,7 +162,7 @@ function MilestoneCard({
 
       {/* unlocks */}
       <div>
-        <p className="mb-2.5 text-[9px] font-bold uppercase tracking-[0.15em] text-white/25 sm:text-[10px]">
+        <p className="mb-2.5 text-[10px] font-bold uppercase tracking-[0.15em] text-white/45 sm:text-xs">
           What this unlocks
         </p>
         <div className="flex flex-col gap-2.5">
@@ -177,9 +175,9 @@ function MilestoneCard({
                   boxShadow: hovered ? `0 0 6px ${m.color}` : "none",
                 }}
               />
-              <p className="text-[14px] leading-snug text-white/55">
+              <p className="text-sm leading-snug text-white/65">
                 {it.strong && (
-                  <strong className="font-semibold text-white/88">
+                  <strong className="font-semibold text-white">
                     {it.strong}
                   </strong>
                 )}
@@ -217,7 +215,7 @@ function StatCard({ num, label }: { num: string; label: string }) {
       >
         {num}
       </p>
-      <p className="text-[14px] leading-snug text-white/32">{label}</p>
+      <p className="text-sm leading-snug text-white/55">{label}</p>
     </div>
   );
 }
@@ -278,48 +276,30 @@ export function NetworkScaleMilestonesSection() {
 
   return (
     <section
-      className="relative flex min-h-screen w-full flex-col items-center justify-center gap-5 px-4 py-10 sm:px-8 sm:py-14"
-      style={{ background: "#07071A", fontFamily: "'DM Sans', sans-serif" }}
+      className="relative w-full px-4 py-16 sm:px-6 sm:py-24"
+      style={{ background: "#07071A" }}
     >
-      {/* grid overlay */}
-      {/* <div
-        className="pointer-events-none fixed inset-0"
-        style={{
-          backgroundImage:
-            "linear-gradient(rgba(255,255,255,0.013) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.013) 1px,transparent 1px)",
-          backgroundSize: "44px 44px",
-        }}
-      /> */}
-
+      <div className="relative z-10 mx-auto flex w-full max-w-6xl flex-col items-center gap-10">
       {/* ── HEADER ── */}
-      <div
-        className="relative z-10 flex flex-col items-center text-center"
+      <SectionHeader
+        pillText="Network Effects & Scale"
+        title={
+          <>
+            The network grows every time another{" "}
+            <em
+              className="not-italic"
+              style={{
+                background: `linear-gradient(90deg,${RED},${PINK},${PURPLE})`,
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+              }}
+            >
+              human agent joins.
+            </em>
+          </>
+        }
         style={fadeIn(0)}
-      >
-        <span
-          className="mb-3 inline-block rounded-sm px-3 py-1 text-[10px] font-bold uppercase tracking-[0.22em] sm:text-[11px]"
-          style={{
-            color: PINK,
-            border: "1px solid rgba(255,45,107,0.3)",
-            background: "rgba(255,45,107,0.07)",
-          }}
-        >
-          Diagram 13 — Section 13 · Network Effects & Scale
-        </span>
-        <h2 className="text-[clamp(20px,2.4vw,32px)] font-extrabold leading-tight tracking-[-0.025em]">
-          The network grows every time another{" "}
-          <em
-            className="not-italic"
-            style={{
-              background: `linear-gradient(90deg,${RED},${PINK},${PURPLE})`,
-              WebkitBackgroundClip: "text",
-              WebkitTextFillColor: "transparent",
-            }}
-          >
-            human agent joins.
-          </em>
-        </h2>
-      </div>
+      />
 
       {/* ── PROGRESS TRACK ── */}
       <div className="relative z-10 w-full max-w-[1060px]" style={fadeIn(80)}>
@@ -348,15 +328,16 @@ export function NetworkScaleMilestonesSection() {
 
       {/* ── CLOSING ── */}
       <div
-        className="relative z-10 w-full max-w-[1060px] border-t border-white/[0.06] pt-4 text-center text-[12px] leading-relaxed text-white/30 sm:text-[13px]"
+        className="relative z-10 w-full max-w-[1060px] border-t border-white/[0.06] pt-4 text-center text-xs leading-relaxed text-white/45"
         style={fadeIn(380)}
       >
-        <strong className="font-semibold text-white/60">
+        <strong className="font-semibold text-white/70">
           Under network effect principles, network value scales with participant
           density.
         </strong>{" "}
         Each Machine Self adds declared truth, permission boundaries, regulatory
         eligibility, and reliability history.
+      </div>
       </div>
     </section>
   );

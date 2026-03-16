@@ -41,4 +41,5 @@ export const CARDS = [
 
 /** Used for SVG fill/stroke attributes where Tailwind classes cannot be applied */
 export const PINK = "#FF2D6B";
+export const RED = "#E8264A";
 export const PURPLE = "#7B1FA2";

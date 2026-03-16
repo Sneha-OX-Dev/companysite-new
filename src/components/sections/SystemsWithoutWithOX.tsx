@@ -1,9 +1,7 @@
 "use client";
+import SectionHeader from "@/components/Headings/SectionHeader";
+import { PINK, RED, PURPLE } from "@/lib/constants";
 import { useEffect, useState } from "react";
-
-const PINK = "#FF2D6B";
-const RED = "#E8264A";
-const PURPLE = "#7B1FA2";
 
 const leftRows = [
   {
@@ -89,12 +87,12 @@ function PanelRow({
       />
       <div>
         <p
-          className="text-[14px] font-bold leading-snug"
-          style={{ color: isRight ? "#fff" : "rgba(255,255,255,0.45)" }}
+          className="text-sm font-bold leading-snug"
+          style={{ color: isRight ? "#fff" : "rgba(255,255,255,0.65)" }}
         >
           {title}
         </p>
-        <p className="mt-0.5 text-[11px] leading-snug text-white/30 sm:text-[12px]">
+        <p className="mt-0.5 text-xs leading-snug text-white/55">
           {desc}
         </p>
       </div>
@@ -124,14 +122,14 @@ function Panel({
       }}
     >
       <p
-        className="mb-0.5 text-[14px] font-bold uppercase tracking-[0.2em]"
-        style={{ color: isRight ? PINK : "rgba(255,255,255,0.28)" }}
+        className="mb-0.5 text-xs font-bold uppercase tracking-[0.2em]"
+        style={{ color: isRight ? PINK : "rgba(255,255,255,0.45)" }}
       >
         {label}
       </p>
       <p
-        className="border-b border-white/[0.06] pb-3 text-[14px] font-bold leading-snug sm:text-[13px]"
-        style={{ color: isRight ? "#fff" : "rgba(255,255,255,0.45)" }}
+        className="border-b border-white/[0.06] pb-3 text-sm font-bold leading-snug"
+        style={{ color: isRight ? "#fff" : "rgba(255,255,255,0.65)" }}
       >
         {heading}
       </p>
@@ -163,45 +161,30 @@ export function SystemsWithoutWithOX() {
 
   return (
     <section
-      className="relative flex min-h-screen w-full flex-col items-center justify-center gap-3 px-6 py-6 sm:px-10 sm:py-8"
-      style={{ background: "#07071A", fontFamily: "'DM Sans', sans-serif" }}
+      className="relative w-full px-4 py-16 sm:px-6 sm:py-24"
+      style={{ background: "#07071A" }}
     >
-      {/* grid overlay */}
-      {/* <div
-        className="pointer-events-none fixed inset-0"
-        style={{
-          backgroundImage:
-            "linear-gradient(rgba(255,255,255,0.013) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.013) 1px,transparent 1px)",
-          backgroundSize: "44px 44px",
-        }}
-      /> */}
-
+      <div className="relative z-10 mx-auto flex w-full max-w-6xl flex-col items-center gap-10">
       {/* Header */}
-      <div className="relative z-10 text-center" style={fadeIn(0)}>
-        <span
-          className="mb-2 inline-block rounded-sm px-3 py-1 text-[9px] font-bold uppercase tracking-[0.2em]"
-          style={{
-            color: PINK,
-            border: "1px solid rgba(255,45,107,0.3)",
-            background: "rgba(255,45,107,0.07)",
-          }}
-        >
-          Diagram 4 — Section 5 · The Fix
-        </span>
-        <h2 className="text-[clamp(15px,1.7vw,22px)] font-extrabold leading-tight tracking-[-0.025em]">
-          From probability to certainty.{" "}
-          <em
-            className="not-italic"
-            style={{
-              background: `linear-gradient(90deg,${RED},${PINK},${PURPLE})`,
-              WebkitBackgroundClip: "text",
-              WebkitTextFillColor: "transparent",
-            }}
-          >
-            From extraction to participation.
-          </em>
-        </h2>
-      </div>
+      <SectionHeader
+        pillText="The Fix"
+        title={
+          <>
+            From probability to certainty.{" "}
+            <em
+              className="not-italic"
+              style={{
+                background: `linear-gradient(90deg,${RED},${PINK},${PURPLE})`,
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+              }}
+            >
+              From extraction to participation.
+            </em>
+          </>
+        }
+        style={fadeIn(0)}
+      />
 
       {/* Main columns */}
       <div
@@ -293,7 +276,7 @@ export function SystemsWithoutWithOX() {
         style={fadeIn(160)}
       >
         <div
-          className="rounded-sm px-4 py-3 text-[14px] leading-relaxed text-white/45 sm:text-[12px]"
+          className="rounded-sm px-4 py-3 text-sm leading-relaxed text-white/60"
           style={{
             border: "1px solid rgba(255,255,255,0.06)",
             background: "#0D0D2B",
@@ -304,7 +287,7 @@ export function SystemsWithoutWithOX() {
         </div>
         <div className="hidden sm:block" />
         <div
-          className="rounded-sm px-4 py-3 text-[11px] leading-relaxed text-white/45 sm:text-[12px]"
+          className="rounded-sm px-4 py-3 text-sm leading-relaxed text-white/60"
           style={{
             border: "1px solid rgba(255,45,107,0.15)",
             background: "rgba(255,45,107,0.04)",
@@ -318,14 +301,15 @@ export function SystemsWithoutWithOX() {
 
       {/* Closing */}
       <div
-        className="relative z-10 w-full max-w-[1060px] border-t border-white/[0.06] pt-3 text-center text-[11px] text-white/28 sm:text-[12px]"
+        className="relative z-10 w-full max-w-[1060px] border-t border-white/[0.06] pt-3 text-center text-xs text-white/45"
         style={fadeIn(220)}
       >
-        <strong className="font-semibold text-white/55">
+        <strong className="font-semibold text-white/70">
           This is not better data.
         </strong>{" "}
         This is a different category of input entirely — the difference between
         a weather forecast and looking out the window.
+      </div>
       </div>
     </section>
   );

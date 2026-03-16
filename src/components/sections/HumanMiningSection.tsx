@@ -1,9 +1,7 @@
 "use client";
+import SectionHeader from "@/components/Headings/SectionHeader";
+import { RED, PINK, PURPLE } from "@/lib/constants";
 import { useEffect, useState } from "react";
-
-const RED = "#E8264A";
-const PINK = "#FF2D6B";
-const PURPLE = "#7B1FA2";
 
 const btcRows = [
   {
@@ -89,12 +87,12 @@ function CardRow({
       />
       <div>
         <p
-          className="mb-1 text-[13px] font-bold leading-tight sm:text-[14px]"
-          style={{ color: isOx ? "#fff" : "rgba(255,255,255,0.45)" }}
+          className="mb-1 text-sm font-bold leading-tight"
+          style={{ color: isOx ? "#fff" : "rgba(255,255,255,0.65)" }}
         >
           {rowKey}
         </p>
-        <p className="text-[12px] leading-snug text-white/32 sm:text-[13px]">
+        <p className="text-xs leading-snug text-white/55">
           {val}
         </p>
       </div>
@@ -158,9 +156,9 @@ function MiningCard({ isOx }: { isOx?: boolean }) {
           {isOx ? "human intelligence." : "electricity."}
         </p>
         <p
-          className="mt-2 border-b border-white/[0.06] pb-4 text-[13px] font-semibold leading-snug sm:text-[14px]"
+          className="mt-2 border-b border-white/[0.06] pb-4 text-sm font-semibold leading-snug"
           style={{
-            color: isOx ? "rgba(255,255,255,0.72)" : "rgba(255,255,255,0.35)",
+            color: isOx ? "rgba(255,255,255,0.82)" : "rgba(255,255,255,0.60)",
           }}
         >
           {isOx
@@ -193,47 +191,30 @@ export function HumanMiningSection() {
 
   return (
     <section
-      className="relative flex min-h-screen w-full flex-col items-center justify-center gap-5 px-4 py-10 sm:px-8 sm:py-14"
-      style={{ background: "#07071A", fontFamily: "'DM Sans', sans-serif" }}
+      className="relative w-full px-4 py-16 sm:px-6 sm:py-24"
+      style={{ background: "#07071A" }}
     >
-      {/* grid overlay
-      <div
-        className="pointer-events-none fixed inset-0"
-        style={{
-          backgroundImage:
-            "linear-gradient(rgba(255,255,255,0.013) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.013) 1px,transparent 1px)",
-          backgroundSize: "44px 44px",
-        }}
-      /> */}
+      <div className="relative z-10 mx-auto flex w-full max-w-6xl flex-col items-center gap-10">
       {/* ── HEADER ── */}
-      <div
-        className="relative z-10 flex flex-col items-center text-center"
+      <SectionHeader
+        pillText="Token Economy"
+        title={
+          <>
+            Two ways to mine a{" "}
+            <em
+              className="not-italic"
+              style={{
+                background: `linear-gradient(90deg,${RED},${PINK},${PURPLE})`,
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+              }}
+            >
+              scarce token.
+            </em>
+          </>
+        }
         style={fadeIn(0)}
-      >
-        <span
-          className="mb-3 inline-block rounded-sm px-3 py-1 text-[10px] font-bold uppercase tracking-[0.2em] sm:text-[11px]"
-          style={{
-            color: PINK,
-            border: "1px solid rgba(255,45,107,0.3)",
-            background: "rgba(255,45,107,0.07)",
-          }}
-        >
-          Diagram 11 — Section 9 · Token Economy
-        </span>
-        <h2 className="text-[clamp(20px,2.4vw,32px)] font-extrabold leading-tight tracking-[-0.025em]">
-          Two ways to mine a{" "}
-          <em
-            className="not-italic"
-            style={{
-              background: `linear-gradient(90deg,${RED},${PINK},${PURPLE})`,
-              WebkitBackgroundClip: "text",
-              WebkitTextFillColor: "transparent",
-            }}
-          >
-            scarce token.
-          </em>
-        </h2>
-      </div>
+      />
       {/* ── CARDS ── */}
       <div
         className="relative z-10 grid w-full max-w-[1060px] grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5"
@@ -272,7 +253,7 @@ export function HumanMiningSection() {
               OX is mined with human intelligence.
             </em>
           </p>
-          <p className="mt-2 text-[13px] font-medium leading-relaxed text-white/45 sm:text-[14px]">
+          <p className="mt-2 text-sm font-medium leading-relaxed text-white/65">
             The only way a token enters circulation is when a human being earns
             it. Not generated. Not purchased. Earned.
           </p>
@@ -280,13 +261,14 @@ export function HumanMiningSection() {
       </div>
       {/* ── CLOSING ── */}
       <div
-        className="relative z-10 w-full max-w-[1060px] border-t border-white/[0.06] pt-4 text-center text-[12px] text-white/28 sm:text-[13px]"
+        className="relative z-10 w-full max-w-[1060px] border-t border-white/[0.06] pt-4 text-center text-xs text-white/45"
         style={fadeIn(220)}
       >
-        <strong className="font-semibold text-white/52">
+        <strong className="font-semibold text-white/65">
           Fixed supply: 1,371,000,000 OXME.
         </strong>{" "}
         Set at genesis. No new tokens can ever be created. By anyone. Ever.
+      </div>
       </div>
     </section>
   );

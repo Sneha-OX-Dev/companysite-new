@@ -1,9 +1,7 @@
 "use client";
+import SectionHeader from "@/components/Headings/SectionHeader";
+import { PINK, RED, PURPLE } from "@/lib/constants";
 import { useEffect, useState } from "react";
-
-const PINK = "#FF2D6B";
-const RED = "#E8264A";
-const PURPLE = "#7B1FA2";
 
 const LAYER_COLORS = {
   5: "#E8264A",
@@ -183,7 +181,7 @@ function NameCell({
       <p className="text-[16px] font-extrabold leading-snug text-white ">
         {layer.title}
       </p>
-      <p className="text-[14px] leading-snug text-white/35 ">{layer.sub}</p>
+      <p className="text-sm leading-snug text-white/55">{layer.sub}</p>
     </div>
   );
 }
@@ -204,12 +202,12 @@ function DoesCell({
         transition: "border-color 0.2s",
       }}
     >
-      <p className="mb-1 text-[9px] font-bold uppercase tracking-[0.18em] text-white/22 ">
+      <p className="mb-1 text-[10px] font-bold uppercase tracking-[0.18em] text-white/40">
         What it does
       </p>
       {layer.doesItems.map((item, i) => (
         <div key={i} className="flex items-start gap-2">
-          <div className="mt-[5px] h-[4px] w-[4px] flex-shrink-0 rounded-full bg-white/22" />
+          <div className="mt-[5px] h-[4px] w-[4px] flex-shrink-0 rounded-full bg-white/38" />
           <p className="text-[14px] leading-snug text-white/80">{item}</p>
         </div>
       ))}
@@ -263,49 +261,31 @@ export function ProtocolStackSection() {
 
   return (
     <section
-      className="relative flex min-h-screen w-full flex-col items-center justify-center gap-4 px-4 py-10 sm:px-8 sm:py-12"
-      style={{ background: "#07071A", fontFamily: "'DM Sans', sans-serif" }}
+      className="relative w-full px-4 py-16 sm:px-6 sm:py-24"
+      style={{ background: "#07071A" }}
     >
-      {/* grid overlay */}
-      {/* <div
-        className="pointer-events-none fixed inset-0"
-        style={{
-          backgroundImage:
-            "linear-gradient(rgba(255,255,255,0.012) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.012) 1px,transparent 1px)",
-          backgroundSize: "44px 44px",
-        }}
-      /> */}
-
+      <div className="relative z-10 mx-auto flex w-full max-w-6xl flex-col items-center gap-10">
       {/* ── HEADER ── */}
-      <div
-        className="relative z-10 flex flex-col items-center text-center"
+      <SectionHeader
+        pillText="What Is OX"
+        title={
+          <>
+            The OX{" "}
+            <em
+              className="not-italic"
+              style={{
+                background: `linear-gradient(90deg,${RED},${PINK},${PURPLE})`,
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+              }}
+            >
+              Protocol Stack
+            </em>{" "}
+            — five layers. One unified system.
+          </>
+        }
         style={fadeIn(0)}
-      >
-        <span
-          className="mb-3 inline-block rounded-sm px-3 py-1 text-[10px] font-bold uppercase tracking-[0.2em] sm:text-[11px]"
-          style={{
-            color: PINK,
-            border: "1px solid rgba(255,45,107,0.3)",
-            background: "rgba(255,45,107,0.07)",
-          }}
-        >
-          Diagram 12 — Section 6 · What Is OX
-        </span>
-        <h2 className="text-[clamp(18px,2.1vw,28px)] font-extrabold leading-tight tracking-[-0.025em]">
-          The OX{" "}
-          <em
-            className="not-italic"
-            style={{
-              background: `linear-gradient(90deg,${RED},${PINK},${PURPLE})`,
-              WebkitBackgroundClip: "text",
-              WebkitTextFillColor: "transparent",
-            }}
-          >
-            Protocol Stack
-          </em>{" "}
-          — five layers. One unified system.
-        </h2>
-      </div>
+      />
 
       {/* ── FLOW LABELS ── */}
       <div
@@ -332,13 +312,14 @@ export function ProtocolStackSection() {
 
       {/* ── CLOSING ── */}
       <div
-        className="relative z-10 w-full max-w-[1080px] border-t border-white/[0.06] pt-4 text-center text-[12px] leading-relaxed text-white/28 sm:text-[13px]"
+        className="relative z-10 w-full max-w-[1080px] border-t border-white/[0.06] pt-4 text-center text-xs leading-relaxed text-white/45"
         style={fadeIn(400)}
       >
-        <strong className="font-bold text-white/52">
+        <strong className="font-bold text-white/70">
           Without structured human participation, AI remains inference-bound.
         </strong>{" "}
         With OX, AI becomes eligibility-aware and precision-routed.
+      </div>
       </div>
     </section>
   );

@@ -2,6 +2,10 @@ import type { Metadata } from "next";
 import TheOnlyCryptoSection from "@/components/homesections/TheOnlyCrypto";
 import TokenEconomySection from "@/components/homesections/TokenEconomy";
 import TokenomicsSection from "@/components/homesections/TokenomicsSection";
+import { TwoStageEarningSection } from "@/components/sections/TwoStageEarningSection";
+import { CircularEconomySection } from "@/components/sections/CircularEconomySection";
+import { OxitToOxmeConversionSection } from "@/components/sections/OxitToOxmeConversionSection";
+import { HumanMiningSection } from "@/components/sections/HumanMiningSection";
 import { Reveal } from "@/components/ui/Reveal";
 
 export const metadata: Metadata = {
@@ -16,11 +20,23 @@ const EarnPage = () => {
       <Reveal id="the-only-crypto">
         <TheOnlyCryptoSection />
       </Reveal>
-      <Reveal id="token-economy" delay={150}>
+      <Reveal id="two-stage-earning" delay={150}>
+        <TwoStageEarningSection />
+      </Reveal>
+      <Reveal id="token-economy" delay={300}>
         <TokenEconomySection />
       </Reveal>
-      <Reveal id="tokenomics" delay={300}>
+      <Reveal id="circular-economy" delay={450}>
+        <CircularEconomySection />
+      </Reveal>
+      <Reveal id="oxit-to-oxme" delay={600}>
+        <OxitToOxmeConversionSection />
+      </Reveal>
+      <Reveal id="tokenomics" delay={750}>
         <TokenomicsSection />
+      </Reveal>
+      <Reveal id="human-mining" delay={900}>
+        <HumanMiningSection />
       </Reveal>
     </div>
   );

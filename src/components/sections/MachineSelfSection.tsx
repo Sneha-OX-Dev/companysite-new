@@ -1,10 +1,8 @@
 "use client";
 
+import SectionHeader from "@/components/Headings/SectionHeader";
+import { RED, PINK, PURPLE } from "@/lib/constants";
 import { cn } from "@/lib/utils";
-
-const RED = "#E8264A";
-const PINK = "#FF2D6B";
-const PURPLE = "#7B1FA2";
 
 const card1Points = [
   "Identity and personal context",
@@ -90,22 +88,20 @@ function BulletItem({ text, color }: { text: string; color: string }) {
 
 export default function MachineSelfSection() {
   return (
-    <div className="relative flex min-h-screen w-full flex-col items-center justify-center gap-5 overflow-hidden bg-[#07071A] px-4 py-8 text-white sm:px-8 sm:py-10 lg:px-12">
-      {/* grid bg */}
-      <div className="pointer-events-none absolute inset-0 opacity-40 bg-[linear-gradient(rgba(255,255,255,0.013)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.013)_1px,transparent_1px)] bg-[size:44px_44px]" />
-
+    <section className="relative w-full overflow-hidden bg-[#07071A] px-4 py-16 text-white sm:px-6 sm:py-24">
+      <div className="relative z-10 mx-auto flex w-full max-w-6xl flex-col items-center gap-10">
       {/* HEADER */}
-      <div className="relative z-10 text-center">
-        <div className="mb-2 inline-block rounded px-3 py-[3px] text-[9px] font-bold uppercase tracking-[0.2em] text-[#FF2D6B] border border-[#ff2d6b50] bg-[#ff2d6b12] sm:text-[10px]">
-          Diagram 6 — Section 7 · Your Machine Self
-        </div>
-        <h2 className="text-[clamp(17px,2vw,26px)] font-extrabold tracking-[-0.025em]">
-          Three numbers. One{" "}
-          <span className="bg-gradient-to-r from-[#E8264A] via-[#FF2D6B] to-[#7B1FA2] bg-clip-text text-transparent">
-            sovereign economic asset.
-          </span>
-        </h2>
-      </div>
+      <SectionHeader
+        pillText="Your Machine Self"
+        title={
+          <>
+            Three numbers. One{" "}
+            <span className="bg-gradient-to-r from-[#E8264A] via-[#FF2D6B] to-[#7B1FA2] bg-clip-text text-transparent">
+              sovereign economic asset.
+            </span>
+          </>
+        }
+      />
 
       {/* STAT CARDS */}
       <div className="relative z-10 grid w-full max-w-[1060px] grid-cols-1 gap-4 sm:grid-cols-3">
@@ -182,6 +178,7 @@ export default function MachineSelfSection() {
         The machine may optimise execution — never the human. Consent defines
         the ceiling of autonomy.
       </div>
-    </div>
+      </div>
+    </section>
   );
 }
