@@ -1,12 +1,11 @@
-import type { Metadata } from "next";
 import TheOnlyCryptoSection from "@/components/homesections/TheOnlyCrypto";
 import TokenEconomySection from "@/components/homesections/TokenEconomy";
 import TokenomicsSection from "@/components/homesections/TokenomicsSection";
-import { TwoStageEarningSection } from "@/components/sections/TwoStageEarningSection";
 import { CircularEconomySection } from "@/components/sections/CircularEconomySection";
-import { OxitToOxmeConversionSection } from "@/components/sections/OxitToOxmeConversionSection";
 import { HumanMiningSection } from "@/components/sections/HumanMiningSection";
+import { OxitToOxmeConversionSection } from "@/components/sections/OxitToOxmeConversionSection";
 import { Reveal } from "@/components/ui/Reveal";
+import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Earn — OX",
@@ -20,9 +19,9 @@ const EarnPage = () => {
       <Reveal id="the-only-crypto">
         <TheOnlyCryptoSection />
       </Reveal>
-      <Reveal id="two-stage-earning" delay={150}>
+      {/* <Reveal id="two-stage-earning" delay={150}>
         <TwoStageEarningSection />
-      </Reveal>
+      </Reveal> */}
       <Reveal id="token-economy" delay={300}>
         <TokenEconomySection />
       </Reveal>
