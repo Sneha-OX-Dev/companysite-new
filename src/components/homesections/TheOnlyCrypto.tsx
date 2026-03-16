@@ -152,17 +152,17 @@ const stats = [
 function StepCard({
   step,
   color,
-}: {
+}: Readonly<{
   step: (typeof stage1Steps)[0];
   color: string;
-}) {
+}>) {
   return (
     <div
       className="flex items-center gap-3 rounded-xl px-3 py-3 sm:px-4"
       style={{ background: `${color}0d`, border: `1px solid ${color}35` }}
     >
       <div
-        className="flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-md sm:h-8 sm:w-8"
+        className="flex h-7 w-7 shrink-0 items-center justify-center rounded-md sm:h-8 sm:w-8"
         style={{ background: `${color}25`, border: `1px solid ${color}55` }}
       >
         {step.icon}
@@ -361,7 +361,7 @@ function StageCard({
   description,
   steps,
   accentClass,
-}: {
+}: Readonly<{
   stage: string;
   color: string;
   label: string;
@@ -370,7 +370,7 @@ function StageCard({
   description: React.ReactNode;
   steps: typeof stage1Steps;
   accentClass: string;
-}) {
+}>) {
   return (
     <div className="flex flex-1 flex-col gap-3">
       <div
@@ -596,10 +596,10 @@ export default function TheOnlyCryptoSection() {
               <br />
               OX: invest your time. Get matched to paid work. Earn.
             </Body>
-            <div className="flex flex-wrap gap-6 shrink-0">
+            <div className="grid w-full grid-cols-2 gap-4 shrink-0 sm:w-auto sm:grid-cols-4 sm:gap-6">
               {stats.map((s) => (
-                <div key={s.label} className="text-center">
-                  <DisplayText className="text-title font-black bg-gradient-to-r from-primary to-brand-purple bg-clip-text text-transparent">
+                <div key={s.label} className="min-w-0 text-center">
+                  <DisplayText className="text-title font-black bg-linear-to-r from-primary to-brand-purple bg-clip-text text-transparent">
                     {s.value}
                   </DisplayText>
                   <Eyebrow className="text-white/50">{s.label}</Eyebrow>
@@ -630,11 +630,12 @@ export default function TheOnlyCryptoSection() {
               <span className="font-semibold text-white">
                 verified human participation
               </span>
-              . Not capital. Not machines. People.
+              .{" "}
+              Not capital. Not machines. People.
             </Body>
             <div className="glass-card p-5">
               <SectionLabel className="text-foreground/80">Rate</SectionLabel>
-              <DisplayText className="mt-1 bg-gradient-to-r from-primary via-primary/80 to-brand-purple bg-clip-text text-headline font-black tracking-tight text-transparent">
+              <DisplayText className="mt-1 bg-linear-to-r from-primary via-primary/80 to-brand-purple bg-clip-text text-headline font-black tracking-tight text-transparent">
                 1,000 : 1
               </DisplayText>
               <Muted className="mt-2 text-white/60">
@@ -668,7 +669,7 @@ export default function TheOnlyCryptoSection() {
             </Body>
             <Body className="mt-4 font-semibold text-white">
               Bitcoin is mined with electricity.{" "}
-              <span className="bg-gradient-to-r from-primary to-brand-purple bg-clip-text text-transparent">
+              <span className="bg-linear-to-r from-primary to-brand-purple bg-clip-text text-transparent">
                 OX is mined with human TIME.
               </span>
             </Body>
