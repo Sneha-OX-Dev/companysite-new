@@ -1,6 +1,13 @@
 import SectionHeader from "@/components/Headings/SectionHeader";
 import { Badge } from "@/components/ui/badge";
-import { SectionLabel, Body, DisplayText, CardTitle, Muted, Subhead } from "@/components/ui/typography";
+import {
+  Body,
+  CardTitle,
+  DisplayText,
+  Muted,
+  SectionLabel,
+  Subhead,
+} from "@/components/ui/typography";
 
 const MACHINE_SELF_POINTS = [
   {
@@ -33,7 +40,7 @@ const PRIVACY_POINTS = [
 
 export default function MachineSelfSection() {
   return (
-    <section className="relative mx-auto flex w-full max-w-6xl flex-col gap-14 px-6 py-24 text-white">
+    <section className="relative mx-auto flex w-full max-w-6xl flex-col gap-14 overflow-x-hidden px-6 py-24 text-white">
       <div
         aria-hidden
         className="pointer-events-none absolute inset-0 -z-10 [background-image:radial-gradient(ellipse_70%_50%_at_20%_10%,rgba(52,211,153,0.15),transparent_65%),radial-gradient(ellipse_55%_40%_at_80%_90%,rgba(59,130,246,0.12),transparent_65%)]"
@@ -83,7 +90,10 @@ export default function MachineSelfSection() {
 
           {/* Centre content */}
           <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 px-6 text-center">
-            <Badge variant="status-live">
+            <Badge
+              variant="status-live"
+              className="max-w-full whitespace-normal text-center leading-snug"
+            >
               On-device · Permissioned · Sovereign
             </Badge>
             <CardTitle className="max-w-lg font-bold leading-tight tracking-tight text-white">
@@ -103,15 +113,17 @@ export default function MachineSelfSection() {
         </div>
       </div>
 
-      <div className="grid gap-5 lg:grid-cols-[minmax(0,1.3fr)_minmax(0,1fr)] lg:items-start">
+      <div className="grid min-w-0 gap-5 lg:grid-cols-[minmax(0,1.3fr)_minmax(0,1fr)] lg:items-start">
         {/* Left — definition + stat grid */}
-        <div className="flex flex-col gap-5">
+        <div className="min-w-0 flex flex-col gap-5">
           {/* Definition card */}
           <div className="glass-card group relative overflow-hidden p-8">
             <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-emerald-400/50 to-transparent" />
             <div className="pointer-events-none absolute -right-10 -top-10 h-40 w-40 rounded-full bg-emerald-400 opacity-[0.06] blur-3xl transition-opacity duration-500 group-hover:opacity-[0.12]" />
 
-            <SectionLabel className="text-emerald-400/80">What it is</SectionLabel>
+            <SectionLabel className="text-emerald-400/80">
+              What it is
+            </SectionLabel>
 
             <Body className="mt-5">
               Every person has a Machine Self — a permissioned digital agent
@@ -128,10 +140,10 @@ export default function MachineSelfSection() {
 
             <Body>
               The Machine Self acts as an active digital agent — exposing
-              thousands of capability signals derived from the person&apos;s unique
-              experience and context, enabling participation in coordination,
-              decision-making, task routing, and economic activity within the
-              network.
+              thousands of capability signals derived from the person&apos;s
+              unique experience and context, enabling participation in
+              coordination, decision-making, task routing, and economic activity
+              within the network.
             </Body>
           </div>
 
@@ -146,9 +158,7 @@ export default function MachineSelfSection() {
                 <DisplayText className="bg-gradient-to-r from-emerald-300 to-blue-300 bg-clip-text text-headline leading-none tracking-[-0.04em] text-transparent">
                   {point.stat}
                 </DisplayText>
-                <Subhead className="mt-2 text-white/80">
-                  {point.label}
-                </Subhead>
+                <Subhead className="mt-2 text-white/80">{point.label}</Subhead>
                 <Muted className="mt-1 leading-snug text-white/50">
                   {point.sub}
                 </Muted>
@@ -158,12 +168,14 @@ export default function MachineSelfSection() {
         </div>
 
         {/* Right — how it works + privacy */}
-        <div className="flex flex-col gap-5 lg:sticky lg:top-8">
+        <div className="min-w-0 flex flex-col gap-5 lg:sticky lg:top-8">
           <div className="glass-card group relative overflow-hidden p-8">
             <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-blue-400/50 to-transparent" />
             <div className="pointer-events-none absolute -left-10 -top-10 h-40 w-40 rounded-full bg-blue-400 opacity-[0.06] blur-3xl transition-opacity duration-500 group-hover:opacity-[0.11]" />
 
-            <SectionLabel className="text-blue-400/80">How it works</SectionLabel>
+            <SectionLabel className="text-blue-400/80">
+              How it works
+            </SectionLabel>
 
             <CardTitle className="mt-5 font-bold leading-tight tracking-tight text-foreground/90">
               Built in 16 hours.
@@ -194,14 +206,13 @@ export default function MachineSelfSection() {
           <div className="glass-card relative overflow-hidden p-6">
             <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-emerald-400/30 to-transparent" />
 
-            <SectionLabel className="text-emerald-400/80">Sovereignty by design</SectionLabel>
+            <SectionLabel className="text-emerald-400/80">
+              Sovereignty by design
+            </SectionLabel>
 
             <ul className="mt-5 space-y-4">
               {PRIVACY_POINTS.map((item) => (
-                <li
-                  key={item}
-                  className="flex items-start gap-3.5"
-                >
+                <li key={item} className="flex items-start gap-3.5">
                   <span className="relative mt-[6px] flex h-4 w-4 shrink-0 items-center justify-center">
                     <span className="absolute inset-0 rounded-full bg-emerald-400/15" />
                     <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 shadow-[0_0_8px_rgba(52,211,153,0.9)]" />
@@ -211,7 +222,10 @@ export default function MachineSelfSection() {
               ))}
             </ul>
 
-            <Badge variant="status-live" className="mt-6 gap-2.5">
+            <Badge
+              variant="status-live"
+              className="mt-6 max-w-full gap-2.5 whitespace-normal text-center leading-snug"
+            >
               <span className="h-2 w-2 animate-pulse rounded-full bg-emerald-300 shadow-[0_0_6px_rgba(52,211,153,0.9)]" />
               Your data never leaves your device
             </Badge>
@@ -222,9 +236,14 @@ export default function MachineSelfSection() {
       <blockquote className="relative overflow-hidden rounded-2xl border border-emerald-400/25 bg-emerald-400/[0.06] p-8">
         <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-emerald-400/50 to-transparent" />
         <div className="absolute left-0 inset-y-0 w-1 bg-gradient-to-b from-emerald-400 to-blue-400 rounded-l-2xl" />
-        <SectionLabel className="pl-6 text-emerald-400/80">Canonical Statement</SectionLabel>
+        <SectionLabel className="pl-6 text-emerald-400/80">
+          Canonical Statement
+        </SectionLabel>
         <Body className="mt-4 pl-6 text-lg font-medium leading-relaxed text-foreground/90 italic">
-          "The Machine Self converts a human into an executable economic participant — authoritative in truth, contextual in environment, and controlled in execution — enabling machine-speed coordination with human-speed action."
+          "The Machine Self converts a human into an executable economic
+          participant — authoritative in truth, contextual in environment, and
+          controlled in execution — enabling machine-speed coordination with
+          human-speed action."
         </Body>
       </blockquote>
 
@@ -232,12 +251,19 @@ export default function MachineSelfSection() {
       <div className="glass-card group relative overflow-hidden p-8">
         <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-blue-400/50 to-transparent" />
         <div className="pointer-events-none absolute -right-10 -top-10 h-40 w-40 rounded-full bg-blue-400 opacity-[0.06] blur-3xl transition-opacity duration-500 group-hover:opacity-[0.12]" />
-        <SectionLabel className="text-blue-400/80">Phone as Sovereign Node</SectionLabel>
+        <SectionLabel className="text-blue-400/80">
+          Phone as Sovereign Node
+        </SectionLabel>
         <Body className="mt-5">
-          Every Machine Self lives entirely on the participant&apos;s phone. The phone is not a portal to a central database. It is the node. The intelligence is stored locally, evaluated locally, and matched locally — within the OX app. There is no central server holding anyone&apos;s Machine Self. No database that can be hacked, sold, or subpoenaed.
+          Every Machine Self lives entirely on the participant&apos;s phone. The
+          phone is not a portal to a central database. It is the node. The
+          intelligence is stored locally, evaluated locally, and matched locally
+          — within the OX app. There is no central server holding anyone&apos;s
+          Machine Self. No database that can be hacked, sold, or subpoenaed.
         </Body>
         <Body className="mt-4">
-          One billion participants. One billion sovereign nodes. Each one owned entirely by the individual it represents.
+          One billion participants. One billion sovereign nodes. Each one owned
+          entirely by the individual it represents.
         </Body>
       </div>
     </section>
