@@ -40,7 +40,7 @@ const PRIVACY_POINTS = [
 
 export default function MachineSelfSection() {
   return (
-    <section className="relative mx-auto flex w-full max-w-6xl flex-col gap-14 overflow-x-hidden px-6 py-24 text-white">
+    <section className="relative mx-auto flex w-full max-w-6xl flex-col gap-14 px-6 py-24 text-white">
       <div
         aria-hidden
         className="pointer-events-none absolute inset-0 -z-10 [background-image:radial-gradient(ellipse_70%_50%_at_20%_10%,rgba(52,211,153,0.15),transparent_65%),radial-gradient(ellipse_55%_40%_at_80%_90%,rgba(59,130,246,0.12),transparent_65%)]"
@@ -148,18 +148,20 @@ export default function MachineSelfSection() {
           </div>
 
           {/* Stat grid */}
-          <div className="grid grid-cols-2 gap-3">
+          <div className="grid auto-rows-fr grid-cols-2 gap-3">
             {MACHINE_SELF_POINTS.map((point) => (
               <div
                 key={point.stat}
-                className="glass-card group relative overflow-hidden p-5 transition-colors duration-300 hover:border-emerald-400/20"
+                className="glass-card group relative flex h-full min-h-[140px] flex-col overflow-hidden p-5 transition-colors duration-300 hover:border-emerald-400/20 sm:min-h-[160px]"
               >
                 <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-emerald-400/30 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
                 <DisplayText className="bg-gradient-to-r from-emerald-300 to-blue-300 bg-clip-text text-headline leading-none tracking-[-0.04em] text-transparent">
                   {point.stat}
                 </DisplayText>
-                <Subhead className="mt-2 text-white/80">{point.label}</Subhead>
-                <Muted className="mt-1 leading-snug text-white/50">
+                <Subhead className="mt-2 min-h-[2.6em] text-white/80">
+                  {point.label}
+                </Subhead>
+                <Muted className="mt-1 min-h-[2.8em] leading-snug text-white/50">
                   {point.sub}
                 </Muted>
               </div>
@@ -168,7 +170,7 @@ export default function MachineSelfSection() {
         </div>
 
         {/* Right — how it works + privacy */}
-        <div className="min-w-0 flex flex-col gap-5 lg:sticky lg:top-8">
+        <div className="min-w-0 flex flex-col gap-5 lg:sticky lg:top-8 lg:h-fit lg:self-start">
           <div className="glass-card group relative overflow-hidden p-8">
             <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-blue-400/50 to-transparent" />
             <div className="pointer-events-none absolute -left-10 -top-10 h-40 w-40 rounded-full bg-blue-400 opacity-[0.06] blur-3xl transition-opacity duration-500 group-hover:opacity-[0.11]" />
