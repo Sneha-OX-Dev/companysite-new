@@ -1,13 +1,12 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { PageTitle, SectionLabel, SectionTitle, CardTitle, Body, Subhead, Muted } from "@/components/ui/typography";
+import { PageTitle, SectionLabel, Body, Subhead, Muted } from "@/components/ui/typography";
 import { cn } from "@/lib/utils";
 import AudienceCards from "@/components/sections/AudienceCardsSection";
 import VideoThumbnails from "@/components/homesections/VideoThumbnails";
-
 const HERO_BG =
-  "bg-[radial-gradient(circle_at_top,rgba(129,140,248,0.2),transparent_60%),radial-gradient(circle_at_bottom,rgba(236,72,153,0.15),transparent_60%)]";
+  "bg-[radial-gradient(circle_at_top,rgba(129,140,248,0.10),transparent_60%),radial-gradient(circle_at_bottom,rgba(236,72,153,0.08),transparent_60%)]";
 
 const HERO_ASSET_SRC = "/images/home-section/machine-self-banner1.png";
 
@@ -32,7 +31,7 @@ export default function HomeHero() {
           <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent" />
         </div>
 
-        {/* Mobile: text below image */}
+        {/* Mobile: hero title */}
         <div className="px-6 pb-6 pt-5 md:hidden">
           <div className="space-y-2">
             <SectionLabel className="text-white/50">
@@ -47,8 +46,43 @@ export default function HomeHero() {
           </div>
         </div>
 
-        {/* Desktop: cinematic 90vh with text overlaid at bottom */}
-        <div className="relative hidden h-[90vh] min-h-[600px] w-full overflow-hidden md:block">
+        {/* Mobile: token card below hero image */}
+        <div className="px-6 pb-4 md:hidden">
+          <div className="relative overflow-hidden rounded-2xl border border-white/[0.07] bg-[rgba(6,8,20,0.78)] p-6 backdrop-blur-xl"
+            style={{ boxShadow: "0 4px 40px rgba(0,0,0,0.65), inset 0 1px 0 rgba(255,255,255,0.06)" }}
+          >
+            <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-primary/60 to-transparent" />
+            <div className="pointer-events-none absolute -right-8 -top-8 h-36 w-36 rounded-full bg-primary opacity-[0.07] blur-3xl" />
+            <div className="relative flex flex-col items-center gap-4 text-center">
+              <SectionLabel className="text-primary/80">THE TOKEN</SectionLabel>
+              <div className="space-y-0.5">
+                <p className="text-xl font-black leading-tight tracking-tight text-white">No buying. No selling.</p>
+                <p className="text-xl font-black leading-tight tracking-tight">
+                  <span className="bg-gradient-to-r from-primary to-brand-purple bg-clip-text text-transparent">Just earning.</span>
+                </p>
+              </div>
+              <p className="text-sm leading-relaxed text-white/60">
+                OXME is not bought. It is earned. The only way a token enters circulation is through human participation — your time, your attention, your intelligence.
+              </p>
+              <div className="flex flex-wrap justify-center gap-2">
+                {["Fixed supply.", "Live now.", "Yours to earn."].map((item) => (
+                  <span key={item} className="rounded-full border border-white/[0.10] bg-white/[0.04] px-4 py-1.5 text-xs font-semibold text-white/55">
+                    {item}
+                  </span>
+                ))}
+              </div>
+              <a
+                href="/earn"
+                className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-primary py-3 text-sm font-bold text-white shadow-[0_0_20px_rgba(255,45,107,0.5)]"
+              >
+                Start earning OXME →
+              </a>
+            </div>
+          </div>
+        </div>
+
+        {/* Desktop: cinematic 90vh — hero text bottom-left, token card top-right */}
+        <div className="relative hidden w-full overflow-hidden md:block md:h-[640px] lg:h-[720px] xl:h-[800px]">
           <Image
             src={HERO_ASSET_SRC}
             alt=""
@@ -59,10 +93,66 @@ export default function HomeHero() {
             sizes="100vw"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-transparent" />
-          <div className="absolute inset-0" style={{ background: "linear-gradient(to top, rgba(15,20,36,0.95) 0%, rgba(15,20,36,0.5) 35%, transparent 65%)" }} />
+          <div className="absolute inset-0" style={{ background: "linear-gradient(to top, rgba(8,10,24,0.97) 0%, rgba(8,10,24,0.55) 35%, transparent 65%)" }} />
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_120%_100%_at_50%_100%,transparent_30%,rgba(0,0,0,0.5)_100%)]" />
-          <div className="absolute inset-x-0 bottom-0 px-6 pb-14">
-            <div className="mx-auto w-full max-w-6xl space-y-3">
+
+          {/* Content overlay — constrained to max-w-6xl, centered */}
+          <div className="absolute inset-0 mx-auto w-full max-w-6xl px-6">
+
+            {/* Token card — top-right within the container */}
+            <div className="absolute right-6 top-6 w-[44%] max-w-[520px] min-w-[380px]">
+              <div className="relative overflow-hidden rounded-3xl border border-white/[0.13] bg-black/55 p-8 backdrop-blur-xl xl:p-12"
+                style={{ boxShadow: "0 12px 60px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.08)" }}
+              >
+                <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-primary/70 to-transparent" />
+                <div className="pointer-events-none absolute -left-16 -top-16 h-72 w-72 rounded-full bg-primary opacity-[0.08] blur-3xl" />
+                <div className="pointer-events-none absolute -bottom-16 -right-16 h-72 w-72 rounded-full bg-brand-purple opacity-[0.08] blur-3xl" />
+
+                <div className="relative flex flex-col items-center gap-6 text-center">
+                  <SectionLabel className="text-primary/80">THE TOKEN</SectionLabel>
+
+                  <div className="space-y-1">
+                    <p className="text-3xl font-black leading-tight tracking-tight text-white xl:text-4xl">
+                      No buying. No selling.
+                    </p>
+                    <p className="text-3xl font-black leading-tight tracking-tight xl:text-4xl">
+                      <span className="bg-gradient-to-r from-primary to-brand-purple bg-clip-text text-transparent">
+                        Just earning.
+                      </span>
+                    </p>
+                  </div>
+
+                  <p className="text-base leading-relaxed text-white/65 xl:text-lg">
+                    OXME is not bought. It is earned. The only way a token enters
+                    circulation is through human participation — your time, your
+                    attention, your intelligence.
+                  </p>
+
+                  <div className="flex flex-wrap justify-center gap-3">
+                    {["Fixed supply.", "Live now.", "Yours to earn."].map((item) => (
+                      <span
+                        key={item}
+                        className="rounded-full border border-white/[0.12] bg-white/[0.05] px-5 py-2 text-sm font-semibold text-white/60"
+                      >
+                        {item}
+                      </span>
+                    ))}
+                  </div>
+
+                  <div className="h-px w-24 bg-gradient-to-r from-transparent via-primary/40 to-transparent" />
+
+                  <a
+                    href="/earn"
+                    className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-primary px-9 py-4 text-base font-bold text-white shadow-[0_0_28px_rgba(255,45,107,0.55)] transition-all duration-200 hover:shadow-[0_0_40px_rgba(255,45,107,0.75)]"
+                  >
+                    Start earning OXME →
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            {/* Hero text — bottom-left within the container */}
+            <div className="absolute bottom-0 left-6 pb-14 space-y-3 w-[50%]">
               <SectionLabel className="text-white/50">
                 Connecting Machines, AI, and Systems to Real Human Agency
               </SectionLabel>
@@ -73,6 +163,7 @@ export default function HomeHero() {
                 1.5 million people have already started.
               </Subhead>
             </div>
+
           </div>
         </div>
       </div>
@@ -111,37 +202,50 @@ export default function HomeHero() {
         </div>
       </div>
 
-      {/* 4-stat live data bar */}
-      <div className="relative z-10 mx-auto mt-10 w-full max-w-4xl px-6">
-        <div className="glass-card grid grid-cols-2 gap-0 md:grid-cols-4">
-          {[
-            { val: "1.5M", label: "Users" },
-            { val: "4 min", label: "Avg session" },
-            { val: "16 hrs", label: "Daily engagement" },
-            { val: "2,000", label: "Data points per user" },
-          ].map(({ val, label }, i) => (
-            <div
-              key={label}
-              className={cn(
-                "flex flex-col items-center gap-1 px-3 py-5 md:px-6",
-                {
-                  "border-r border-white/[0.06]": i % 2 === 0,
-                  "border-b border-white/[0.06] md:border-b-0": i < 2,
-                }
-              )}
-            >
-              <span className="whitespace-nowrap bg-gradient-to-r from-primary to-brand-purple bg-clip-text font-mono text-3xl font-black tracking-tight text-transparent md:text-5xl">
-                {val}
-              </span>
-              <Muted className="text-center text-xs text-foreground/50">{label}</Muted>
-            </div>
-          ))}
+      {/* 5-stat live data bar */}
+      <div className="relative z-10 mx-auto mt-10 w-full max-w-5xl px-6">
+        <div className="glass-card overflow-hidden">
+          <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-primary/60 to-transparent" />
+
+          <div className="grid grid-cols-1 gap-0 sm:grid-cols-5">
+            {[
+              { val: "1.5M", label: "Machine Selves being built" },
+              { val: "4 min", label: "A day. 30 seconds at a time." },
+              { val: "16 hrs", label: "Of human capital. Stored on completion." },
+              { val: "2,000", label: "Data points no system can guess." },
+              { val: "OXME", label: "The token you mine — not buy.", accent: true },
+            ].map(({ val, label, accent }, i) => (
+              <div
+                key={label}
+                className={cn(
+                  "flex flex-col items-center gap-1.5 px-3 py-5 sm:py-6 md:px-5",
+                  {
+                    "border-b border-white/[0.06] sm:border-b-0 sm:border-r": i < 4,
+                    "bg-gradient-to-b from-primary/[0.07] to-brand-purple/[0.05]": accent,
+                  }
+                )}
+              >
+                <span
+                  className={cn(
+                    "whitespace-nowrap bg-gradient-to-r bg-clip-text font-mono font-black tracking-tight text-transparent",
+                    {
+                      "from-primary to-brand-purple text-3xl md:text-4xl": !accent,
+                      "from-primary via-brand-purple to-primary text-2xl md:text-3xl": accent,
+                    }
+                  )}
+                >
+                  {val}
+                </span>
+                <Muted className="text-center text-[11px] leading-snug text-foreground/50">{label}</Muted>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
 
-      {/* Three pillars */}
-      <div className="relative z-10 mx-auto mt-10 w-full max-w-4xl px-6">
-        <div className="grid grid-cols-1 gap-3 md:grid-cols-3">
+      {/* Three pillars — compact boxes */}
+      <div className="relative z-10 mx-auto mt-6 w-full max-w-4xl px-6">
+        <div className="grid grid-cols-1 gap-2 md:grid-cols-3">
           {[
             "Humans become verified Machine Selves",
             "Phones become live intelligence nodes",
@@ -149,48 +253,15 @@ export default function HomeHero() {
           ].map((text, i) => (
             <div
               key={text}
-              className="group glass-card relative flex flex-col gap-4 overflow-hidden px-6 py-6 transition-all duration-300 hover:border-primary/30"
+              className="flex items-center gap-3 rounded-xl border border-white/[0.07] bg-white/[0.03] px-4 py-3"
             >
-              {/* Top accent line */}
-              <div
-                className={cn(
-                  "pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent to-transparent",
-                  { "via-primary/60": i % 2 === 0, "via-brand-purple/60": i % 2 !== 0 }
-                )}
-              />
-              {/* Glow orb */}
-              <div
-                className={cn(
-                  "pointer-events-none absolute -right-8 -top-8 h-24 w-24 rounded-full opacity-[0.07] blur-2xl transition-opacity duration-300 group-hover:opacity-[0.18]",
-                  { "bg-primary": i % 2 === 0, "bg-brand-purple": i % 2 !== 0 }
-                )}
-              />
-              {/* Number */}
-              <span className="font-mono text-xs font-bold tracking-[0.2em] text-foreground/30">
+              <span className="font-mono text-[10px] font-bold tracking-[0.2em] text-white/25">
                 0{i + 1}
               </span>
-              {/* Title */}
-              <CardTitle
-                className={cn(
-                  "bg-gradient-to-r bg-clip-text leading-snug tracking-tight text-transparent",
-                  { "from-primary to-brand-purple": i % 2 === 0, "from-brand-purple to-primary": i % 2 !== 0 }
-                )}
-              >
-                {text}
-              </CardTitle>
+              <span className="text-sm font-medium text-white/60">{text}</span>
             </div>
           ))}
         </div>
-      </div>
-
-      {/* Closing note */}
-      <div className="relative z-10 mx-auto mt-10 w-full max-w-3xl border-t border-white/[0.08] px-6 pt-8 text-center">
-        <Body className="text-foreground/50">
-          <span className="font-bold text-foreground/80">
-            One billion human agents.
-          </span>{" "}
-          One fixed supply token. Mined entirely by human participation.
-        </Body>
       </div>
 
       <AudienceCards />
