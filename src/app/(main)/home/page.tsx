@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import HomeHero from "@/components/homesections/Hero";
-import TractionSection from "@/components/homesections/Traction";
+import WhoOxIsForTeaser from "@/components/homesections/WhoOxIsForTeaser";
+import HomeHowItWorks from "@/components/homesections/HomeHowItWorks";
 import MarqueeStrip from "@/components/MarqueeStrip";
 import { Reveal } from "@/components/ui/Reveal";
 
@@ -13,13 +14,22 @@ export const metadata: Metadata = {
 const HomePage = () => {
   return (
     <div className="space-y-0">
+      {/* Screen 1–3: Hero + Numbers + Pillars */}
       <div id="hero">
         <HomeHero />
       </div>
-      <Reveal id="traction">
-        <TractionSection />
+
+      {/* Screen 5: Who It Serves */}
+      <Reveal id="who-ox-is-for" delay={150}>
+        <WhoOxIsForTeaser />
       </Reveal>
-      <Reveal id="marquee" delay={150}>
+
+      {/* Screen 6: How It Works */}
+      <Reveal id="how-it-works" delay={200}>
+        <HomeHowItWorks />
+      </Reveal>
+
+      <Reveal id="marquee" delay={250}>
         <MarqueeStrip />
       </Reveal>
     </div>

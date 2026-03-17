@@ -8,14 +8,13 @@ export default function AudienceCards() {
       {/* header */}
       <div className="max-w-2xl text-center">
         <SectionTitle>
-          Who is OX{" "}
+          The Only Crypto In The World You{" "}
           <span className="bg-gradient-to-r from-primary to-brand-purple bg-clip-text text-transparent">
-            for?
+            Mine With Your Time
           </span>
         </SectionTitle>
         <Body className="mt-3 text-foreground/50">
-          Two core audiences. One network. One fixed-supply token — mined
-          entirely by human participation.
+          Every crypto network on earth wants your money. OX wants your time.
         </Body>
       </div>
 
