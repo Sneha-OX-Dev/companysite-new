@@ -272,12 +272,12 @@ export function SystemsWithoutWithOX() {
 
       {/* Closing */}
       <div
-        className="relative z-10 w-full max-w-[1060px] border-t border-white/[0.06] pt-5 text-center"
+        className="relative z-10 w-full max-w-[1060px] border-t border-white/6 pt-5 text-center"
         style={fadeIn(160)}
       >
         <p className="mx-auto max-w-4xl text-[18px] font-semibold leading-snug tracking-[-0.01em] text-white/90 sm:text-[22px]">
           This is not a product improvement.{" "}
-          <span className="bg-gradient-to-r from-[var(--accent)] to-[#C65BFF] bg-clip-text text-transparent">
+          <span className="bg-linear-to-r from-accent to-[#C65BFF] bg-clip-text text-transparent">
             This is a different architecture entirely.
           </span>
         </p>
