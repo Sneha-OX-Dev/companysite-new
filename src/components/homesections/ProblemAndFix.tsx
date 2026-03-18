@@ -1,5 +1,11 @@
 import SectionHeader from "@/components/Headings/SectionHeader";
-import { Eyebrow, Body, DisplayText, CardTitle, Label } from "@/components/ui/typography";
+import {
+  Body,
+  CardTitle,
+  DisplayText,
+  Eyebrow,
+  Label,
+} from "@/components/ui/typography";
 import { cn } from "@/lib/utils";
 
 const PROBLEM_ROOT_CAUSES = [
@@ -28,9 +34,18 @@ const FIX_SYSTEMS = [
 const COMPARISON_ROWS = [
   ["Systems infer human intent", "Systems access real human intent"],
   ["AI guesses at context", "AI coordinates with verified humans"],
-  ["Machines operate without human confirmation", "Machines trigger and verify physical human action"],
-  ["Centralised data farms approximate reality", "Distributed Machine Selves deliver reality"],
-  ["Consent is assumed or bypassed", "Consent is explicit, cryptographic, sovereign"],
+  [
+    "Machines operate without human confirmation",
+    "Machines trigger and verify physical human action",
+  ],
+  [
+    "Centralised data farms approximate reality",
+    "Distributed Machine Selves deliver reality",
+  ],
+  [
+    "Consent is assumed or bypassed",
+    "Consent is explicit, cryptographic, sovereign",
+  ],
   ["Outcomes are probabilistic", "Outcomes are verified and settled on-chain"],
 ];
 
@@ -51,7 +66,10 @@ function BulletItem({
       <span className="relative mt-[7px] flex h-4 w-4 shrink-0 items-center justify-center">
         {color !== "white" && (
           <span
-            className={cn("absolute inset-0 rounded-full opacity-15", { "bg-primary": color === "pink", "bg-emerald-400": color !== "pink" })}
+            className={cn("absolute inset-0 rounded-full opacity-15", {
+              "bg-primary": color === "pink",
+              "bg-emerald-400": color !== "pink",
+            })}
           />
         )}
         <span className={cn("h-1.5 w-1.5 rounded-full", dotStyles[color])} />
@@ -96,15 +114,26 @@ function Card({
   };
   return (
     <div
-      className={cn("glass-card group relative overflow-hidden p-7 transition-all duration-300", glassAccentClass[accent], hoverBorderClass[accent], className)}
+      className={cn(
+        "glass-card group relative overflow-hidden p-7 transition-all duration-300",
+        glassAccentClass[accent],
+        hoverBorderClass[accent],
+        className,
+      )}
     >
       {accent !== "none" && (
         <>
           <div
-            className={cn("absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent to-transparent opacity-70", topBarColors[accent])}
+            className={cn(
+              "absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent to-transparent opacity-70",
+              topBarColors[accent],
+            )}
           />
           <div
-            className={cn("pointer-events-none absolute -right-12 -top-12 h-36 w-36 rounded-full opacity-[0.05] blur-3xl transition-opacity duration-500 group-hover:opacity-[0.10]", glowColors[accent])}
+            className={cn(
+              "pointer-events-none absolute -right-12 -top-12 h-36 w-36 rounded-full opacity-[0.05] blur-3xl transition-opacity duration-500 group-hover:opacity-[0.10]",
+              glowColors[accent],
+            )}
           />
         </>
       )}
@@ -112,7 +141,6 @@ function Card({
     </div>
   );
 }
-
 
 export default function ProblemAndFixSection() {
   return (
@@ -138,6 +166,12 @@ export default function ProblemAndFixSection() {
             Systems guess.{" "}
             <span className="bg-gradient-to-r from-primary to-brand-purple bg-clip-text text-transparent">
               Humans know.
+            </span>
+          </DisplayText>
+          <DisplayText className="text-headline text-white/90">
+            Humans are observed,{" "}
+            <span className="bg-gradient-to-r from-primary to-brand-purple bg-clip-text text-transparent">
+              not integrated.
             </span>
           </DisplayText>
         </div>
@@ -167,7 +201,7 @@ export default function ProblemAndFixSection() {
         <Body className="max-w-2xl text-foreground/60">
           There is no infrastructure layer today that enables live, consented,
           structured human intelligence to participate directly in digital
-          coordination. Humans are observed, not integrated.
+          coordination.
         </Body>
       </div>
 
@@ -179,6 +213,18 @@ export default function ProblemAndFixSection() {
           subtitle="OX removes the architectural limitation that has always separated systems from real human intelligence."
           align="left"
         />
+        <div className="grid gap-3 sm:grid-cols-2">
+          <Body className="glass-card p-4 text-foreground/70">
+            <strong className="font-bold text-white">Old model:</strong> extract
+            data from humans, infer intent, approximate outcomes, keep the
+            value.
+          </Body>
+          <Body className="glass-card p-4 text-foreground/70">
+            <strong className="font-bold text-white">OX model:</strong>{" "}
+            coordinate directly with humans, verify intent, confirm outcomes,
+            return the value.
+          </Body>
+        </div>
 
         <div className="grid gap-5 lg:grid-cols-2 lg:items-start">
           {/* What OX does */}
@@ -195,8 +241,9 @@ export default function ProblemAndFixSection() {
             </Body>
 
             <blockquote className="my-6 border-l-2 border-emerald-400/50 pl-4 text-sm italic leading-relaxed text-white/80">
-              &ldquo;Not better data. A different category of input entirely — the
-              difference between a weather forecast and looking out the window.&rdquo;
+              &ldquo;Not better data. A different category of input entirely —
+              the difference between a weather forecast and looking out the
+              window.&rdquo;
             </blockquote>
 
             <div className="my-6 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
@@ -216,9 +263,9 @@ export default function ProblemAndFixSection() {
             <CardTitle className="mt-4">The bigger fix</CardTitle>
 
             <Body className="mt-4">
-              OX doesn&apos;t just improve how systems access human intelligence. It
-              restructures the relationship between humans and digital systems
-              entirely.
+              OX doesn&apos;t just improve how systems access human
+              intelligence. It restructures the relationship between humans and
+              digital systems entirely.
             </Body>
 
             <div className="my-6 rounded-2xl border border-white/[0.07] bg-white/[0.04] p-5">
@@ -242,7 +289,10 @@ export default function ProblemAndFixSection() {
             </Body>
 
             <Body className="mt-4">
-              For the first time, digital systems don&apos;t have to guess what humans think, want, or will do. They can coordinate directly. And every human who participates is not just contributing — they are being paid.
+              For the first time, digital systems don&apos;t have to guess what
+              humans think, want, or will do. They can coordinate directly. And
+              every human who participates is not just contributing — they are
+              being paid.
             </Body>
 
             <div className="glass-chip mt-6 gap-2.5 px-4 py-2.5 text-xs font-bold uppercase tracking-widest text-white/80">
@@ -271,8 +321,13 @@ export default function ProblemAndFixSection() {
               </thead>
               <tbody>
                 {COMPARISON_ROWS.map(([without, withOx]) => (
-                  <tr key={without} className="border-b border-white/[0.05] transition-colors last:border-0 hover:bg-white/[0.02]">
-                    <td className="py-3.5 pr-8 text-foreground/40 line-through decoration-white/20">{without}</td>
+                  <tr
+                    key={without}
+                    className="border-b border-white/[0.05] transition-colors last:border-0 hover:bg-white/[0.02]"
+                  >
+                    <td className="py-3.5 pr-8 text-foreground/40 line-through decoration-white/20">
+                      {without}
+                    </td>
                     <td className="py-3.5 text-foreground/80">{withOx}</td>
                   </tr>
                 ))}

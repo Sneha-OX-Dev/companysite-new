@@ -270,45 +270,17 @@ export function SystemsWithoutWithOX() {
         </div>
       </div>
 
-      {/* Bottom pills */}
-      <div
-        className="relative z-10 grid w-full max-w-[1060px] grid-cols-1 gap-3 sm:grid-cols-[1fr_72px_1fr]"
-        style={fadeIn(160)}
-      >
-        <div
-          className="rounded-sm px-4 py-3 text-sm leading-relaxed text-white/60"
-          style={{
-            border: "1px solid rgba(255,255,255,0.06)",
-            background: "#0D0D2B",
-          }}
-        >
-          <strong className="font-bold text-white">Old model:</strong> extract
-          data from humans, infer intent, approximate outcomes, keep the value.
-        </div>
-        <div className="hidden sm:block" />
-        <div
-          className="rounded-sm px-4 py-3 text-sm leading-relaxed text-white/60"
-          style={{
-            border: "1px solid rgba(255,45,107,0.15)",
-            background: "rgba(255,45,107,0.04)",
-          }}
-        >
-          <strong className="font-bold text-white">OX model:</strong> coordinate
-          directly with humans, verify intent, confirm outcomes, return the
-          value.
-        </div>
-      </div>
-
       {/* Closing */}
       <div
-        className="relative z-10 w-full max-w-[1060px] border-t border-white/[0.06] pt-3 text-center text-xs text-white/45"
-        style={fadeIn(220)}
+        className="relative z-10 w-full max-w-[1060px] border-t border-white/[0.06] pt-5 text-center"
+        style={fadeIn(160)}
       >
-        <strong className="font-semibold text-white/70">
-          This is not better data.
-        </strong>{" "}
-        This is a different category of input entirely — the difference between
-        a weather forecast and looking out the window.
+        <p className="mx-auto max-w-4xl text-[18px] font-semibold leading-snug tracking-[-0.01em] text-white/90 sm:text-[22px]">
+          This is not a product improvement.{" "}
+          <span className="bg-gradient-to-r from-[var(--accent)] to-[#C65BFF] bg-clip-text text-transparent">
+            This is a different architecture entirely.
+          </span>
+        </p>
       </div>
       </div>
     </section>
