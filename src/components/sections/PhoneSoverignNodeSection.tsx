@@ -34,7 +34,7 @@ function SideCard({
 }) {
   return (
     <div
-      className="flex flex-col gap-2 rounded-2xl px-5 py-4"
+      className="flex min-h-[108px] flex-col gap-2 rounded-2xl px-5 py-4 sm:min-h-[112px]"
       style={
         isLeft
           ? {
@@ -268,7 +268,7 @@ export function PhoneSovereignNodeSection() {
           {/* Left cards */}
           <div className="flex flex-col gap-3 sm:flex-1">
             <p
-              className="mb-1 text-[9px] font-bold uppercase tracking-[2.5px]"
+              className="mb-1 flex min-h-[28px] items-end text-[9px] font-bold uppercase leading-snug tracking-[2.5px]"
               style={{ color: PINK }}
             >
               Stays On Device
@@ -280,7 +280,7 @@ export function PhoneSovereignNodeSection() {
 
           {/* Right cards */}
           <div className="flex flex-col gap-3 sm:flex-1 sm:order-3">
-            <p className="mb-1 text-[9px] font-bold uppercase tracking-[2.5px] text-white/35">
+            <p className="mb-1 flex min-h-[28px] items-end text-[9px] font-bold uppercase leading-snug tracking-[2.5px] text-white/35">
               Signal Only — To Network
             </p>
             {rightCards.map((c) => (
