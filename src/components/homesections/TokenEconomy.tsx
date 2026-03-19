@@ -71,7 +71,7 @@ export default function TokenEconomySection() {
         <div className="pointer-events-none absolute -left-16 top-1/2 h-48 w-48 -translate-y-1/2 rounded-full bg-primary opacity-[0.07] blur-3xl" />
         <div className="pointer-events-none absolute -right-16 top-1/2 h-48 w-48 -translate-y-1/2 rounded-full bg-brand-purple opacity-[0.07] blur-3xl" />
 
-        <div className="flex flex-col items-center gap-6 text-center sm:flex-row sm:justify-between sm:text-left">
+        <div className="flex flex-col items-center gap-6 text-center lg:flex-row lg:justify-between lg:text-left">
           <DisplayText className="text-headline">
             Not created by{" "}
             <span className="text-foreground/30 line-through decoration-foreground/20">
@@ -83,18 +83,18 @@ export default function TokenEconomySection() {
               Created by humans.
             </span>
           </DisplayText>
-          <div className="flex shrink-0 flex-wrap gap-3">
-            <div className="flex flex-col gap-1 rounded-2xl border border-primary/20 bg-primary/[0.07] px-5 py-3">
+          <div className="grid w-full grid-cols-1 gap-3 sm:grid-cols-2 lg:w-auto lg:grid-cols-3">
+            <div className="flex min-w-0 flex-col gap-1 rounded-2xl border border-primary/20 bg-primary/[0.07] px-5 py-3">
               <span className="text-xs font-bold uppercase tracking-widest text-primary/60">Fixed total supply</span>
-              <span className="bg-gradient-to-r from-primary to-brand-purple bg-clip-text text-base font-black leading-none tracking-tight text-transparent">1,371,000,000 OXME</span>
+              <span className="bg-gradient-to-r from-primary to-brand-purple bg-clip-text text-base font-black leading-tight tracking-tight text-transparent wrap-break-word">1,371,000,000 OXME</span>
             </div>
-            <div className="flex flex-col gap-1 rounded-2xl border border-brand-purple/20 bg-brand-purple/[0.07] px-5 py-3">
+            <div className="flex min-w-0 flex-col gap-1 rounded-2xl border border-brand-purple/20 bg-brand-purple/[0.07] px-5 py-3">
               <span className="text-xs font-bold uppercase tracking-widest text-brand-purple/60">Conversion rate</span>
-              <span className="bg-gradient-to-r from-brand-purple to-primary bg-clip-text text-base font-black leading-none tracking-tight text-transparent">1,000 OXIT = 1 OXME</span>
+              <span className="bg-gradient-to-r from-brand-purple to-primary bg-clip-text text-base font-black leading-tight tracking-tight text-transparent wrap-break-word">1,000 OXIT = 1 OXME</span>
             </div>
-            <div className="flex flex-col gap-1 rounded-2xl border border-white/10 bg-white/[0.04] px-5 py-3">
+            <div className="flex min-w-0 flex-col gap-1 rounded-2xl border border-white/10 bg-white/[0.04] px-5 py-3 sm:col-span-2 lg:col-span-1">
               <span className="text-xs font-bold uppercase tracking-widest text-white/40">Token standard</span>
-              <span className="text-base font-black leading-none tracking-tight text-white/70">ERC-20 on Base</span>
+              <span className="text-base font-black leading-tight tracking-tight text-white/70">ERC-20 on Base</span>
             </div>
           </div>
         </div>
