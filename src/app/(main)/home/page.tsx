@@ -33,7 +33,9 @@ const HomePage = () => {
       <Reveal id="marquee" delay={250}>
         <MarqueeStrip />
       </Reveal>
-      <GetTheAppSection />
+      <Reveal id="get-the-app">
+        <GetTheAppSection />
+      </Reveal>
     </div>
   );
 };
