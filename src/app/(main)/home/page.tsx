@@ -1,9 +1,10 @@
-import type { Metadata } from "next";
+import GetTheAppSection from "@/components/GetTheAppSection";
 import HomeHero from "@/components/homesections/Hero";
-import WhoOxIsForTeaser from "@/components/homesections/WhoOxIsForTeaser";
 import HomeHowItWorks from "@/components/homesections/HomeHowItWorks";
+import WhoOxIsForTeaser from "@/components/homesections/WhoOxIsForTeaser";
 import MarqueeStrip from "@/components/MarqueeStrip";
 import { Reveal } from "@/components/ui/Reveal";
+import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "OX — You're alive in the network",
@@ -31,6 +32,9 @@ const HomePage = () => {
 
       <Reveal id="marquee" delay={250}>
         <MarqueeStrip />
+      </Reveal>
+      <Reveal id="get-the-app">
+        <GetTheAppSection />
       </Reveal>
     </div>
   );

@@ -1,7 +1,14 @@
 "use client";
 import SectionHeader from "@/components/Headings/SectionHeader";
 import { Button } from "@/components/ui/button";
-import { Body, SectionLabel, CardTitle, DisplayText, Eyebrow, Muted } from "@/components/ui/typography";
+import {
+  Body,
+  CardTitle,
+  DisplayText,
+  Eyebrow,
+  Muted,
+  SectionLabel,
+} from "@/components/ui/typography";
 import { PINK, PURPLE } from "@/lib/constants";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
@@ -387,7 +394,7 @@ function StageCard({
         <div
           className={cn(
             "pointer-events-none absolute -right-10 -top-10 h-36 w-36 rounded-full opacity-[0.07] blur-3xl transition-opacity duration-500 group-hover:opacity-[0.16]",
-            color === PINK ? "bg-primary" : "bg-brand-purple"
+            color === PINK ? "bg-primary" : "bg-brand-purple",
           )}
         />
         <div
@@ -479,10 +486,12 @@ export default function TheOnlyCryptoSection() {
               </span>{" "}
               completing your Machine Self.
               <br />
-              16 hours of structured human capital, stored on your phone, owned by you. From day one — you mine.
+              16 hours of structured human capital, stored on your phone, owned
+              by you. From day one — you mine.
               <br />
               <br />
-              Every verified contribution earns OXIT. The building is the mining.
+              Every verified contribution earns OXIT. The building is the
+              mining.
             </>
           }
           steps={stage1Steps}
@@ -556,7 +565,9 @@ export default function TheOnlyCryptoSection() {
           accentClass="text-white/70"
           description={
             <>
-              Your Machine Self evaluates every opportunity privately on your device. You see only what you qualify for. You choose whether to participate. You complete the work.
+              Your Machine Self evaluates every opportunity privately on your
+              device. You see only what you qualify for. You choose whether to
+              participate. You complete the work.
               <br />
               <br />
               The earning never stops.
@@ -581,7 +592,9 @@ export default function TheOnlyCryptoSection() {
           {/* Left gradient accent bar — correct flex approach (no floats) */}
           <div
             className="w-1 shrink-0 self-stretch"
-            style={{ background: `linear-gradient(to bottom,${PINK},${PURPLE})` }}
+            style={{
+              background: `linear-gradient(to bottom,${PINK},${PURPLE})`,
+            }}
           />
           <div
             className="flex flex-1 flex-wrap items-center justify-between gap-4 px-6 py-5"
@@ -630,8 +643,7 @@ export default function TheOnlyCryptoSection() {
               <span className="font-semibold text-white">
                 verified human participation
               </span>
-              .{" "}
-              Not capital. Not machines. People.
+              . Not capital. Not machines. People.
             </Body>
             <div className="glass-card p-5">
               <SectionLabel className="text-foreground/80">Rate</SectionLabel>
@@ -650,7 +662,9 @@ export default function TheOnlyCryptoSection() {
       <div className="w-full border-t border-white/[0.07] pt-8 mt-4">
         <div className="grid gap-5 lg:grid-cols-2">
           <div className="glass-card p-6">
-            <SectionLabel className="text-foreground/80">The comparison</SectionLabel>
+            <SectionLabel className="text-foreground/80">
+              The comparison
+            </SectionLabel>
             <CardTitle className="mt-3 tracking-tight text-white">
               Every other crypto
             </CardTitle>
@@ -680,7 +694,9 @@ export default function TheOnlyCryptoSection() {
       {/* CTA */}
       <div className="pt-4">
         <Button asChild variant="accent" size="pill">
-          <Link href="/machine-self">Build Your Machine Self. Start earning.</Link>
+          <Link href="/#get-the-app">
+            Build Your Machine Self. Start earning.
+          </Link>
         </Button>
       </div>
     </section>
