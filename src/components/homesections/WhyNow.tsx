@@ -1,5 +1,11 @@
 import SectionHeader from "@/components/Headings/SectionHeader";
-import { SectionLabel, Body, DisplayText, Muted, Subhead } from "@/components/ui/typography";
+import {
+  Body,
+  DisplayText,
+  Muted,
+  SectionLabel,
+  Subhead,
+} from "@/components/ui/typography";
 
 const WHY_NOW_POINTS = [
   {
@@ -37,7 +43,9 @@ export default function WhyNowSection() {
 
         <div className="grid gap-8 md:grid-cols-[minmax(0,1fr)_minmax(0,1.2fr)] md:items-center">
           <div>
-            <SectionLabel className="text-cyan-400/90">Architectural limit</SectionLabel>
+            <SectionLabel className="text-cyan-400/90">
+              Architectural limit
+            </SectionLabel>
             <DisplayText className="mt-5 text-headline">
               History can&apos;t predict
               <br />
@@ -47,16 +55,17 @@ export default function WhyNowSection() {
             </DisplayText>
             <div className="mt-8 inline-flex items-center gap-2.5 rounded-full border border-cyan-400/20 bg-cyan-400/[0.07] px-5 py-2.5 text-xs font-bold uppercase tracking-widest text-cyan-300/70">
               <span className="h-2 w-2 animate-pulse rounded-full bg-cyan-300 shadow-[0_0_6px_rgba(34,211,238,0.9)]" />
-              OX provides that layer
+              OX IS THAT LAYER
             </div>
           </div>
 
           <div className="space-y-5">
             <div className="h-px bg-gradient-to-r from-transparent via-white/10 to-transparent md:hidden" />
             <Body>
-              AI has reached a point where more parameters and more data no longer
-              guarantee better intelligence. Systems are trapped in their own
-              history — optimising on stale assumptions instead of the live world.
+              AI has reached a point where more parameters and more data no
+              longer guarantee better intelligence. Systems are trapped in their
+              own history — optimising on stale assumptions instead of the live
+              world.
             </Body>
             <Body>
               What is missing is a safe, structured way to access{" "}
@@ -83,16 +92,13 @@ export default function WhyNowSection() {
             <Subhead className="leading-snug text-foreground/90">
               {point.label}
             </Subhead>
-            <Muted className="mt-2">
-              {point.sub}
-            </Muted>
+            <Muted className="mt-2">{point.sub}</Muted>
           </div>
         ))}
       </div>
 
       <Body className="text-foreground/60">
-        To progress, systems must connect to live human reality and verified
-        intent. That architecture requires OX.
+        This is the structural problem OX was built to solve.
       </Body>
     </section>
   );
